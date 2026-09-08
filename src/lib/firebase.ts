@@ -16,7 +16,7 @@ const app = initializeApp({
   appId: e.VITE_FIREBASE_APP_ID || "demo-app",
 });
 export const auth = getAuth(app);
-export const db = getFirestore(app);
+export const db = getFirestore(app, e.VITE_FIREBASE_DATABASE_ID?.trim() || "(default)");
 if (e.VITE_USE_EMULATORS === "true") {
   connectAuthEmulator(auth, "http://127.0.0.1:9099");
   connectFirestoreEmulator(db, "127.0.0.1", 8080);

@@ -66,6 +66,8 @@ O Vite usa `base: './'`. O HashRouter produz rotas como `/SEU_REPOSITORIO/#/room
 
 ## Como jogar
 
+Se houver erro de banco inexistente apesar de um banco criado, confira o projeto e o **ID exato do banco** na URL do Console. `(default)` e `default` são IDs diferentes; o nome exibido na interface sozinho não confirma o ID. O código usa `(default)` por padrão. Para outro ID, adicione `VITE_FIREBASE_DATABASE_ID=ID_EXATO` ao `.env` e, no Pages, um Actions Secret de mesmo nome. Reinicie o Vite ou faça um novo deploy. Publique as regras no banco selecionado pelo Console; o comando de deploy de regras e a configuração `firebase.json` deste projeto continuam apontando para o banco padrão. Não é necessário recriar ou apagar um banco existente.
+
 1. Informe um nome de até 24 caracteres. A autenticação anônima acontece automaticamente.
 2. Crie uma sala ou entre com um código de cinco caracteres, sem `0`, `O`, `1` ou `I`. Maiúsculas e minúsculas são equivalentes.
 3. Compartilhe o código. O criador é o anfitrião e inicia a rodada quando houver 2–8 participantes.

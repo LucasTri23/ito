@@ -7,6 +7,7 @@ import { RoomPage } from "./pages/Room";
 import { useAuth } from "./hooks/useAuth";
 import { configured } from "./lib/firebase";
 import "./styles.css";
+import "./theme.css";
 function App() {
   const { user, error } = useAuth();
   useEffect(() => {

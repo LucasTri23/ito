@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { ArrowUpRight, AudioLines, Eye, EyeOff } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 export function Brand() {
   return (
     <a href="#/" className="brand">
@@ -18,9 +19,12 @@ export function Shell({ children }: { children: ReactNode }) {
     <>
       <header>
         <Brand />
-        <span className="header-note">
-          Um jogo de sintonia coletiva <span className="green-dot" />
-        </span>
+        <div className="header-actions">
+          <span className="header-note">
+            Um jogo de sintonia coletiva <span className="green-dot" />
+          </span>
+          <ThemeToggle />
+        </div>
       </header>
       <main>{children}</main>
       <footer>
