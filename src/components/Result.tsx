@@ -11,18 +11,55 @@ export function Result({
   round: Round;
   answers: Answer[];
 }) {
-  const { value: secrets, error } = useSecrets(path);
+  const [retry, setRetry] = useState(0);
+  const { value: secrets, error } = useSecrets(path, retry);
+  const complete = round.playerIds.every((id) =>
+    secrets.some((s) => s.playerId === id),
+  );
   const [shown, setShown] = useState(0);
   useEffect(() => {
-    if (shown >= secrets.length) return;
+    if (!complete || shown >= secrets.length) return;
     const t = setTimeout(() => setShown((n) => n + 1), 650);
     return () => clearTimeout(t);
-  }, [shown, secrets.length]);
-  const sorted = [...secrets].sort(
-    (a, b) => a.number - b.number || a.playerId.localeCompare(b.playerId),
-  );
+  }, [shown, secrets.length, complete]);
+  const sorted = secrets
+    .filter((s) => round.playerIds.includes(s.playerId))
+    .sort(
+      (a, b) => a.number - b.number || a.playerId.localeCompare(b.playerId),
+    );
   const correct = (id: string, i: number) =>
+    complete &&
     secrets.find((s) => s.playerId === id)?.number === sorted[i]?.number;
+  if (error || !complete)
+    return (
+      <>
+        <div className="section-heading">
+          <span className="eyebrow">RESULTADO DA RODADA</span>
+          <h2>Aguardando os números de todos os jogadores</h2>
+        </div>
+        {error ? (
+          <Notice>
+            Não foi possível carregar a ordem geral. Tente novamente. Se
+            persistir, confira se as regras publicadas no banco usado pelo jogo
+            permitem ler todos os números quando a rodada está em RESULT.
+          </Notice>
+        ) : (
+          <p role="status">
+            Carregando o resultado completo de {round.playerIds.length}{" "}
+            jogadores…
+          </p>
+        )}
+        <button
+          className="button secondary"
+          onClick={() => {
+            setShown(0);
+            setRetry((n) => n + 1);
+          }}
+        >
+          Carregar resultado novamente
+        </button>
+      </>
+    );
   return (
     <>
       <div className="section-heading">
@@ -39,7 +76,6 @@ export function Result({
           Revelar tudo
         </button>
       </div>
-      {error && <Notice>{error}</Notice>}
       {!secrets.length && <p>Carregando os números revelados…</p>}
       <div className="result-grid">
         {[round.groupOrder, sorted.map((s) => s.playerId)].map(
@@ -50,8 +86,8 @@ export function Result({
                 {ids.map((id, i) => {
                   const a = answers.find((x) => x.playerId === id);
                   const secret = secrets.find((x) => x.playerId === id);
-                  const visible =
-                    sorted.findIndex((x) => x.playerId === id) < shown;
+                  const index = sorted.findIndex((x) => x.playerId === id);
+                  const visible = index >= 0 && index < shown;
                   return (
                     <li key={id} className={visible ? "revealed" : ""}>
                       <span className="rank">{i + 1}</span>
