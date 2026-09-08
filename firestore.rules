@@ -1,0 +1,107 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function signed() { return request.auth != null; }
+  function room(c) { return get(/databases/$(database)/documents/rooms/$(c)).data; }
+  function member(c) { return signed() && exists(/databases/$(database)/documents/rooms/$(c)/players/$(request.auth.uid)); }
+  function host(c) { return member(c) && room(c).hostId == request.auth.uid; }
+  function active(c,r) { return room(c).status == 'PLAYING' && room(c).currentRoundId == r; }
+  function rnd(c,r) { return get(/databases/$(database)/documents/rooms/$(c)/rounds/$(r)).data; }
+  function cleanup(c,r) { return host(c) && rnd(c,r).state == 'RESULT' && getAfter(/databases/$(database)/documents/rooms/$(c)).data.currentRoundId != r; }
+  function text(v,n) { return v is string && v.size() > 0 && v.size() <= n; }
+  function permutation(a,b) { return a is list && a.size() == b.size() && a.toSet() == b.toSet(); }
+  function ready(c,r,ids,i) { return ids.size() <= i || exists(/databases/$(database)/documents/rooms/$(c)/rounds/$(r)/ready/$(ids[i])); }
+  function allReady(c,r,ids) { return ready(c,r,ids,0) && ready(c,r,ids,1) && ready(c,r,ids,2) && ready(c,r,ids,3) && ready(c,r,ids,4) && ready(c,r,ids,5) && ready(c,r,ids,6) && ready(c,r,ids,7); }
+  match /rooms/{c} {
+   // Exact code lookup is necessary to join. Listing/enumeration is forbidden.
+   allow get: if signed();
+   allow list: if false;
+   allow create: if signed() && c.matches('^[A-HJ-NP-Z2-9]{5}$')
+    && request.resource.data.keys().hasOnly(['code','hostId','status','roundNo','currentRoundId','createdAt'])
+    && request.resource.data.code == c && request.resource.data.hostId == request.auth.uid
+    && request.resource.data.status == 'LOBBY' && request.resource.data.roundNo == 0
+    && request.resource.data.currentRoundId == '' && request.resource.data.createdAt == request.time;
+   allow update: if host(c) && resource.data.status != 'CLOSED' && (
+    (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']) && request.resource.data.status == 'CLOSED') ||
+    (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','roundNo','currentRoundId'])
+     && request.resource.data.status == 'PLAYING' && request.resource.data.roundNo == resource.data.roundNo + 1
+     && request.resource.data.currentRoundId == string(request.resource.data.roundNo)
+     && (resource.data.status == 'LOBBY' || rnd(c,resource.data.currentRoundId).state == 'RESULT')
+     && getAfter(/databases/$(database)/documents/rooms/$(c)/rounds/$(request.resource.data.currentRoundId)).data.state == 'WAITING_FOR_THEME'));
+   allow delete: if false;
+   match /players/{uid} {
+    allow get: if signed() && (request.auth.uid == uid || member(c));
+    allow list: if member(c);
+    allow create: if signed() && request.auth.uid == uid
+     && getAfter(/databases/$(database)/documents/rooms/$(c)).data.status == 'LOBBY'
+     && request.resource.data.keys().hasOnly(['uid','name','connected','joinedAt'])
+     && request.resource.data.uid == uid && text(request.resource.data.name,24)
+     && request.resource.data.connected == true && request.resource.data.joinedAt == request.time;
+    allow update: if member(c) && request.auth.uid == uid && room(c).status != 'CLOSED'
+     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['connected'])
+     && request.resource.data.connected is bool;
+    allow delete: if host(c) && room(c).status == 'LOBBY' && uid != room(c).hostId;
+   }
+   match /rounds/{r} {
+    allow read: if member(c);
+    allow create: if host(c) && request.resource.data.keys().hasOnly(['state','theme','lowLabel','highLabel','playerIds','presentationOrder','currentPresentationIndex','groupOrder','createdAt'])
+     && getAfter(/databases/$(database)/documents/rooms/$(c)).data.currentRoundId == r
+     && r == string(room(c).roundNo + 1)
+     && (room(c).status == 'LOBBY' || rnd(c,room(c).currentRoundId).state == 'RESULT')
+     && request.resource.data.state == 'WAITING_FOR_THEME'
+     && request.resource.data.theme == '' && request.resource.data.lowLabel == '' && request.resource.data.highLabel == ''
+     && request.resource.data.playerIds is list && request.resource.data.playerIds.size() >= 2 && request.resource.data.playerIds.size() <= 8
+     && request.resource.data.playerIds.toSet().size() == request.resource.data.playerIds.size()
+     && request.auth.uid in request.resource.data.playerIds
+     && request.resource.data.presentationOrder == request.resource.data.playerIds && request.resource.data.groupOrder == request.resource.data.playerIds
+     && request.resource.data.currentPresentationIndex == 0 && request.resource.data.createdAt == request.time;
+    allow update: if host(c) && active(c,r) && (
+     (resource.data.state == 'WAITING_FOR_THEME' && request.resource.data.state == 'DISTRIBUTING_NUMBERS'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['state','theme','lowLabel','highLabel'])
+      && text(request.resource.data.theme,120) && text(request.resource.data.lowLabel,40) && text(request.resource.data.highLabel,40)) ||
+     (resource.data.state == 'DISTRIBUTING_NUMBERS' && request.resource.data.state == 'PRESENTING'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['state','presentationOrder'])
+      && permutation(request.resource.data.presentationOrder,resource.data.playerIds) && allReady(c,r,resource.data.playerIds)) ||
+     (resource.data.state == 'PRESENTING'
+      && exists(/databases/$(database)/documents/rooms/$(c)/rounds/$(r)/answers/$(resource.data.presentationOrder[resource.data.currentPresentationIndex]))
+      && ((request.resource.data.state == 'PRESENTING' && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentPresentationIndex'])
+       && request.resource.data.currentPresentationIndex == resource.data.currentPresentationIndex + 1 && request.resource.data.currentPresentationIndex < resource.data.playerIds.size())
+       || (request.resource.data.state == 'ORDERING' && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['state']) && resource.data.currentPresentationIndex == resource.data.playerIds.size() - 1))) ||
+     (resource.data.state == 'ORDERING' && request.resource.data.state == 'ORDERING' && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['groupOrder']) && permutation(request.resource.data.groupOrder,resource.data.playerIds)) ||
+     (resource.data.state == 'ORDERING' && request.resource.data.state == 'READY_FOR_RESULT' && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['state'])) ||
+     (resource.data.state == 'READY_FOR_RESULT' && request.resource.data.state == 'RESULT' && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['state'])));
+    allow delete: if false;
+    match /secrets/{uid} {
+     allow get: if member(c) && active(c,r) && (request.auth.uid == uid || rnd(c,r).state == 'RESULT');
+     allow list: if member(c) && active(c,r) && rnd(c,r).state == 'RESULT';
+     allow create: if member(c) && active(c,r) && request.auth.uid == uid && uid in rnd(c,r).playerIds
+      && rnd(c,r).state == 'DISTRIBUTING_NUMBERS'
+      && request.resource.data.keys().hasOnly(['playerId','number']) && request.resource.data.playerId == uid
+      && request.resource.data.number is int && request.resource.data.number >= 1 && request.resource.data.number <= 100;
+     allow update: if false;
+     allow delete: if cleanup(c,r);
+    }
+    match /ready/{uid} {
+     allow read: if member(c);
+     allow create: if member(c) && active(c,r) && request.auth.uid == uid && uid in rnd(c,r).playerIds
+      && rnd(c,r).state == 'DISTRIBUTING_NUMBERS' && request.resource.data.keys().hasOnly(['uid']) && request.resource.data.uid == uid
+      && getAfter(/databases/$(database)/documents/rooms/$(c)/rounds/$(r)/secrets/$(uid)).data.playerId == uid;
+     allow update: if false;
+     allow delete: if cleanup(c,r);
+    }
+    match /answers/{uid} {
+     allow read: if member(c);
+     allow create: if member(c) && active(c,r) && rnd(c,r).state == 'PRESENTING'
+      && rnd(c,r).presentationOrder[rnd(c,r).currentPresentationIndex] == uid
+      && request.resource.data.keys().hasOnly(['playerId','playerName','answer','skipped'])
+      && request.resource.data.playerId == uid && text(request.resource.data.answer,100)
+      && request.resource.data.playerName == get(/databases/$(database)/documents/rooms/$(c)/players/$(uid)).data.name
+      && ((request.auth.uid == uid && request.resource.data.skipped == false)
+       || (host(c) && request.resource.data.skipped == true && request.resource.data.answer == 'Sem pista — jogador pulado'));
+     allow update: if false;
+     allow delete: if cleanup(c,r);
+    }
+   }
+  }
+ }
+}
