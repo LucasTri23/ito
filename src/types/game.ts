@@ -6,6 +6,8 @@ export type Phase =
   | "READY_FOR_RESULT"
   | "RESULT";
 export interface Room {
+  mode?: "ONLINE" | "IN_PERSON";
+  deal?: number;
   code: string;
   hostId: string;
   status: "LOBBY" | "PLAYING" | "CLOSED";

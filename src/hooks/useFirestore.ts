@@ -56,7 +56,12 @@ function useCollection<T>(path: string | null, serverOnly = false, retry = 0) {
   }, [path, serverOnly, retry]);
   return { value, error };
 }
-export const useRoom = (code: string) => useDocument<Room>(`rooms/${code}`);
+export const useRoom = (code: string) => useDocument<Room>(`rooms/${code}`, true);
+export const useInPersonCard = (code: string | null, uid: string) =>
+  useDocument<{ uid: string; deal: number; number: number }>(
+    code ? `rooms/${code}/cards/${uid}` : null,
+    true,
+  );
 export const usePlayers = (code: string | null) =>
   useCollection<Player>(code ? `rooms/${code}/players` : null);
 export const useRound = (code: string, id: string) =>

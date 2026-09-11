@@ -13,11 +13,28 @@ import * as game from "../services/game";
 import { errorText } from "../utils/game";
 import { Notice } from "../components/UI";
 import { RoundContent } from "../components/RoundContent";
+import { InPersonRoom } from "./InPersonRoom";
 export function RoomPage({ uid }: { uid: string }) {
   const { code: raw = "" } = useParams();
   const code = raw.toUpperCase();
-  const nav = useNavigate();
   const room = useRoom(code);
+  if (room.loading)
+    return <div className="center-state">Conectando à sala…</div>;
+  if (room.value?.mode === "IN_PERSON" && room.value.status !== "CLOSED") {
+    return <InPersonRoom key={code} code={code} uid={uid} room={room.value} />;
+  }
+  return <OnlineRoom key={code} uid={uid} code={code} room={room} />;
+}
+function OnlineRoom({
+  uid,
+  code,
+  room,
+}: {
+  uid: string;
+  code: string;
+  room: ReturnType<typeof useRoom>;
+}) {
+  const nav = useNavigate();
   const [joined, setJoined] = useState(false);
   const players = usePlayers(joined ? code : null);
   const round = useRound(code, joined ? room.value?.currentRoundId || "" : "");

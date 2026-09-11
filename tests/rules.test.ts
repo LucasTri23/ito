@@ -29,6 +29,60 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
   afterAll(async () => {
     await env?.cleanup();
   });
+  it("presencial: cartas privadas, entrada tardia e reenvio somente pelo anfitrião", async () => {
+    const a = env.authenticatedContext("a").firestore();
+    const b = env.authenticatedContext("b").firestore();
+    const roomRef = doc(a, "rooms/PQRST");
+    const batch = writeBatch(a);
+    batch.set(roomRef, {
+      code: "PQRST",
+      hostId: "a",
+      mode: "IN_PERSON",
+      deal: 1,
+      status: "LOBBY",
+      roundNo: 0,
+      currentRoundId: "",
+      createdAt: serverTimestamp(),
+    });
+    batch.set(doc(a, "rooms/PQRST/players/a"), {
+      uid: "a",
+      name: "Ana",
+      connected: true,
+      joinedAt: serverTimestamp(),
+    });
+    await assertSucceeds(batch.commit());
+    await assertSucceeds(
+      setDoc(doc(a, "rooms/PQRST/cards/a"), { uid: "a", deal: 1, number: 73 }),
+    );
+    await assertSucceeds(
+      setDoc(doc(b, "rooms/PQRST/players/b"), {
+        uid: "b",
+        name: "Bia",
+        connected: true,
+        joinedAt: serverTimestamp(),
+      }),
+    );
+    await assertSucceeds(
+      setDoc(doc(b, "rooms/PQRST/cards/b"), { uid: "b", deal: 1, number: 21 }),
+    );
+    await assertSucceeds(getDoc(doc(b, "rooms/PQRST/cards/b")));
+    await assertFails(getDoc(doc(a, "rooms/PQRST/cards/b")));
+    await assertFails(getDocs(collection(a, "rooms/PQRST/cards")));
+    await assertFails(updateDoc(doc(b, "rooms/PQRST/cards/b"), { number: 99 }));
+    await assertFails(updateDoc(doc(b, "rooms/PQRST"), { deal: 2 }));
+    await assertFails(updateDoc(roomRef, { mode: "ONLINE" }));
+    await assertSucceeds(updateDoc(roomRef, { deal: 2 }));
+    await assertFails(
+      setDoc(doc(b, "rooms/PQRST/cards/b"), { uid: "b", deal: 1, number: 55 }),
+    );
+    await assertSucceeds(
+      setDoc(doc(b, "rooms/PQRST/cards/b"), { uid: "b", deal: 2, number: 55 }),
+    );
+    await assertFails(updateDoc(doc(b, "rooms/PQRST/cards/b"), { number: 56 }));
+    await assertFails(
+      setDoc(doc(a, "rooms/PQRST/cards/b"), { uid: "b", deal: 2, number: 88 }),
+    );
+  });
   beforeEach(async () => {
     await env.clearFirestore();
     await env.withSecurityRulesDisabled(async (c) => {

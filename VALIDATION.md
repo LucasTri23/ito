@@ -1,5 +1,12 @@
 # Validação da entrega
 
+## Atualização: modo presencial — 11/09/2026
+
+- Modo presencial separado, distribuição ao entrar, carta grande com giro e toque para esconder/mostrar; único controle de jogo do anfitrião: reenviar cartas.
+- Seis testes de aplicação passaram e seis testes de regras passaram no emulador. O teste presencial cobre criação da sala, ingresso tardio, leitura privada inclusive contra o anfitrião, imutabilidade durante a distribuição, proibição de reenvio por jogador comum e recebimento na nova distribuição.
+- Build TypeScript/Vite e lint verificados. A animação ainda depende de validação visual em navegador; os testes de regras não verificam a renderização.
+- Publicar as novas regras no banco configurado antes de disponibilizar esta versão do site.
+
 Executada em 7 de setembro de 2026, Windows, Node 24.15.0.
 
 ## Executado

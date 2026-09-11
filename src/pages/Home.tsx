@@ -18,6 +18,7 @@ export function Home({ uid, authError }: { uid?: string; authError: string }) {
     localStorage.getItem("entrelinhas.name") || "",
   );
   const [code, setCode] = useState("");
+  const [mode, setMode] = useState<"ONLINE" | "IN_PERSON">("ONLINE");
   const [busy, setBusy] = useState("");
   const [error, setError] = useState("");
   async function enter(create: boolean) {
@@ -35,7 +36,7 @@ export function Home({ uid, authError }: { uid?: string; authError: string }) {
     setBusy(create ? "create" : "join");
     try {
       const id = create
-        ? await createRoom(uid, name.trim())
+        ? await createRoom(uid, name.trim(), mode)
         : code.trim().toUpperCase();
       if (!create) await joinRoom(id, uid, name.trim());
       localStorage.setItem("entrelinhas.name", name.trim());
@@ -108,6 +109,33 @@ export function Home({ uid, authError }: { uid?: string; authError: string }) {
           </div>
         </div>
         <div className="entry-card">
+          <fieldset className="mode-picker">
+            <legend>Como vocês vão jogar?</legend>
+            <label>
+              <input
+                type="radio"
+                name="mode"
+                checked={mode === "ONLINE"}
+                onChange={() => setMode("ONLINE")}
+              />{" "}
+              Online
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="mode"
+                checked={mode === "IN_PERSON"}
+                onChange={() => setMode("IN_PERSON")}
+              />{" "}
+              Presencial
+            </label>
+          </fieldset>
+          {mode === "IN_PERSON" && (
+            <p>
+              Todo mundo junto? Entre na sala e receba sua carta. A conversa
+              acontece na mesa.
+            </p>
+          )}
           <span className="eyebrow">BORA JOGAR?</span>
           <h2>
             A próxima boa história

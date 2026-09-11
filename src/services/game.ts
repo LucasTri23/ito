@@ -13,13 +13,19 @@ import type { Room, Round, Player } from "../types/game";
 import { randomInt, roomCode, shuffle } from "../utils/game";
 export const roundPath = (code: string, id: string) =>
   `rooms/${code}/rounds/${id}`;
-export async function createRoom(uid: string, name: string) {
+export async function createRoom(
+  uid: string,
+  name: string,
+  mode: "ONLINE" | "IN_PERSON" = "ONLINE",
+) {
   for (let i = 0; i < 10; i++) {
     const code = roomCode();
     const ref = doc(db, "rooms", code);
     const ok = await runTransaction(db, async (tx) => {
       if ((await tx.get(ref)).exists()) return false;
       tx.set(ref, {
+        mode,
+        ...(mode === "IN_PERSON" ? { deal: 1 } : {}),
         code,
         hostId: uid,
         status: "LOBBY",

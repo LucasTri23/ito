@@ -17,11 +17,13 @@ service cloud.firestore {
    allow get: if signed();
    allow list: if false;
    allow create: if signed() && c.matches('^[A-HJ-NP-Z2-9]{5}$')
-    && request.resource.data.keys().hasOnly(['code','hostId','status','roundNo','currentRoundId','createdAt'])
+    && request.resource.data.keys().hasOnly(['code','hostId','status','roundNo','currentRoundId','createdAt','mode','deal'])
+    && ((request.resource.data.get('mode','ONLINE') == 'ONLINE' && !request.resource.data.keys().hasAny(['deal']))
+     || (request.resource.data.get('mode','ONLINE') == 'IN_PERSON' && request.resource.data.deal == 1))
     && request.resource.data.code == c && request.resource.data.hostId == request.auth.uid
     && request.resource.data.status == 'LOBBY' && request.resource.data.roundNo == 0
     && request.resource.data.currentRoundId == '' && request.resource.data.createdAt == request.time;
-   allow update: if host(c) && resource.data.status != 'CLOSED' && (
+   allow update: if host(c) && resource.data.get('mode','ONLINE') == 'ONLINE' && resource.data.status != 'CLOSED' && (
     (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']) && request.resource.data.status == 'CLOSED') ||
     (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','roundNo','currentRoundId'])
      && request.resource.data.status == 'PLAYING' && request.resource.data.roundNo == resource.data.roundNo + 1
@@ -29,6 +31,20 @@ service cloud.firestore {
      && (resource.data.status == 'LOBBY' || rnd(c,resource.data.currentRoundId).state == 'RESULT')
      && getAfter(/databases/$(database)/documents/rooms/$(c)/rounds/$(request.resource.data.currentRoundId)).data.state == 'WAITING_FOR_THEME'));
    allow delete: if false;
+   allow update: if host(c) && resource.data.get('mode','ONLINE') == 'IN_PERSON' && resource.data.status == 'LOBBY'
+    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['deal'])
+    && request.resource.data.deal == resource.data.deal + 1;
+   match /cards/{uid} {
+    allow get: if member(c) && request.auth.uid == uid && room(c).get('mode','ONLINE') == 'IN_PERSON';
+    allow list: if false;
+    allow create, update: if member(c) && request.auth.uid == uid
+     && room(c).get('mode','ONLINE') == 'IN_PERSON' && room(c).status == 'LOBBY'
+     && request.resource.data.keys().hasOnly(['uid','deal','number'])
+     && request.resource.data.uid == uid && request.resource.data.deal == room(c).deal
+     && request.resource.data.number is int && request.resource.data.number >= 1 && request.resource.data.number <= 100
+     && (!exists(/databases/$(database)/documents/rooms/$(c)/cards/$(uid)) || resource.data.deal < room(c).deal);
+    allow delete: if false;
+   }
    match /players/{uid} {
     allow get: if signed() && (request.auth.uid == uid || member(c));
     allow list: if member(c);
@@ -44,7 +60,7 @@ service cloud.firestore {
    }
    match /rounds/{r} {
     allow read: if member(c);
-    allow create: if host(c) && request.resource.data.keys().hasOnly(['state','theme','lowLabel','highLabel','playerIds','presentationOrder','currentPresentationIndex','groupOrder','createdAt'])
+    allow create: if host(c) && room(c).get('mode','ONLINE') == 'ONLINE' && request.resource.data.keys().hasOnly(['state','theme','lowLabel','highLabel','playerIds','presentationOrder','currentPresentationIndex','groupOrder','createdAt'])
      && getAfter(/databases/$(database)/documents/rooms/$(c)).data.currentRoundId == r
      && r == string(room(c).roundNo + 1)
      && (room(c).status == 'LOBBY' || rnd(c,room(c).currentRoundId).state == 'RESULT')

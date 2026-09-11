@@ -8,6 +8,7 @@ import { useAuth } from "./hooks/useAuth";
 import { configured } from "./lib/firebase";
 import "./styles.css";
 import "./theme.css";
+import "./inPerson.css";
 function App() {
   const { user, error } = useAuth();
   useEffect(() => {

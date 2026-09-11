@@ -66,6 +66,14 @@ O Vite usa `base: './'`. O HashRouter produz rotas como `/SEU_REPOSITORIO/#/room
 
 ## Como jogar
 
+### Modo presencial
+
+Na tela inicial, selecione **Presencial** antes de criar a sala. Cada pessoa entra pelo código e recebe automaticamente uma carta grande de 1 a 100, com animação de giro. Toque na carta para esconder/mostrar o número. Não há tema, turnos, respostas, ordenação nem resultado nesse modo. A única ação de jogo do anfitrião é **Reenviar cartas**, que inicia uma nova distribuição para todos. Pessoas podem entrar depois e recebem a carta da distribuição atual. Atualizar a página mantém o número; quem estava offline recebe a distribuição atual ao retornar.
+
+As cartas ficam em `rooms/{codigo}/cards/{uid}`, com `uid`, `deal` e `number`. Cada membro só lê sua própria carta, inclusive o anfitrião. O contador `deal` só pode ser incrementado pelo anfitrião e o número só pode ser substituído em uma nova distribuição. Um documento por pessoa é reutilizado. Números repetidos são possíveis, como no modo online. Não há limite de oito pessoas imposto ao modo presencial.
+
+**Ao atualizar para essa versão, publique novamente `firestore.rules` no banco usado pelo jogo (no seu caso, `default`) antes de criar salas.** O deploy do Pages não publica regras Firebase.
+
 Se houver erro de banco inexistente apesar de um banco criado, confira o projeto e o **ID exato do banco** na URL do Console. `(default)` e `default` são IDs diferentes; o nome exibido na interface sozinho não confirma o ID. O código usa `(default)` por padrão. Para outro ID, adicione `VITE_FIREBASE_DATABASE_ID=ID_EXATO` ao `.env` e, no Pages, um Actions Secret de mesmo nome. Reinicie o Vite ou faça um novo deploy. Publique as regras no banco selecionado pelo Console; o comando de deploy de regras e a configuração `firebase.json` deste projeto continuam apontando para o banco padrão. Não é necessário recriar ou apagar um banco existente.
 
 1. Informe um nome de até 24 caracteres. A autenticação anônima acontece automaticamente.
