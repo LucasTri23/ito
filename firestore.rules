@@ -19,7 +19,7 @@ service cloud.firestore {
    allow create: if signed() && c.matches('^[A-HJ-NP-Z2-9]{5}$')
     && request.resource.data.keys().hasOnly(['code','hostId','status','roundNo','currentRoundId','createdAt','mode','deal'])
     && ((request.resource.data.get('mode','ONLINE') == 'ONLINE' && !request.resource.data.keys().hasAny(['deal']))
-     || (request.resource.data.get('mode','ONLINE') == 'IN_PERSON' && request.resource.data.deal == 1))
+     || (request.resource.data.get('mode','ONLINE') == 'IN_PERSON' && request.resource.data.deal == 0))
     && request.resource.data.code == c && request.resource.data.hostId == request.auth.uid
     && request.resource.data.status == 'LOBBY' && request.resource.data.roundNo == 0
     && request.resource.data.currentRoundId == '' && request.resource.data.createdAt == request.time;
@@ -40,7 +40,7 @@ service cloud.firestore {
     allow create, update: if member(c) && request.auth.uid == uid
      && room(c).get('mode','ONLINE') == 'IN_PERSON' && room(c).status == 'LOBBY'
      && request.resource.data.keys().hasOnly(['uid','deal','number'])
-     && request.resource.data.uid == uid && request.resource.data.deal == room(c).deal
+     && request.resource.data.uid == uid && room(c).deal > 0 && request.resource.data.deal == room(c).deal
      && request.resource.data.number is int && request.resource.data.number >= 1 && request.resource.data.number <= 100
      && (!exists(/databases/$(database)/documents/rooms/$(c)/cards/$(uid)) || resource.data.deal < room(c).deal);
     allow delete: if false;

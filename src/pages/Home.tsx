@@ -132,7 +132,7 @@ export function Home({ uid, authError }: { uid?: string; authError: string }) {
           </fieldset>
           {mode === "IN_PERSON" && (
             <p>
-              Todo mundo junto? Entre na sala e receba sua carta. A conversa
+              Todo mundo junto? Entre no saguão e aguarde o envio das cartas. A conversa
               acontece na mesa.
             </p>
           )}

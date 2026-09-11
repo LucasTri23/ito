@@ -185,3 +185,48 @@
     transition: none !important;
   }
 }
+.in-person-lobby {
+  width: min(100%, 480px);
+  margin: 12px 0 24px;
+}
+.lobby-code {
+  display: block;
+  font-family: "Outfit", sans-serif;
+  font-size: 46px;
+  letter-spacing: 8px;
+  color: var(--accent);
+  margin: 10px 0 25px;
+}
+.in-person-lobby h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+.lobby-players {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+  text-align: left;
+}
+.lobby-players li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.lobby-host {
+  margin-left: auto;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 10px;
+  color: var(--accent);
+}
+.in-person-lobby p {
+  font-size: 12px;
+  color: var(--muted);
+}

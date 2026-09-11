@@ -25,7 +25,7 @@ export async function createRoom(
       if ((await tx.get(ref)).exists()) return false;
       tx.set(ref, {
         mode,
-        ...(mode === "IN_PERSON" ? { deal: 1 } : {}),
+        ...(mode === "IN_PERSON" ? { deal: 0 } : {}),
         code,
         hostId: uid,
         status: "LOBBY",

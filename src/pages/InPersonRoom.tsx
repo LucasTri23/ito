@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { RotateCw } from "lucide-react";
+import { RotateCw, Users, Crown } from "lucide-react";
 import type { Room } from "../types/game";
-import { useInPersonCard } from "../hooks/useFirestore";
+import { useInPersonCard, usePlayers } from "../hooks/useFirestore";
 import { joinRoom } from "../services/game";
 import { receiveCard, redeal } from "../services/inPerson";
 import { errorText } from "../utils/game";
@@ -20,7 +20,9 @@ export function InPersonRoom({
   const [joined, setJoined] = useState(false);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const card = useInPersonCard(joined ? code : null, uid);
+  const lobby = (room.deal ?? 0) === 0;
+  const players = usePlayers(joined && lobby ? code : null);
+  const card = useInPersonCard(joined && !lobby ? code : null, uid);
   useEffect(() => {
     let active = true;
     void joinRoom(
@@ -42,7 +44,7 @@ export function InPersonRoom({
     };
   }, [code, uid]);
   useEffect(() => {
-    if (!joined) return;
+    if (!joined || !room.deal) return;
     let active = true;
     const receive = () => {
       setError("");
@@ -57,30 +59,81 @@ export function InPersonRoom({
       window.removeEventListener("online", receive);
     };
   }, [joined, code, uid, room.deal]);
-  const number = card.value && card.value.deal === room.deal ? card.value.number : undefined;
+  const number =
+    card.value && card.value.deal === room.deal ? card.value.number : undefined;
   return (
     <section className="in-person-room">
       <div className="in-person-heading">
         <span className="eyebrow">MODO PRESENCIAL · SALA {code}</span>
-        <h1>Sua carta. Seu segredo.</h1>
-        <p>Distribuição {room.deal} · A conversa fica por conta de vocês.</p>
+        <h1>{lobby ? "Todo mundo na mesa?" : "Sua carta. Seu segredo."}</h1>
+        <p>
+          {lobby
+            ? "Compartilhe o código e espere a turma entrar."
+            : `Distribuição ${room.deal} · A conversa fica por conta de vocês.`}
+        </p>
       </div>
-      {(error || card.error) && (
+      {(error || card.error || players.error) && (
         <Notice>
-          {error || card.error} Atualize a página para tentar receber sua carta
-          novamente.
+          {error || card.error || players.error} Atualize a página para tentar
+          receber sua carta novamente.
         </Notice>
       )}
-      <FlipCard key={`${room.deal}-${number ?? "waiting"}`} number={number} />
-      <p className="card-hint">
-        {number
-          ? "Toque na carta para esconder ou mostrar."
-          : "Preparando sua carta…"}
-      </p>
+      {lobby ? (
+        <div className="panel in-person-lobby">
+          <span className="eyebrow">CÓDIGO DA SALA</span>
+          <strong className="lobby-code">{code}</strong>
+          <h3>
+            <Users size={18} /> No saguão · {players.value.length}
+          </h3>
+          <ul className="lobby-players">
+            {players.value.map((player, i) => (
+              <li key={player.uid}>
+                <span className={`avatar avatar-${i % 4}`}>
+                  {player.name.slice(0, 1).toUpperCase()}
+                </span>
+                <span>
+                  {player.name}
+                  {player.uid === uid ? " (você)" : ""}
+                </span>
+                {player.uid === room.hostId && (
+                  <span className="lobby-host">
+                    <Crown size={14} /> Anfitrião
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+          {!players.value.length && (
+            <p role="status">Carregando participantes…</p>
+          )}
+          <p>
+            {room.hostId === uid
+              ? "Quando todos estiverem aqui, envie as cartas."
+              : "Aguardando o anfitrião enviar as cartas…"}
+          </p>
+        </div>
+      ) : (
+        <>
+          <FlipCard
+            key={`${room.deal}-${number ?? "waiting"}`}
+            number={number}
+          />
+          <p className="card-hint">
+            {number
+              ? "Toque na carta para esconder ou mostrar."
+              : "Preparando sua carta…"}
+          </p>
+        </>
+      )}
       {room.hostId === uid && (
         <button
           className="button primary redeal-button"
-          disabled={busy || !joined || number === undefined}
+          disabled={
+            busy ||
+            !joined ||
+            (!lobby && number === undefined) ||
+            (lobby && players.value.length < 2)
+          }
           onClick={async () => {
             setBusy(true);
             setError("");
@@ -94,8 +147,13 @@ export function InPersonRoom({
           }}
         >
           <RotateCw size={18} />
-          {busy ? "Reenviando…" : "Reenviar cartas"}
+          {busy ? "Enviando…" : lobby ? "Enviar cartas" : "Reenviar cartas"}
         </button>
+      )}
+      {lobby && room.hostId === uid && players.value.length < 2 && (
+        <p className="card-hint">
+          Aguardando pelo menos mais uma pessoa entrar.
+        </p>
       )}
     </section>
   );

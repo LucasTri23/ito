@@ -38,7 +38,7 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
       code: "PQRST",
       hostId: "a",
       mode: "IN_PERSON",
-      deal: 1,
+      deal: 0,
       status: "LOBBY",
       roundNo: 0,
       currentRoundId: "",
@@ -51,6 +51,13 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
       joinedAt: serverTimestamp(),
     });
     await assertSucceeds(batch.commit());
+    await assertFails(
+      setDoc(doc(a, "rooms/PQRST/cards/a"), { uid: "a", deal: 0, number: 73 }),
+    );
+    await assertFails(
+      setDoc(doc(a, "rooms/PQRST/cards/a"), { uid: "a", deal: 1, number: 73 }),
+    );
+    await assertSucceeds(updateDoc(roomRef, { deal: 1 }));
     await assertSucceeds(
       setDoc(doc(a, "rooms/PQRST/cards/a"), { uid: "a", deal: 1, number: 73 }),
     );
