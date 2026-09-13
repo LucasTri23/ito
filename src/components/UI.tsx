@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { ArrowUpRight, AudioLines, Eye, EyeOff } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { NavLink } from "react-router-dom";
 export function Brand() {
   return (
     <a href="#/" className="brand">
@@ -26,6 +27,13 @@ export function Shell({ children }: { children: ReactNode }) {
           <ThemeToggle />
         </div>
       </header>
+      <nav className="game-tabs" aria-label="Escolher jogo">
+        <NavLink to="/" end>
+          Jogos
+        </NavLink>
+        <NavLink to="/entrelinhas">Entrelinhas</NavLink>
+        <NavLink to="/quem-sou-eu">Quem sou eu</NavLink>
+      </nav>
       <main>{children}</main>
       <footer>
         <span>Entre amigos, tudo ganha outro sentido.</span>

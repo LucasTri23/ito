@@ -1,5 +1,15 @@
 # Entrelinhas
 
+## Jogos e Quem sou eu
+
+A página inicial (`/#/`) agora é um pré-lobby para escolher o jogo. **Entrelinhas** abre em `/#/entrelinhas`; salas existentes continuam em `/#/room/CODIGO`, e o pré-lobby oferece um atalho para a última sala. A página inicial não redireciona automaticamente para uma sala, para permitir escolher outro jogo.
+
+A aba **Quem sou eu** (`/#/quem-sou-eu`) funciona com um jogador/aparelho, presencialmente, sem cadastro, sala, autenticação ou chamadas ao Firestore. Escolha uma categoria e clique em **Sortear nome**. Uma carta mostra o nome e uma descrição curta; **Sortear outro nome** continua a brincadeira. O catálogo inicial tem 30 opções: 12 personagens animados/super-heróis, 10 filmes/séries e 8 personagens bíblicos. O sorteio não repete nomes até esgotar a categoria, e evita repetir o último nome ao reiniciar a lista. Trocar de categoria reinicia sua sequência. Categoria, carta atual e histórico são salvos no navegador quando o armazenamento está disponível.
+
+As descrições bíblicas são resumos originais conferidos em páginas do jw.org em 13/09/2026. Cada carta bíblica tem um link direto para sua fonte; não são reproduzidas ilustrações nem textos integrais. As fontes estão em `src/data/whoAmI.ts`. O jogo não é uma publicação oficial do jw.org. As demais descrições também são originais; não há imagens ou logotipos das franquias.
+
+Essa funcionalidade requer apenas o deploy do site; **não altera as regras Firebase**. O sorteio funciona sem consultar serviços remotos depois que a página carregou; abrir a fonte bíblica exige internet. Não há modo offline com service worker.
+
 Jogo cooperativo de pistas e intuição para **2–8 pessoas**, em português, com identidade visual própria. Cada pessoa recebe um número secreto, traduz sua intensidade em uma resposta ao tema e ajuda o grupo a ordenar as pistas de 1 a 100.
 
 React + Vite + TypeScript estrito + Tailwind CSS, Firebase Anonymous Authentication e Cloud Firestore. Aplicação estática com HashRouter e deploy automático no GitHub Pages. Não usa servidor de aplicação, Functions, Admin SDK, service account nem infraestrutura paga obrigatória. Ferramentas Node e Java são usadas somente no desenvolvimento/testes.
@@ -143,7 +153,7 @@ Conceitualmente: um jogador que abre o console e tenta ler o segredo alheio, lis
 - **Anfitrião controla o ritmo:** pode ordenar como quiser, pular participantes e encerrar. Sua conexão é necessária para os avanços automáticos. Se desconectar, a partida aguarda seu retorno. Não há transferência automática de anfitrião.
 - **Distribuição exige todos conectados:** quem ainda não criou seu segredo precisa retornar. Se isso não for possível, o anfitrião encerra e cria outra sala. Não se inventa número para um participante ausente.
 - **Presença aproximada:** eventos online/offline/pagehide atualizam `connected` quando possível. Fechamentos abruptos podem deixar presença antiga. Não há garantia de presença instantânea ou heartbeat; Firestore não oferece `onDisconnect` como o Realtime Database.
-- **Sessão:** Firebase persiste a identidade no navegador; localStorage guarda nome e última sala. Ao reabrir o site, a última sala é recuperada automaticamente; o início também oferece “Voltar à última sala”. Sair explicitamente limpa essa referência. Limpar dados, trocar dispositivo ou usar outro perfil cria outra identidade. Várias abas do mesmo perfil compartilham UID e não são jogadores diferentes.
+- **Sessão:** Firebase persiste a identidade no navegador; localStorage guarda nome e última sala. Atualizar a rota da sala recupera a partida; abrir a página inicial mostra a escolha de jogos com um atalho para voltar à última sala. Sair explicitamente limpa essa referência. Limpar dados, trocar dispositivo ou usar outro perfil cria outra identidade. Várias abas do mesmo perfil compartilham UID e não são jogadores diferentes.
 - **Limpeza:** a próxima rodada apaga números, respostas e marcadores de prontidão anteriores no mesmo commit que cria a rodada vazia. Os metadados das rodadas ficam arquivados. As regras também bloqueiam a leitura de secrets fora da rodada atual. Nada consegue “desver” números já revelados. Salas abandonadas ou encerradas não têm expiração automática; exclua-as e suas subcoleções pelo Console quando necessário. Excluir só o documento pai não apaga subcoleções.
 - **Privacidade por código:** códigos são convites, não senhas de alta segurança. Usuários autenticados podem consultar um código exato; a listagem é bloqueada. Sem backend/App Check/rate limit confiável, não há proteção completa contra tentativa de códigos, spam de contas ou consumo de quota. Não armazene dados sensíveis.
 - **Cotas gratuitas:** leituras, escritas, conexões e autenticações obedecem ao plano Firebase. Listeners e avaliação de regras podem consumir leituras. Ao atingir cotas, operações podem falhar. Sem faturamento ativado, o serviço não vira ilimitado.

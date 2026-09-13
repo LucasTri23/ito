@@ -1,5 +1,12 @@
 # Validação da entrega
 
+## Atualização: pré-lobby e Quem sou eu — 13/09/2026
+
+- Página inicial com seleção de jogos e aba de sorteio presencial em um aparelho, sem autenticação ou banco para Quem sou eu.
+- Catálogo de 30 nomes; fontes bíblicas consultadas no jw.org e vinculadas em cada carta.
+- Testes acrescentados para isolamento de categorias, ausência de repetição durante o ciclo, reinício sem repetir imediatamente e presença de fontes nas cartas bíblicas.
+- Nenhuma mudança em Firestore Rules. Inspeção visual em navegador permanece pendente nesta sessão.
+
 ## Atualização: modo presencial — 11/09/2026
 
 - Modo presencial separado, distribuição ao entrar, carta grande com giro e toque para esconder/mostrar; único controle de jogo do anfitrião: reenviar cartas.
