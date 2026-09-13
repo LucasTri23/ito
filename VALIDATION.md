@@ -1,5 +1,13 @@
 # Validação da entrega
 
+## Atualização: Nem a pato! e Top 10 — 13/09/2026
+
+- Duas rotas e atalhos no menu; 24 perguntas e 12 rankings pesquisados, com fontes e recortes temporais explícitos.
+- Modos Geral joga (revelação por botão) e Temos ADM (resposta aberta), filtro de assunto e sorteio sem repetição. A troca de jogo remonta o estado para evitar transportar respostas abertas ou IDs entre jogos.
+- `npm test`: 16 testes passaram, incluindo seis novos testes dos jogos. Seis testes de regras ignorados sem emulador; nenhuma regra ou operação de Firestore foi alterada nesta entrega.
+- Lint e build de produção verificados. Testes de marcação validam respostas escondidas e ordem do Top 10; não substituem cliques reais ou inspeção visual, que permanece pendente sem navegador conectado.
+- Rankings estáticos, consultados em 13/09/2026; fontes e critérios documentados em `docs/jogos-de-palpites.md`.
+
 ## Atualização: catálogo ampliado e dicas — 13/09/2026
 
 - 871 cartas: 251 personagens, 297 filmes/séries e 323 identidades bíblicas; cada uma tem três dicas distintas (difícil, média e fácil).

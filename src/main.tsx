@@ -6,12 +6,14 @@ import { Home } from "./pages/Home";
 import { RoomPage } from "./pages/Room";
 import { GameHub } from "./pages/GameHub";
 import { WhoAmI } from "./pages/WhoAmI";
+import { PartyGame } from "./pages/PartyGame";
 import { useAuth } from "./hooks/useAuth";
 import { configured } from "./lib/firebase";
 import "./styles.css";
 import "./theme.css";
 import "./inPerson.css";
 import "./games.css";
+import "./partyGames.css";
 function ConnectedGame({ room = false }: { room?: boolean }) {
   const { user, error } = useAuth();
   if (!room) return <Home uid={user?.uid} authError={error} />;
@@ -34,6 +36,14 @@ function App() {
           <Route path="/" element={<GameHub />} />
           <Route path="/entrelinhas" element={<ConnectedGame />} />
           <Route path="/quem-sou-eu" element={<WhoAmI />} />
+          <Route
+            path="/nem-a-pato"
+            element={<PartyGame key="number" game="number" />}
+          />
+          <Route
+            path="/top-10"
+            element={<PartyGame key="ranking" game="ranking" />}
+          />
           <Route path="/room/:code" element={<ConnectedGame room />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

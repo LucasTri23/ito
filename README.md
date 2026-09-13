@@ -2,6 +2,19 @@
 
 ## Jogos e Quem sou eu
 
+### Nem a pato! e Top 10
+
+Dois jogos presenciais em um aparelho, acessíveis pelo menu inicial e pelas abas:
+
+- **Nem a pato!** (`/#/nem-a-pato`): 24 perguntas numéricas sobre corpo, natureza, espaço, construções, esportes e recordes.
+- **Top 10** (`/#/top-10`): 12 temas com dez posições cada, sobre Netflix, bilheteria, Steam e nomes no Brasil/EUA.
+
+Em **Geral joga**, o tema aparece sozinho e o botão revela a resposta ou o ranking inteiro. Em **Temos ADM**, cada tema já vem com a resposta aberta para quem está conduzindo. Mudar de ADM para Geral joga esconde novamente a resposta; sortear outra carta mantém o modo e reinicia a revelação. Cada jogo começa em Geral joga ao ser aberto.
+
+O filtro de assunto reinicia a sequência da categoria. Não há repetição até esgotar o conjunto; com mais de uma carta, a primeira do novo ciclo também não repete a última. Os palpites e a condução acontecem em voz alta; não há placar, salas ou autenticação nesses jogos.
+
+As cartas possuem fonte, critério e data de consulta. Rankings são **retratos salvos**, não atualizações ao vivo. As rodadas brasileiras de nomes usam explicitamente o Censo 2010. Consulte [as fontes e critérios editoriais](docs/jogos-de-palpites.md). Os dados estão em `src/data/partyGames.ts`.
+
 A página inicial (`/#/`) agora é um pré-lobby para escolher o jogo. **Entrelinhas** abre em `/#/entrelinhas`; salas existentes continuam em `/#/room/CODIGO`, e o pré-lobby oferece um atalho para a última sala. A página inicial não redireciona automaticamente para uma sala, para permitir escolher outro jogo.
 
 A aba **Quem sou eu** (`/#/quem-sou-eu`) funciona com um jogador/aparelho, presencialmente, sem cadastro, sala, autenticação ou chamadas ao Firestore. Escolha uma categoria e clique em **Sortear nome**. A carta mostra o nome; **Sobre este nome** abre a explicação. O botão **Mostrar dica** libera três dicas sucessivas: difícil, média e fácil. Depois da terceira, fica desabilitado. As dicas reiniciam ao sortear outra carta, trocar de categoria ou recarregar a página.

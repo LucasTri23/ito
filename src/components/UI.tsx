@@ -33,6 +33,8 @@ export function Shell({ children }: { children: ReactNode }) {
         </NavLink>
         <NavLink to="/entrelinhas">Entrelinhas</NavLink>
         <NavLink to="/quem-sou-eu">Quem sou eu</NavLink>
+        <NavLink to="/nem-a-pato">Nem a pato</NavLink>
+        <NavLink to="/top-10">Top 10</NavLink>
       </nav>
       <main>{children}</main>
       <footer>
