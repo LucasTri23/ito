@@ -1,5 +1,16 @@
 # Validação da entrega
 
+## Atualização: catálogo ampliado e dicas — 13/09/2026
+
+- 871 cartas: 251 personagens, 297 filmes/séries e 323 identidades bíblicas; cada uma tem três dicas distintas (difícil, média e fácil).
+- Botão revela uma dica por vez e fica desabilitado após a terceira. O componente reinicia ao mudar a carta/categoria; a explicação fica em um painel expansível.
+- Testes verificam mínimo de 200 por categoria, nomes e IDs únicos, integridade das dicas, todos os protagonistas dos 54 capítulos de Ande Corajosamente com Deus, nomes pedidos, fontes e ciclos sem repetição.
+- `npm test`: 10 testes passaram; 6 testes de regras foram ignorados porque o emulador não estava ativo. Esta alteração não modifica regras ou operações do Firestore.
+- `npm run lint` e build TypeScript/Vite passaram. As restrições de leitura do ambiente exigiram executar Vite fora do sandbox.
+- 186 URLs de capítulos bíblicos consultadas com resposta HTTP 200; os índices e relatos dos dois livros também foram consultados. A conferência de links é diferente de uma garantia automática de precisão editorial de cada pista.
+- O navegador não estava disponível (`No browser is available`; descoberta retornou lista vazia). Conferência visual e interação real de cliques continuam pendentes; os testes automatizados acima cobrem dados e sorteio.
+- IDs têm prefixo de versão para não reaproveitar IDs numéricos antigos, inclusive quando o título é um número, como o filme 300.
+
 ## Atualização: pré-lobby e Quem sou eu — 13/09/2026
 
 - Página inicial com seleção de jogos e aba de sorteio presencial em um aparelho, sem autenticação ou banco para Quem sou eu.

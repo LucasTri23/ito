@@ -4,9 +4,11 @@
 
 A página inicial (`/#/`) agora é um pré-lobby para escolher o jogo. **Entrelinhas** abre em `/#/entrelinhas`; salas existentes continuam em `/#/room/CODIGO`, e o pré-lobby oferece um atalho para a última sala. A página inicial não redireciona automaticamente para uma sala, para permitir escolher outro jogo.
 
-A aba **Quem sou eu** (`/#/quem-sou-eu`) funciona com um jogador/aparelho, presencialmente, sem cadastro, sala, autenticação ou chamadas ao Firestore. Escolha uma categoria e clique em **Sortear nome**. Uma carta mostra o nome e uma descrição curta; **Sortear outro nome** continua a brincadeira. O catálogo inicial tem 30 opções: 12 personagens animados/super-heróis, 10 filmes/séries e 8 personagens bíblicos. O sorteio não repete nomes até esgotar a categoria, e evita repetir o último nome ao reiniciar a lista. Trocar de categoria reinicia sua sequência. Categoria, carta atual e histórico são salvos no navegador quando o armazenamento está disponível.
+A aba **Quem sou eu** (`/#/quem-sou-eu`) funciona com um jogador/aparelho, presencialmente, sem cadastro, sala, autenticação ou chamadas ao Firestore. Escolha uma categoria e clique em **Sortear nome**. A carta mostra o nome; **Sobre este nome** abre a explicação. O botão **Mostrar dica** libera três dicas sucessivas: difícil, média e fácil. Depois da terceira, fica desabilitado. As dicas reiniciam ao sortear outra carta, trocar de categoria ou recarregar a página.
 
-As descrições bíblicas são resumos originais conferidos em páginas do jw.org em 13/09/2026. Cada carta bíblica tem um link direto para sua fonte; não são reproduzidas ilustrações nem textos integrais. As fontes estão em `src/data/whoAmI.ts`. O jogo não é uma publicação oficial do jw.org. As demais descrições também são originais; não há imagens ou logotipos das franquias.
+São **871 opções**: **251 personagens**, **297 filmes/séries** e **323 personagens bíblicos**. **Sortear outro nome** continua a brincadeira sem repetir até esgotar a categoria; o reinício também evita repetir a última carta. Trocar de categoria reinicia sua sequência. Categoria, carta atual e histórico são salvos no navegador quando o armazenamento está disponível. Os novos identificadores usam nomes estáveis; o histórico do catálogo inicial de 30 cartas é descartado automaticamente, sem misturar identidades.
+
+As descrições e dicas bíblicas são resumos originais com referências na Bíblia de Estudo do jw.org, tendo como base também **Meu Livro de Histórias Bíblicas** e **Ande Corajosamente com Deus**. Incluem os protagonistas dos 54 capítulos deste último, personagens secundários e opositores, além de Zaqueu e Matias. Cada carta bíblica tem um link direto para o capítulo de referência. Veja os critérios e a bibliografia em [docs/quem-sou-eu-fontes.md](docs/quem-sou-eu-fontes.md). Os dados ficam em `src/data/identities/`; cada linha contém nome, três dicas e, na categoria bíblica, referência. O jogo não é uma publicação oficial do jw.org. As demais descrições também são originais; não há imagens ou logotipos das franquias.
 
 Essa funcionalidade requer apenas o deploy do site; **não altera as regras Firebase**. O sorteio funciona sem consultar serviços remotos depois que a página carregou; abrir a fonte bíblica exige internet. Não há modo offline com service worker.
 
@@ -40,14 +42,14 @@ Sem configuração Firebase, a página inicial abre e mostra a orientação de c
 3. Na visão geral do projeto, clique no ícone **Web (`</>`)**, registre um app, por exemplo `Entrelinhas Web`. Não é necessário ativar Firebase Hosting.
 4. Copie os valores do objeto `firebaseConfig` para `.env`:
 
-   | Campo do Firebase | Variável |
-   |---|---|
-   | apiKey | VITE_FIREBASE_API_KEY |
-   | authDomain | VITE_FIREBASE_AUTH_DOMAIN |
-   | projectId | VITE_FIREBASE_PROJECT_ID |
-   | storageBucket | VITE_FIREBASE_STORAGE_BUCKET |
+   | Campo do Firebase | Variável                          |
+   | ----------------- | --------------------------------- |
+   | apiKey            | VITE_FIREBASE_API_KEY             |
+   | authDomain        | VITE_FIREBASE_AUTH_DOMAIN         |
+   | projectId         | VITE_FIREBASE_PROJECT_ID          |
+   | storageBucket     | VITE_FIREBASE_STORAGE_BUCKET      |
    | messagingSenderId | VITE_FIREBASE_MESSAGING_SENDER_ID |
-   | appId | VITE_FIREBASE_APP_ID |
+   | appId             | VITE_FIREBASE_APP_ID              |
 
 5. Em **Build → Authentication → Começar → Método de login**, habilite **Anônimo / Anonymous** e salve.
 6. Em **Authentication → Configurações → Domínios autorizados**, inclua `localhost` para desenvolvimento e `SEU_USUARIO.github.io` para publicação, sem protocolo nem caminho. Não presuma que localhost já foi cadastrado.
@@ -126,22 +128,22 @@ Listeners `onSnapshot` recebem sala, jogadores, rodada, respostas, prontidão e 
 
 ## Segurança: o que as regras garantem
 
-| Operação | Permissão |
-|---|---|
-| Consultar sala por código exato | Usuário autenticado; necessário para ingresso |
-| Listar todas as salas | Ninguém |
-| Ler jogadores, rodada e respostas | Membro da sala |
-| Entrar | Próprio UID, sala em lobby |
-| Atualizar presença | Apenas próprio UID; sem alterar nome/identidade |
-| Criar tema, avançar, ordenar, confirmar e revelar | Apenas anfitrião, em transições válidas |
-| Escrever número | Dono, na distribuição, inteiro entre 1–100, somente criação |
-| Sobrescrever número ou resposta | Ninguém pelo SDK cliente |
-| Apagar dados da rodada anterior | Anfitrião, somente depois de RESULT e ao trocar de rodada |
-| Ler número próprio | Membro, rodada atual e sala ativa |
-| Ler número alheio ou listar números | Membro, rodada atual em RESULT |
-| Escrever resposta | Dono na vez correta, ou anfitrião com texto fixo de pulo |
-| Remover jogador | Anfitrião, no lobby, exceto ele próprio |
-| Encerrar sala | Anfitrião |
+| Operação                                          | Permissão                                                   |
+| ------------------------------------------------- | ----------------------------------------------------------- |
+| Consultar sala por código exato                   | Usuário autenticado; necessário para ingresso               |
+| Listar todas as salas                             | Ninguém                                                     |
+| Ler jogadores, rodada e respostas                 | Membro da sala                                              |
+| Entrar                                            | Próprio UID, sala em lobby                                  |
+| Atualizar presença                                | Apenas próprio UID; sem alterar nome/identidade             |
+| Criar tema, avançar, ordenar, confirmar e revelar | Apenas anfitrião, em transições válidas                     |
+| Escrever número                                   | Dono, na distribuição, inteiro entre 1–100, somente criação |
+| Sobrescrever número ou resposta                   | Ninguém pelo SDK cliente                                    |
+| Apagar dados da rodada anterior                   | Anfitrião, somente depois de RESULT e ao trocar de rodada   |
+| Ler número próprio                                | Membro, rodada atual e sala ativa                           |
+| Ler número alheio ou listar números               | Membro, rodada atual em RESULT                              |
+| Escrever resposta                                 | Dono na vez correta, ou anfitrião com texto fixo de pulo    |
+| Remover jogador                                   | Anfitrião, no lobby, exceto ele próprio                     |
+| Encerrar sala                                     | Anfitrião                                                   |
 
 O marcador de prontidão usa `getAfter` para exigir que o número privado exista, inclusive no mesmo commit atômico. O avanço para apresentação verifica todos os marcadores (até oito). As listas de apresentação e ordenação precisam ser permutações da lista congelada. O índice avança uma posição por vez e exige uma resposta existente. As Rules impedem reescrever tema após o sorteio, pular direto para resultado e alterar a ordem após confirmação.
 

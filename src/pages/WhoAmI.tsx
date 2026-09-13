@@ -1,11 +1,46 @@
 import { useEffect, useState } from "react";
-import { Shuffle, Sparkles, ExternalLink } from "lucide-react";
+import { Shuffle, Sparkles, ExternalLink, Lightbulb } from "lucide-react";
 import {
   identities,
   identityCategories,
   type IdentityCategory,
+  type Identity,
 } from "../data/whoAmI";
 import { drawIdentity } from "../utils/whoAmI";
+
+function IdentityHints({ identity }: { identity: Identity }) {
+  const [revealed, setRevealed] = useState(0);
+  const levels = ["Difícil", "Média", "Fácil"];
+  return (
+    <div className="identity-hints">
+      <p className="hint-intro">
+        Dê uma ajuda de cada vez. As dicas ficam mais fáceis.
+      </p>
+      <ol id="identity-hint-list" aria-live="polite" aria-relevant="additions">
+        {identity.hints.slice(0, revealed).map((hint, index) => (
+          <li key={index} className={`hint-level-${index}`}>
+            <span>
+              Dica {index + 1} · {levels[index]}
+            </span>
+            <p>{hint}</p>
+          </li>
+        ))}
+      </ol>
+      <button
+        className="button hint-button"
+        aria-controls="identity-hint-list"
+        disabled={revealed === 3}
+        onClick={() => setRevealed((count) => Math.min(3, count + 1))}
+      >
+        <Lightbulb size={18} aria-hidden="true" />
+        {revealed === 3
+          ? "Todas as dicas reveladas"
+          : `Mostrar dica ${revealed + 1} · ${levels[revealed]}`}
+      </button>
+      <span className="hint-count">{revealed} de 3 dicas reveladas</span>
+    </div>
+  );
+}
 
 interface Session {
   category: IdentityCategory;
@@ -101,7 +136,10 @@ export function WhoAmI() {
         {current ? (
           <>
             <h2>{current.name}</h2>
-            <p>{current.description}</p>
+            <details className="identity-about">
+              <summary>Sobre este nome</summary>
+              <p>{current.description}</p>
+            </details>
             {current.source && (
               <a
                 className="identity-source"
@@ -112,6 +150,7 @@ export function WhoAmI() {
                 Ler sobre {current.name} no jw.org <ExternalLink size={14} />
               </a>
             )}
+            <IdentityHints key={current.id} identity={current} />
           </>
         ) : (
           <>
@@ -145,6 +184,27 @@ export function WhoAmI() {
         {identities.filter((i) => i.category === session.category).length}{" "}
         opções nesta categoria · Sem repetir até completar a lista.
       </p>
+      {session.category === "bible" && (
+        <p className="who-footnote bible-bibliography">
+          Para conhecer as histórias:{" "}
+          <a
+            href="https://www.jw.org/pt/biblioteca/livros/historias-biblicas/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Meu Livro de Histórias Bíblicas
+          </a>
+          {" · "}
+          <a
+            href="https://www.jw.org/pt/biblioteca/livros/ande-corajosamente-com-deus/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ande Corajosamente com Deus
+          </a>
+          .
+        </p>
+      )}
     </section>
   );
 }

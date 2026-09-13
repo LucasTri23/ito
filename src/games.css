@@ -229,8 +229,89 @@
   min-height: 54px;
   font-size: 15px;
 }
+.identity-about {
+  width: 100%;
+  max-width: 580px;
+}
+.identity-about summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 14px;
+}
+.identity-about[open] summary {
+  margin-bottom: 10px;
+}
+.identity-hints {
+  width: 100%;
+  max-width: 580px;
+  text-align: left;
+}
+.identity-hints .hint-intro {
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.identity-hints ol {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+.identity-hints li {
+  padding: 15px 18px;
+  border: 1px solid var(--line);
+  border-left: 3px solid #b89aff;
+  border-radius: 14px;
+}
+.identity-hints .hint-level-1 {
+  border-left-color: #ffbd90;
+}
+.identity-hints .hint-level-2 {
+  border-left-color: #82d4bb;
+}
+.identity-hints li > span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.identity-hints li p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.hint-button {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+.hint-button:focus-visible,
+.identity-about summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.hint-count {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
 .who-footnote {
   font-size: 11px;
+}
+.bible-bibliography {
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 14px auto;
+}
+.bible-bibliography a {
+  color: var(--mint);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 @keyframes identity-reveal {
   from {
