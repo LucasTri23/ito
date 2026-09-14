@@ -1,14 +1,14 @@
 import { useState, type ReactNode } from "react";
-import { ArrowUpRight, AudioLines, Eye, EyeOff } from "lucide-react";
+import { ArrowUpRight, Dices, Eye, EyeOff } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { NavLink } from "react-router-dom";
 export function Brand() {
   return (
     <a href="#/" className="brand">
       <span className="brand-icon">
-        <AudioLines size={25} />
+        <Dices size={25} />
       </span>
-      entrelinhas
+      Jogatina
       <span className="brand-dot" aria-hidden="true">
         ✳
       </span>
@@ -22,7 +22,7 @@ export function Shell({ children }: { children: ReactNode }) {
         <Brand />
         <div className="header-actions">
           <span className="header-note">
-            Um jogo de sintonia coletiva <span className="green-dot" />
+            Jogos pra jogar com a turma <span className="green-dot" />
           </span>
           <ThemeToggle />
         </div>

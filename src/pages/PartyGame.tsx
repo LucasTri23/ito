@@ -35,7 +35,7 @@ export function PartyAnswer({
       {topic.kind === "number" ? (
         <>
           <span className="eyebrow">A RESPOSTA É</span>
-          <strong className="party-number">{topic.answer}</strong>
+          <strong className="party-answer-number">{topic.answer}</strong>
         </>
       ) : (
         <ol className="party-ranking" aria-label="Top 10 revelado">
