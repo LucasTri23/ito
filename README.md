@@ -6,8 +6,8 @@
 
 Dois jogos presenciais em um aparelho, acessíveis pelo menu inicial e pelas abas:
 
-- **Nem a pato!** (`/#/nem-a-pato`): 24 perguntas numéricas sobre corpo, natureza, espaço, construções, esportes e recordes.
-- **Top 10** (`/#/top-10`): 12 temas com dez posições cada, sobre Netflix, bilheteria, Steam e nomes no Brasil/EUA.
+- **Nem a pato!** (`/#/nem-a-pato`): 230 perguntas numéricas sobre corpo, natureza, animais, geografia, história, tecnologia, música, cinema, ciência, esportes e curiosidades bizarras.
+- **Top 10** (`/#/top-10`): 122 temas com dez posições cada, sobre música, games, empresas, natureza, livros, redes sociais, YouTube, Netflix, bilheteria, Steam e nomes no Brasil/EUA.
 
 Em **Geral joga**, o tema aparece sozinho e o botão revela a resposta ou o ranking inteiro. Em **Temos ADM**, cada tema já vem com a resposta aberta para quem está conduzindo. Mudar de ADM para Geral joga esconde novamente a resposta; sortear outra carta mantém o modo e reinicia a revelação. Cada jogo começa em Geral joga ao ser aberto.
 

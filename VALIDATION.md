@@ -2,7 +2,7 @@
 
 ## Atualização: Nem a pato! e Top 10 — 13/09/2026
 
-- Duas rotas e atalhos no menu; 24 perguntas e 12 rankings pesquisados, com fontes e recortes temporais explícitos.
+- Duas rotas e atalhos no menu; 230 perguntas e 122 rankings pesquisados, com fontes e recortes temporais explícitos.
 - Modos Geral joga (revelação por botão) e Temos ADM (resposta aberta), filtro de assunto e sorteio sem repetição. A troca de jogo remonta o estado para evitar transportar respostas abertas ou IDs entre jogos.
 - `npm test`: 16 testes passaram, incluindo seis novos testes dos jogos. Seis testes de regras ignorados sem emulador; nenhuma regra ou operação de Firestore foi alterada nesta entrega.
 - Lint e build de produção verificados. Testes de marcação validam respostas escondidas e ordem do Top 10; não substituem cliques reais ou inspeção visual, que permanece pendente sem navegador conectado.
