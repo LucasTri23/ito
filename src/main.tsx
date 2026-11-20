@@ -7,6 +7,7 @@ import { RoomPage } from "./pages/Room";
 import { GameHub } from "./pages/GameHub";
 import { WhoAmI } from "./pages/WhoAmI";
 import { PartyGame } from "./pages/PartyGame";
+import { Alibi } from "./pages/Alibi";
 import { useAuth } from "./hooks/useAuth";
 import { configured } from "./lib/firebase";
 import "./styles.css";
@@ -36,6 +37,8 @@ function App() {
           <Route path="/" element={<GameHub />} />
           <Route path="/entrelinhas" element={<ConnectedGame />} />
           <Route path="/quem-sou-eu" element={<WhoAmI />} />
+          <Route path="/alibi-furado" element={<Alibi />} />
+          <Route path="/alibi-furado/:code" element={<Alibi />} />
           <Route
             path="/nem-a-pato"
             element={<PartyGame key="number" game="number" />}

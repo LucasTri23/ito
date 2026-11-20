@@ -47,6 +47,13 @@ export function GameHub() {
         </Link>
       </div>
       <div className="game-choices party-choices">
+        <Link to="/alibi-furado" className="game-choice who-choice">
+          <span className="choice-icon"><Drama size={36} /></span>
+          <span className="eyebrow">ONLINE · 2 A 8 JOGADORES</span>
+          <h2>Álibi Furado</h2>
+          <p>Dois suspeitos, uma história e perguntas que colocam a memória à prova.</p>
+          <strong>Abrir o jogo <ArrowUpRight size={20} /></strong>
+        </Link>
         <Link to="/nem-a-pato" className="game-choice number-choice">
           <span className="choice-icon">
             <Hash size={36} />

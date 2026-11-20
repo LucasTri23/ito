@@ -12,6 +12,48 @@ service cloud.firestore {
   function permutation(a,b) { return a is list && a.size() == b.size() && a.toSet() == b.toSet(); }
   function ready(c,r,ids,i) { return ids.size() <= i || exists(/databases/$(database)/documents/rooms/$(c)/rounds/$(r)/ready/$(ids[i])); }
   function allReady(c,r,ids) { return ready(c,r,ids,0) && ready(c,r,ids,1) && ready(c,r,ids,2) && ready(c,r,ids,3) && ready(c,r,ids,4) && ready(c,r,ids,5) && ready(c,r,ids,6) && ready(c,r,ids,7); }
+  function alibiMember(c) { return signed() && exists(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid)); }
+  match /alibiInvites/{c} {
+   allow get: if signed();
+   allow list: if false;
+   allow create: if signed() && c.matches('^[A-HJ-NP-Z2-9]{5}$')
+    && request.resource.data.keys().hasOnly(['count','open'])
+    && request.resource.data.count == 1 && request.resource.data.open == true
+    && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.hostId == request.auth.uid
+    && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid)).data.uid == request.auth.uid;
+   allow update: if signed() && resource.data.open == true && resource.data.count < 8
+    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
+    && request.resource.data.count == resource.data.count + 1
+    && !exists(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid))
+    && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid)).data.uid == request.auth.uid;
+   allow delete: if false;
+  }
+  match /alibiRooms/{c} {
+   allow read: if alibiMember(c);
+   allow create: if signed() && request.resource.data.keys().hasOnly(['code','hostId','phase'])
+    && request.resource.data.code == c && request.resource.data.hostId == request.auth.uid
+    && request.resource.data.phase == 'lobby'
+    && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == 1
+    && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid)).data.uid == request.auth.uid;
+   allow update, delete: if false;
+   match /players/{uid} {
+    allow get: if signed() && (uid == request.auth.uid || alibiMember(c));
+    allow list: if alibiMember(c);
+    allow create: if signed() && uid == request.auth.uid
+     && request.resource.data.keys().hasOnly(['uid','name','joinedAt'])
+     && request.resource.data.uid == uid && text(request.resource.data.name,24)
+     && request.resource.data.joinedAt == request.time
+     && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'lobby'
+     && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.open == true
+     && ((!exists(/databases/$(database)/documents/alibiInvites/$(c))
+       && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == 1
+       && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.hostId == uid)
+      || (exists(/databases/$(database)/documents/alibiInvites/$(c))
+       && get(/databases/$(database)/documents/alibiInvites/$(c)).data.count < 8
+       && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == get(/databases/$(database)/documents/alibiInvites/$(c)).data.count + 1));
+    allow update, delete: if false;
+   }
+  }
   match /rooms/{c} {
    // Exact code lookup is necessary to join. Listing/enumeration is forbidden.
    allow get: if signed();

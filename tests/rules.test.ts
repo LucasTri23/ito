@@ -15,6 +15,7 @@ import {
   updateDoc,
   writeBatch,
   serverTimestamp,
+  runTransaction,
 } from "firebase/firestore";
 const enabled = Boolean(process.env.FIRESTORE_EMULATOR_HOST);
 describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
@@ -28,6 +29,41 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
   });
   afterAll(async () => {
     await env?.cleanup();
+  });
+  it("Álibi: ingresso atômico respeita capacidade e restringe leitura", async () => {
+    const a = env.authenticatedContext("a").firestore();
+    const outside = env.authenticatedContext("z").firestore();
+    const first = writeBatch(a);
+    first.set(doc(a, "alibiRooms/FGHJK"), { code: "FGHJK", hostId: "a", phase: "lobby" });
+    first.set(doc(a, "alibiInvites/FGHJK"), { count: 1, open: true });
+    first.set(doc(a, "alibiRooms/FGHJK/players/a"), { uid: "a", name: "Ana", joinedAt: serverTimestamp() });
+    await assertSucceeds(first.commit());
+    await assertFails(getDoc(doc(outside, "alibiRooms/FGHJK")));
+    await assertFails(getDocs(collection(outside, "alibiRooms/FGHJK/players")));
+    await assertFails(setDoc(doc(outside, "alibiRooms/FGHJK/players/z"), { uid: "z", name: "Z", joinedAt: serverTimestamp() }));
+    for (const [i, uid] of ["b", "c", "d", "e", "f", "g"].entries()) {
+      const db = env.authenticatedContext(uid).firestore();
+      const batch = writeBatch(db);
+      batch.update(doc(db, "alibiInvites/FGHJK"), { count: i + 2 });
+      batch.set(doc(db, `alibiRooms/FGHJK/players/${uid}`), { uid, name: uid, joinedAt: serverTimestamp() });
+      await assertSucceeds(batch.commit());
+      await assertSucceeds(getDoc(doc(db, "alibiRooms/FGHJK")));
+    }
+    const compete = async (uid: string) => {
+      const db = env.authenticatedContext(uid).firestore();
+      return runTransaction(db, async (tx) => {
+        const invite = doc(db, "alibiInvites/FGHJK");
+        const snap = await tx.get(invite);
+        tx.update(invite, { count: snap.data()!.count + 1 });
+        tx.set(doc(db, `alibiRooms/FGHJK/players/${uid}`), { uid, name: uid, joinedAt: serverTimestamp() });
+      });
+    };
+    const race = await Promise.allSettled([compete("h"), compete("i")]);
+    expect(race.filter(r => r.status === "fulfilled")).toHaveLength(1);
+    const ninth = writeBatch(outside);
+    ninth.update(doc(outside, "alibiInvites/FGHJK"), { count: 9 });
+    ninth.set(doc(outside, "alibiRooms/FGHJK/players/z"), { uid: "z", name: "Z", joinedAt: serverTimestamp() });
+    await assertFails(ninth.commit());
   });
   it("presencial: cartas privadas, entrada tardia e reenvio somente pelo anfitrião", async () => {
     const a = env.authenticatedContext("a").firestore();

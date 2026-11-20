@@ -381,3 +381,5 @@
     transition: none;
   }
 }
+.alibi-page { max-width: 680px; margin: 3rem auto; }
+.alibi-page ul { padding-left: 1.3rem; line-height: 2; }
