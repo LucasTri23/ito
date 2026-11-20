@@ -37,9 +37,9 @@ service cloud.firestore {
   }
   match /alibiRooms/{c} {
    allow read: if alibiMember(c);
-   allow create: if signed() && request.resource.data.keys().hasOnly(['code','hostId','phase'])
+   allow create: if signed() && request.resource.data.keys().hasOnly(['code','hostId','phase','mode'])
     && request.resource.data.code == c && request.resource.data.hostId == request.auth.uid
-    && request.resource.data.phase == 'lobby'
+    && request.resource.data.phase == 'lobby' && request.resource.data.get('mode','online') in ['online','presencial']
     && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == 1
     && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid)).data.uid == request.auth.uid;
    allow update: if alibiHost(c) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','currentRoundId'])
@@ -79,8 +79,9 @@ service cloud.firestore {
     allow create: if alibiHost(c) && alibiRoom(c).phase == 'lobby'
      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.currentRoundId == r
      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'playing'
-     && request.resource.data.keys().hasOnly(['id','phase','catalogId','situation','suspects','investigator','jurors','submitted','voted','customQuestion','startedAt','surpriseAt','voteStartedAt','history','used'])
+     && request.resource.data.keys().hasOnly(['id','phase','mode','catalogId','situation','suspects','investigator','jurors','submitted','voted','customQuestion','startedAt','surpriseAt','voteStartedAt','history','used'])
      && request.resource.data.id == r && request.resource.data.phase == 'presentation'
+     && request.resource.data.get('mode','online') == alibiRoom(c).get('mode','online')
      && text(request.resource.data.catalogId,80) && text(request.resource.data.situation,500)
      && request.resource.data.suspects is list && request.resource.data.suspects.size() == 2
      && request.resource.data.suspects.toSet().size() == 2
@@ -104,20 +105,33 @@ service cloud.firestore {
       && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','startedAt']) && request.resource.data.startedAt == request.time)
      || (resource.data.phase == 'timer' && request.time >= resource.data.startedAt + duration.value(30,'s')
       && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','surpriseAt'])
-      && ((resource.data.investigator == null && request.resource.data.phase == 'answers' && request.resource.data.surpriseAt == null)
-       || (resource.data.investigator != null && request.resource.data.phase == 'surprise' && request.resource.data.surpriseAt == request.time)))
-     || (resource.data.phase == 'surprise' && request.resource.data.phase == 'answers'
+      && ((resource.data.get('mode','online') == 'presencial' && request.resource.data.surpriseAt == null
+        && ((resource.data.jurors.size() > 0 && request.resource.data.phase == 'oralSetup')
+         || (resource.data.jurors.size() == 0 && request.resource.data.phase == 'oralFirst')))
+       || (resource.data.get('mode','online') == 'online' && ((resource.data.investigator == null && request.resource.data.phase == 'answers' && request.resource.data.surpriseAt == null)
+        || (resource.data.investigator != null && request.resource.data.phase == 'surprise' && request.resource.data.surpriseAt == request.time)))))
+     || (resource.data.get('mode','online') == 'presencial' && resource.data.phase == 'oralSetup' && request.resource.data.phase == 'oralFirst'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','customQuestion'])
+      && request.resource.data.customQuestion is string && request.resource.data.customQuestion.size() <= 200
+      && (request.auth.uid == resource.data.investigator || (alibiHost(c) && request.resource.data.customQuestion == '')))
+     || (resource.data.get('mode','online') == 'presencial'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
+      && ((resource.data.phase == 'oralFirst' && request.resource.data.phase == 'oralSecond'
+         && (alibiHost(c) || request.auth.uid == resource.data.suspects[0] || request.auth.uid == resource.data.investigator))
+       || (resource.data.phase == 'oralSecond' && request.resource.data.phase == 'reveal'
+         && (alibiHost(c) || request.auth.uid == resource.data.suspects[1] || request.auth.uid == resource.data.investigator))))
+     || (resource.data.get('mode','online') == 'online' && resource.data.phase == 'surprise' && request.resource.data.phase == 'answers'
       && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','customQuestion'])
       && request.resource.data.customQuestion is string && request.resource.data.customQuestion.size() <= 200
       && ((request.auth.uid == resource.data.investigator && request.time < resource.data.surpriseAt + duration.value(15,'s'))
        || (request.time >= resource.data.surpriseAt + duration.value(15,'s') && request.resource.data.customQuestion == '')))
-     || (resource.data.phase == 'answers' && request.resource.data.phase == 'answers'
+     || (resource.data.get('mode','online') == 'online' && resource.data.phase == 'answers' && request.resource.data.phase == 'answers'
       && request.auth.uid in resource.data.suspects && !(request.auth.uid in resource.data.submitted)
       && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['submitted'])
       && request.resource.data.submitted.size() == resource.data.submitted.size() + 1
       && request.resource.data.submitted.toSet() == resource.data.submitted.toSet().union([request.auth.uid].toSet())
       && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(r)/answers/$(request.auth.uid)).data.uid == request.auth.uid)
-     || (resource.data.phase == 'answers' && request.resource.data.phase == 'reveal'
+     || (resource.data.get('mode','online') == 'online' && resource.data.phase == 'answers' && request.resource.data.phase == 'reveal'
       && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
       && resource.data.submitted.toSet() == resource.data.suspects.toSet())
      || (alibiHost(c) && resource.data.phase == 'reveal' && request.resource.data.phase == 'vote'
@@ -147,7 +161,7 @@ service cloud.firestore {
       && (request.auth.uid == uid || game().phase in ['reveal','vote','result']);
      allow list: if alibiMember(c) && currentRound() && game().phase in ['reveal','vote','result'];
      allow create: if alibiMember(c) && currentRound() && request.auth.uid == uid
-      && game().phase == 'answers' && uid in game().suspects
+      && game().get('mode','online') == 'online' && game().phase == 'answers' && uid in game().suspects
       && request.resource.data.keys().hasOnly(['uid','values'])
       && request.resource.data.uid == uid && request.resource.data.values is list
       && request.resource.data.values.size() == 3

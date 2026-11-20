@@ -14,7 +14,7 @@ export function Brand() {
 export function Shell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const help = pathname.startsWith("/alibi-furado")
-    ? ["Cada pessoa entra na sala pelo próprio aparelho.", "Dois suspeitos combinam uma história em 30 segundos e respondem separadamente.", "A turma compara as respostas; em trio o investigador decide, e com mais pessoas o júri vota."]
+    ? ["Cada pessoa entra na sala pelo próprio aparelho. Escolha online ou presencial ao criar a sala.", "Dois suspeitos combinam uma história em 30 segundos. No presencial, um se afasta enquanto o outro responde em voz alta; depois trocam.", "No presencial com quatro ou mais pessoas, o investigador pode fazer uma pergunta extra aos dois. Em trio o investigador decide; com mais pessoas, o júri vota no site."]
     : pathname === "/entrelinhas" || pathname.startsWith("/room/")
       ? ["Entre na sala com a turma. No modo online, cada pessoa usa seu aparelho.", "Cada pessoa recebe um número secreto e dá uma pista para o tema.", "A turma organiza as pistas e revela os números. No modo presencial, a sala distribui cartas para usar na mesa."]
       : pathname === "/quem-sou-eu"

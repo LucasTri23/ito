@@ -23,6 +23,7 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
   const nextTick = useRef(0);
   const roundId = round?.id;
   const phase = round?.phase;
+  const presencial = round?.mode === "presencial";
   const deadline = phase === "timer" ? (round?.startedAt?.toMillis() ?? 0) + 30000 : phase === "surprise" ? (round?.surpriseAt?.toMillis() ?? 0) + 15000 : phase === "vote" && round?.investigator ? (round.voteStartedAt?.toMillis() ?? 0) + 30000 : 0;
   const host = uid === hostId;
   const name = (id: string) => players.find(p => p.uid === id)?.name || "Jogador";
@@ -46,9 +47,9 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
     return () => { active = false; window.clearInterval(interval); document.removeEventListener("visibilitychange", syncClock); };
   }, [code, uid]);
   useEffect(() => {
-    if (!roundId || !phase || !["reveal", "vote", "result"].includes(phase)) return;
+    if (presencial || !roundId || !phase || !["reveal", "vote", "result"].includes(phase)) return;
     return onSnapshot(collection(db, `alibiRooms/${code}/rounds/${roundId}/answers`), s => setRevealedAnswers(Object.fromEntries(s.docs.map(d => [d.id, d.data().values as string[]]))), e => setError(e.message));
-  }, [code, roundId, phase]);
+  }, [code, roundId, phase, presencial]);
   useEffect(() => {
     if (!roundId || phase !== "result") return;
     return onSnapshot(collection(db, `alibiRooms/${code}/rounds/${roundId}/votes`), s => { setVotes(s.docs.map(d => d.data().choice as "colou" | "furado")); setVotesReady(true); }, e => setError(e.message));
@@ -95,17 +96,17 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
   const suspect = round.suspects.includes(uid), investigator = uid === round.investigator, juror = round.jurors.includes(uid);
   const remaining = deadline ? Math.max(0, Math.ceil((deadline - now - offset) / 1000)) : 0;
   const item = situations.find(x => x.id === round.catalogId);
-  const questions = item ? [item.questions[0], item.questions[1], round.customQuestion || item.questions[2]] : [];
+  const questions = item ? (presencial ? [...item.questions, ...(round.customQuestion ? [round.customQuestion] : [])] : [item.questions[0], item.questions[1], round.customQuestion || item.questions[2]]) : [];
   const comparisons = questions.map((_, i) => compareAlibiAnswers(revealedAnswers[round.suspects[0]]?.[i], revealedAnswers[round.suspects[1]]?.[i]));
   const compared = questions.length === 3 && comparisons.every(value => value !== "aguardando");
   const matching = comparisons.filter(value => value === "igual").length;
   const result = tally;
-  const steps = ["presentation", "timer", ...(round.investigator ? ["surprise"] : []), "answers", "reveal", "vote", "result"];
-  const stepNames: Record<string, string> = { presentation: "Situação", timer: "30 segundos", surprise: "Surpresa", answers: "Respostas", reveal: "Revelação", vote: "Veredito", result: "Resultado" };
+  const steps = presencial ? ["presentation", "timer", ...(round.jurors.length ? ["oralSetup"] : []), "oralFirst", "oralSecond", "reveal", "vote", "result"] : ["presentation", "timer", ...(round.investigator ? ["surprise"] : []), "answers", "reveal", "vote", "result"];
+  const stepNames: Record<string, string> = { presentation: "Situação", timer: "30 segundos", surprise: "Surpresa", answers: "Respostas", oralSetup: "Pergunta extra", oralFirst: "Primeiro suspeito", oralSecond: "Segundo suspeito", reveal: presencial ? "Discussão" : "Revelação", vote: "Veredito", result: "Resultado" };
   const current = steps.indexOf(round.phase);
   const role = suspect
     ? { icon: "🎭", label: "Suspeito", tip: round.investigator ? "Combine a história com seu parceiro. Depois, cada um responde sozinho." : "Combinem a história e, no fim, decidam juntos se colou." }
-    : investigator ? { icon: "🔎", label: "Investigador", tip: "Escute a dupla e prepare uma pergunta surpresa para pegar o álibi." }
+    : investigator ? { icon: "🔎", label: "Investigador", tip: presencial ? (round.jurors.length ? "Escute cada suspeito separadamente e, se quiser, faça a mesma pergunta extra aos dois." : "Escute cada suspeito separadamente e registre seu veredito no celular.") : "Escute a dupla e prepare uma pergunta surpresa para pegar o álibi." }
     : juror ? { icon: "⚖️", label: "Jurado", tip: "Compare as versões e vote: colou ou furou?" }
     : { icon: "👀", label: "Participante", tip: "Acompanhe a rodada. Você entra na próxima." };
   const total = round.phase === "surprise" ? 15 : 30;
@@ -145,6 +146,33 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
       <p className="stage-call">{suspect ? "Combinem a história!" : "Os suspeitos estão combinando a versão."}</p>
     </div>}
 
+    {round.phase === "oralSetup" && <div className="alibi-stage alibi-panel">
+      <h2>Prepare a pergunta extra</h2>
+      <p>Uma quarta pergunta é opcional. Faça a mesma pergunta para os dois suspeitos, separadamente. Ela pode ser apenas falada ou escrita aqui.</p>
+      {investigator && <><label htmlFor="alibi-extra">Pergunta extra (opcional)</label>
+        <input id="alibi-extra" maxLength={200} value={question} onChange={e => setQuestion(e.target.value)} />
+        {button(question.trim() ? "Salvar pergunta e continuar" : "Continuar sem escrever", "oralExtra", question)}</>}
+      {!investigator && <p>Aguardando o investigador preparar a pergunta extra.</p>}
+      {host && !investigator && button("Continuar sem pergunta escrita", "oralExtra", "", "secondary")}
+    </div>}
+
+    {(round.phase === "oralFirst" || round.phase === "oralSecond") && (() => {
+      const first = round.phase === "oralFirst";
+      const activeId = round.suspects[first ? 0 : 1];
+      const awayId = round.suspects[first ? 1 : 0];
+      const canAdvance = uid === activeId || uid === round.investigator || (host && uid !== awayId);
+      return <div className="alibi-stage alibi-panel">
+        <h2>{name(awayId)}: afaste-se para não ouvir</h2>
+        <p>{name(activeId)} responde agora, em voz alta, a todas as perguntas. Peçam para {name(awayId)} voltar somente quando esta etapa terminar.</p>
+        {uid === awayId ? <p><strong>Você está aguardando longe. Não acompanhe as respostas no celular.</strong></p> : <>
+          <ol className="alibi-questions">{questions.map((q, i) => <li key={`${i}-${q}`}>{q}</li>)}</ol>
+          {round.jurors.length > 0 && !round.customQuestion && <p>O investigador pode fazer uma pergunta extra em voz alta. Repita a mesma pergunta aos dois.</p>}
+          {canAdvance && button(first ? "Terminou · trocar suspeitos" : "Terminou · seguir para o veredito", "oralNext")}
+        </>}
+        {!canAdvance && uid !== awayId && <p>Aguardando terminar as respostas.</p>}
+      </div>;
+    })()}
+
     {(round.phase === "surprise" || round.phase === "answers") && <div className="alibi-shiu" key="shiu">
       <span className="shiu-emoji" aria-hidden="true">🤫</span>
       <h2>Shiu! Sem conversar. Respondam agora.</h2>
@@ -180,7 +208,8 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
         </div>)}
     </div>}
 
-    {["reveal", "vote", "result"].includes(round.phase) && <div className="alibi-reveals">
+    {presencial && ["reveal", "vote", "result"].includes(round.phase) && <div className="alibi-panel"><h2>As respostas foram dadas em voz alta</h2><p>{round.investigator ? "Chamem os dois suspeitos de volta e conversem sobre as versões antes de decidir." : "Voltem a ficar juntos e contem um ao outro as respostas que deram antes de decidir."}</p><ol className="alibi-questions">{questions.map((q, i) => <li key={`${i}-${q}`}>{q}</li>)}</ol>{round.jurors.length > 0 && !round.customQuestion && <p>Considerem também a pergunta extra, se o investigador tiver feito uma.</p>}</div>}
+    {!presencial && ["reveal", "vote", "result"].includes(round.phase) && <div className="alibi-reveals">
       <h2>As versões 👀</h2>
       {!round.investigator && compared && <div className="alibi-comparison-summary" role="status">
         <strong>{matching === questions.length ? "Sugestão: as versões parecem bater" : "Sugestão: confiram as diferenças"}</strong>

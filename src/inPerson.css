@@ -31,6 +31,8 @@
   margin: 0;
   accent-color: var(--accent);
 }
+.alibi-entry .mode-picker { flex-wrap: wrap; }
+.alibi-entry .mode-picker label { min-width: min(100%, 220px); }
 .in-person-room {
   display: flex;
   flex-direction: column;

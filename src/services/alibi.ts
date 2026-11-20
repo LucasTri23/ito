@@ -6,6 +6,7 @@ import { randomInt } from "../utils/game";
 
 export type AlibiRoundData = {
   id: string; phase: string; catalogId: string; situation: string; suspects: string[];
+  mode?: "online" | "presencial";
   investigator: string | null; jurors: string[]; submitted: string[]; voted: string[];
   customQuestion: string; startedAt: Timestamp | null; surpriseAt: Timestamp | null;
   voteStartedAt: Timestamp | null; history: AlibiHistory; used: string[];
@@ -51,7 +52,7 @@ export async function alibiAction(code: string, uid: string, action: string, rou
       const item = available[randomInt(available.length)];
       const history = action === "newGame" ? emptyAlibiHistory() : previous?.history || emptyAlibiHistory();
       const roles = chooseAlibiRoles(players, history);
-      tx.set(newRef, { id: newRef.id, phase: "presentation", catalogId: item.id, situation: item.situation,
+      tx.set(newRef, { id: newRef.id, phase: "presentation", mode: room.mode || "online", catalogId: item.id, situation: item.situation,
         suspects: roles.suspects, investigator: roles.investigator, jurors: roles.jurors,
         submitted: [], voted: [], customQuestion: "", startedAt: null, surpriseAt: null, voteStartedAt: null,
         history: recordAlibiRoles(history, roles), used: [...used, item.id] });
@@ -66,6 +67,12 @@ export async function alibiAction(code: string, uid: string, action: string, rou
     switch (action) {
       case "start": tx.update(ref, { phase: "timer", startedAt: serverTimestamp() }); break;
       case "question": tx.update(ref, { phase: "answers", customQuestion: typeof value === "string" ? value.trim() : "" }); break;
+      case "oralExtra": tx.update(ref, { phase: "oralFirst", customQuestion: typeof value === "string" ? value.trim() : "" }); break;
+      case "oralNext":
+        if (round.phase === "oralFirst") tx.update(ref, { phase: "oralSecond" });
+        else if (round.phase === "oralSecond") tx.update(ref, { phase: "reveal" });
+        else throw new Error("A etapa mudou. Tente novamente.");
+        break;
       case "answer": {
         if (!Array.isArray(value) || value.length !== 3 || value.some(x => typeof x !== "string" || !x.trim() || x.length > 500)) throw new Error("Preencha as três respostas.");
         if (round.submitted.includes(uid)) throw new Error("Resposta já enviada.");
@@ -80,7 +87,9 @@ export async function alibiAction(code: string, uid: string, action: string, rou
       }
       case "tick": {
         if (round.phase === "timer" && round.startedAt)
-          tx.update(ref, round.investigator ? { phase: "surprise", surpriseAt: serverTimestamp() } : { phase: "answers" });
+          tx.update(ref, round.mode === "presencial"
+            ? { phase: round.jurors.length ? "oralSetup" : "oralFirst" }
+            : round.investigator ? { phase: "surprise", surpriseAt: serverTimestamp() } : { phase: "answers" });
         else if (round.phase === "surprise" && round.surpriseAt)
           tx.update(ref, { phase: "answers", customQuestion: "" });
         else if (round.phase === "answers" && round.submitted.length === 2) tx.update(ref, { phase: "reveal" });

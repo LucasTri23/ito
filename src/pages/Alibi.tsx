@@ -9,7 +9,7 @@ import { AlibiRound } from "../components/AlibiRound";
 import { leaveAlibi, type AlibiRoundData } from "../services/alibi";
 
 type Player = { uid: string; name: string };
-type Room = { code: string; hostId: string; phase: string; currentRoundId?: string };
+type Room = { code: string; hostId: string; phase: string; mode?: "online" | "presencial"; currentRoundId?: string };
 
 export function Alibi() {
   const { code: routeCode } = useParams();
@@ -18,6 +18,7 @@ export function Alibi() {
   const { user, error: authError } = useAuth();
   const [name, setName] = useState(() => localStorage.getItem("alibi.name") || "");
   const [inputCode, setInputCode] = useState(code);
+  const [mode, setMode] = useState<"online" | "presencial">("online");
   const [member, setMember] = useState(false);
   const [room, setRoom] = useState<Room | null>(null);
   const [players, setPlayers] = useState<Player[]>([]);
@@ -67,7 +68,7 @@ export function Alibi() {
           const inviteSnap = await tx.get(invite);
           if (create) {
             if (inviteSnap.exists()) return false;
-            tx.set(doc(db, "alibiRooms", candidate), { code: candidate, hostId: user.uid, phase: "lobby" });
+            tx.set(doc(db, "alibiRooms", candidate), { code: candidate, hostId: user.uid, phase: "lobby", mode });
             tx.set(invite, { count: 1, open: true });
             tx.set(player, { uid: user.uid, name: name.trim(), joinedAt: serverTimestamp() });
           } else {
@@ -98,7 +99,7 @@ export function Alibi() {
     <div className="alibi-head">
       <span className="alibi-badge" aria-hidden="true">🕵️</span>
       <div>
-        <span className="eyebrow">ONLINE · 2 A 8 JOGADORES</span>
+        <span className="eyebrow">{inRoom ? (room.mode === "presencial" ? "PRESENCIAL" : "ONLINE") : "ONLINE OU PRESENCIAL"} · 2 A 8 JOGADORES</span>
         <h1>Álibi Furado</h1>
       </div>
     </div>
@@ -150,6 +151,11 @@ export function Alibi() {
         : <p className="alibi-wait">Carregando rodada…</p>)}
     </> : <div className="alibi-entry">
       <label htmlFor="alibi-name">Seu apelido</label><input id="alibi-name" value={name} maxLength={24} placeholder="Como a turma te chama?" onChange={e => setName(e.target.value)} />
+      {!code && <fieldset className="mode-picker"><legend>Como vocês vão jogar?</legend>
+        <label><input type="radio" name="alibi-mode" checked={mode === "online"} onChange={() => setMode("online")} /> Online · respostas no celular</label>
+        <label><input type="radio" name="alibi-mode" checked={mode === "presencial"} onChange={() => setMode("presencial")} /> Presencial · respostas em voz alta</label>
+      </fieldset>}
+      {!code && <p className="muted-line">O modo escolhido vale ao criar a sala. Ao entrar, você acompanha o modo do anfitrião.</p>}
       {!code && <button className="button primary" disabled={busy || !configured || !user} onClick={() => void enter(true)}>Criar sala</button>}
       {!code && <div className="divider">ou entre com um código</div>}
       <label htmlFor="alibi-code">Código da sala</label><input id="alibi-code" className="code-field" maxLength={5} value={code || inputCode} placeholder="EX.: XK72A" readOnly={!!code} onChange={e => setInputCode(e.target.value.toUpperCase())} />

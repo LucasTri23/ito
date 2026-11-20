@@ -43,7 +43,7 @@ const choices: Choice[] = [
     to: "/alibi-furado",
     tone: "coral",
     icon: <Fingerprint size={36} />,
-    eyebrow: "ONLINE · 2 A 8 JOGADORES",
+    eyebrow: "ONLINE OU PRESENCIAL · 2 A 8 JOGADORES",
     title: "Álibi Furado",
     text: "Dois suspeitos, uma história e perguntas que colocam a memória à prova.",
     cta: "Abrir o jogo",

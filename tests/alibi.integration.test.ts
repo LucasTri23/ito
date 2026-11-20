@@ -51,6 +51,46 @@ describe.skipIf(!process.env.FIRESTORE_EMULATOR_HOST)("Álibi: serviço Firestor
     await act("a", "start", nextId);
     expect((await getDoc(doc(clients.a, `alibiRooms/ABCDE/rounds/${nextId}`))).data()!.phase).toBe("timer");
   }, 30000);
+  it.each([2, 3, 4, 8])("conclui uma rodada presencial com %i jogadores", async count => {
+    await env.clearFirestore();
+    const ids = ["a", "b", "c", "d", "e", "f", "g", "h"].slice(0, count);
+    await env.withSecurityRulesDisabled(async ctx => {
+      const db = ctx.firestore();
+      await setDoc(doc(db, "alibiRooms/ABCDE"), { code: "ABCDE", hostId: "a", phase: "lobby", mode: "presencial" });
+      await setDoc(doc(db, "alibiInvites/ABCDE"), { count, open: true });
+      for (const uid of ids) await setDoc(doc(db, `alibiRooms/ABCDE/players/${uid}`), { uid, name: uid });
+    });
+    const clients = Object.fromEntries(ids.map(uid => [uid, env.authenticatedContext(uid).firestore() as unknown as Firestore]));
+    const act = async (uid: string, action: string, id?: string, value?: unknown) => { context.db = clients[uid]; await alibiAction("ABCDE", uid, action, id, value, ids); };
+    await act("a", "newRound");
+    const id = (await getDoc(doc(clients.a, "alibiRooms/ABCDE"))).data()!.currentRoundId as string;
+    const path = `alibiRooms/ABCDE/rounds/${id}`;
+    let round = (await getDoc(doc(clients.a, path))).data()!;
+    expect(round.mode).toBe("presencial");
+    await act("a", "start", id);
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), path), { startedAt: new Date(Date.now() - 31000) }));
+    await act("b", "tick", id);
+    round = (await getDoc(doc(clients.a, path))).data()!;
+    expect(round.phase).toBe(count >= 4 ? "oralSetup" : "oralFirst");
+    if (count >= 4) {
+      const suspect = round.suspects[0] as string;
+      if (suspect !== "a") await expect(act(suspect, "oralExtra", id, "Pergunta indevida?")).rejects.toThrow();
+      const extra = count === 8 ? "" : "Qual era a cor?";
+      await act(round.investigator, "oralExtra", id, extra);
+      round = (await getDoc(doc(clients.a, path))).data()!;
+      expect(round.customQuestion).toBe(extra);
+    }
+    await expect(act(round.suspects[0], "answer", id, ["um", "dois", "três"])).rejects.toThrow();
+    await act(round.suspects[0], "oralNext", id);
+    expect((await getDoc(doc(clients.a, path))).data()!.phase).toBe("oralSecond");
+    await act(round.suspects[1], "oralNext", id);
+    expect((await getDoc(doc(clients.a, path))).data()!.phase).toBe("reveal");
+    await act("a", "beginVote", id);
+    const voters = round.jurors.length ? round.jurors as string[] : [round.investigator || "a"];
+    for (const uid of voters) await act(uid, "vote", id, "colou");
+    await act(count === 2 ? "a" : "b", "tick", id);
+    expect((await getDoc(doc(clients.a, path))).data()!.phase).toBe("result");
+  }, 30000);
   it("aplica perguntas e veredito padrão após os prazos", async () => {
     await env.clearFirestore();
     await env.withSecurityRulesDisabled(async ctx => {

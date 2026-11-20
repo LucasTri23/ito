@@ -33,6 +33,15 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
   afterAll(async () => {
     await env?.cleanup();
   });
+  it("cria sala presencial com modo fixo", async () => {
+    const db = env.authenticatedContext("a").firestore();
+    const batch = writeBatch(db);
+    batch.set(doc(db, "alibiRooms/FGHJK"), { code: "FGHJK", hostId: "a", phase: "lobby", mode: "presencial" });
+    batch.set(doc(db, "alibiInvites/FGHJK"), { count: 1, open: true });
+    batch.set(doc(db, "alibiRooms/FGHJK/players/a"), { uid: "a", name: "Ana", joinedAt: serverTimestamp() });
+    await assertSucceeds(batch.commit());
+    await assertFails(updateDoc(doc(db, "alibiRooms/FGHJK"), { mode: "online" }));
+  });
   it.each([2, 3, 5, 8])("Álibi sem Functions: conclui rodada com %i jogadores", async (count) => {
     const ids = ["a", "b", "c", "d", "e", "f", "g", "h"].slice(0, count);
     await env.withSecurityRulesDisabled(async ctx => {
