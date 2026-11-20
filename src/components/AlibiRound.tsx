@@ -5,6 +5,7 @@ import { alibiAction, situations, type AlibiRoundData } from "../services/alibi"
 import { compareAlibiAnswers, tallyAlibiVotes } from "../utils/alibi";
 import { Notice } from "./UI";
 import { burst } from "../utils/fx";
+import { errorText } from "../utils/game";
 
 type Props = { code: string; uid: string; hostId: string; round: AlibiRoundData | null; players: { uid: string; name: string }[] };
 
@@ -40,8 +41,9 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
       } catch { /* Rules remain the authority if clock synchronization fails. */ }
     }
     void syncClock();
+    const interval = window.setInterval(() => void syncClock(), 60000);
     document.addEventListener("visibilitychange", syncClock);
-    return () => { active = false; document.removeEventListener("visibilitychange", syncClock); };
+    return () => { active = false; window.clearInterval(interval); document.removeEventListener("visibilitychange", syncClock); };
   }, [code, uid]);
   useEffect(() => {
     if (!roundId || !phase || !["reveal", "vote", "result"].includes(phase)) return;
@@ -64,7 +66,7 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
   async function send(action: string, value?: unknown) {
     setBusy(true); setError("");
     try { await alibiAction(code, uid, action, round?.id, value, players.map(p => p.uid)); }
-    catch (e) { setError(e instanceof Error ? e.message : "Falha de conexão. Tente novamente."); }
+    catch (e) { setError(errorText(e)); }
     finally { setBusy(false); }
   }
   // Confete quando o álibi cola; o carimbo do resultado é o alvo.
@@ -85,7 +87,7 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
   };
   if (!round || round.phase === "cancelled") return <div className="alibi-round alibi-idle">
     <span className="alibi-idle-icon" aria-hidden="true">🕵️</span>
-    <h3>{players.length < 2 ? `Falta${2 - players.length > 1 ? "m" : ""} ${2 - players.length} pessoa${2 - players.length > 1 ? "s" : ""} para começar` : "Tudo pronto para a primeira rodada"}</h3>
+    <h3>{round?.phase === "cancelled" ? "A rodada foi cancelada" : players.length < 2 ? `Falta${2 - players.length > 1 ? "m" : ""} ${2 - players.length} pessoa${2 - players.length > 1 ? "s" : ""} para começar` : "Tudo pronto para a primeira rodada"}</h3>
     <p>Reúna de 2 a 8 pessoas para iniciar.</p>
     {host ? button("Iniciar rodada", "newRound", undefined, "primary", players.length < 2) : <p className="alibi-wait">Aguardando o anfitrião<span className="dots" aria-hidden="true"><i /><i /><i /></span></p>}
     {error && <Notice>{error}</Notice>}

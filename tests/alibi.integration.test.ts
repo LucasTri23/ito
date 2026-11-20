@@ -1,15 +1,15 @@
 import { readFileSync } from "node:fs";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { assertFails, assertSucceeds, initializeTestEnvironment, type RulesTestEnvironment } from "@firebase/rules-unit-testing";
-import { doc, getDoc, serverTimestamp, setDoc, updateDoc, type Firestore } from "firebase/firestore";
+import { doc, getDoc, serverTimestamp, setDoc, updateDoc, writeBatch, type Firestore } from "firebase/firestore";
 
 const context = vi.hoisted(() => ({ db: null as unknown as Firestore }));
 vi.mock("../src/lib/firebase", () => ({ get db() { return context.db; } }));
-import { alibiAction } from "../src/services/alibi";
+import { alibiAction, leaveAlibi } from "../src/services/alibi";
 
 describe.skipIf(!process.env.FIRESTORE_EMULATOR_HOST)("Álibi: serviço Firestore", () => {
   let env: RulesTestEnvironment;
-  beforeAll(async () => { env = await initializeTestEnvironment({ projectId: "demo-alibi", firestore: { rules: readFileSync("firestore.rules", "utf8") } }); });
+  beforeAll(async () => { env = await initializeTestEnvironment({ projectId: "demo-alibi", firestore: { rules: readFileSync("firestore.rules", "utf8") } }); }, 30000);
   afterAll(async () => { await env?.cleanup(); });
   it.each([2, 3, 5, 8])("usa transações do aplicativo com %i identidades", async count => {
     await env.clearFirestore();
@@ -22,7 +22,9 @@ describe.skipIf(!process.env.FIRESTORE_EMULATOR_HOST)("Álibi: serviço Firestor
     });
     const clients = Object.fromEntries(ids.map(uid => [uid, env.authenticatedContext(uid).firestore() as unknown as Firestore]));
     await assertSucceeds(setDoc(doc(clients.a, "alibiRooms/ABCDE/clock/a"), { at: serverTimestamp() }));
-    await assertFails(getDoc(doc(clients.b, "alibiRooms/ABCDE/clock/a")));
+    await assertSucceeds(getDoc(doc(clients.b, "alibiRooms/ABCDE/clock/a")));
+    const outsider = env.authenticatedContext("outsider").firestore() as unknown as Firestore;
+    await assertFails(getDoc(doc(outsider, "alibiRooms/ABCDE/clock/a")));
     const act = async (uid: string, action: string, id?: string, value?: unknown) => { context.db = clients[uid]; await alibiAction("ABCDE", uid, action, id, value, ids); };
     await act("a", "newRound");
     const room = (await getDoc(doc(clients.a, "alibiRooms/ABCDE"))).data()!;
@@ -63,5 +65,34 @@ describe.skipIf(!process.env.FIRESTORE_EMULATOR_HOST)("Álibi: serviço Firestor
     await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), "alibiRooms/ABCDE/rounds/r"), { phase: "vote", voteStartedAt: new Date(Date.now() - 31000) }));
     await alibiAction("ABCDE", "a", "tick", "r", undefined, []);
     expect((await getDoc(doc(context.db, "alibiRooms/ABCDE/rounds/r"))).data()!.phase).toBe("result");
+  }, 30000);
+  it("transfere anfitrião e cancela rodada quando alguém sai", async () => {
+    await env.clearFirestore();
+    await env.withSecurityRulesDisabled(async ctx => {
+      const db = ctx.firestore();
+      await setDoc(doc(db, "alibiRooms/ABCDE"), { code: "ABCDE", hostId: "a", phase: "lobby" });
+      await setDoc(doc(db, "alibiInvites/ABCDE"), { count: 3, open: true });
+      for (const uid of ["a", "b", "c"]) await setDoc(doc(db, `alibiRooms/ABCDE/players/${uid}`), { uid, name: uid });
+    });
+    const a = env.authenticatedContext("a").firestore() as unknown as Firestore;
+    const b = env.authenticatedContext("b").firestore() as unknown as Firestore;
+    const c = env.authenticatedContext("c").firestore() as unknown as Firestore;
+    const forged = writeBatch(a);
+    forged.delete(doc(a, "alibiRooms/ABCDE/players/a"));
+    forged.update(doc(a, "alibiInvites/ABCDE"), { count: 2, open: true });
+    await assertFails(forged.commit());
+    context.db = a;
+    await alibiAction("ABCDE", "a", "newRound", undefined, undefined, ["a", "b", "c"]);
+    const id = (await getDoc(doc(a, "alibiRooms/ABCDE"))).data()!.currentRoundId as string;
+    await leaveAlibi("ABCDE", "a", ["c", "a", "b"]);
+    expect((await getDoc(doc(b, "alibiRooms/ABCDE"))).data()).toMatchObject({ hostId: "b", phase: "lobby" });
+    expect((await getDoc(doc(b, `alibiRooms/ABCDE/rounds/${id}`))).data()!.phase).toBe("cancelled");
+    expect((await getDoc(doc(b, "alibiInvites/ABCDE"))).data()!.count).toBe(2);
+    context.db = c;
+    await leaveAlibi("ABCDE", "c", ["b", "c"]);
+    expect((await getDoc(doc(b, "alibiInvites/ABCDE"))).data()!.count).toBe(1);
+    context.db = b;
+    await leaveAlibi("ABCDE", "b", ["b"]);
+    expect((await getDoc(doc(b, "alibiInvites/ABCDE"))).data()).toMatchObject({ count: 0, open: false });
   }, 30000);
 });

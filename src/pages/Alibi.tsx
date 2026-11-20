@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { collection, doc, onSnapshot, runTransaction, serverTimestamp } from "firebase/firestore";
+import { collection, doc, onSnapshot, runTransaction, serverTimestamp, type Timestamp } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import { db, configured } from "../lib/firebase";
 import { useAuth } from "../hooks/useAuth";
 import { errorText, roomCode } from "../utils/game";
 import { Notice } from "../components/UI";
 import { AlibiRound } from "../components/AlibiRound";
-import type { AlibiRoundData } from "../services/alibi";
+import { leaveAlibi, type AlibiRoundData } from "../services/alibi";
 
 type Player = { uid: string; name: string };
 type Room = { code: string; hostId: string; phase: string; currentRoundId?: string };
@@ -21,6 +21,8 @@ export function Alibi() {
   const [member, setMember] = useState(false);
   const [room, setRoom] = useState<Room | null>(null);
   const [players, setPlayers] = useState<Player[]>([]);
+  const [activity, setActivity] = useState<Record<string, number>>({});
+  const [activityNow, setActivityNow] = useState(Date.now());
   const [round, setRound] = useState<AlibiRoundData | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -34,6 +36,14 @@ export function Alibi() {
     const stopRoom = onSnapshot(doc(db, `alibiRooms/${code}`), s => setRoom(s.exists() ? s.data() as Room : null), e => setError(errorText(e)));
     const stopPlayers = onSnapshot(collection(db, `alibiRooms/${code}/players`), s => setPlayers(s.docs.map(d => d.data() as Player)), e => setError(errorText(e)));
     return () => { stopRoom(); stopPlayers(); };
+  }, [code, member]);
+  useEffect(() => {
+    if (!code || !member) return;
+    const stop = onSnapshot(collection(db, `alibiRooms/${code}/clock`), snapshot => {
+      setActivity(Object.fromEntries(snapshot.docs.map(d => [d.id, (d.data().at as Timestamp | null)?.toMillis() ?? 0])));
+    }, e => setError(errorText(e)));
+    const timer = window.setInterval(() => setActivityNow(Date.now()), 30000);
+    return () => { stop(); window.clearInterval(timer); };
   }, [code, member]);
   useEffect(() => {
     if (!code || !member || !room?.currentRoundId) return;
@@ -117,6 +127,7 @@ export function Alibi() {
         <strong>{p.name}</strong>
         {p.uid === room.hostId && <span className="player-tag host-tag">👑 anfitrião</span>}
         {p.uid === user?.uid && <span className="player-tag me-tag">você</span>}
+        {p.uid !== user?.uid && activity[p.uid] > 0 && activityNow - activity[p.uid] > 240000 && <span className="player-tag">Sem atualização recente</span>}
       </li>)}</ul>
       <div className="alibi-invite">
         <label htmlFor="alibi-link">Link de convite</label>
@@ -125,6 +136,15 @@ export function Alibi() {
           <button className={`button secondary${copied ? " copied" : ""}`} onClick={copy}>{copied ? "✅ Link copiado!" : "Copiar convite"}</button>
         </div>
       </div>
+      <button className="text-button" disabled={busy} onClick={() => {
+        if (!user) return;
+        setBusy(true); setError("");
+        void leaveAlibi(code, user.uid, players.map(p => p.uid)).then(() => {
+          localStorage.removeItem("alibi.room");
+          nav("/alibi-furado");
+        }).catch(e => setError(errorText(e))).finally(() => setBusy(false));
+      }}>Sair da sala</button>
+      {room.phase === "playing" && <p className="muted-line">Se alguém sair, a rodada atual será cancelada.</p>}
       {user && (!room.currentRoundId || round?.id === room.currentRoundId
         ? <AlibiRound key={room.currentRoundId || "lobby"} code={code} uid={user.uid} hostId={room.hostId} round={round} players={players} />
         : <p className="alibi-wait">Carregando rodada…</p>)}

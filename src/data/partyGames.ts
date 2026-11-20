@@ -1,4 +1,6 @@
 import { brazilNumberTopics, brazilRankingTopics } from "./partyGamesBrasil";
+import { moreNumberTopics } from "./partyGamesMoreNumbers";
+import { moreRankingTopics } from "./partyGamesMoreRankings";
 export type PartyMode = "everyone" | "admin";
 export interface PartySource {
   label: string;
@@ -4424,3 +4426,22 @@ Rans Entertainment|26,8 milhões`,
 // Temas brasileiros ficam em partyGamesBrasil.ts.
 numberTopics.push(...brazilNumberTopics);
 rankingTopics.push(...brazilRankingTopics);
+
+// Cartas adicionais conferidas em fontes oficiais em 20/11/2026.
+const triviaDate = "20/11/2026";
+const guinnessPizza = { label: "Guinness World Records · maior pizza", url: "https://www.guinnessworldrecords.com/world-records/largest-pizza" };
+const pokedex = { label: "Pokémon · Pokédex Nacional", url: "https://www.pokemon.com/pokedex/" };
+numberTopics.push(
+  { id: "pizza-gigante-area-2023", kind: "number", category: "Curiosidades", question: "Qual era a área aproximada da maior pizza registrada em 2023?", answer: "1.296,72 m²", scope: "Área em metros quadrados, em Los Angeles, em 19/01/2023.", note: "O recorde mediu a superfície da pizza, não seu diâmetro.", sources: [guinnessPizza], checkedAt: triviaDate },
+  { id: "pizza-gigante-pepperoni-2023", kind: "number", category: "Curiosidades", question: "Quantas fatias de pepperoni foram usadas na pizza gigante registrada em 2023?", answer: "Cerca de 630.496 fatias", scope: "Estimativa registrada pelo Guinness para a pizza de Los Angeles em 2023.", note: "São fatias de pepperoni usadas como cobertura, não pedaços de pizza servidos.", sources: [guinnessPizza], checkedAt: triviaDate },
+  { id: "zeus-cao-altura-2011", kind: "number", category: "Animais", question: "Qual era a altura do cão Zeus, medida até o ombro?", answer: "111,8 cm", scope: "Dogue alemão de Michigan, medido em 2011, em pé sobre as quatro patas.", note: "A medida é até o ombro, não até a ponta da cabeça.", sources: [{ label: "Guinness · cão mais alto", url: "https://www.guinnessworldrecords.com/world-records/tallest-dog-ever" }], checkedAt: triviaDate },
+  { id: "pokemon-pikachu-numero", kind: "number", category: "Games", question: "Qual é o número do Pikachu na Pokédex Nacional?", answer: "25", scope: "Número da Pokédex Nacional, não o nível do personagem.", note: "O Pikachu aparece depois de Ekans e Arbok na lista nacional.", sources: [pokedex], checkedAt: triviaDate },
+);
+rankingTopics.push(
+  { id: "pokemon-pokedex-001-010", kind: "ranking", category: "Games", question: "Quais são os dez primeiros Pokémon da Pokédex Nacional?", scope: "Números 001 a 010, em ordem crescente.", note: "A ordem é a numeração oficial da Pokédex, não popularidade ou força.", sources: [pokedex], checkedAt: triviaDate, items: ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle","Blastoise","Caterpie"].map((name, i) => ({ name, value: `#${String(i + 1).padStart(3, "0")}` })) },
+  { id: "pokemon-pokedex-016-025", kind: "ranking", category: "Games", question: "Quais Pokémon ocupam as posições 16 a 25 da Pokédex Nacional?", scope: "Números 016 a 025, em ordem crescente.", note: "Este recorte termina no Pikachu e usa a numeração nacional oficial.", sources: [pokedex], checkedAt: triviaDate, items: ["Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans","Arbok","Pikachu"].map((name, i) => ({ name, value: `#${String(i + 16).padStart(3, "0")}` })) },
+);
+
+// Temas extras pesquisados por lote, cada jogo no seu arquivo.
+numberTopics.push(...moreNumberTopics);
+rankingTopics.push(...moreRankingTopics);

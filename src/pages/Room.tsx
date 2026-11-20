@@ -10,7 +10,7 @@ import {
   useReady,
 } from "../hooks/useFirestore";
 import * as game from "../services/game";
-import { errorText } from "../utils/game";
+import { errorText, hostAway, pickSuccessor } from "../utils/game";
 import { Notice } from "../components/UI";
 import { RoundContent } from "../components/RoundContent";
 import { InPersonRoom } from "./InPersonRoom";
@@ -47,7 +47,11 @@ function OnlineRoom({
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [news, setNews] = useState<string[]>([]);
   const automatic = useRef(false);
+  const seen = useRef<{ names: Map<string, string>; hostId: string } | null>(
+    null,
+  );
   const r = round.value;
   const host = room.value?.hostId === uid;
   const current = r?.presentationOrder[r.currentPresentationIndex];
@@ -125,6 +129,76 @@ function OnlineRoom({
         });
     }
   }, [host, path, r, ready.value, answers.value, current]);
+  const hostId = room.value?.hostId;
+  const status = room.value?.status;
+  // Announce departures and host changes to whoever stays in the room.
+  useEffect(() => {
+    if (!players.synced || !players.value.length || !hostId) return;
+    const names = new Map(players.value.map((p) => [p.uid, p.name]));
+    const prev = seen.current;
+    seen.current = { names, hostId };
+    if (!prev) return;
+    const messages: string[] = [];
+    for (const [id, name] of prev.names)
+      if (!names.has(id) && id !== uid) messages.push(`${name} saiu da sala.`);
+    if (prev.hostId !== hostId)
+      messages.push(
+        hostId === uid
+          ? "Você agora é o anfitrião."
+          : `${names.get(hostId) ?? prev.names.get(hostId) ?? "Outro jogador"} agora é o anfitrião.`,
+      );
+    if (messages.length) setNews((n) => [...n, ...messages].slice(-4));
+  }, [players.synced, players.value, hostId, uid]);
+  useEffect(() => {
+    if (!news.length) return;
+    const t = setTimeout(() => setNews([]), 8000);
+    return () => clearTimeout(t);
+  }, [news]);
+  // Prolonged host disconnection: the predictable successor (connected first,
+  // then earliest joinedAt) claims the room through a rules-checked transaction.
+  useEffect(() => {
+    if (!joined || host || !hostId || !players.synced) return;
+    if (status !== "LOBBY" && status !== "PLAYING") return;
+    const list = players.value;
+    if (!list.some((p) => p.uid === uid)) return;
+    const check = () => {
+      if (!hostAway(list.find((p) => p.uid === hostId), Date.now())) return;
+      if (pickSuccessor(list, hostId)?.uid !== uid) return;
+      void game.claimHost(code, uid).catch(() => {});
+    };
+    check();
+    const t = setInterval(check, 15000);
+    return () => clearInterval(t);
+  }, [joined, host, hostId, status, players.synced, players.value, code, uid]);
+  // Fewer than two people left during a round: back to the lobby.
+  const alone =
+    players.synced && players.value.length > 0 && players.value.length < 2;
+  useEffect(() => {
+    if (!host || status !== "PLAYING" || !alone) return;
+    void game.backToLobby(code).catch((e) => setError(errorText(e)));
+  }, [host, status, alone, code]);
+  const gone =
+    r && players.synced
+      ? r.playerIds.filter((id) => !players.value.some((p) => p.uid === id))
+          .length
+      : 0;
+  const missing = Math.max(0, 2 - players.value.length);
+  const leave = () => {
+    const others = players.value.filter((p) => p.uid !== uid);
+    const next = host ? pickSuccessor(others, uid) : undefined;
+    const warning = !host
+      ? "Você deixará de fazer parte desta sala."
+      : next
+        ? `${next.name} passará a ser o anfitrião.`
+        : "Você é a última pessoa: a sala será encerrada.";
+    if (!window.confirm(`Tem certeza que deseja sair da sala? ${warning}`))
+      return;
+    void run(async () => {
+      await game.leaveRoom(code, uid, players.value);
+      localStorage.removeItem("entrelinhas.room");
+      nav("/");
+    });
+  };
   const issue =
     error ||
     room.error ||
@@ -172,6 +246,19 @@ function OnlineRoom({
         </button>
       </div>
       {issue && <Notice>{issue}</Notice>}
+      {news.map((n, i) => (
+        <Notice key={`${i}-${n}`}>{n}</Notice>
+      ))}
+      {gone > 0 && (
+        <Notice>
+          {gone === 1
+            ? "Um participante saiu durante a rodada."
+            : `${gone} participantes saíram durante a rodada.`}{" "}
+          {host
+            ? "Se a rodada não puder continuar, use “Voltar ao lobby”."
+            : "Se a rodada travar, o anfitrião pode voltar ao lobby."}
+        </Notice>
+      )}
       <div className="game-grid">
         <aside className="panel participants">
           <h3>
@@ -189,7 +276,9 @@ function OnlineRoom({
                 </b>
                 <small>
                   {p.uid === room.value?.hostId
-                    ? "Anfitrião"
+                    ? p.connected
+                      ? "Anfitrião"
+                      : "Anfitrião · possivelmente ausente"
                     : p.connected
                       ? "Na sala"
                       : "Possivelmente ausente"}
@@ -214,17 +303,27 @@ function OnlineRoom({
           </div>
           <button
             className="text-button"
-            disabled={busy}
-            onClick={() =>
-              void run(async () => {
-                await game.presence(code, uid, false);
-                localStorage.removeItem("entrelinhas.room");
-                nav("/");
-              })
-            }
+            disabled={busy || !joined}
+            onClick={leave}
           >
             <LogOut size={15} /> Sair da sala
           </button>
+          {host && r && (
+            <button
+              className="text-button"
+              disabled={busy}
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Tem certeza? A rodada atual será abandonada e todos voltam ao lobby.",
+                  )
+                )
+                  void run(() => game.backToLobby(code));
+              }}
+            >
+              Voltar ao lobby
+            </button>
+          )}
           {host && (
             <button
               className="text-button danger"
@@ -252,6 +351,13 @@ function OnlineRoom({
                 <br />
                 Precisamos de 2 a 8 pessoas para começar.
               </p>
+              {players.synced && missing > 0 && (
+                <p className="waiting">
+                  {missing === 1
+                    ? "Falta 1 pessoa para começar."
+                    : `Faltam ${missing} pessoas para começar.`}
+                </p>
+              )}
               {host ? (
                 <button
                   className="button primary"

@@ -21,11 +21,15 @@ export function Presentation({
       <div className="presentation-order">
         {r.presentationOrder.map((id, i) => (
           <span key={id} className={current === id ? "active" : ""}>
-            {i + 1}. {players.find((p) => p.uid === id)?.name}
+            {i + 1}.{" "}
+            {players.find((p) => p.uid === id)?.name ?? "Jogador que saiu"}
           </span>
         ))}
       </div>
-      <h3>É a vez de {players.find((p) => p.uid === current)?.name}</h3>
+      <h3>
+        É a vez de{" "}
+        {players.find((p) => p.uid === current)?.name ?? "Jogador que saiu"}
+      </h3>
       <p>
         {r.currentPresentationIndex + 1} de {r.playerIds.length} jogadores
       </p>
@@ -60,7 +64,13 @@ export function Presentation({
           onClick={() =>
             void run(async () => {
               if (!answers.some((a) => a.playerId === current)) {
-                const p = players.find((p) => p.uid === current)!;
+                // A presenter who left the room no longer has a player doc.
+                const p = players.find((p) => p.uid === current) ?? {
+                  uid: current!,
+                  name: "Jogador que saiu",
+                  connected: false,
+                  joinedAt: null,
+                };
                 await game.submitAnswer(
                   path!,
                   p,

@@ -35,9 +35,12 @@ function useDocument<T>(path: string | null, committedOnly = false) {
 function useCollection<T>(path: string | null, serverOnly = false, retry = 0) {
   const [value, setValue] = useState<T[]>([]);
   const [error, setError] = useState("");
+  // True only while the latest snapshot came from the server (not the cache).
+  const [synced, setSynced] = useState(false);
   useEffect(() => {
     setValue([]);
     setError("");
+    setSynced(false);
     if (!path) return;
     return onSnapshot(
       collection(db, path),
@@ -46,15 +49,17 @@ function useCollection<T>(path: string | null, serverOnly = false, retry = 0) {
         if (serverOnly && (s.metadata.fromCache || s.metadata.hasPendingWrites))
           return;
         setError("");
+        setSynced(!s.metadata.fromCache);
         setValue(s.docs.map((d) => d.data() as T));
       },
       (e) => {
         setValue([]);
+        setSynced(false);
         setError(errorText(e));
       },
     );
   }, [path, serverOnly, retry]);
-  return { value, error };
+  return { value, error, synced };
 }
 export const useRoom = (code: string) => useDocument<Room>(`rooms/${code}`, true);
 export const useInPersonCard = (code: string | null, uid: string) =>

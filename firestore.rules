@@ -28,6 +28,11 @@ service cloud.firestore {
     && request.resource.data.count == resource.data.count + 1
     && !exists(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid))
     && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid)).data.uid == request.auth.uid;
+   allow update: if alibiMember(c) && resource.data.count > 0
+    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count','open'])
+    && request.resource.data.count == resource.data.count - 1
+    && request.resource.data.open == (request.resource.data.count > 0)
+    && !existsAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid));
    allow delete: if false;
   }
   match /alibiRooms/{c} {
@@ -48,10 +53,19 @@ service cloud.firestore {
     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
     && request.resource.data.phase == 'lobby'
     && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(resource.data.currentRoundId)).data.phase == 'result';
+   allow update: if alibiMember(c)
+    && !existsAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid))
+    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['hostId','phase'])
+    && request.resource.data.phase == 'lobby'
+    && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == get(/databases/$(database)/documents/alibiInvites/$(c)).data.count - 1
+    && (resource.data.phase == 'lobby' || getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(resource.data.currentRoundId)).data.phase == 'cancelled')
+    && ((resource.data.hostId != request.auth.uid && request.resource.data.hostId == resource.data.hostId)
+     || (resource.data.hostId == request.auth.uid && ((getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == 0 && request.resource.data.hostId == '')
+      || (getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count > 0 && request.resource.data.hostId != request.auth.uid
+       && existsAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.resource.data.hostId))))));
    allow delete: if false;
    match /clock/{uid} {
-    allow get: if alibiMember(c) && request.auth.uid == uid;
-    allow list: if false;
+    allow read: if alibiMember(c);
     allow create, update: if alibiMember(c) && request.auth.uid == uid
      && request.resource.data.keys().hasOnly(['at']) && request.resource.data.at == request.time;
     allow delete: if false;
@@ -122,6 +136,10 @@ service cloud.firestore {
       && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'lobby')
      || (alibiHost(c) && !(resource.data.phase in ['result','cancelled']) && request.resource.data.phase == 'cancelled'
       && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
+      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'lobby')
+     || (!(resource.data.phase in ['result','cancelled']) && request.resource.data.phase == 'cancelled'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
+      && !existsAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid))
       && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'lobby'));
     allow delete: if false;
     match /answers/{uid} {
@@ -170,10 +188,22 @@ service cloud.firestore {
       || (exists(/databases/$(database)/documents/alibiInvites/$(c))
        && get(/databases/$(database)/documents/alibiInvites/$(c)).data.count < 8
        && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == get(/databases/$(database)/documents/alibiInvites/$(c)).data.count + 1));
-    allow update, delete: if false;
+    allow delete: if alibiMember(c) && request.auth.uid == uid
+     && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'lobby'
+     && (alibiRoom(c).hostId != uid || getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.hostId != uid)
+     && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == get(/databases/$(database)/documents/alibiInvites/$(c)).data.count - 1;
+    allow update: if false;
    }
   }
   match /rooms/{c} {
+   function playerDoc(c,u) { return /databases/$(database)/documents/rooms/$(c)/players/$(u); }
+   // Host takeover after a prolonged disconnection: the host's player document
+   // is gone, or it says connected == false and its server-stamped presenceAt is
+   // older than 3 minutes (HOST_TAKEOVER_MINUTES in src/utils/game.ts).
+   function hostAway(h) { return !exists(playerDoc(c,h))
+    || (get(playerDoc(c,h)).data.connected == false && get(playerDoc(c,h)).data.get('presenceAt', null) is timestamp
+     && request.time > get(playerDoc(c,h)).data.presenceAt + duration.value(3, 'm')); }
+   function onlyKeys(k) { return request.resource.data.diff(resource.data).affectedKeys().hasOnly(k); }
    // Exact code lookup is necessary to join. Listing/enumeration is forbidden.
    allow get: if signed();
    allow list: if false;
@@ -191,6 +221,24 @@ service cloud.firestore {
      && request.resource.data.currentRoundId == string(request.resource.data.roundNo)
      && (resource.data.status == 'LOBBY' || rnd(c,resource.data.currentRoundId).state == 'RESULT')
      && getAfter(/databases/$(database)/documents/rooms/$(c)/rounds/$(request.resource.data.currentRoundId)).data.state == 'WAITING_FOR_THEME'));
+   // Host abandons the current round and returns to the lobby (a participant left, etc.).
+   allow update: if host(c) && resource.data.get('mode','ONLINE') == 'ONLINE' && resource.data.status == 'PLAYING'
+    && onlyKeys(['status','currentRoundId']) && request.resource.data.status == 'LOBBY' && request.resource.data.currentRoundId == '';
+   // Voluntary host exit: in the same commit the host deletes its own player document
+   // and hands hostId to another existing member (optionally returning to the lobby).
+   allow update: if host(c) && resource.data.get('mode','ONLINE') == 'ONLINE' && resource.data.status != 'CLOSED'
+    && onlyKeys(['hostId','status','currentRoundId'])
+    && request.resource.data.hostId != request.auth.uid && request.resource.data.hostId is string
+    && exists(playerDoc(c,request.resource.data.hostId)) && existsAfter(playerDoc(c,request.resource.data.hostId))
+    && !existsAfter(playerDoc(c,request.auth.uid))
+    && ((request.resource.data.status == resource.data.status && request.resource.data.currentRoundId == resource.data.currentRoundId)
+     || (resource.data.status == 'PLAYING' && request.resource.data.status == 'LOBBY' && request.resource.data.currentRoundId == ''));
+   // Takeover: a connected member claims hostId for itself while the current host is away.
+   allow update: if member(c) && resource.data.get('mode','ONLINE') == 'ONLINE' && resource.data.status != 'CLOSED'
+    && onlyKeys(['hostId']) && request.resource.data.hostId == request.auth.uid
+    && resource.data.hostId != request.auth.uid
+    && get(playerDoc(c,request.auth.uid)).data.connected == true
+    && hostAway(resource.data.hostId);
    allow delete: if false;
    allow update: if host(c) && resource.data.get('mode','ONLINE') == 'IN_PERSON' && resource.data.status == 'LOBBY'
     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['deal'])
@@ -211,13 +259,22 @@ service cloud.firestore {
     allow list: if member(c);
     allow create: if signed() && request.auth.uid == uid
      && getAfter(/databases/$(database)/documents/rooms/$(c)).data.status == 'LOBBY'
-     && request.resource.data.keys().hasOnly(['uid','name','connected','joinedAt'])
+     && request.resource.data.keys().hasOnly(['uid','name','connected','joinedAt','presenceAt'])
      && request.resource.data.uid == uid && text(request.resource.data.name,24)
-     && request.resource.data.connected == true && request.resource.data.joinedAt == request.time;
+     && request.resource.data.connected == true && request.resource.data.joinedAt == request.time
+     && request.resource.data.get('presenceAt', request.time) == request.time;
     allow update: if member(c) && request.auth.uid == uid && room(c).status != 'CLOSED'
-     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['connected'])
-     && request.resource.data.connected is bool;
+     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['connected','presenceAt'])
+     && request.resource.data.connected is bool
+     && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['presenceAt']) || request.resource.data.presenceAt == request.time);
     allow delete: if host(c) && room(c).status == 'LOBBY' && uid != room(c).hostId;
+    // Voluntary exit (ONLINE): a member removes itself. The host must hand over
+    // hostId in the same commit, or close the room when it is the last one.
+    allow delete: if member(c) && request.auth.uid == uid && room(c).get('mode','ONLINE') == 'ONLINE'
+     && room(c).status != 'CLOSED'
+     && (room(c).hostId != uid
+      || getAfter(/databases/$(database)/documents/rooms/$(c)).data.hostId != uid
+      || getAfter(/databases/$(database)/documents/rooms/$(c)).data.status == 'CLOSED');
    }
    match /rounds/{r} {
     allow read: if member(c);
@@ -272,9 +329,12 @@ service cloud.firestore {
       && rnd(c,r).presentationOrder[rnd(c,r).currentPresentationIndex] == uid
       && request.resource.data.keys().hasOnly(['playerId','playerName','answer','skipped'])
       && request.resource.data.playerId == uid && text(request.resource.data.answer,100)
-      && request.resource.data.playerName == get(/databases/$(database)/documents/rooms/$(c)/players/$(uid)).data.name
-      && ((request.auth.uid == uid && request.resource.data.skipped == false)
-       || (host(c) && request.resource.data.skipped == true && request.resource.data.answer == 'Sem pista — jogador pulado'));
+      && ((exists(playerDoc(c,uid)) && request.resource.data.playerName == get(playerDoc(c,uid)).data.name
+        && ((request.auth.uid == uid && request.resource.data.skipped == false)
+         || (host(c) && request.resource.data.skipped == true && request.resource.data.answer == 'Sem pista — jogador pulado')))
+       // The presenter left the room: only the host may skip, with fixed texts.
+       || (!exists(playerDoc(c,uid)) && host(c) && request.resource.data.skipped == true
+        && request.resource.data.playerName == 'Jogador que saiu' && request.resource.data.answer == 'Sem pista — jogador pulado'));
      allow update: if false;
      allow delete: if cleanup(c,r);
     }

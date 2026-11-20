@@ -388,6 +388,9 @@
 .alibi-timer strong { font-size: clamp(3.5rem, 15vw, 6rem); font-variant-numeric: tabular-nums; }
 .alibi-reveal { padding: 1rem; margin: 1rem 0; border: 1px solid currentColor; border-radius: 1rem; }
 .alibi-answers { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.game-help { max-width: 900px; margin: 20px auto 0; padding: 0 16px; color: var(--ink); }
+.game-help summary { cursor: pointer; color: var(--accent); font-weight: 700; padding: 10px 0; }
+.game-help ol { margin: 0; padding: 14px 16px 14px 36px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); line-height: 1.6; }
 .alibi-comparison-summary { padding: 1rem; margin: 1rem 0; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface-soft); }
 .alibi-comparison-summary p { color: var(--muted); margin: .5rem 0 0; font-size: .9rem; line-height: 1.5; }
 .alibi-comparison { margin: .75rem 0 0; font-size: .9rem; font-weight: 700; color: var(--ink); }

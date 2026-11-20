@@ -16,6 +16,9 @@ import {
   writeBatch,
   serverTimestamp,
   runTransaction,
+  deleteDoc,
+  deleteField,
+  Timestamp,
 } from "firebase/firestore";
 const enabled = Boolean(process.env.FIRESTORE_EMULATOR_HOST);
 describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
@@ -26,7 +29,7 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
       projectId: "demo-entrelinhas",
       firestore: { rules: readFileSync("firestore.rules", "utf8") },
     });
-  });
+  }, 30000);
   afterAll(async () => {
     await env?.cleanup();
   });
@@ -429,5 +432,107 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
         joinedAt: serverTimestamp(),
       }),
     );
+  });
+  describe("Entrelinhas: saída voluntária e transferência de anfitrião", () => {
+    const room = "rooms/ABCDE";
+    const as = (uid: string) => env.authenticatedContext(uid).firestore();
+    const setHost = (data: Record<string, unknown>) =>
+      env.withSecurityRulesDisabled(async (c) => {
+        await updateDoc(doc(c.firestore(), `${room}/players/a`), data);
+      });
+    const minutesAgo = (m: number) => Timestamp.fromMillis(Date.now() - m * 60_000);
+    it("jogador sai por conta própria, mas não remove outros", async () => {
+      await assertFails(deleteDoc(doc(as("c"), `${room}/players/d`)));
+      await assertSucceeds(deleteDoc(doc(as("b"), `${room}/players/b`)));
+      await assertFails(getDoc(doc(as("b"), path)));
+      await assertFails(getDocs(collection(as("b"), `${room}/players`)));
+      // O anfitrião não pode simplesmente sumir sem passar o posto.
+      await assertFails(deleteDoc(doc(as("a"), `${room}/players/a`)));
+    });
+    it("anfitrião sai e passa o posto a outro membro no mesmo commit", async () => {
+      const a = as("a");
+      await assertFails(updateDoc(doc(a, room), { hostId: "b" }));
+      const stranger = writeBatch(a);
+      stranger.update(doc(a, room), { hostId: "x" });
+      stranger.delete(doc(a, `${room}/players/a`));
+      await assertFails(stranger.commit());
+      const sneaky = writeBatch(a);
+      sneaky.update(doc(a, room), { hostId: "b", roundNo: 9 });
+      sneaky.delete(doc(a, `${room}/players/a`));
+      await assertFails(sneaky.commit());
+      const leave = writeBatch(a);
+      leave.update(doc(a, room), { hostId: "b" });
+      leave.delete(doc(a, `${room}/players/a`));
+      await assertSucceeds(leave.commit());
+      const b = as("b");
+      expect((await getDoc(doc(b, room))).data()?.hostId).toBe("b");
+      await assertFails(updateDoc(doc(as("c"), room), { status: "LOBBY", currentRoundId: "" }));
+      await assertSucceeds(updateDoc(doc(b, room), { status: "LOBBY", currentRoundId: "" }));
+    });
+    it("último anfitrião a sair encerra a sala; menos de 2 jogadores volta ao lobby", async () => {
+      await env.withSecurityRulesDisabled(async (c) => {
+        for (const uid of ["c", "d"]) await deleteDoc(doc(c.firestore(), `${room}/players/${uid}`));
+      });
+      const a = as("a");
+      const toLobby = writeBatch(a);
+      toLobby.update(doc(a, room), { hostId: "b", status: "LOBBY", currentRoundId: "" });
+      toLobby.delete(doc(a, `${room}/players/a`));
+      await assertSucceeds(toLobby.commit());
+      const b = as("b");
+      const last = writeBatch(b);
+      last.update(doc(b, room), { status: "CLOSED" });
+      last.delete(doc(b, `${room}/players/b`));
+      await assertSucceeds(last.commit());
+    });
+    it("presença registra horário do servidor", async () => {
+      const b = as("b");
+      await assertSucceeds(updateDoc(doc(b, `${room}/players/b`), { connected: false, presenceAt: serverTimestamp() }));
+      await assertFails(updateDoc(doc(b, `${room}/players/b`), { connected: false, presenceAt: minutesAgo(30) }));
+    });
+    it("anfitrião desconectado há pouco tempo (ou sem horário) não pode ser substituído", async () => {
+      await setHost({ connected: false, presenceAt: minutesAgo(1) });
+      await assertFails(updateDoc(doc(as("b"), room), { hostId: "b" }));
+      await setHost({ connected: true, presenceAt: minutesAgo(60) });
+      await assertFails(updateDoc(doc(as("b"), room), { hostId: "b" }));
+      await setHost({ connected: false, presenceAt: deleteField() });
+      await assertFails(updateDoc(doc(as("b"), room), { hostId: "b" }));
+    });
+    it("não-membro e membro em nome de outro não assumem", async () => {
+      await setHost({ connected: false, presenceAt: minutesAgo(10) });
+      await assertFails(updateDoc(doc(as("x"), room), { hostId: "x" }));
+      await assertFails(updateDoc(doc(as("b"), room), { hostId: "c" }));
+      await env.withSecurityRulesDisabled(async (c) => {
+        await updateDoc(doc(c.firestore(), `${room}/players/b`), { connected: false });
+      });
+      await assertFails(updateDoc(doc(as("b"), room), { hostId: "b" }));
+    });
+    it("dois candidatos tentam assumir: apenas um vira anfitrião", async () => {
+      await setHost({ connected: false, presenceAt: minutesAgo(10) });
+      const claim = (uid: string) => {
+        const db = as(uid);
+        return runTransaction(db, async (tx) => {
+          const ref = doc(db, room);
+          const current = (await tx.get(ref)).data()!;
+          if (current.hostId !== "a") throw new Error("já transferido");
+          tx.update(ref, { hostId: uid });
+        });
+      };
+      const results = await Promise.allSettled([claim("b"), claim("c")]);
+      expect(results.filter((x) => x.status === "fulfilled")).toHaveLength(1);
+      const winner = (await getDoc(doc(as("d"), room))).data()?.hostId;
+      expect(["b", "c"]).toContain(winner);
+      // Sem transação, um terceiro também é barrado: o novo anfitrião está conectado.
+      await assertFails(updateDoc(doc(as("d"), room), { hostId: "d" }));
+    });
+    it("anfitrião pode pular quem saiu durante a apresentação", async () => {
+      await env.withSecurityRulesDisabled(async (c) => {
+        await updateDoc(doc(c.firestore(), path), { state: "PRESENTING", presentationOrder: ["b", "a", "c", "d"] });
+      });
+      await assertSucceeds(deleteDoc(doc(as("b"), `${room}/players/b`)));
+      const skip = { playerId: "b", playerName: "Jogador que saiu", answer: "Sem pista — jogador pulado", skipped: true };
+      await assertFails(setDoc(doc(as("c"), `${path}/answers/b`), skip));
+      await assertFails(setDoc(doc(as("a"), `${path}/answers/b`), { ...skip, playerName: "Outro" }));
+      await assertSucceeds(setDoc(doc(as("a"), `${path}/answers/b`), skip));
+    });
   });
 });

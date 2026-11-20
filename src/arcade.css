@@ -130,7 +130,7 @@ html body::before {
   transform: perspective(320px) rotateX(64deg) translateY(0);
   -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 92%);
   mask-image: linear-gradient(to top, #000 10%, transparent 92%);
-  animation: grid-run 1.6s linear infinite;
+  animation: grid-run 4.5s linear infinite;
   will-change: transform;
 }
 @keyframes grid-run {
@@ -309,7 +309,7 @@ html body .game-tabs a.active {
 }
 html body .game-tabs a.active::before {
   content: "▶ ";
-  animation: blink 0.9s steps(1, end) infinite;
+  animation: none;
 }
 html body .theme-toggle {
   border-radius: 6px;
@@ -321,7 +321,7 @@ html body .theme-toggle {
 }
 .credits b {
   font-weight: 400;
-  animation: blink 1.6s steps(1, end) infinite;
+  animation: none;
 }
 html body .logo-dice {
   filter: drop-shadow(3px 3px 0 var(--hard)) drop-shadow(0 0 12px #ffc23d55);
@@ -470,5 +470,34 @@ html body .alibi-ticket {
   }
   html body::before {
     height: 30vh;
+  }
+}
+
+/* ---------- Menos coisa se mexendo na página inicial ---------- */
+/* Selo "NOVO" parado (só inclinado). */
+html body .choice-badge {
+  animation: none;
+  transform: rotate(6deg);
+}
+/* Só 4 peças flutuantes, lentas e discretas. */
+html body .floater.f5,
+html body .floater.f6 {
+  display: none;
+}
+html body .floater {
+  opacity: 0.7;
+  animation-name: float-soft;
+}
+html body .floater.f1 { animation-duration: 11s; }
+html body .floater.f2 { animation-duration: 13s; }
+html body .floater.f3 { animation-duration: 12s; }
+html body .floater.f4 { animation-duration: 14s; }
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-5px) rotate(calc(var(--r, 0deg) + 3deg));
   }
 }

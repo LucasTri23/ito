@@ -25,6 +25,7 @@ interface Choice {
   text: string;
   cta: string;
   badge?: string;
+  setup: string;
 }
 
 const choices: Choice[] = [
@@ -36,6 +37,7 @@ const choices: Choice[] = [
     title: "Entrelinhas",
     text: "Números secretos, pistas e muita sintonia. Crie uma sala e reúna os amigos.",
     cta: "Entrar no jogo",
+    setup: "2 a 8 pessoas online · um aparelho por pessoa",
   },
   {
     to: "/alibi-furado",
@@ -46,6 +48,7 @@ const choices: Choice[] = [
     text: "Dois suspeitos, uma história e perguntas que colocam a memória à prova.",
     cta: "Abrir o jogo",
     badge: "Novo",
+    setup: "2 a 8 pessoas · um aparelho por pessoa",
   },
   {
     to: "/quem-sou-eu",
@@ -55,6 +58,7 @@ const choices: Choice[] = [
     title: "Quem sou eu?",
     text: "Um nome, uma breve explicação e a diversão na mesa. É só escolher a categoria e sortear.",
     cta: "Sortear um nome",
+    setup: "Em grupo · um aparelho para conduzir",
   },
   {
     to: "/eu-duvido",
@@ -64,6 +68,7 @@ const choices: Choice[] = [
     title: "Eu duvido!",
     text: "Quanto mede? Quantos tem? Aposte no seu palpite e descubra números que surpreendem.",
     cta: "Arriscar um palpite",
+    setup: "Em grupo · um aparelho para todos",
   },
   {
     to: "/top-10",
@@ -73,6 +78,7 @@ const choices: Choice[] = [
     title: "Top 10",
     text: "Séries, bilheterias, games e nomes. Um tema para tentar lembrar os dez primeiros.",
     cta: "Descobrir o ranking",
+    setup: "Em grupo · um aparelho para todos",
   },
 ];
 
@@ -119,6 +125,7 @@ export function GameHub() {
             <span className="eyebrow">{choice.eyebrow}</span>
             <h2>{choice.title}</h2>
             <p>{choice.text}</p>
+            <small>{choice.setup}</small>
             <strong>
               {choice.cta} <ArrowUpRight size={20} />
             </strong>

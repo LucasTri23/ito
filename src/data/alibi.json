@@ -118,5 +118,2885 @@
       "Quem segurou o chapéu?",
       "O que vocês falaram ao motorista?"
     ]
+  },
+  {
+    "id": "festa-002",
+    "category": "festa",
+    "situation": "Vocês apareceram no aniversário com uma piñata que não passava pela porta.",
+    "questions": [
+      "Quem carregava a piñata?",
+      "O que havia dentro dela?",
+      "Como vocês conseguiram entrar?"
+    ]
+  },
+  {
+    "id": "festa-003",
+    "category": "festa",
+    "situation": "Vocês interromperam a dança para procurar o dono de um sapato brilhante.",
+    "questions": [
+      "Onde encontraram o sapato?",
+      "Quem anunciou a busca?",
+      "Como o dono provou que era dele?"
+    ]
+  },
+  {
+    "id": "festa-004",
+    "category": "festa",
+    "situation": "Vocês foram contratados para surpreender alguém, mas tocaram a campainha da casa errada.",
+    "questions": [
+      "Qual era a surpresa?",
+      "Quem abriu a porta?",
+      "O que vocês disseram para se desculpar?"
+    ]
+  },
+  {
+    "id": "festa-005",
+    "category": "festa",
+    "situation": "Vocês acabaram responsáveis por apagar velinhas que não paravam de reacender.",
+    "questions": [
+      "De quem era o aniversário?",
+      "Qual foi a primeira tentativa de apagar as velas?",
+      "Quem finalmente resolveu o problema?"
+    ]
+  },
+  {
+    "id": "viagem-002",
+    "category": "viagem",
+    "situation": "Vocês embarcaram numa excursão e só depois descobriram que o destino era uma feira de plantas.",
+    "questions": [
+      "Para onde vocês pensavam que estavam indo?",
+      "Quem percebeu a troca?",
+      "O que vocês trouxeram da feira?"
+    ]
+  },
+  {
+    "id": "viagem-003",
+    "category": "viagem",
+    "situation": "Vocês chegaram à praia com uma barraca sem varetas e uma caixa cheia de brinquedos.",
+    "questions": [
+      "Quem preparou a bagagem?",
+      "Como vocês improvisaram sombra?",
+      "Qual brinquedo apareceu primeiro?"
+    ]
+  },
+  {
+    "id": "viagem-004",
+    "category": "viagem",
+    "situation": "Vocês precisaram explicar por que a recepção do hotel recebeu uma encomenda de cem cartões-postais.",
+    "questions": [
+      "Quem fez o pedido?",
+      "O que aparecia nos cartões?",
+      "Qual era o plano para usá-los?"
+    ]
+  },
+  {
+    "id": "viagem-005",
+    "category": "viagem",
+    "situation": "Vocês foram buscar informações turísticas e voltaram conduzindo um pequeno desfile.",
+    "questions": [
+      "Onde o desfile começou?",
+      "Quem entregou a vocês o primeiro objeto do desfile?",
+      "Aonde o grupo chegou?"
+    ]
+  },
+  {
+    "id": "trabalho-002",
+    "category": "trabalho",
+    "situation": "Vocês organizaram uma videoconferência e o fundo de todos virou uma paisagem de dinossauros.",
+    "questions": [
+      "Quem mudou o fundo primeiro?",
+      "Qual foi a reação da equipe?",
+      "Como vocês explicaram o cenário?"
+    ]
+  },
+  {
+    "id": "trabalho-003",
+    "category": "trabalho",
+    "situation": "Vocês chegaram para apresentar um projeto com um cartaz montado de cabeça para baixo.",
+    "questions": [
+      "Qual era o assunto do projeto?",
+      "Quem percebeu o cartaz invertido?",
+      "O que vocês fizeram durante a apresentação?"
+    ]
+  },
+  {
+    "id": "trabalho-004",
+    "category": "trabalho",
+    "situation": "Vocês descobriram que a sala de reunião tinha sido reservada também para uma aula de dança.",
+    "questions": [
+      "Quem chegou primeiro à sala?",
+      "Qual música começou a tocar?",
+      "Onde a reunião aconteceu depois?"
+    ]
+  },
+  {
+    "id": "escola-002",
+    "category": "escola",
+    "situation": "Vocês foram apresentar um experimento e trouxeram um bolo no lugar do material.",
+    "questions": [
+      "Qual era o experimento planejado?",
+      "Quem levou a caixa trocada?",
+      "O que vocês fizeram com o bolo?"
+    ]
+  },
+  {
+    "id": "escola-003",
+    "category": "escola",
+    "situation": "Vocês ajudaram a organizar uma gincana, mas esconderam a pista final no lugar errado.",
+    "questions": [
+      "Onde a pista deveria estar?",
+      "Quem percebeu que ela havia sumido?",
+      "Onde ela foi encontrada?"
+    ]
+  },
+  {
+    "id": "escola-004",
+    "category": "escola",
+    "situation": "Vocês foram escolhidos para narrar uma peça escolar sem conhecer o final.",
+    "questions": [
+      "Qual personagem apareceu primeiro?",
+      "Quem inventou o encerramento?",
+      "Como o público reagiu?"
+    ]
+  },
+  {
+    "id": "familia-002",
+    "category": "família",
+    "situation": "Vocês tentaram tirar uma foto de família, mas alguém configurou uma contagem regressiva muito longa.",
+    "questions": [
+      "Onde todos estavam posicionados?",
+      "Quem mexeu na câmera?",
+      "O que aconteceu antes do clique?"
+    ]
+  },
+  {
+    "id": "familia-003",
+    "category": "família",
+    "situation": "Vocês chegaram ao almoço com uma receita antiga escrita em um guardanapo manchado.",
+    "questions": [
+      "Quem entregou a receita?",
+      "Qual ingrediente estava ilegível?",
+      "Como decidiram preparar o prato?"
+    ]
+  },
+  {
+    "id": "familia-004",
+    "category": "família",
+    "situation": "Vocês se ofereceram para montar uma estante e sobraram três peças misteriosas.",
+    "questions": [
+      "Quem leu o manual?",
+      "Onde estavam as peças que sobraram?",
+      "O que vocês colocaram primeiro na estante?"
+    ]
+  },
+  {
+    "id": "vizinhanca-002",
+    "category": "vizinhança",
+    "situation": "Vocês foram vistos regando uma planta que tinha aparecido na calçada durante a noite.",
+    "questions": [
+      "Quem encontrou a planta?",
+      "Em que recipiente vocês trouxeram água?",
+      "Como descobriram a quem ela pertencia?"
+    ]
+  },
+  {
+    "id": "vizinhanca-003",
+    "category": "vizinhança",
+    "situation": "Vocês trocaram os números de duas casas ao ajudar na decoração da rua.",
+    "questions": [
+      "Quais números foram trocados?",
+      "Quem percebeu a confusão?",
+      "Como vocês consertaram a troca?"
+    ]
+  },
+  {
+    "id": "vizinhanca-004",
+    "category": "vizinhança",
+    "situation": "Vocês receberam uma encomenda para um vizinho que ninguém conhecia pelo nome da etiqueta.",
+    "questions": [
+      "O que estava escrito na etiqueta?",
+      "Quem vocês consultaram primeiro?",
+      "Como descobriram o destinatário?"
+    ]
+  },
+  {
+    "id": "restaurante-002",
+    "category": "restaurante",
+    "situation": "Vocês pediram o prato do dia e foram convidados a escolher o nome dele para o cardápio.",
+    "questions": [
+      "Qual ingrediente chamou atenção?",
+      "Que nome vocês sugeriram?",
+      "Quem contou a ideia ao cozinheiro?"
+    ]
+  },
+  {
+    "id": "restaurante-003",
+    "category": "restaurante",
+    "situation": "Vocês encontraram uma mensagem dobrada dentro do guardanapo de uma mesa vazia.",
+    "questions": [
+      "O que dizia a mensagem?",
+      "Quem abriu o guardanapo?",
+      "A quem vocês entregaram o bilhete?"
+    ]
+  },
+  {
+    "id": "compras-002",
+    "category": "compras",
+    "situation": "Vocês entraram numa loja para comprar pilhas e saíram com um mapa desenhado pelo vendedor.",
+    "questions": [
+      "Onde o mapa começava?",
+      "O que havia no destino indicado?",
+      "Quem guardou o mapa?"
+    ]
+  },
+  {
+    "id": "compras-003",
+    "category": "compras",
+    "situation": "Vocês ajudaram a testar um guarda-chuva dentro de uma loja e molharam a vitrine.",
+    "questions": [
+      "De onde veio a água?",
+      "Quem segurava o guarda-chuva?",
+      "Como vocês secaram a vitrine?"
+    ]
+  },
+  {
+    "id": "esporte-002",
+    "category": "esporte",
+    "situation": "Vocês assumiram a narração de um jogo e confundiram o nome dos dois times.",
+    "questions": [
+      "Qual era o esporte?",
+      "Quem percebeu a confusão?",
+      "Como vocês corrigiram a narração?"
+    ]
+  },
+  {
+    "id": "esporte-003",
+    "category": "esporte",
+    "situation": "Vocês encontraram uma bola no parque com um recado preso por barbante.",
+    "questions": [
+      "O que dizia o recado?",
+      "Quem soltou o barbante?",
+      "Para onde levaram a bola?"
+    ]
+  },
+  {
+    "id": "evento-002",
+    "category": "evento",
+    "situation": "Vocês foram chamados ao palco para receber um prêmio destinado a outra dupla.",
+    "questions": [
+      "Qual era o prêmio?",
+      "Quem percebeu o engano?",
+      "O que vocês disseram ao devolver o prêmio?"
+    ]
+  },
+  {
+    "id": "evento-003",
+    "category": "evento",
+    "situation": "Vocês precisaram substituir uma placa de boas-vindas que havia voado durante a cerimônia.",
+    "questions": [
+      "Onde a placa foi encontrada?",
+      "Com que material vocês fizeram a substituta?",
+      "Quem a colocou na entrada?"
+    ]
+  },
+  {
+    "id": "tecnologia-002",
+    "category": "tecnologia",
+    "situation": "Vocês programaram um despertador para lembrar um compromisso, mas ele começou a contar piadas.",
+    "questions": [
+      "Qual era o compromisso?",
+      "Quem configurou o aparelho?",
+      "O que vocês fizeram para silenciá-lo?"
+    ]
+  },
+  {
+    "id": "tecnologia-003",
+    "category": "tecnologia",
+    "situation": "Vocês tentaram imprimir uma página e a impressora começou a soltar desenhos de bigodes.",
+    "questions": [
+      "O que vocês queriam imprimir?",
+      "Quem recolheu as folhas?",
+      "O que causou a confusão?"
+    ]
+  },
+  {
+    "id": "absurdo-002",
+    "category": "imprevistos",
+    "situation": "Vocês tiveram de convencer uma arara a devolver a chave de uma bicicleta.",
+    "questions": [
+      "Onde a arara pegou a chave?",
+      "Quem conversou com ela?",
+      "O que ela recebeu em troca?"
+    ]
+  },
+  {
+    "id": "absurdo-003",
+    "category": "imprevistos",
+    "situation": "Vocês chegaram a uma praça onde todas as estátuas ganharam cachecóis durante a madrugada.",
+    "questions": [
+      "Qual estátua vocês viram primeiro?",
+      "Quem encontrou uma pista?",
+      "O que estava escrito na pista?"
+    ]
+  },
+  {
+    "id": "absurdo-004",
+    "category": "imprevistos",
+    "situation": "Vocês precisaram atravessar uma sala sem acordar um robô que roncava no meio do caminho.",
+    "questions": [
+      "Por que precisavam atravessar?",
+      "Quem passou primeiro?",
+      "Que barulho quase acordou o robô?"
+    ]
+  },
+  {
+    "id": "absurdo-005",
+    "category": "imprevistos",
+    "situation": "Vocês foram nomeados juízes de um concurso de chapéus para espantalhos.",
+    "questions": [
+      "Onde aconteceu o concurso?",
+      "Qual era o chapéu vencedor?",
+      "Quem entregou o prêmio?"
+    ]
+  },
+  {
+    "id": "festa-101",
+    "category": "festa",
+    "situation": "Vocês chegaram à festa junina vestidos de astronautas, jurando que esse era o tema combinado.",
+    "questions": [
+      "Quem disse que o tema era espaço?",
+      "De onde vieram os capacetes?",
+      "Com quem cada um dançou a quadrilha?"
+    ]
+  },
+  {
+    "id": "festa-102",
+    "category": "festa",
+    "situation": "Vocês foram flagrados escondendo todos os brigadeiros do aniversário dentro de uma caixa de sapatos.",
+    "questions": [
+      "Quantos brigadeiros cabiam na caixa?",
+      "Onde a caixa foi escondida?",
+      "Quem deu o flagra em vocês?"
+    ]
+  },
+  {
+    "id": "festa-103",
+    "category": "festa",
+    "situation": "Vocês ganharam o bingo da quermesse e o prêmio era um bode de verdade.",
+    "questions": [
+      "Qual número completou a cartela?",
+      "Que nome vocês deram ao bode?",
+      "Como levaram o bode para casa?"
+    ]
+  },
+  {
+    "id": "festa-104",
+    "category": "festa",
+    "situation": "Vocês assumiram o som da festa e só conseguiram tocar a mesma música por duas horas.",
+    "questions": [
+      "Qual era a música?",
+      "Quem tentou trocar e não conseguiu?",
+      "O que os convidados pediram aos gritos?"
+    ]
+  },
+  {
+    "id": "festa-105",
+    "category": "festa",
+    "situation": "Vocês foram vistos amarrando balões de gás numa cadeira de praia no quintal da festa.",
+    "questions": [
+      "Quantos balões vocês usaram?",
+      "Quem sentou na cadeira?",
+      "Até que altura a cadeira subiu?"
+    ]
+  },
+  {
+    "id": "festa-106",
+    "category": "festa",
+    "situation": "Vocês apareceram no chá de bebê com um presente embrulhado em jornal que fazia tique-taque.",
+    "questions": [
+      "O que era o presente?",
+      "Quem embrulhou?",
+      "O que a futura mamãe disse ao abrir?"
+    ]
+  },
+  {
+    "id": "festa-107",
+    "category": "festa",
+    "situation": "Vocês ficaram encarregados do churrasco e serviram todas as carnes cortadas em forma de coração.",
+    "questions": [
+      "De quem foi a ideia?",
+      "Qual carne foi mais difícil de cortar?",
+      "Qual foi o primeiro comentário que vocês ouviram?"
+    ]
+  },
+  {
+    "id": "festa-108",
+    "category": "festa",
+    "situation": "Vocês foram encontrados dentro do pula-pula da festa infantil depois que todas as crianças já tinham ido embora.",
+    "questions": [
+      "Por que vocês entraram?",
+      "Quem encontrou vocês?",
+      "Que desculpa vocês deram?"
+    ]
+  },
+  {
+    "id": "festa-109",
+    "category": "festa",
+    "situation": "Vocês subiram para discursar na formatura e leram, sem querer, a lista de compras do mercado.",
+    "questions": [
+      "Qual item da lista vocês leram primeiro?",
+      "Quem segurava o papel?",
+      "Como a plateia reagiu?"
+    ]
+  },
+  {
+    "id": "festa-110",
+    "category": "festa",
+    "situation": "Vocês foram à festa à fantasia vestindo uma única fantasia de mascote, cada um com uma metade.",
+    "questions": [
+      "Que mascote era?",
+      "Quem ficou com a cabeça?",
+      "Como vocês faziam para andar pela festa?"
+    ]
+  },
+  {
+    "id": "festa-111",
+    "category": "festa",
+    "situation": "Vocês foram vistos ensinando o papagaio do aniversariante a cantar parabéns em ritmo de forró.",
+    "questions": [
+      "Qual é o nome do papagaio?",
+      "Quanto tempo durou o ensaio?",
+      "Em que momento da festa ele cantou?"
+    ]
+  },
+  {
+    "id": "festa-112",
+    "category": "festa",
+    "situation": "Vocês foram pegos trocando as plaquinhas da mesa de doces por nomes inventados.",
+    "questions": [
+      "Que nome vocês deram ao brigadeiro?",
+      "Quem escreveu as plaquinhas?",
+      "Quem descobriu a troca?"
+    ]
+  },
+  {
+    "id": "festa-113",
+    "category": "festa",
+    "situation": "Vocês organizaram um amigo-secreto em que todo mundo acabou tirando o próprio nome.",
+    "questions": [
+      "Como os papeizinhos foram sorteados?",
+      "Quem percebeu o problema primeiro?",
+      "Que presente vocês dois trocaram no fim?"
+    ]
+  },
+  {
+    "id": "festa-114",
+    "category": "festa",
+    "situation": "Vocês saíram do casamento carregando o arranjo de flores da mesa dos noivos.",
+    "questions": [
+      "Quem disse que vocês podiam levar?",
+      "Em que transporte vocês foram embora?",
+      "Onde está o arranjo agora?"
+    ]
+  },
+  {
+    "id": "festa-115",
+    "category": "festa",
+    "situation": "Vocês passaram a noite inteira no karaokê cantando só jingles de propaganda.",
+    "questions": [
+      "Qual foi o primeiro jingle?",
+      "Quem segurou o microfone por mais tempo?",
+      "Que nota a máquina deu para vocês?"
+    ]
+  },
+  {
+    "id": "festa-116",
+    "category": "festa",
+    "situation": "Vocês foram contratados como palhaços de um aniversário, mas chegaram vestidos de mágicos.",
+    "questions": [
+      "Quem fez a confusão na contratação?",
+      "Qual truque vocês tentaram fazer?",
+      "O que a mãe do aniversariante falou?"
+    ]
+  },
+  {
+    "id": "festa-117",
+    "category": "festa",
+    "situation": "Vocês acenderam a fogueira do arraiá e ela começou a soltar fumaça cor-de-rosa.",
+    "questions": [
+      "O que vocês jogaram na fogueira?",
+      "Quem gritou primeiro?",
+      "Como vocês explicaram a cor da fumaça?"
+    ]
+  },
+  {
+    "id": "festa-118",
+    "category": "festa",
+    "situation": "Vocês foram vistos às 5h da manhã varrendo confete de uma festa que nem era de vocês.",
+    "questions": [
+      "De quem era a festa?",
+      "Onde vocês arrumaram as vassouras?",
+      "Por que vocês resolveram limpar?"
+    ]
+  },
+  {
+    "id": "festa-119",
+    "category": "festa",
+    "situation": "Vocês cuidaram das lembrancinhas e entregaram potinhos de areia com o nome errado da aniversariante.",
+    "questions": [
+      "Que nome estava escrito nos potes?",
+      "De onde veio a areia?",
+      "Quem ficou com o último potinho?"
+    ]
+  },
+  {
+    "id": "festa-120",
+    "category": "festa",
+    "situation": "Vocês venceram o concurso de dança da festa da firma com um passo que ninguém nunca tinha visto.",
+    "questions": [
+      "Qual era o nome do passo?",
+      "Quem conduzia a dança?",
+      "Qual foi o prêmio?"
+    ]
+  },
+  {
+    "id": "festa-121",
+    "category": "festa",
+    "situation": "Vocês levaram um bolo em formato de abacaxi que nenhuma faca da casa conseguia cortar.",
+    "questions": [
+      "Por que o bolo estava tão duro?",
+      "Quem tentou cortar com a faca maior?",
+      "O que acabou sendo servido no lugar?"
+    ]
+  },
+  {
+    "id": "festa-122",
+    "category": "festa",
+    "situation": "Vocês foram vistos dançando a valsa da festa de quinze anos com dois manequins de loja.",
+    "questions": [
+      "De onde vieram os manequins?",
+      "Quem dançou com o manequim mais alto?",
+      "Qual música estava tocando?"
+    ]
+  },
+  {
+    "id": "viagem-101",
+    "category": "viagem",
+    "situation": "Vocês desceram do ônibus de excursão na parada errada e voltaram de carona num caminhão de melancias.",
+    "questions": [
+      "Em que cidade vocês desceram?",
+      "Como era o motorista do caminhão?",
+      "Quantas melancias vocês ganharam?"
+    ]
+  },
+  {
+    "id": "viagem-102",
+    "category": "viagem",
+    "situation": "Vocês foram barrados no aeroporto tentando despachar uma rede pendurada entre dois carrinhos de mala.",
+    "questions": [
+      "Quem estava deitado na rede?",
+      "O que a atendente falou?",
+      "Para onde a rede acabou indo?"
+    ]
+  },
+  {
+    "id": "viagem-103",
+    "category": "viagem",
+    "situation": "Vocês voltaram da praia com um caranguejo de estimação escondido no balde.",
+    "questions": [
+      "Que nome vocês deram ao caranguejo?",
+      "Quem segurou o balde no caminho?",
+      "Onde ele foi solto?"
+    ]
+  },
+  {
+    "id": "viagem-104",
+    "category": "viagem",
+    "situation": "Vocês pegaram a estrada seguindo o GPS e foram parar no meio de uma fazenda de cabras.",
+    "questions": [
+      "Para onde vocês queriam ir?",
+      "Quem estava lendo o GPS?",
+      "Como vocês saíram da fazenda?"
+    ]
+  },
+  {
+    "id": "viagem-105",
+    "category": "viagem",
+    "situation": "Vocês chegaram à pousada e descobriram que tinham reservado um quarto em forma de iglu.",
+    "questions": [
+      "Quem fez a reserva?",
+      "O que havia dentro do iglu?",
+      "Como foi a primeira noite?"
+    ]
+  },
+  {
+    "id": "viagem-106",
+    "category": "viagem",
+    "situation": "Vocês perderam o ônibus de volta porque estavam na fila do pastel da rodoviária.",
+    "questions": [
+      "Qual sabor de pastel vocês pediram?",
+      "Quem viu o ônibus indo embora?",
+      "Como vocês voltaram para casa?"
+    ]
+  },
+  {
+    "id": "viagem-107",
+    "category": "viagem",
+    "situation": "Vocês foram vistos no cruzeiro fazendo aula de zumba fantasiados de pinguim.",
+    "questions": [
+      "Por que vocês estavam de pinguim?",
+      "Quem dançou na primeira fila?",
+      "O que o instrutor disse a vocês?"
+    ]
+  },
+  {
+    "id": "viagem-108",
+    "category": "viagem",
+    "situation": "Vocês alugaram uma bicicleta dupla no passeio e voltaram empurrando, um culpando o outro.",
+    "questions": [
+      "Quem ia na frente?",
+      "O que deu errado com a bicicleta?",
+      "Até onde vocês conseguiram pedalar?"
+    ]
+  },
+  {
+    "id": "viagem-109",
+    "category": "viagem",
+    "situation": "Vocês voltaram de férias com quarenta chaveiros iguais e nenhuma outra lembrança.",
+    "questions": [
+      "Qual desenho havia nos chaveiros?",
+      "Onde vocês compraram?",
+      "Quem vai ganhar o primeiro chaveiro?"
+    ]
+  },
+  {
+    "id": "viagem-110",
+    "category": "viagem",
+    "situation": "Vocês tiraram a foto perfeita das férias, mas um jumento aparece sorrindo bem no meio dela.",
+    "questions": [
+      "Onde a foto foi tirada?",
+      "Quem tirou a foto?",
+      "O que o jumento fez logo depois?"
+    ]
+  },
+  {
+    "id": "viagem-111",
+    "category": "viagem",
+    "situation": "Vocês foram encontrados dormindo numa canoa amarrada no píer às 6h da manhã.",
+    "questions": [
+      "Por que vocês dormiram na canoa?",
+      "Quem acordou vocês?",
+      "O que havia no fundo da canoa?"
+    ]
+  },
+  {
+    "id": "viagem-112",
+    "category": "viagem",
+    "situation": "Vocês chegaram ao camping com fogareiro e panela, mas sem nada para cozinhar.",
+    "questions": [
+      "O que vocês comeram na primeira noite?",
+      "Quem era o responsável pela comida?",
+      "Quem dividiu comida com vocês?"
+    ]
+  },
+  {
+    "id": "viagem-113",
+    "category": "viagem",
+    "situation": "Vocês entraram numa trilha guiada e voltaram guiando um grupo de turistas desconhecidos.",
+    "questions": [
+      "Como vocês se separaram do guia?",
+      "De onde era o outro grupo?",
+      "Que história vocês inventaram sobre a trilha?"
+    ]
+  },
+  {
+    "id": "viagem-114",
+    "category": "viagem",
+    "situation": "Vocês passaram a viagem de trem tentando devolver um chapéu que voou pela janela da cabine.",
+    "questions": [
+      "Como era o chapéu?",
+      "De quem vocês acharam que ele era?",
+      "Em que estação o dono apareceu?"
+    ]
+  },
+  {
+    "id": "viagem-115",
+    "category": "viagem",
+    "situation": "Vocês foram parados na saída do hotel com a mala estufada de sabonetinhos.",
+    "questions": [
+      "Quantos sabonetes havia na mala?",
+      "Quem pegou o primeiro?",
+      "Para que vocês queriam tantos?"
+    ]
+  },
+  {
+    "id": "viagem-116",
+    "category": "viagem",
+    "situation": "Vocês fizeram um passeio de barco e o capitão pediu, educadamente, que nunca mais voltassem.",
+    "questions": [
+      "O que vocês fizeram no barco?",
+      "Quem o capitão culpou mais?",
+      "Qual foi a última frase dele?"
+    ]
+  },
+  {
+    "id": "viagem-117",
+    "category": "viagem",
+    "situation": "Vocês chegaram à serra de chinelo e bermuda numa noite de dois graus.",
+    "questions": [
+      "Quem garantiu que ia fazer calor?",
+      "O que vocês compraram primeiro para se esquentar?",
+      "Onde vocês passaram a noite?"
+    ]
+  },
+  {
+    "id": "viagem-118",
+    "category": "viagem",
+    "situation": "Vocês ficaram uma hora numa fila de ponto turístico achando que era outra atração.",
+    "questions": [
+      "O que vocês achavam que iam ver?",
+      "O que era de verdade?",
+      "Quem sugeriu entrar na fila?"
+    ]
+  },
+  {
+    "id": "viagem-119",
+    "category": "viagem",
+    "situation": "Vocês foram vistos na rodoviária segurando uma placa de boas-vindas para alguém que nunca chegou.",
+    "questions": [
+      "Que nome estava escrito na placa?",
+      "Quem pediu para vocês buscarem essa pessoa?",
+      "Quanto tempo vocês esperaram?"
+    ]
+  },
+  {
+    "id": "viagem-120",
+    "category": "viagem",
+    "situation": "Vocês pararam num posto de estrada e saíram com um cachorro que se recusava a descer do carro.",
+    "questions": [
+      "Que nome vocês deram ao cachorro?",
+      "Quem deixou a porta aberta?",
+      "Onde ele finalmente desceu?"
+    ]
+  },
+  {
+    "id": "viagem-121",
+    "category": "viagem",
+    "situation": "Vocês chegaram à casa de praia alugada e encontraram outra família de pijama lá dentro.",
+    "questions": [
+      "Quem errou o endereço?",
+      "O que a outra família ofereceu a vocês?",
+      "Onde vocês dormiram naquela noite?"
+    ]
+  },
+  {
+    "id": "trabalho-101",
+    "category": "trabalho",
+    "situation": "Vocês foram flagrados tirando uma soneca dentro do armário de material de limpeza do escritório.",
+    "questions": [
+      "De quem foi a ideia?",
+      "Quem abriu a porta do armário?",
+      "Que desculpa vocês deram?"
+    ]
+  },
+  {
+    "id": "trabalho-102",
+    "category": "trabalho",
+    "situation": "Vocês esqueceram a câmera ligada na reunião online e todos viram vocês fazendo tapioca.",
+    "questions": [
+      "Qual era o recheio da tapioca?",
+      "Quem estava falando na reunião naquela hora?",
+      "O que o chefe comentou?"
+    ]
+  },
+  {
+    "id": "trabalho-103",
+    "category": "trabalho",
+    "situation": "Vocês encheram a sala do chefe de balões no dia errado do aniversário dele.",
+    "questions": [
+      "Quantos balões vocês usaram?",
+      "Quem errou a data?",
+      "Qual foi a reação do chefe?"
+    ]
+  },
+  {
+    "id": "trabalho-104",
+    "category": "trabalho",
+    "situation": "Vocês foram vistos levando a planta da recepção para passear pelos corredores.",
+    "questions": [
+      "Qual é o nome da planta?",
+      "Por que ela precisava passear?",
+      "Quem viu vocês primeiro?"
+    ]
+  },
+  {
+    "id": "trabalho-105",
+    "category": "trabalho",
+    "situation": "Vocês mandaram para a empresa inteira um e-mail que era só uma receita de bolo.",
+    "questions": [
+      "Que bolo era?",
+      "Para quem o e-mail deveria ter ido?",
+      "Quem respondeu primeiro?"
+    ]
+  },
+  {
+    "id": "trabalho-106",
+    "category": "trabalho",
+    "situation": "Vocês ficaram presos no elevador com o diretor e um entregador de pizza.",
+    "questions": [
+      "Para quem era a pizza?",
+      "Quanto tempo vocês ficaram presos?",
+      "Sobre o que vocês conversaram?"
+    ]
+  },
+  {
+    "id": "trabalho-107",
+    "category": "trabalho",
+    "situation": "Vocês mexeram na máquina de café e ela passou a manhã inteira servindo sopa.",
+    "questions": [
+      "Que sopa saía da máquina?",
+      "Qual botão vocês apertaram?",
+      "Quem experimentou primeiro?"
+    ]
+  },
+  {
+    "id": "trabalho-108",
+    "category": "trabalho",
+    "situation": "Vocês foram entrevistar um candidato à vaga e descobriram que ele era o professor de violão de vocês.",
+    "questions": [
+      "Para qual vaga era a entrevista?",
+      "Quem reconheceu ele primeiro?",
+      "Ele foi contratado?"
+    ]
+  },
+  {
+    "id": "trabalho-109",
+    "category": "trabalho",
+    "situation": "Vocês organizaram a confraternização da firma e alugaram, por engano, um touro mecânico.",
+    "questions": [
+      "O que vocês queriam alugar de verdade?",
+      "Quem montou no touro primeiro?",
+      "Onde o touro foi instalado?"
+    ]
+  },
+  {
+    "id": "trabalho-110",
+    "category": "trabalho",
+    "situation": "Vocês chegaram atrasados ao trabalho dizendo que um pavão estava bloqueando a garagem.",
+    "questions": [
+      "Como era o pavão?",
+      "Quem tentou tirar ele de lá?",
+      "Que prova vocês mostraram?"
+    ]
+  },
+  {
+    "id": "trabalho-111",
+    "category": "trabalho",
+    "situation": "Vocês trocaram os pendrives e projetaram fotos das férias no lugar do relatório da reunião.",
+    "questions": [
+      "De que viagem eram as fotos?",
+      "Qual foto apareceu primeiro?",
+      "Quem desligou o projetor?"
+    ]
+  },
+  {
+    "id": "trabalho-112",
+    "category": "trabalho",
+    "situation": "Vocês foram vistos no estacionamento ensaiando uma coreografia para o treinamento de segurança.",
+    "questions": [
+      "Qual era o tema do treinamento?",
+      "Quem criou a coreografia?",
+      "Quem filmou o ensaio?"
+    ]
+  },
+  {
+    "id": "trabalho-113",
+    "category": "trabalho",
+    "situation": "Vocês tentaram consertar o ar-condicionado e deixaram a sala parecendo um freezer.",
+    "questions": [
+      "Em que temperatura a sala ficou?",
+      "Quem segurava a escada?",
+      "O que os colegas usaram para se esquentar?"
+    ]
+  },
+  {
+    "id": "trabalho-114",
+    "category": "trabalho",
+    "situation": "Vocês foram encontrados na copa dividindo uma marmita com o nome de outra pessoa na tampa.",
+    "questions": [
+      "De quem era a marmita?",
+      "O que tinha dentro dela?",
+      "O que vocês disseram quando a dona apareceu?"
+    ]
+  },
+  {
+    "id": "trabalho-115",
+    "category": "trabalho",
+    "situation": "Vocês receberam um cliente importante e chamaram ele pelo nome errado a reunião inteira.",
+    "questions": [
+      "Que nome vocês usaram?",
+      "Quem errou primeiro?",
+      "Em que momento ele corrigiu vocês?"
+    ]
+  },
+  {
+    "id": "trabalho-116",
+    "category": "trabalho",
+    "situation": "Vocês foram nomeados embaixadores da alegria da empresa e ganharam uma faixa de miss cada um.",
+    "questions": [
+      "Quem entregou as faixas?",
+      "O que estava escrito nelas?",
+      "Qual foi a primeira missão de vocês?"
+    ]
+  },
+  {
+    "id": "trabalho-117",
+    "category": "trabalho",
+    "situation": "Vocês levaram um gato no dia do pet no trabalho e ele dormiu em cima do teclado do chefe.",
+    "questions": [
+      "Qual é o nome do gato?",
+      "O que ele acabou digitando?",
+      "O que o chefe fez quando viu?"
+    ]
+  },
+  {
+    "id": "trabalho-118",
+    "category": "trabalho",
+    "situation": "Vocês ficaram trancados do lado de fora do prédio num sábado tentando buscar um carregador.",
+    "questions": [
+      "Por que precisavam tanto do carregador?",
+      "Quem esqueceu o crachá?",
+      "Como vocês conseguiram entrar?"
+    ]
+  },
+  {
+    "id": "trabalho-119",
+    "category": "trabalho",
+    "situation": "Vocês ajudaram na mudança do escritório e uma cadeira giratória desceu a ladeira sozinha.",
+    "questions": [
+      "Até onde a cadeira foi?",
+      "Quem deixou ela escapar?",
+      "Quem trouxe a cadeira de volta?"
+    ]
+  },
+  {
+    "id": "trabalho-120",
+    "category": "trabalho",
+    "situation": "Vocês foram vistos às 7h da manhã colando post-its coloridos em todas as janelas do escritório.",
+    "questions": [
+      "Que desenho os post-its formavam?",
+      "Quantas cores vocês usaram?",
+      "Quem pediu para vocês fazerem isso?"
+    ]
+  },
+  {
+    "id": "trabalho-121",
+    "category": "trabalho",
+    "situation": "Vocês esqueceram o microfone aberto no evento da empresa enquanto combinavam o almoço.",
+    "questions": [
+      "Onde vocês iam almoçar?",
+      "Quem percebeu o microfone ligado?",
+      "O que o apresentador falou em seguida?"
+    ]
+  },
+  {
+    "id": "escola-101",
+    "category": "escola",
+    "situation": "Vocês foram encontrados no laboratório ensinando o esqueleto de plástico a dançar.",
+    "questions": [
+      "Qual é o nome do esqueleto?",
+      "Qual música estava tocando?",
+      "Quem abriu a porta do laboratório?"
+    ]
+  },
+  {
+    "id": "escola-102",
+    "category": "escola",
+    "situation": "Vocês fizeram um trabalho sobre vulcões, mas a apresentação acabou virando uma aula sobre pizza.",
+    "questions": [
+      "Como o assunto mudou para pizza?",
+      "Quem começou a falar?",
+      "Que nota a professora deu?"
+    ]
+  },
+  {
+    "id": "escola-103",
+    "category": "escola",
+    "situation": "Vocês foram pegos devolvendo à biblioteca um livro emprestado havia quinze anos.",
+    "questions": [
+      "Qual era o livro?",
+      "Onde ele ficou esse tempo todo?",
+      "O que a bibliotecária disse?"
+    ]
+  },
+  {
+    "id": "escola-104",
+    "category": "escola",
+    "situation": "Vocês levaram o hamster da turma para passar o fim de semana e voltaram com dois.",
+    "questions": [
+      "Qual é o nome do hamster?",
+      "De onde veio o segundo?",
+      "Quem contou para a professora?"
+    ]
+  },
+  {
+    "id": "escola-105",
+    "category": "escola",
+    "situation": "Vocês cuidaram da barraca de pescaria da festa junina da escola e todos os prêmios eram apontadores.",
+    "questions": [
+      "Por que só tinha apontador?",
+      "Quem montou a barraca?",
+      "Qual criança reclamou mais?"
+    ]
+  },
+  {
+    "id": "escola-106",
+    "category": "escola",
+    "situation": "Vocês sumiram na excursão ao zoológico e foram achados no meio da fila do picolé.",
+    "questions": [
+      "Que animal vocês estavam vendo antes de sumir?",
+      "Qual picolé vocês pediram?",
+      "Quem achou vocês?"
+    ]
+  },
+  {
+    "id": "escola-107",
+    "category": "escola",
+    "situation": "Vocês foram vistos na quadra tentando bater o recorde de pular corda com três professores.",
+    "questions": [
+      "Quantos pulos vocês conseguiram?",
+      "Quem errou primeiro?",
+      "Quais professores participaram?"
+    ]
+  },
+  {
+    "id": "escola-108",
+    "category": "escola",
+    "situation": "Vocês fizeram o jornalzinho da escola e publicaram uma entrevista com a merendeira sobre alienígenas.",
+    "questions": [
+      "O que a merendeira disse?",
+      "Quem fez as perguntas?",
+      "Qual foi a manchete?"
+    ]
+  },
+  {
+    "id": "escola-109",
+    "category": "escola",
+    "situation": "Vocês ensaiaram a apresentação do Dia das Mães e esqueceram a letra no meio da música.",
+    "questions": [
+      "Qual era a música?",
+      "Quem esqueceu primeiro?",
+      "O que vocês cantaram no lugar?"
+    ]
+  },
+  {
+    "id": "escola-110",
+    "category": "escola",
+    "situation": "Vocês ficaram presos dentro do armário de uniformes da educação física.",
+    "questions": [
+      "Por que vocês entraram no armário?",
+      "Quem trancou a porta?",
+      "Como vocês saíram?"
+    ]
+  },
+  {
+    "id": "escola-111",
+    "category": "escola",
+    "situation": "Vocês levaram para a feira de ciências uma máquina de pipoca que disparava pipoca no teto.",
+    "questions": [
+      "Como a máquina funcionava?",
+      "Quem apertou o botão?",
+      "O que os jurados disseram?"
+    ]
+  },
+  {
+    "id": "escola-112",
+    "category": "escola",
+    "situation": "Vocês foram vistos trocando de lanche com o diretor na hora do recreio.",
+    "questions": [
+      "Que lanche vocês tinham?",
+      "O que o diretor ofereceu?",
+      "Quem propôs a troca?"
+    ]
+  },
+  {
+    "id": "escola-113",
+    "category": "escola",
+    "situation": "Vocês chegaram à aula de recuperação no sábado e encontraram a escola fechada para pintura.",
+    "questions": [
+      "Quem confirmou a data errada?",
+      "O que vocês fizeram no lugar da aula?",
+      "De que cor estavam pintando a escola?"
+    ]
+  },
+  {
+    "id": "escola-114",
+    "category": "escola",
+    "situation": "Vocês fizeram a chamada no lugar da professora e inventaram um aluno que não existe.",
+    "questions": [
+      "Qual nome vocês inventaram?",
+      "Quem respondeu presente?",
+      "Quando a professora descobriu?"
+    ]
+  },
+  {
+    "id": "escola-115",
+    "category": "escola",
+    "situation": "Vocês foram vistos ensaiando para o concurso de soletrar na fila da cantina.",
+    "questions": [
+      "Qual palavra vocês estavam soletrando?",
+      "Quem errou?",
+      "O que a cantineira disse?"
+    ]
+  },
+  {
+    "id": "escola-116",
+    "category": "escola",
+    "situation": "Vocês plantaram feijão no algodão para a aula de ciências e o pé chegou ao teto em uma semana.",
+    "questions": [
+      "Onde o copinho ficava?",
+      "Quem regava o feijão?",
+      "O que vocês fizeram com o pé de feijão?"
+    ]
+  },
+  {
+    "id": "escola-117",
+    "category": "escola",
+    "situation": "Vocês voltaram do passeio da escola com a camiseta do uniforme autografada por um ator de novela.",
+    "questions": [
+      "Que personagem ele fazia?",
+      "Onde vocês encontraram o ator?",
+      "Com que caneta ele assinou?"
+    ]
+  },
+  {
+    "id": "escola-118",
+    "category": "escola",
+    "situation": "Vocês foram pegos usando o megafone da escola para anunciar um aniversário no pátio.",
+    "questions": [
+      "De quem era o aniversário?",
+      "Onde vocês acharam o megafone?",
+      "Quem tomou o megafone de vocês?"
+    ]
+  },
+  {
+    "id": "escola-119",
+    "category": "escola",
+    "situation": "Vocês levaram um aquário de verdade no ônibus para uma apresentação sobre peixes.",
+    "questions": [
+      "Que peixe estava no aquário?",
+      "Quem carregou o aquário?",
+      "O que aconteceu durante a viagem de ônibus?"
+    ]
+  },
+  {
+    "id": "escola-120",
+    "category": "escola",
+    "situation": "Vocês foram flagrados no intervalo fazendo um leilão de figurinhas repetidas do álbum.",
+    "questions": [
+      "Qual figurinha era a mais disputada?",
+      "Quem era o leiloeiro?",
+      "O que vocês receberam em troca?"
+    ]
+  },
+  {
+    "id": "escola-121",
+    "category": "escola",
+    "situation": "Vocês esqueceram a mochila no ônibus escolar e ela voltou cheia de bilhetes de outros alunos.",
+    "questions": [
+      "De que cor é a mochila?",
+      "O que dizia o primeiro bilhete?",
+      "Quem devolveu a mochila?"
+    ]
+  },
+  {
+    "id": "familia-101",
+    "category": "família",
+    "situation": "Vocês criaram o grupo da família no WhatsApp e adicionaram um desconhecido por engano.",
+    "questions": [
+      "Qual era o nome do grupo?",
+      "Quem era o desconhecido?",
+      "O que ele mandou primeiro?"
+    ]
+  },
+  {
+    "id": "familia-102",
+    "category": "família",
+    "situation": "Vocês ficaram de levar o pavê para o Natal e chegaram com a travessa vazia.",
+    "questions": [
+      "O que aconteceu com o pavê?",
+      "Quem estava dirigindo?",
+      "Que desculpa vocês deram para a tia?"
+    ]
+  },
+  {
+    "id": "familia-103",
+    "category": "família",
+    "situation": "Vocês esconderam o controle da TV da vó e esqueceram onde colocaram.",
+    "questions": [
+      "Por que vocês esconderam o controle?",
+      "Onde ele foi achado no fim?",
+      "O que a vó queria assistir?"
+    ]
+  },
+  {
+    "id": "familia-104",
+    "category": "família",
+    "situation": "Vocês organizaram os noventa anos da vó e contrataram uma banda de rock.",
+    "questions": [
+      "Qual era o nome da banda?",
+      "Que música a vó pediu?",
+      "Quem dançou primeiro?"
+    ]
+  },
+  {
+    "id": "familia-105",
+    "category": "família",
+    "situation": "Vocês ensinaram o vô a mandar figurinhas e ele mandou duzentas numa só noite.",
+    "questions": [
+      "Qual é a figurinha favorita dele?",
+      "Para quem ele mandou?",
+      "Quem de vocês ensinou?"
+    ]
+  },
+  {
+    "id": "familia-106",
+    "category": "família",
+    "situation": "Vocês ficaram cuidando do primo pequeno e ele voltou com o cabelo azul.",
+    "questions": [
+      "Com o que o cabelo foi pintado?",
+      "De quem foi a ideia?",
+      "O que a mãe dele disse?"
+    ]
+  },
+  {
+    "id": "familia-107",
+    "category": "família",
+    "situation": "Vocês assaram o peru de Natal e ele saiu do forno do tamanho de uma galinha.",
+    "questions": [
+      "Quanto tempo ele ficou no forno?",
+      "Quem comprou o peru?",
+      "O que vocês serviram para completar a ceia?"
+    ]
+  },
+  {
+    "id": "familia-108",
+    "category": "família",
+    "situation": "Vocês ajudaram na mudança da tia e chegaram com o sofá de outra família no caminhão.",
+    "questions": [
+      "Como era o sofá?",
+      "Quem carregou o sofá?",
+      "Onde estava o sofá certo?"
+    ]
+  },
+  {
+    "id": "familia-109",
+    "category": "família",
+    "situation": "Vocês foram flagrados lendo com lanterna o caderno de receitas secretas da avó.",
+    "questions": [
+      "Qual receita vocês leram?",
+      "Onde o caderno ficava guardado?",
+      "Quem flagrou vocês?"
+    ]
+  },
+  {
+    "id": "familia-110",
+    "category": "família",
+    "situation": "Vocês montaram a árvore de Natal da família em pleno mês de julho.",
+    "questions": [
+      "Por que montaram em julho?",
+      "Qual enfeite foi para o topo?",
+      "Quem reclamou primeiro?"
+    ]
+  },
+  {
+    "id": "familia-111",
+    "category": "família",
+    "situation": "Vocês levaram o cachorro da família para tosar e voltaram com outro cachorro.",
+    "questions": [
+      "Qual é o nome do cachorro de vocês?",
+      "Como perceberam a troca?",
+      "Quem foi devolver o cachorro errado?"
+    ]
+  },
+  {
+    "id": "familia-112",
+    "category": "família",
+    "situation": "Vocês acordaram o pai no Dia dos Pais com uma serenata às 5h da manhã.",
+    "questions": [
+      "Que música vocês cantaram?",
+      "Quem tocou o instrumento?",
+      "O que o pai falou ao abrir a porta?"
+    ]
+  },
+  {
+    "id": "familia-113",
+    "category": "família",
+    "situation": "Vocês foram buscar a tia no aeroporto e trouxeram para casa uma desconhecida muito simpática.",
+    "questions": [
+      "Como era a desconhecida?",
+      "Para onde ela queria ir?",
+      "Quem percebeu o engano?"
+    ]
+  },
+  {
+    "id": "familia-114",
+    "category": "família",
+    "situation": "Vocês foram vistos enterrando uma cápsula do tempo no vaso de planta preferido da mãe.",
+    "questions": [
+      "O que vocês colocaram na cápsula?",
+      "Que planta estava no vaso?",
+      "Quando a cápsula deve ser aberta?"
+    ]
+  },
+  {
+    "id": "familia-115",
+    "category": "família",
+    "situation": "Vocês prepararam uma surpresa de bodas para os pais, mas eles chegaram uma hora antes.",
+    "questions": [
+      "Quantos anos de casados eles faziam?",
+      "Onde a decoração estava escondida?",
+      "Quem deixou a surpresa escapar?"
+    ]
+  },
+  {
+    "id": "familia-116",
+    "category": "família",
+    "situation": "Vocês ganharam a disputa de quem lavaria a louça do almoço e mesmo assim acabaram lavando.",
+    "questions": [
+      "Qual era a disputa?",
+      "Quem ganhou de verdade?",
+      "Como vocês acabaram na pia?"
+    ]
+  },
+  {
+    "id": "familia-117",
+    "category": "família",
+    "situation": "Vocês fizeram a árvore genealógica da família e colocaram o gato como bisavô.",
+    "questions": [
+      "Por que o gato entrou na árvore?",
+      "Quem desenhou a árvore?",
+      "Quem da família não gostou?"
+    ]
+  },
+  {
+    "id": "familia-118",
+    "category": "família",
+    "situation": "Vocês pegaram o carro do tio emprestado e devolveram com a buzinha tocando musiquinha de sorvete.",
+    "questions": [
+      "Como a buzinha mudou?",
+      "Aonde vocês foram com o carro?",
+      "O que o tio disse?"
+    ]
+  },
+  {
+    "id": "familia-119",
+    "category": "família",
+    "situation": "Vocês fizeram o bolo de aniversário da sobrinha e ele saiu da forma completamente verde.",
+    "questions": [
+      "Que sabor o bolo deveria ter?",
+      "O que deixou o bolo verde?",
+      "Como a sobrinha reagiu?"
+    ]
+  },
+  {
+    "id": "familia-120",
+    "category": "família",
+    "situation": "Vocês foram pegos às 2h da manhã esquentando a lasanha que sobrou do almoço de domingo.",
+    "questions": [
+      "Quem acordou com o barulho?",
+      "De que era a lasanha?",
+      "Quem ficou com o último pedaço?"
+    ]
+  },
+  {
+    "id": "familia-121",
+    "category": "família",
+    "situation": "Vocês trocaram o toque do celular da mãe por um galo cantando e ela atendeu na reunião de condomínio.",
+    "questions": [
+      "Quem gravou o canto do galo?",
+      "Quem estava ligando para ela?",
+      "O que a mãe fez com vocês depois?"
+    ]
+  },
+  {
+    "id": "vizinhanca-101",
+    "category": "vizinhança",
+    "situation": "Vocês foram vistos às 6h da manhã correndo atrás de uma galinha pelo estacionamento do prédio.",
+    "questions": [
+      "De quem era a galinha?",
+      "Quem conseguiu pegar ela?",
+      "Como ela tinha fugido?"
+    ]
+  },
+  {
+    "id": "vizinhanca-102",
+    "category": "vizinhança",
+    "situation": "Vocês levaram um bolo de boas-vindas para a vizinha nova e descobriram que ela é confeiteira.",
+    "questions": [
+      "Que bolo vocês levaram?",
+      "O que ela comentou sobre o bolo?",
+      "Quem tocou a campainha?"
+    ]
+  },
+  {
+    "id": "vizinhanca-103",
+    "category": "vizinhança",
+    "situation": "Vocês ficaram presos na varanda do vizinho enquanto regavam as plantas dele.",
+    "questions": [
+      "Como a porta trancou?",
+      "Quanto tempo vocês ficaram lá?",
+      "Quem resgatou vocês?"
+    ]
+  },
+  {
+    "id": "vizinhanca-104",
+    "category": "vizinhança",
+    "situation": "Vocês organizaram a festa da rua e o carro de som contratado era de um vendedor de pamonha.",
+    "questions": [
+      "Quem fez a contratação?",
+      "O que o carro de som anunciava?",
+      "Como a festa terminou?"
+    ]
+  },
+  {
+    "id": "vizinhanca-105",
+    "category": "vizinhança",
+    "situation": "Vocês foram flagrados no telhado tentando soltar uma pipa enroscada na antena.",
+    "questions": [
+      "De que cor era a pipa?",
+      "Quem subiu no telhado?",
+      "Quem pediu para vocês buscarem a pipa?"
+    ]
+  },
+  {
+    "id": "vizinhanca-106",
+    "category": "vizinhança",
+    "situation": "Vocês confundiram o portão e passaram uma semana alimentando o cachorro errado.",
+    "questions": [
+      "Qual é o nome do cachorro?",
+      "Quem percebeu o engano?",
+      "O que vocês davam para ele comer?"
+    ]
+  },
+  {
+    "id": "vizinhanca-107",
+    "category": "vizinhança",
+    "situation": "Vocês ficaram encarregados da reunião de condomínio e ela virou um campeonato de dominó.",
+    "questions": [
+      "Qual era o assunto da reunião?",
+      "Quem ganhou o campeonato?",
+      "Quem levou o dominó?"
+    ]
+  },
+  {
+    "id": "vizinhanca-108",
+    "category": "vizinhança",
+    "situation": "Vocês emprestaram uma escada para o vizinho e ela voltou pintada de amarelo.",
+    "questions": [
+      "Para que o vizinho usou a escada?",
+      "Quem foi buscar a escada?",
+      "O que o vizinho disse?"
+    ]
+  },
+  {
+    "id": "vizinhanca-109",
+    "category": "vizinhança",
+    "situation": "Vocês foram vistos na feira de domingo comprando trinta abacaxis para o vizinho do 302.",
+    "questions": [
+      "Para que ele queria tantos abacaxis?",
+      "Como vocês levaram tudo?",
+      "Quem negociou o preço?"
+    ]
+  },
+  {
+    "id": "vizinhanca-110",
+    "category": "vizinhança",
+    "situation": "Vocês bateram na porta do vizinho para pedir açúcar e saíram carregando um teclado velho.",
+    "questions": [
+      "Por que ele deu o teclado?",
+      "Quem carregou o teclado?",
+      "Vocês conseguiram o açúcar?"
+    ]
+  },
+  {
+    "id": "vizinhanca-111",
+    "category": "vizinhança",
+    "situation": "Vocês penduraram a placa cuidado com o gato no portão e o gato sumiu no mesmo dia.",
+    "questions": [
+      "Qual é o nome do gato?",
+      "Onde ele reapareceu?",
+      "Quem fez a placa?"
+    ]
+  },
+  {
+    "id": "vizinhanca-112",
+    "category": "vizinhança",
+    "situation": "Vocês foram pegos cantando parabéns na porta de um vizinho que só fazia aniversário no mês seguinte.",
+    "questions": [
+      "Quem passou a data errada?",
+      "Que bolo vocês levaram?",
+      "O que o vizinho fez ao abrir a porta?"
+    ]
+  },
+  {
+    "id": "vizinhanca-113",
+    "category": "vizinhança",
+    "situation": "Vocês cuidaram do canteiro da praça e plantaram as flores formando uma palavra.",
+    "questions": [
+      "Que palavra vocês escreveram?",
+      "Que flores vocês usaram?",
+      "Quem deu a ideia?"
+    ]
+  },
+  {
+    "id": "vizinhanca-114",
+    "category": "vizinhança",
+    "situation": "Vocês fizeram uma vaquinha na rua para consertar o poste e voltaram com um flamingo de jardim.",
+    "questions": [
+      "Quanto dinheiro foi arrecadado?",
+      "Quem foi fazer a compra?",
+      "Onde o flamingo foi colocado?"
+    ]
+  },
+  {
+    "id": "vizinhanca-115",
+    "category": "vizinhança",
+    "situation": "Vocês foram vistos lavando o carro do vizinho achando que era o de vocês.",
+    "questions": [
+      "Qual é a cor do carro?",
+      "Quando vocês perceberam o engano?",
+      "O que o vizinho falou?"
+    ]
+  },
+  {
+    "id": "vizinhanca-116",
+    "category": "vizinhança",
+    "situation": "Vocês começaram uma horta no terreno da esquina e um ganso passou a vigiar as alfaces.",
+    "questions": [
+      "De onde veio o ganso?",
+      "O que vocês plantaram primeiro?",
+      "Quem conseguiu chegar perto do ganso?"
+    ]
+  },
+  {
+    "id": "vizinhanca-117",
+    "category": "vizinhança",
+    "situation": "Vocês foram encontrados na guarita atendendo o interfone com voz de robô.",
+    "questions": [
+      "Onde estava o porteiro?",
+      "Quem ligou no interfone?",
+      "O que vocês responderam?"
+    ]
+  },
+  {
+    "id": "vizinhanca-118",
+    "category": "vizinhança",
+    "situation": "Vocês acordaram a rua inteira testando o alarme de uma bicicleta nova às 23h.",
+    "questions": [
+      "Como o alarme disparou?",
+      "Quem tentou desligar?",
+      "Quem apareceu na janela reclamando?"
+    ]
+  },
+  {
+    "id": "vizinhanca-119",
+    "category": "vizinhança",
+    "situation": "Vocês foram vistos enfeitando a árvore da calçada com CDs velhos pendurados.",
+    "questions": [
+      "De onde vieram os CDs?",
+      "Quem subiu na árvore?",
+      "Por que vocês resolveram enfeitar?"
+    ]
+  },
+  {
+    "id": "vizinhanca-120",
+    "category": "vizinhança",
+    "situation": "Vocês emprestaram a churrasqueira ao vizinho e só foram chamados para o churrasco quando a carne acabou.",
+    "questions": [
+      "O que tinha sobrado para comer?",
+      "Quem fez o convite?",
+      "O que vocês levaram?"
+    ]
+  },
+  {
+    "id": "vizinhanca-121",
+    "category": "vizinhança",
+    "situation": "Vocês montaram uma barraca no bazar da rua vendendo as próprias meias.",
+    "questions": [
+      "Quanto custava cada par?",
+      "Quem comprou o primeiro par?",
+      "Por que vocês resolveram vender meias?"
+    ]
+  },
+  {
+    "id": "restaurante-201",
+    "category": "restaurante",
+    "situation": "Vocês pediram uma pizza meio a meio e o pizzaiolo entregou uma pizza em formato de coração com um pedido de casamento.",
+    "questions": [
+      "Quais eram os dois sabores que vocês pediram?",
+      "Quem leu o bilhete do pedido primeiro?",
+      "O que vocês responderam ao pizzaiolo?"
+    ]
+  },
+  {
+    "id": "restaurante-202",
+    "category": "restaurante",
+    "situation": "No rodízio, o garçom não parava de trazer só abacaxi assado para a mesa de vocês.",
+    "questions": [
+      "Quantos espetos de abacaxi chegaram à mesa?",
+      "Quem tentou explicar a situação ao garçom?",
+      "Qual carne vocês queriam de verdade?"
+    ]
+  },
+  {
+    "id": "restaurante-203",
+    "category": "restaurante",
+    "situation": "Vocês foram flagrados na cozinha de uma lanchonete ensinando o chapeiro a fazer um sanduíche inventado.",
+    "questions": [
+      "Qual era o nome do sanduíche?",
+      "Qual ingrediente estranho ele levava?",
+      "Quem deixou vocês entrarem na cozinha?"
+    ]
+  },
+  {
+    "id": "restaurante-204",
+    "category": "restaurante",
+    "situation": "Vocês dividiram um macarrão tão comprido que um único fio atravessou o salão inteiro.",
+    "questions": [
+      "Em que mesa o fio terminou?",
+      "Quem cortou o fio?",
+      "Qual era o molho do macarrão?"
+    ]
+  },
+  {
+    "id": "restaurante-205",
+    "category": "restaurante",
+    "situation": "Ao pedir a conta no restaurante japonês, vocês receberam um sapo de origami no lugar da nota.",
+    "questions": [
+      "Qual era a cor do sapo?",
+      "Quem desdobrou o origami?",
+      "O que estava escrito do lado de dentro?"
+    ]
+  },
+  {
+    "id": "restaurante-206",
+    "category": "restaurante",
+    "situation": "Vocês ficaram trancados no banheiro de uma cantina e saíram pela janela segurando um garfo.",
+    "questions": [
+      "Por que vocês estavam com um garfo?",
+      "Quem passou pela janela primeiro?",
+      "Quem viu vocês saindo?"
+    ]
+  },
+  {
+    "id": "restaurante-207",
+    "category": "restaurante",
+    "situation": "Vocês ganharam um concurso de comer pastel sem nunca terem se inscrito.",
+    "questions": [
+      "Qual era o sabor do pastel?",
+      "Quantos pastéis cada um comeu?",
+      "Qual foi o prêmio?"
+    ]
+  },
+  {
+    "id": "restaurante-208",
+    "category": "restaurante",
+    "situation": "Vocês voltaram do self-service com um prato montado em forma de castelo, com torre de purê.",
+    "questions": [
+      "O que servia de bandeira no castelo?",
+      "Quanto o prato pesou na balança?",
+      "Quem tirou foto do prato?"
+    ]
+  },
+  {
+    "id": "restaurante-209",
+    "category": "restaurante",
+    "situation": "O garçom cantou parabéns para vocês com sombrero e vela, mas não era aniversário de ninguém.",
+    "questions": [
+      "Quem disse ao garçom que era aniversário?",
+      "Qual sobremesa veio com a vela?",
+      "Quantos anos disseram que estavam fazendo?"
+    ]
+  },
+  {
+    "id": "restaurante-210",
+    "category": "restaurante",
+    "situation": "Vocês pediram um açaí pequeno e receberam uma tigela do tamanho de uma bacia, coberta de confete.",
+    "questions": [
+      "Quais complementos vocês escolheram?",
+      "Quem chegou ao fundo da tigela primeiro?",
+      "O que fizeram com o que sobrou?"
+    ]
+  },
+  {
+    "id": "restaurante-211",
+    "category": "restaurante",
+    "situation": "Numa churrascaria, vocês foram vistos abanando a churrasqueira com o cardápio porque o carvão apagou.",
+    "questions": [
+      "Quem pegou o cardápio?",
+      "Qual carne estava no espeto?",
+      "O que o churrasqueiro disse ao voltar?"
+    ]
+  },
+  {
+    "id": "restaurante-212",
+    "category": "restaurante",
+    "situation": "Um papagaio da pastelaria passou a repetir o pedido de vocês para todo cliente que chegava.",
+    "questions": [
+      "Qual era o pedido?",
+      "Quem ensinou o papagaio sem querer?",
+      "Qual era o nome do papagaio?"
+    ]
+  },
+  {
+    "id": "restaurante-213",
+    "category": "restaurante",
+    "situation": "Sem carteira na hora da conta, vocês se ofereceram para cantar no restaurante até pagar o jantar.",
+    "questions": [
+      "Qual música vocês cantaram?",
+      "Quem segurou o microfone?",
+      "Quanto deu a conta?"
+    ]
+  },
+  {
+    "id": "restaurante-214",
+    "category": "restaurante",
+    "situation": "Vocês acharam um anel dentro do pudim e passaram o jantar inteiro procurando o dono.",
+    "questions": [
+      "De que cor era a pedra do anel?",
+      "Quem mordeu o anel?",
+      "Para quem vocês perguntaram primeiro?"
+    ]
+  },
+  {
+    "id": "restaurante-215",
+    "category": "restaurante",
+    "situation": "Na lanchonete, vocês receberam um milk-shake com quatro canudos e uma plaquinha de \"reservado para o rei\".",
+    "questions": [
+      "Qual era o sabor do milk-shake?",
+      "Quem sentou na cadeira do rei?",
+      "O que vocês fizeram com os canudos extras?"
+    ]
+  },
+  {
+    "id": "restaurante-216",
+    "category": "restaurante",
+    "situation": "Vocês tentaram pedir comida num restaurante onde o cardápio era feito só de desenhos.",
+    "questions": [
+      "Qual desenho vocês apontaram?",
+      "O que chegou de fato à mesa?",
+      "Quem fez mímica para o garçom?"
+    ]
+  },
+  {
+    "id": "restaurante-217",
+    "category": "restaurante",
+    "situation": "Às 6h da manhã, vocês estavam na porta da padaria segurando uma faixa que pedia pão de queijo quentinho.",
+    "questions": [
+      "O que estava escrito na faixa?",
+      "Quantos pães de queijo vocês levaram?",
+      "Quem pagou?"
+    ]
+  },
+  {
+    "id": "restaurante-218",
+    "category": "restaurante",
+    "situation": "Vocês estenderam uma toalha xadrez e fizeram um piquenique no chão do salão de uma pizzaria.",
+    "questions": [
+      "Por que não sentaram à mesa?",
+      "Quem levou a toalha?",
+      "O que o gerente falou?"
+    ]
+  },
+  {
+    "id": "restaurante-219",
+    "category": "restaurante",
+    "situation": "O garçom tropeçou e a sopa de vocês caiu inteirinha dentro de um chapéu que estava na mesa.",
+    "questions": [
+      "De quem era o chapéu?",
+      "Qual era a sopa?",
+      "O que vocês fizeram com o chapéu depois?"
+    ]
+  },
+  {
+    "id": "restaurante-220",
+    "category": "restaurante",
+    "situation": "Vocês pediram a \"surpresa do chef\" e o próprio chef sentou à mesa para jantar com vocês.",
+    "questions": [
+      "O que o chef trouxe para comer?",
+      "Sobre o que ele conversou?",
+      "Quem pediu para ele voltar à cozinha?"
+    ]
+  },
+  {
+    "id": "restaurante-221",
+    "category": "restaurante",
+    "situation": "O dono de um food truck pediu para vocês cuidarem do carrinho e vocês venderam cachorro-quente por uma hora.",
+    "questions": [
+      "Aonde o dono foi?",
+      "Quantos cachorros-quentes vocês venderam?",
+      "Qual molho foi o mais pedido?"
+    ]
+  },
+  {
+    "id": "compras-201",
+    "category": "compras",
+    "situation": "Vocês saíram da loja de colchões depois de dormir duas horas testando um modelo.",
+    "questions": [
+      "Quem acordou primeiro?",
+      "Qual era a cor do colchão?",
+      "O que o vendedor disse ao acordar vocês?"
+    ]
+  },
+  {
+    "id": "compras-202",
+    "category": "compras",
+    "situation": "Vocês entraram na fila do caixa rápido com 87 latas de milho e uma explicação muito convincente.",
+    "questions": [
+      "Para que eram as latas de milho?",
+      "Qual foi a explicação dada ao caixa?",
+      "Quem passou as latas na esteira?"
+    ]
+  },
+  {
+    "id": "compras-203",
+    "category": "compras",
+    "situation": "Vocês voltaram da liquidação carregando um sofá inteiro dentro do ônibus.",
+    "questions": [
+      "De que cor era o sofá?",
+      "Quem sentou nele durante a viagem?",
+      "O que o motorista falou?"
+    ]
+  },
+  {
+    "id": "compras-204",
+    "category": "compras",
+    "situation": "Na feira de domingo, vocês trocaram uma melancia por uma galinha que dizia saber contar.",
+    "questions": [
+      "Quem propôs a troca?",
+      "Como a galinha mostrou que sabia contar?",
+      "Que nome vocês deram para ela?"
+    ]
+  },
+  {
+    "id": "compras-205",
+    "category": "compras",
+    "situation": "Vocês passaram uma hora dentro do provador experimentando fantasias de super-herói.",
+    "questions": [
+      "Qual herói cada um escolheu?",
+      "Quem bateu na porta do provador?",
+      "Vocês compraram alguma coisa?"
+    ]
+  },
+  {
+    "id": "compras-206",
+    "category": "compras",
+    "situation": "No shopping, um grupo de turistas achou que vocês eram funcionários e vocês resolveram guiá-los.",
+    "questions": [
+      "De onde eram os turistas?",
+      "Para qual loja vocês os levaram?",
+      "Quem percebeu o engano?"
+    ]
+  },
+  {
+    "id": "compras-207",
+    "category": "compras",
+    "situation": "Vocês saíram do pet shop com um único peixinho dourado e um aquário de três andares.",
+    "questions": [
+      "Qual é o nome do peixe?",
+      "Quem carregou o aquário?",
+      "Por que precisavam de três andares?"
+    ]
+  },
+  {
+    "id": "compras-208",
+    "category": "compras",
+    "situation": "Vocês ganharam uma promoção para encher um carrinho de graça, mas tinham só dois minutos.",
+    "questions": [
+      "Qual foi o primeiro item no carrinho?",
+      "Quem empurrou o carrinho?",
+      "O que ficou de fora por um segundo?"
+    ]
+  },
+  {
+    "id": "compras-209",
+    "category": "compras",
+    "situation": "Vocês experimentaram quarenta pares de sapato numa loja e saíram de lá de chinelo.",
+    "questions": [
+      "Qual sapato vocês quase levaram?",
+      "Quem trouxe as caixas do estoque?",
+      "Por que escolheram o chinelo?"
+    ]
+  },
+  {
+    "id": "compras-210",
+    "category": "compras",
+    "situation": "Vocês foram devolver um liquidificador alegando que ele só batia vitamina de banana.",
+    "questions": [
+      "Quando perceberam o problema?",
+      "Quem foi falar com o atendente?",
+      "O que receberam em troca?"
+    ]
+  },
+  {
+    "id": "compras-211",
+    "category": "compras",
+    "situation": "Às 7h da manhã, vocês tentaram comprar um único pão francês com uma nota de cem reais.",
+    "questions": [
+      "Onde conseguiram o troco?",
+      "Quem entregou a nota?",
+      "O que o padeiro respondeu?"
+    ]
+  },
+  {
+    "id": "compras-212",
+    "category": "compras",
+    "situation": "Na loja de móveis, vocês montaram uma casa de mentirinha e convidaram outros clientes para um café.",
+    "questions": [
+      "Qual cômodo da loja vocês escolheram?",
+      "Quem serviu o café?",
+      "Quantas pessoas aceitaram o convite?"
+    ]
+  },
+  {
+    "id": "compras-213",
+    "category": "compras",
+    "situation": "Vocês foram ao mercado comprar ovos e voltaram com uma fantasia de abacaxi e nenhum ovo.",
+    "questions": [
+      "Onde acharam a fantasia?",
+      "Quem vestiu primeiro?",
+      "Por que esqueceram os ovos?"
+    ]
+  },
+  {
+    "id": "compras-214",
+    "category": "compras",
+    "situation": "Uma promoção de \"leve 3, pague 2\" fez vocês saírem da loja com trinta desentupidores de pia.",
+    "questions": [
+      "Quem viu a promoção primeiro?",
+      "Onde vocês vão guardar tudo?",
+      "Para quem vão dar os que sobrarem?"
+    ]
+  },
+  {
+    "id": "compras-215",
+    "category": "compras",
+    "situation": "Vocês voltaram do brechó com um casaco que tinha um mapa costurado no forro.",
+    "questions": [
+      "Quem achou o mapa?",
+      "Para onde o mapa apontava?",
+      "Quanto pagaram pelo casaco?"
+    ]
+  },
+  {
+    "id": "compras-216",
+    "category": "compras",
+    "situation": "Vocês pechincharam tanto na feirinha de artesanato que o vendedor acabou pagando vocês.",
+    "questions": [
+      "O que vocês estavam comprando?",
+      "Qual foi o argumento final?",
+      "Quanto ele deu para vocês?"
+    ]
+  },
+  {
+    "id": "compras-217",
+    "category": "compras",
+    "situation": "No açougue, vocês pegaram a senha número zero e ninguém sabia quando ela seria chamada.",
+    "questions": [
+      "Onde vocês pegaram a senha?",
+      "Quanto tempo esperaram?",
+      "Quem desistiu primeiro?"
+    ]
+  },
+  {
+    "id": "compras-218",
+    "category": "compras",
+    "situation": "Vocês só saíram da loja de R$ 1,99 quando gastaram exatamente cem reais em ímãs de geladeira.",
+    "questions": [
+      "Qual ímã era o favorito?",
+      "Quem fez as contas?",
+      "Onde vocês vão colar tudo?"
+    ]
+  },
+  {
+    "id": "compras-219",
+    "category": "compras",
+    "situation": "O segurança flagrou vocês apostando corrida com carrinhos de supermercado no estacionamento.",
+    "questions": [
+      "Quem estava dentro de cada carrinho?",
+      "Até onde vocês foram?",
+      "O que o segurança disse?"
+    ]
+  },
+  {
+    "id": "compras-220",
+    "category": "compras",
+    "situation": "Vocês compraram uma planta na floricultura e a vendedora exigiu que cantassem para ela todo dia.",
+    "questions": [
+      "Que planta era?",
+      "Qual música vocês escolheram?",
+      "Quem vai cantar de manhã?"
+    ]
+  },
+  {
+    "id": "compras-221",
+    "category": "compras",
+    "situation": "Ao abrir a encomenda da loja online, vocês acharam doze patinhos de borracha no lugar de um ventilador.",
+    "questions": [
+      "Quem abriu a caixa?",
+      "De que cor eram os patinhos?",
+      "O que vocês escreveram na reclamação?"
+    ]
+  },
+  {
+    "id": "esporte-201",
+    "category": "esporte",
+    "situation": "Vocês entraram em campo como mascotes do time, mas vestidos com a fantasia do mascote rival.",
+    "questions": [
+      "Qual era o mascote certo?",
+      "Quem percebeu a troca?",
+      "O que a torcida gritou?"
+    ]
+  },
+  {
+    "id": "esporte-202",
+    "category": "esporte",
+    "situation": "Na pelada de domingo, vocês fizeram o gol da vitória com uma bola de praia.",
+    "questions": [
+      "Onde estava a bola original?",
+      "Quem fez o gol?",
+      "O juiz validou o lance?"
+    ]
+  },
+  {
+    "id": "esporte-203",
+    "category": "esporte",
+    "situation": "Vocês foram fotografados correndo uma maratona com uma caixa de isopor nas costas.",
+    "questions": [
+      "O que havia no isopor?",
+      "Em que quilômetro vocês pararam?",
+      "Quem carregou o isopor por mais tempo?"
+    ]
+  },
+  {
+    "id": "esporte-204",
+    "category": "esporte",
+    "situation": "Vocês chegaram à aula de natação com boia de unicórnio e touca de banho florida.",
+    "questions": [
+      "Quem emprestou a boia?",
+      "O que o professor mandou vocês fazerem?",
+      "Quanto tempo ficaram na água?"
+    ]
+  },
+  {
+    "id": "esporte-205",
+    "category": "esporte",
+    "situation": "Vocês tentaram andar de skate pela primeira vez e terminaram dentro de uma banca de jornal.",
+    "questions": [
+      "Quem estava em cima do skate?",
+      "Qual revista caiu no chão?",
+      "O que o jornaleiro falou?"
+    ]
+  },
+  {
+    "id": "esporte-206",
+    "category": "esporte",
+    "situation": "Vocês viraram juízes de um campeonato de pingue-pongue na praça e apitaram tudo errado.",
+    "questions": [
+      "Quem foi o campeão?",
+      "Qual foi o lance mais polêmico?",
+      "O que vocês usaram no lugar do apito?"
+    ]
+  },
+  {
+    "id": "esporte-207",
+    "category": "esporte",
+    "situation": "Na academia, vocês ficaram presos num aparelho por quarenta minutos até alguém aparecer.",
+    "questions": [
+      "Que aparelho era?",
+      "Como um prendeu o outro?",
+      "Quem ajudou a soltar vocês?"
+    ]
+  },
+  {
+    "id": "esporte-208",
+    "category": "esporte",
+    "situation": "Numa corrida de sacos, vocês cruzaram a linha de chegada pulando dentro do mesmo saco.",
+    "questions": [
+      "Quem pulava na frente?",
+      "De que material era o saco?",
+      "Em que lugar vocês chegaram?"
+    ]
+  },
+  {
+    "id": "esporte-209",
+    "category": "esporte",
+    "situation": "Vocês pedalaram uma bicicleta de dois lugares na contramão de um passeio ciclístico inteiro.",
+    "questions": [
+      "Quem estava no banco da frente?",
+      "Para onde vocês estavam indo?",
+      "O que gritaram para os outros ciclistas?"
+    ]
+  },
+  {
+    "id": "esporte-210",
+    "category": "esporte",
+    "situation": "No jogo de queimada da praça, vocês foram os últimos sobreviventes usando uma panela como escudo.",
+    "questions": [
+      "De onde veio a panela?",
+      "Quem acertou o último arremesso?",
+      "Qual time ganhou?"
+    ]
+  },
+  {
+    "id": "esporte-211",
+    "category": "esporte",
+    "situation": "Vocês tentaram ensinar um cachorro a jogar futebol e ele fugiu com a bola até a padaria.",
+    "questions": [
+      "Qual era o nome do cachorro?",
+      "Quem correu atrás dele?",
+      "O que o padeiro fez com a bola?"
+    ]
+  },
+  {
+    "id": "esporte-212",
+    "category": "esporte",
+    "situation": "Vocês apareceram na aula de ioga das 5h da manhã com roupa de festa junina.",
+    "questions": [
+      "Por que estavam com essa roupa?",
+      "Qual posição fizeram primeiro?",
+      "Quem caiu no meio da aula?"
+    ]
+  },
+  {
+    "id": "esporte-213",
+    "category": "esporte",
+    "situation": "A bola de basquete ficou presa no aro e vocês subiram numa escada no meio do jogo para pegá-la.",
+    "questions": [
+      "Quem segurou a escada?",
+      "Onde arrumaram a escada?",
+      "Quanto estava o placar?"
+    ]
+  },
+  {
+    "id": "esporte-214",
+    "category": "esporte",
+    "situation": "Vocês disputaram um torneio de xadrez usando tampinhas de garrafa no lugar das peças.",
+    "questions": [
+      "Quem esqueceu as peças?",
+      "Qual tampinha fazia o papel de rei?",
+      "Quem venceu a partida?"
+    ]
+  },
+  {
+    "id": "esporte-215",
+    "category": "esporte",
+    "situation": "Vocês foram flagrados treinando para o campeonato de embaixadinhas com uma laranja.",
+    "questions": [
+      "Quantas embaixadinhas conseguiram?",
+      "Quem filmou o treino?",
+      "O que aconteceu com a laranja no final?"
+    ]
+  },
+  {
+    "id": "esporte-216",
+    "category": "esporte",
+    "situation": "Vocês se perderam numa trilha de domingo e voltaram guiados por uma cabra.",
+    "questions": [
+      "Onde vocês encontraram a cabra?",
+      "Quem decidiu seguir a cabra?",
+      "Por qual caminho vocês voltaram?"
+    ]
+  },
+  {
+    "id": "esporte-217",
+    "category": "esporte",
+    "situation": "No boliche, o único par de sapatos disponível era número 46 e vocês tiveram que revezar.",
+    "questions": [
+      "Quem usou os sapatos primeiro?",
+      "Quantos pontos cada um fez?",
+      "Onde a bola foi parar no pior arremesso?"
+    ]
+  },
+  {
+    "id": "esporte-218",
+    "category": "esporte",
+    "situation": "Vocês remaram um caiaque no lago do parque usando uma vassoura no lugar do remo.",
+    "questions": [
+      "Onde foi parar o remo?",
+      "Quem remou?",
+      "O que o guarda do parque disse?"
+    ]
+  },
+  {
+    "id": "esporte-219",
+    "category": "esporte",
+    "situation": "Vocês voltaram de uma corrida de rua com medalhas no pescoço sem lembrar de terem corrido.",
+    "questions": [
+      "Qual número estava no peito de cada um?",
+      "Onde vocês estavam na hora da largada?",
+      "Quem pendurou as medalhas em vocês?"
+    ]
+  },
+  {
+    "id": "esporte-220",
+    "category": "esporte",
+    "situation": "Numa partida de futebol de botão, vocês acusaram um ao outro de esconder o goleiro no bolso.",
+    "questions": [
+      "Qual era o time de cada um?",
+      "Onde o goleiro foi encontrado?",
+      "Quanto ficou o jogo?"
+    ]
+  },
+  {
+    "id": "esporte-221",
+    "category": "esporte",
+    "situation": "Vocês entraram por engano numa aula de hidroginástica achando que era um passeio de barco.",
+    "questions": [
+      "Quem achou que era um passeio?",
+      "O que vocês estavam levando na mão?",
+      "Qual exercício foram obrigados a fazer?"
+    ]
+  },
+  {
+    "id": "evento-201",
+    "category": "evento",
+    "situation": "No casamento, vocês dois pegaram o buquê ao mesmo tempo e nenhum quis soltar.",
+    "questions": [
+      "De que flores era o buquê?",
+      "Quem soltou no final?",
+      "O que a noiva disse?"
+    ]
+  },
+  {
+    "id": "evento-202",
+    "category": "evento",
+    "situation": "Num show de rock, vocês ficaram na grade segurando uma placa pedindo para a banda tocar \"Parabéns pra Você\".",
+    "questions": [
+      "Qual banda estava tocando?",
+      "Quem segurou a placa?",
+      "A banda atendeu ao pedido?"
+    ]
+  },
+  {
+    "id": "evento-203",
+    "category": "evento",
+    "situation": "Na formatura, vocês deram o sinal para jogar os capelos e um deles caiu bem no meio do bolo.",
+    "questions": [
+      "De quem era o capelo?",
+      "Quem deu o sinal?",
+      "Como tiraram o capelo do bolo?"
+    ]
+  },
+  {
+    "id": "evento-204",
+    "category": "evento",
+    "situation": "Vocês saíram num bloquinho de carnaval fantasiados de semáforo e cone de trânsito.",
+    "questions": [
+      "Quem era o semáforo?",
+      "Qual marchinha tocou mais vezes?",
+      "Onde o bloco terminou?"
+    ]
+  },
+  {
+    "id": "evento-205",
+    "category": "evento",
+    "situation": "Na quermesse, vocês ganharam todas as rodadas da pescaria e foram acusados de ter ímã no bolso.",
+    "questions": [
+      "Quantos prêmios vocês ganharam?",
+      "Quem acusou vocês?",
+      "O que havia de verdade no bolso?"
+    ]
+  },
+  {
+    "id": "evento-206",
+    "category": "evento",
+    "situation": "Vocês soltaram duzentos balões no lançamento de um livro bem antes da hora combinada.",
+    "questions": [
+      "De que cor eram os balões?",
+      "Quem soltou a corda?",
+      "O que o autor disse?"
+    ]
+  },
+  {
+    "id": "evento-207",
+    "category": "evento",
+    "situation": "Depois de três dias acampados na fila de um show, vocês descobriram que estavam na fila errada.",
+    "questions": [
+      "Qual show vocês queriam ver?",
+      "Era fila de quê, afinal?",
+      "Quem perguntou primeiro?"
+    ]
+  },
+  {
+    "id": "evento-208",
+    "category": "evento",
+    "situation": "Como mestres de cerimônia de um casamento, vocês trocaram o nome dos noivos no discurso.",
+    "questions": [
+      "Quais nomes vocês falaram?",
+      "Quem escreveu o discurso?",
+      "Como consertaram o erro?"
+    ]
+  },
+  {
+    "id": "evento-209",
+    "category": "evento",
+    "situation": "No arraiá da cidade, vocês dançaram a quadrilha inteira vestidos de astronauta.",
+    "questions": [
+      "Por que estavam de astronauta?",
+      "Quem puxou a quadrilha?",
+      "Qual comida típica vocês comeram depois?"
+    ]
+  },
+  {
+    "id": "evento-210",
+    "category": "evento",
+    "situation": "Num show de mágica, vocês foram chamados ao palco e o coelho da cartola sumiu de verdade.",
+    "questions": [
+      "Quem segurava a cartola?",
+      "Onde o coelho apareceu?",
+      "O que o mágico falou?"
+    ]
+  },
+  {
+    "id": "evento-211",
+    "category": "evento",
+    "situation": "Vocês foram vistos nos bastidores de um musical segurando a peruca da atriz principal.",
+    "questions": [
+      "Como a peruca chegou até vocês?",
+      "De que cor era a peruca?",
+      "Quem a devolveu?"
+    ]
+  },
+  {
+    "id": "evento-212",
+    "category": "evento",
+    "situation": "Numa exposição de arte, um visitante achou que vocês dois eram uma escultura e começou a tirar fotos.",
+    "questions": [
+      "Em que posição vocês estavam?",
+      "Quanto tempo ficaram parados?",
+      "Quem se mexeu primeiro?"
+    ]
+  },
+  {
+    "id": "evento-213",
+    "category": "evento",
+    "situation": "Vocês animavam um chá revelação e estouraram o balão errado na frente de todos os convidados.",
+    "questions": [
+      "Que cor saiu do balão?",
+      "Quem estourou o balão?",
+      "Como vocês explicaram?"
+    ]
+  },
+  {
+    "id": "evento-214",
+    "category": "evento",
+    "situation": "Vocês ganharam ingressos para a final do campeonato, mas os lugares ficavam em cima do placar.",
+    "questions": [
+      "Como vocês subiram até lá?",
+      "Quem viu o gol primeiro?",
+      "O que levaram para comer?"
+    ]
+  },
+  {
+    "id": "evento-215",
+    "category": "evento",
+    "situation": "Como jurados de um festival de comida de rua, vocês deram nota dez a um prato que era só decoração.",
+    "questions": [
+      "Que prato era?",
+      "Quem provou primeiro?",
+      "O que o cozinheiro respondeu?"
+    ]
+  },
+  {
+    "id": "evento-216",
+    "category": "evento",
+    "situation": "Na gravação de um programa de auditório, vocês ganharam uma geladeira e não tinham como levá-la.",
+    "questions": [
+      "Qual prova vocês venceram?",
+      "Qual era a cor da geladeira?",
+      "Como ela chegou em casa?"
+    ]
+  },
+  {
+    "id": "evento-217",
+    "category": "evento",
+    "situation": "Na sessão de cinema ao ar livre, vocês cochilaram na rede e acordaram com o telão desligado e a praça vazia.",
+    "questions": [
+      "Qual filme estava passando?",
+      "Quem dormiu primeiro?",
+      "Como voltaram para casa?"
+    ]
+  },
+  {
+    "id": "evento-218",
+    "category": "evento",
+    "situation": "Vocês atravessaram o desfile de uma escola de samba carregando sacolas de mercado.",
+    "questions": [
+      "Qual era a escola de samba?",
+      "O que havia nas sacolas?",
+      "Quem puxou vocês para dentro do desfile?"
+    ]
+  },
+  {
+    "id": "evento-219",
+    "category": "evento",
+    "situation": "Vocês foram chamados para cortar o bolo de aniversário da cidade, que tinha cinco metros de comprimento.",
+    "questions": [
+      "Com o que vocês cortaram o bolo?",
+      "Quem ganhou o primeiro pedaço?",
+      "Qual era o sabor?"
+    ]
+  },
+  {
+    "id": "evento-220",
+    "category": "evento",
+    "situation": "Na virada do ano na praia, vocês passaram a queima de fogos inteira de costas, filmando o mar.",
+    "questions": [
+      "O que vocês estavam filmando?",
+      "Quem percebeu os fogos primeiro?",
+      "De que cor era a roupa de cada um?"
+    ]
+  },
+  {
+    "id": "evento-221",
+    "category": "evento",
+    "situation": "Num encontro de colecionadores de selos, vocês perderam o selo mais raro dentro de um sanduíche.",
+    "questions": [
+      "Qual era o desenho do selo?",
+      "Quem estava comendo o sanduíche?",
+      "Como o selo foi encontrado?"
+    ]
+  },
+  {
+    "id": "tecnologia-201",
+    "category": "tecnologia",
+    "situation": "A assistente de voz de vocês pediu cinquenta pizzas depois de entender errado um comando.",
+    "questions": [
+      "Qual foi o comando dado?",
+      "Quem falou com a assistente?",
+      "O que vocês fizeram com as pizzas?"
+    ]
+  },
+  {
+    "id": "tecnologia-202",
+    "category": "tecnologia",
+    "situation": "Vocês mandaram um drone filmar o pôr do sol e ele voltou trazendo uma pipa.",
+    "questions": [
+      "De que cor era a pipa?",
+      "Quem pilotava o drone?",
+      "Onde o drone pousou?"
+    ]
+  },
+  {
+    "id": "tecnologia-203",
+    "category": "tecnologia",
+    "situation": "O aspirador robô de vocês fugiu de casa e foi encontrado na padaria da esquina.",
+    "questions": [
+      "Como ele saiu de casa?",
+      "Quem foi buscá-lo?",
+      "O que ele estava aspirando na padaria?"
+    ]
+  },
+  {
+    "id": "tecnologia-204",
+    "category": "tecnologia",
+    "situation": "Numa videochamada importante, vocês passaram quarenta minutos com filtro de batata sem conseguir tirar.",
+    "questions": [
+      "Com quem era a chamada?",
+      "Quem ativou o filtro?",
+      "O que a outra pessoa disse?"
+    ]
+  },
+  {
+    "id": "tecnologia-205",
+    "category": "tecnologia",
+    "situation": "A TV nova de vocês só aceitava mudar de canal quando alguém batia palmas.",
+    "questions": [
+      "Quantas palmas eram necessárias?",
+      "Em qual canal a TV ficou travada?",
+      "Quem descobriu o truque?"
+    ]
+  },
+  {
+    "id": "tecnologia-206",
+    "category": "tecnologia",
+    "situation": "O GPS mandou vocês virarem à direita e o carro foi parar dentro de um lava-rápido.",
+    "questions": [
+      "Para onde vocês estavam indo?",
+      "Quem estava dirigindo?",
+      "O que o GPS disse em seguida?"
+    ]
+  },
+  {
+    "id": "tecnologia-207",
+    "category": "tecnologia",
+    "situation": "Vocês gravaram juntos um áudio de quinze minutos e mandaram no grupo errado.",
+    "questions": [
+      "Sobre o que era o áudio?",
+      "Em qual grupo ele caiu?",
+      "Quem respondeu primeiro?"
+    ]
+  },
+  {
+    "id": "tecnologia-208",
+    "category": "tecnologia",
+    "situation": "A geladeira inteligente começou a mandar mensagens no celular de vocês implorando por mais queijo.",
+    "questions": [
+      "Qual foi a primeira mensagem?",
+      "Quem respondeu à geladeira?",
+      "Vocês compraram o queijo?"
+    ]
+  },
+  {
+    "id": "tecnologia-209",
+    "category": "tecnologia",
+    "situation": "Vocês subiram no telhado com uma panela tentando melhorar o sinal do wi-fi.",
+    "questions": [
+      "Quem segurou a panela?",
+      "Que horas eram?",
+      "O sinal melhorou?"
+    ]
+  },
+  {
+    "id": "tecnologia-210",
+    "category": "tecnologia",
+    "situation": "O corretor automático mudou o convite de vocês e trinta pessoas apareceram fantasiadas de jacaré.",
+    "questions": [
+      "O que era para estar escrito no convite?",
+      "Para que era o convite?",
+      "Quem mandou a mensagem?"
+    ]
+  },
+  {
+    "id": "tecnologia-211",
+    "category": "tecnologia",
+    "situation": "Vocês ganharam um robô de cozinha que só sabe fazer brigadeiro, qualquer que seja a receita.",
+    "questions": [
+      "Qual receita vocês tentaram fazer?",
+      "Quem leu o manual?",
+      "Para quem deram os brigadeiros?"
+    ]
+  },
+  {
+    "id": "tecnologia-212",
+    "category": "tecnologia",
+    "situation": "Vocês erraram a senha do celular tantas vezes que ele só vai destravar daqui a 48 anos.",
+    "questions": [
+      "De quem era o celular?",
+      "Qual senha vocês achavam que era?",
+      "Quem errou por último?"
+    ]
+  },
+  {
+    "id": "tecnologia-213",
+    "category": "tecnologia",
+    "situation": "A câmera do elevador gravou vocês dois dançando lá dentro às 3h da manhã.",
+    "questions": [
+      "Que música estava tocando?",
+      "Para qual andar vocês iam?",
+      "Quem viu o vídeo primeiro?"
+    ]
+  },
+  {
+    "id": "tecnologia-214",
+    "category": "tecnologia",
+    "situation": "No meio do jantar, a lâmpada inteligente da sala começou a piscar como se mandasse um código secreto.",
+    "questions": [
+      "Que mensagem vocês acharam que era?",
+      "Quem tentou decifrar?",
+      "Como desligaram a lâmpada?"
+    ]
+  },
+  {
+    "id": "tecnologia-215",
+    "category": "tecnologia",
+    "situation": "Vocês fizeram uma live de culinária e esqueceram a câmera ligada por duas horas depois do fim.",
+    "questions": [
+      "Qual prato vocês fizeram?",
+      "O que fizeram depois que a receita acabou?",
+      "Quantas pessoas ficaram assistindo?"
+    ]
+  },
+  {
+    "id": "tecnologia-216",
+    "category": "tecnologia",
+    "situation": "O relógio inteligente registrou quarenta mil passos enquanto vocês dois estavam jogados no sofá.",
+    "questions": [
+      "De quem era o relógio?",
+      "O que vocês estavam assistindo?",
+      "Qual a explicação para os passos?"
+    ]
+  },
+  {
+    "id": "tecnologia-217",
+    "category": "tecnologia",
+    "situation": "Vocês gravaram um tutorial de origami que viralizou por causa de um gato aparecendo ao fundo.",
+    "questions": [
+      "O que o gato fez no vídeo?",
+      "Qual dobradura vocês ensinavam?",
+      "Quem segurou a câmera?"
+    ]
+  },
+  {
+    "id": "tecnologia-218",
+    "category": "tecnologia",
+    "situation": "O carro elétrico de vocês se recusou a sair da garagem até tocar a música favorita dele.",
+    "questions": [
+      "Qual era a música?",
+      "Quem descobriu o que o carro queria?",
+      "Aonde vocês estavam indo?"
+    ]
+  },
+  {
+    "id": "tecnologia-219",
+    "category": "tecnologia",
+    "situation": "O tradutor do celular transformou o pedido de vocês ao taxista num poema rimado.",
+    "questions": [
+      "Para onde vocês queriam ir?",
+      "Que verso o tradutor falou?",
+      "Como o taxista reagiu?"
+    ]
+  },
+  {
+    "id": "tecnologia-220",
+    "category": "tecnologia",
+    "situation": "Os fones sem fio de vocês se conectaram ao telão do shopping e tocaram a playlist para todo mundo.",
+    "questions": [
+      "Qual música tocou?",
+      "Quem percebeu primeiro?",
+      "O que fizeram para parar?"
+    ]
+  },
+  {
+    "id": "tecnologia-221",
+    "category": "tecnologia",
+    "situation": "Vocês programaram um robô cortador de grama e ele desenhou um rosto gigante no gramado.",
+    "questions": [
+      "Quem programou o robô?",
+      "Que cara o rosto estava fazendo?",
+      "Quem viu o desenho primeiro?"
+    ]
+  },
+  {
+    "id": "absurdo-201",
+    "category": "imprevistos",
+    "situation": "Uma vaca entrou no elevador junto com vocês e apertou o botão do 12º andar.",
+    "questions": [
+      "Em que andar vocês entraram?",
+      "Quem segurou a porta?",
+      "O que a vaca fez ao chegar?"
+    ]
+  },
+  {
+    "id": "absurdo-202",
+    "category": "imprevistos",
+    "situation": "Depois de cochilar no ônibus, vocês acordaram no ponto final, numa cidade com uma rua só.",
+    "questions": [
+      "Para onde vocês iam?",
+      "Quem acordou primeiro?",
+      "Como voltaram?"
+    ]
+  },
+  {
+    "id": "absurdo-203",
+    "category": "imprevistos",
+    "situation": "Vocês pararam o trânsito por vinte minutos para ajudar uma tartaruga a atravessar a rua.",
+    "questions": [
+      "Quem parou os carros?",
+      "Que nome deram para a tartaruga?",
+      "O que os motoristas disseram?"
+    ]
+  },
+  {
+    "id": "absurdo-204",
+    "category": "imprevistos",
+    "situation": "Vocês ficaram presos numa porta giratória segurando uma melancia.",
+    "questions": [
+      "Por que levavam uma melancia?",
+      "Quantas voltas deram?",
+      "Quem soltou vocês?"
+    ]
+  },
+  {
+    "id": "absurdo-205",
+    "category": "imprevistos",
+    "situation": "No meio do parque, vocês abriram uma porta solta que só dava para outra porta.",
+    "questions": [
+      "De que cor era a primeira porta?",
+      "Quem abriu?",
+      "Quantas portas vocês atravessaram?"
+    ]
+  },
+  {
+    "id": "absurdo-206",
+    "category": "imprevistos",
+    "situation": "Um balão gigante de festa levantou vocês dois alguns centímetros do chão na praça.",
+    "questions": [
+      "Que formato tinha o balão?",
+      "Quem soltou primeiro?",
+      "Onde vocês aterrissaram?"
+    ]
+  },
+  {
+    "id": "absurdo-207",
+    "category": "imprevistos",
+    "situation": "Vocês foram confundidos com gêmeos famosos e tiveram que dar autógrafos na rua.",
+    "questions": [
+      "Quem achou que vocês eram gêmeos?",
+      "Onde vocês assinaram?",
+      "Como escaparam da multidão?"
+    ]
+  },
+  {
+    "id": "absurdo-208",
+    "category": "imprevistos",
+    "situation": "Uma ventania levou o chapéu de um de vocês, que foi parar na cabeça de um cavalo.",
+    "questions": [
+      "De quem era o chapéu?",
+      "Onde estava o cavalo?",
+      "Como pegaram o chapéu de volta?"
+    ]
+  },
+  {
+    "id": "absurdo-209",
+    "category": "imprevistos",
+    "situation": "Vocês ficaram presos num carrossel que simplesmente não parava de girar.",
+    "questions": [
+      "Em qual cavalinho cada um sentou?",
+      "Quanto tempo o carrossel girou?",
+      "Quem desligou?"
+    ]
+  },
+  {
+    "id": "absurdo-210",
+    "category": "imprevistos",
+    "situation": "No zoológico, um pinguim fugitivo seguiu vocês até a saída como se fosse da família.",
+    "questions": [
+      "Onde o pinguim apareceu?",
+      "Que nome deram para ele?",
+      "Para quem o entregaram?"
+    ]
+  },
+  {
+    "id": "absurdo-211",
+    "category": "imprevistos",
+    "situation": "Chegou uma carta com carimbo de 1987 endereçada a vocês dois.",
+    "questions": [
+      "Quem abriu a carta?",
+      "O que estava escrito?",
+      "Quem assinava a carta?"
+    ]
+  },
+  {
+    "id": "absurdo-212",
+    "category": "imprevistos",
+    "situation": "O pneu da bicicleta furou e vocês foram socorridos por um palhaço de monociclo.",
+    "questions": [
+      "Onde o pneu furou?",
+      "Como o palhaço consertou?",
+      "O que ele pediu em troca?"
+    ]
+  },
+  {
+    "id": "absurdo-213",
+    "category": "imprevistos",
+    "situation": "Vocês encontraram um piano no meio da calçada e tocaram até juntar plateia.",
+    "questions": [
+      "Qual música vocês tocaram?",
+      "Quem tocava melhor?",
+      "O que aconteceu com o piano?"
+    ]
+  },
+  {
+    "id": "absurdo-214",
+    "category": "imprevistos",
+    "situation": "Um caminhão de mudança parou, deixou um armário na frente de vocês e foi embora.",
+    "questions": [
+      "O que havia dentro do armário?",
+      "Quem abriu a porta dele?",
+      "Para onde vocês levaram o armário?"
+    ]
+  },
+  {
+    "id": "absurdo-215",
+    "category": "imprevistos",
+    "situation": "Perseguidos por um ganso no parque, vocês se esconderam dentro de um carrinho de pipoca.",
+    "questions": [
+      "Por que o ganso ficou bravo?",
+      "Quem correu mais rápido?",
+      "O que o pipoqueiro fez?"
+    ]
+  },
+  {
+    "id": "absurdo-216",
+    "category": "imprevistos",
+    "situation": "A luz do shopping acabou bem quando vocês estavam no meio da escada rolante.",
+    "questions": [
+      "Vocês estavam subindo ou descendo?",
+      "Quem achou uma lanterna?",
+      "Como saíram da escada?"
+    ]
+  },
+  {
+    "id": "absurdo-217",
+    "category": "imprevistos",
+    "situation": "Vocês acharam na lagoa uma garrafa com mensagem pedindo para alguém regar um cacto.",
+    "questions": [
+      "Onde estava o cacto?",
+      "Quem tirou a mensagem da garrafa?",
+      "Como a mensagem estava assinada?"
+    ]
+  },
+  {
+    "id": "absurdo-218",
+    "category": "imprevistos",
+    "situation": "Vocês acordaram e havia um bode na sala mastigando o controle remoto.",
+    "questions": [
+      "Por onde o bode entrou?",
+      "Quem acordou primeiro?",
+      "Para quem vocês ligaram?"
+    ]
+  },
+  {
+    "id": "absurdo-219",
+    "category": "imprevistos",
+    "situation": "Um ônibus de excursão de vovós levou vocês junto, achando que faziam parte do grupo.",
+    "questions": [
+      "Para onde o ônibus ia?",
+      "Quem percebeu o engano?",
+      "O que as vovós ofereceram para comer?"
+    ]
+  },
+  {
+    "id": "absurdo-220",
+    "category": "imprevistos",
+    "situation": "Vocês sumiram dentro de uma piscina de bolinhas e só foram achados uma hora depois.",
+    "questions": [
+      "Quem entrou primeiro?",
+      "O que encontraram lá dentro?",
+      "Quem achou vocês?"
+    ]
+  },
+  {
+    "id": "absurdo-221",
+    "category": "imprevistos",
+    "situation": "Um pombo-correio pousou no ombro de vocês com um bilhete amarrado na pata.",
+    "questions": [
+      "O que dizia o bilhete?",
+      "Em qual ombro o pombo pousou?",
+      "O que vocês mandaram de resposta?"
+    ]
+  },
+  {
+    "id": "absurdo-222",
+    "category": "imprevistos",
+    "situation": "Vocês acharam uma lâmpada mágica na praia, mas o gênio só realizava desejos pela metade.",
+    "questions": [
+      "Qual foi o primeiro desejo?",
+      "Quem esfregou a lâmpada?",
+      "O que veio pela metade?"
+    ]
   }
 ]

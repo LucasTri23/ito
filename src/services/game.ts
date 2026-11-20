@@ -10,7 +10,13 @@ import {
 } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import type { Room, Round, Player } from "../types/game";
-import { randomInt, roomCode, shuffle } from "../utils/game";
+import {
+  hostAway,
+  pickSuccessor,
+  randomInt,
+  roomCode,
+  shuffle,
+} from "../utils/game";
 export const roundPath = (code: string, id: string) =>
   `rooms/${code}/rounds/${id}`;
 export async function createRoom(
@@ -38,6 +44,7 @@ export async function createRoom(
         name,
         connected: true,
         joinedAt: serverTimestamp(),
+        presenceAt: serverTimestamp(),
       });
       return true;
     });
@@ -52,7 +59,7 @@ export async function joinRoom(code: string, uid: string, name: string) {
     throw new Error("Esta sala foi encerrada.");
   const ref = doc(db, `rooms/${code}/players/${uid}`);
   if ((await getDoc(ref)).exists()) {
-    await updateDoc(ref, { connected: true });
+    await updateDoc(ref, { connected: true, presenceAt: serverTimestamp() });
     return;
   }
   if (room.data().status !== "LOBBY")
@@ -62,12 +69,14 @@ export async function joinRoom(code: string, uid: string, name: string) {
     name,
     connected: true,
     joinedAt: serverTimestamp(),
+    presenceAt: serverTimestamp(),
   });
 }
 export async function newRound(code: string, players: Player[]) {
   await runTransaction(db, async (tx) => {
     const ref = doc(db, "rooms", code);
     const room = (await tx.get(ref)).data() as Room;
+    // After "voltar ao lobby" currentRoundId is "", so nothing to clean up.
     if (room.currentRoundId) {
       const old = (
         await tx.get(doc(db, roundPath(code, room.currentRoundId)))
@@ -165,11 +174,70 @@ export const setOrder = (path: string, groupOrder: string[]) =>
 export const setPhase = (path: string, state: "READY_FOR_RESULT" | "RESULT") =>
   updateDoc(doc(db, path), { state });
 export const presence = (code: string, uid: string, connected: boolean) =>
-  updateDoc(doc(db, `rooms/${code}/players/${uid}`), { connected });
+  updateDoc(doc(db, `rooms/${code}/players/${uid}`), {
+    connected,
+    presenceAt: serverTimestamp(),
+  });
 export const removePlayer = (code: string, uid: string) =>
   deleteDoc(doc(db, `rooms/${code}/players/${uid}`));
 export async function closeRoom(code: string) {
   const batch = writeBatch(db);
   batch.update(doc(db, "rooms", code), { status: "CLOSED" });
   await batch.commit();
+}
+/** Host-only: abandon the current round and go back to the lobby. */
+export const backToLobby = (code: string) =>
+  updateDoc(doc(db, "rooms", code), { status: "LOBBY", currentRoundId: "" });
+/**
+ * Voluntary exit: the player document is deleted (not just `connected: false`).
+ * A leaving host hands `hostId` to the predictable successor in the same
+ * transaction; if nobody remains, the room is closed. If fewer than two people
+ * remain during a round, the room goes back to the lobby.
+ */
+export async function leaveRoom(code: string, uid: string, players: Player[]) {
+  await runTransaction(db, async (tx) => {
+    const roomRef = doc(db, "rooms", code);
+    const meRef = doc(db, `rooms/${code}/players/${uid}`);
+    const snap = await tx.get(roomRef);
+    if (!snap.exists()) return;
+    const room = snap.data() as Room;
+    if (room.status === "CLOSED" || !(await tx.get(meRef)).exists()) return;
+    // Confirm the remaining members against the server inside the transaction.
+    const others: Player[] = [];
+    for (const p of players) {
+      if (p.uid === uid) continue;
+      const s = await tx.get(doc(db, `rooms/${code}/players/${p.uid}`));
+      if (s.exists()) others.push(s.data() as Player);
+    }
+    if (room.hostId === uid) {
+      const next = pickSuccessor(others, uid);
+      if (!next) tx.update(roomRef, { status: "CLOSED" });
+      else
+        tx.update(roomRef, {
+          hostId: next.uid,
+          ...(room.status === "PLAYING" && others.length < 2
+            ? { status: "LOBBY", currentRoundId: "" }
+            : {}),
+        });
+    }
+    tx.delete(meRef);
+  });
+}
+/**
+ * Takes over a room whose host left or has been offline for longer than
+ * HOST_TAKEOVER_MINUTES. The rules accept it only for an existing member
+ * claiming for themselves while the previous host is still away, so two
+ * concurrent claims cannot both succeed.
+ */
+export async function claimHost(code: string, uid: string) {
+  return runTransaction(db, async (tx) => {
+    const roomRef = doc(db, "rooms", code);
+    const room = (await tx.get(roomRef)).data() as Room | undefined;
+    if (!room || room.status === "CLOSED" || room.hostId === uid) return false;
+    const old = await tx.get(doc(db, `rooms/${code}/players/${room.hostId}`));
+    if (!hostAway(old.exists() ? (old.data() as Player) : undefined, Date.now()))
+      return false;
+    tx.update(roomRef, { hostId: uid });
+    return true;
+  });
 }

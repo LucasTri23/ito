@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { ArrowUpRight, Eye, EyeOff } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 export function Brand() {
   return (
@@ -12,6 +12,18 @@ export function Brand() {
   );
 }
 export function Shell({ children }: { children: ReactNode }) {
+  const { pathname } = useLocation();
+  const help = pathname.startsWith("/alibi-furado")
+    ? ["Cada pessoa entra na sala pelo próprio aparelho.", "Dois suspeitos combinam uma história em 30 segundos e respondem separadamente.", "A turma compara as respostas; em trio o investigador decide, e com mais pessoas o júri vota."]
+    : pathname === "/entrelinhas" || pathname.startsWith("/room/")
+      ? ["Entre na sala com a turma. No modo online, cada pessoa usa seu aparelho.", "Cada pessoa recebe um número secreto e dá uma pista para o tema.", "A turma organiza as pistas e revela os números. No modo presencial, a sala distribui cartas para usar na mesa."]
+      : pathname === "/quem-sou-eu"
+        ? ["Escolha uma categoria e sorteie um nome.", "Uma pessoa conduz a brincadeira e mostra as dicas aos poucos para a turma tentar adivinhar."]
+        : pathname === "/eu-duvido"
+          ? ["Escolha se todos jogam ou se alguém será o ADM.", "Sorteie uma pergunta, deem palpites em voz alta e revelem o número para ver quem chegou mais perto."]
+          : pathname === "/top-10"
+            ? ["Escolha se todos jogam ou se alguém será o ADM.", "Sorteie um tema e tentem lembrar os dez itens antes de revelar a lista.", "Confira o período e o critério mostrados na carta."]
+            : null;
   return (
     <>
       <header>
@@ -34,7 +46,10 @@ export function Shell({ children }: { children: ReactNode }) {
         <NavLink to="/eu-duvido">Eu duvido</NavLink>
         <NavLink to="/top-10">Top 10</NavLink>
       </nav>
-      <main>{children}</main>
+      <main>
+        {help && <details className="game-help"><summary>Como jogar?</summary><ol>{help.map(step => <li key={step}>{step}</li>)}</ol></details>}
+        {children}
+      </main>
       <footer>
         <span>Entre amigos, tudo ganha outro sentido.</span>
         <span className="credits">

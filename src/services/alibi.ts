@@ -11,6 +11,29 @@ export type AlibiRoundData = {
   voteStartedAt: Timestamp | null; history: AlibiHistory; used: string[];
 };
 export const situations = catalog;
+export async function leaveAlibi(code: string, uid: string, playerIds: string[]) {
+  const roomRef = doc(db, "alibiRooms", code);
+  const inviteRef = doc(db, "alibiInvites", code);
+  const selfRef = doc(db, `alibiRooms/${code}/players/${uid}`);
+  await runTransaction(db, async tx => {
+    const [roomSnap, inviteSnap, selfSnap] = await Promise.all([tx.get(roomRef), tx.get(inviteRef), tx.get(selfRef)]);
+    if (!roomSnap.exists() || !inviteSnap.exists() || !selfSnap.exists()) throw new Error("Não foi possível confirmar sua vaga. Atualize e tente novamente.");
+    const room = roomSnap.data(), count = inviteSnap.data().count as number;
+    const candidates = [...new Set(playerIds.filter(id => id !== uid))].sort();
+    const candidateSnaps = await Promise.all(candidates.map(id => tx.get(doc(db, `alibiRooms/${code}/players/${id}`))));
+    const remaining = candidateSnaps.filter(s => s.exists()).map(s => s.id);
+    if (remaining.length !== count - 1) throw new Error("A lista de jogadores mudou. Aguarde a atualização e tente novamente.");
+    const roundRef = room.phase === "playing" && room.currentRoundId ? doc(db, `alibiRooms/${code}/rounds/${room.currentRoundId}`) : null;
+    if (roundRef) {
+      const round = await tx.get(roundRef);
+      if (!round.exists() || ["result", "cancelled"].includes(round.data().phase)) throw new Error("A rodada mudou. Tente novamente.");
+    }
+    if (roundRef) tx.update(roundRef, { phase: "cancelled" });
+    tx.update(roomRef, { phase: "lobby", hostId: room.hostId === uid ? (remaining[0] || "") : room.hostId });
+    tx.update(inviteRef, { count: count - 1, open: count > 1 });
+    tx.delete(selfRef);
+  });
+}
 export async function alibiAction(code: string, uid: string, action: string, roundId: string | undefined, value: unknown, players: string[]) {
   const roomRef = doc(db, "alibiRooms", code);
   const newRef = doc(collection(db, `alibiRooms/${code}/rounds`));

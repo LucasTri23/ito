@@ -20,6 +20,8 @@ export interface Player {
   name: string;
   connected: boolean;
   joinedAt: unknown;
+  /** Server time of the last presence change (absent in older rooms). */
+  presenceAt?: unknown;
 }
 export interface Round {
   state: Phase;

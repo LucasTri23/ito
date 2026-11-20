@@ -2,13 +2,13 @@
 
 ## Álibi Furado — implementação em andamento
 
-O lobby e as rodadas usam autenticação anônima e Firestore. O anfitrião inicia o cronômetro; as regras validam as fases e os prazos usando o horário do servidor. Respostas e votos ficam em documentos separados, com acesso restrito até a revelação e o resultado, respectivamente. O catálogo atual contém **12 situações**, portanto ainda não atende ao mínimo solicitado de 300.
+O lobby e as rodadas usam autenticação anônima e Firestore. O anfitrião inicia o cronômetro; as regras validam as fases e os prazos usando o horário do servidor. Respostas e votos ficam em documentos separados, com acesso restrito até a revelação e o resultado, respectivamente. O catálogo atual contém **46 situações**, portanto ainda não atende ao mínimo solicitado de 300.
 
 Para executar localmente, instale Java 21 e execute `npm install`. Com `.env` configurado para projeto demo e `VITE_USE_EMULATORS=true`, rode `npx firebase emulators:start --only auth,firestore --project demo-entrelinhas` e `npm run dev` em outro terminal. Os endereços dos emuladores no frontend usam `127.0.0.1` e não servem para outros aparelhos. `npm run test:rules` executa testes de regras e transações com 2, 3, 5 e 8 identidades no Emulator; antecipa os prazos por uma operação administrativa de teste, portanto não mede os 30 segundos reais.
 
 Para publicar essa versão, publique `firestore.rules` no banco Firestore usado pelo aplicativo e depois publique o frontend no GitHub Pages. Habilite autenticação anônima no projeto Firebase. Esta versão não usa Cloud Functions nem exige Blaze; o plano gratuito tem limites de uso. O deploy do Pages não publica as regras.
 
-Limitações atuais: o catálogo tem 12 situações e pode ser consultado no código público; o avanço ao expirar depende de ao menos um cliente ativo (ao retornar, ele verifica a fase); presença, saída voluntária e transferência de anfitrião não estão implementadas. O catálogo e esses recursos ainda precisam ser concluídos.
+No Álibi, a saída voluntária cancela a rodada em andamento. Se o anfitrião sair, a vaga é transferida ao participante restante com o menor identificador; a última saída fecha o convite. O aviso de atividade indica apenas que uma atualização não chegou nos últimos quatro minutos: o navegador em segundo plano também pode atrasar esse sinal, e ninguém é removido automaticamente. O catálogo pode ser consultado no código público e o avanço ao expirar depende de ao menos um cliente ativo (ao retornar, ele verifica a fase). Transferência automática após desconexão prolongada ainda não está implementada.
 
 ## Jogos e Quem sou eu
 
@@ -16,8 +16,8 @@ Limitações atuais: o catálogo tem 12 situações e pode ser consultado no có
 
 Dois jogos presenciais em um aparelho, acessíveis pelo menu inicial e pelas abas:
 
-- **Eu duvido!** (`/#/eu-duvido`, antigo Nem a pato): 230 perguntas numéricas sobre corpo, natureza, animais, geografia, história, tecnologia, música, cinema, ciência, esportes e curiosidades bizarras.
-- **Top 10** (`/#/top-10`): 122 temas com dez posições cada, sobre música, games, empresas, natureza, livros, redes sociais, YouTube, Netflix, bilheteria, Steam e nomes no Brasil/EUA.
+- **Eu duvido!** (`/#/eu-duvido`, antigo Nem a pato): perguntas numéricas sobre corpo, natureza, animais, geografia, história, tecnologia, música, cinema, ciência, esportes e curiosidades.
+- **Top 10** (`/#/top-10`): temas com dez posições cada, sobre música, games, empresas, natureza, livros, redes sociais, YouTube, Netflix, bilheteria, Steam e nomes no Brasil/EUA.
 
 Em **Geral joga**, o tema aparece sozinho e o botão revela a resposta ou o ranking inteiro. Em **Temos ADM**, cada tema já vem com a resposta aberta para quem está conduzindo. Mudar de ADM para Geral joga esconde novamente a resposta; sortear outra carta mantém o modo e reinicia a revelação. Cada jogo começa em Geral joga ao ser aberto.
 
@@ -25,7 +25,7 @@ O filtro de assunto reinicia a sequência da categoria. Não há repetição at�
 
 As cartas possuem fonte, critério e data de consulta. Rankings são **retratos salvos**, não atualizações ao vivo. As rodadas brasileiras de nomes usam explicitamente o Censo 2010. Consulte [as fontes e critérios editoriais](docs/jogos-de-palpites.md). Os dados estão em `src/data/partyGames.ts`.
 
-A página inicial (`/#/`) agora é um pré-lobby para escolher o jogo. **Entrelinhas** abre em `/#/entrelinhas`; salas existentes continuam em `/#/room/CODIGO`, e o pré-lobby oferece um atalho para a última sala. A página inicial não redireciona automaticamente para uma sala, para permitir escolher outro jogo.
+A página inicial (`/#/`) permite escolher o jogo. **Entrelinhas** abre em `/#/entrelinhas`; salas existentes continuam em `/#/room/CODIGO`. A página inicial não redireciona automaticamente para uma sala, para permitir escolher outro jogo.
 
 A aba **Quem sou eu** (`/#/quem-sou-eu`) funciona com um jogador/aparelho, presencialmente, sem cadastro, sala, autenticação ou chamadas ao Firestore. Escolha uma categoria e clique em **Sortear nome**. A carta mostra o nome; **Sobre este nome** abre a explicação. O botão **Mostrar dica** libera três dicas sucessivas: difícil, média e fácil. Depois da terceira, fica desabilitado. As dicas reiniciam ao sortear outra carta, trocar de categoria ou recarregar a página.
 
@@ -123,6 +123,14 @@ Se houver erro de banco inexistente apesar de um banco criado, confira o projeto
 10. As duas listas mostram a ordem escolhida e a real, com revelação progressiva e botão **Revelar tudo**. Acertos usam texto/símbolos além da cor. Empates são aceitos: uma posição é correta se contém o mesmo valor da posição ordenada, independentemente da pessoa empatada.
 11. **Próxima rodada** mantém a sala e os jogadores, incrementa o número da rodada e cria documentos novos sem respostas nem números herdados.
 
+### Sair da sala e troca de anfitrião (modo online)
+
+- **Desconexão ≠ saída.** Fechar a aba ou perder a conexão apenas marca `connected: false` (com o horário do servidor em `presenceAt`); a pessoa continua na sala e pode voltar. **Sair da sala** (com confirmação “Tem certeza?”) apaga o documento do jogador: ele deixa de ser membro e só volta como novo participante, no lobby.
+- **Anfitrião sai:** no mesmo commit transacional, `hostId` passa ao sucessor previsível — entre quem fica, primeiro os conectados, depois o menor `joinedAt` (empate pelo UID). Se ele era a última pessoa, a sala é encerrada.
+- **Anfitrião desconectado por muito tempo:** se o anfitrião está com `connected == false` e `presenceAt` há mais de **3 minutos** (ou seu documento não existe mais), o sucessor previsível (mesmo critério) assume automaticamente via transação; o cliente verifica a cada 15 s. As regras só aceitam que um membro conectado reivindique o posto para si enquanto o anfitrião atual estiver ausente; assim, quando o primeiro candidato vence, o segundo é recusado, pois o novo anfitrião está conectado. Salas antigas sem `presenceAt` não permitem essa troca até o anfitrião reconectar uma vez. Fechamentos abruptos que não disparam `pagehide` mantêm `connected: true` e não geram troca automática.
+- **Saída durante a rodada:** se restarem menos de 2 pessoas, a sala volta ao lobby (`status: LOBBY`, `currentRoundId: ""`) e o lobby mostra quantas pessoas faltam. Com 2 ou mais, a rodada segue quando possível: o anfitrião pode pular a vez de quem saiu (resposta fixa “Jogador que saiu”). Se a rodada depender de quem saiu (por exemplo, o número ainda não foi sorteado), o anfitrião usa **Voltar ao lobby**.
+- Quem fica vê avisos “Fulano saiu da sala” e “Fulano agora é o anfitrião”.
+
 ## Estados e estrutura
 
 Sala: `LOBBY → PLAYING → CLOSED`. Rodada:
@@ -136,7 +144,7 @@ WAITING_FOR_THEME → DISTRIBUTING_NUMBERS → PRESENTING
 rooms/{CODIGO}
   code, hostId, status, roundNo, currentRoundId, createdAt
   players/{uid}
-    uid, name, connected, joinedAt
+    uid, name, connected, joinedAt, presenceAt (horário da última mudança de presença)
   rounds/{numero}
     state, theme, lowLabel, highLabel, playerIds,
     presentationOrder, currentPresentationIndex, groupOrder, createdAt
@@ -157,7 +165,7 @@ Listeners `onSnapshot` recebem sala, jogadores, rodada, respostas, prontidão e 
 | Listar todas as salas                             | Ninguém                                                     |
 | Ler jogadores, rodada e respostas                 | Membro da sala                                              |
 | Entrar                                            | Próprio UID, sala em lobby                                  |
-| Atualizar presença                                | Apenas próprio UID; sem alterar nome/identidade             |
+| Atualizar presença                                | Apenas próprio UID; sem alterar nome/identidade; `presenceAt` só com o horário do servidor |
 | Criar tema, avançar, ordenar, confirmar e revelar | Apenas anfitrião, em transições válidas                     |
 | Escrever número                                   | Dono, na distribuição, inteiro entre 1–100, somente criação |
 | Sobrescrever número ou resposta                   | Ninguém pelo SDK cliente                                    |
@@ -166,6 +174,10 @@ Listeners `onSnapshot` recebem sala, jogadores, rodada, respostas, prontidão e 
 | Ler número alheio ou listar números               | Membro, rodada atual em RESULT                              |
 | Escrever resposta                                 | Dono na vez correta, ou anfitrião com texto fixo de pulo    |
 | Remover jogador                                   | Anfitrião, no lobby, exceto ele próprio                     |
+| Sair da sala (apagar o próprio jogador)           | Próprio UID; o anfitrião só se passar `hostId` no mesmo commit ou encerrar a sala |
+| Passar `hostId` ao sair                           | Anfitrião, para membro existente, apagando o próprio jogador no mesmo commit |
+| Assumir `hostId`                                  | Membro conectado, para si, se o anfitrião não existe ou está desconectado há mais de 3 min |
+| Voltar ao lobby durante a rodada                  | Anfitrião                                                   |
 | Encerrar sala                                     | Anfitrião                                                   |
 
 O marcador de prontidão usa `getAfter` para exigir que o número privado exista, inclusive no mesmo commit atômico. O avanço para apresentação verifica todos os marcadores (até oito). As listas de apresentação e ordenação precisam ser permutações da lista congelada. O índice avança uma posição por vez e exige uma resposta existente. As Rules impedem reescrever tema após o sorteio, pular direto para resultado e alterar a ordem após confirmação.
@@ -175,8 +187,8 @@ Conceitualmente: um jogador que abre o console e tenta ler o segredo alheio, lis
 ## Limitações explícitas da arquitetura
 
 - **Sorteio no cliente:** um cliente adulterado pode escolher seu primeiro número em vez de sortear. As regras impedem alterações posteriores, mas não provam aleatoriedade. Números repetidos são aceitos.
-- **Anfitrião controla o ritmo:** pode ordenar como quiser, pular participantes e encerrar. Sua conexão é necessária para os avanços automáticos. Se desconectar, a partida aguarda seu retorno. Não há transferência automática de anfitrião.
-- **Distribuição exige todos conectados:** quem ainda não criou seu segredo precisa retornar. Se isso não for possível, o anfitrião encerra e cria outra sala. Não se inventa número para um participante ausente.
+- **Anfitrião controla o ritmo:** pode ordenar como quiser, pular participantes e encerrar. Sua conexão é necessária para os avanços automáticos. Se desconectar por mais de 3 minutos (com `pagehide`/`offline` registrados), o próximo jogador assume; antes disso, a partida aguarda. O sucessor é escolhido no cliente: as regras validam membro, conexão e ausência do anfitrião, mas não conseguem verificar a ordem de `joinedAt`.
+- **Distribuição exige todos conectados:** quem ainda não criou seu segredo precisa retornar. Se isso não for possível, o anfitrião volta ao lobby ou encerra a sala. Não se inventa número para um participante ausente.
 - **Presença aproximada:** eventos online/offline/pagehide atualizam `connected` quando possível. Fechamentos abruptos podem deixar presença antiga. Não há garantia de presença instantânea ou heartbeat; Firestore não oferece `onDisconnect` como o Realtime Database.
 - **Sessão:** Firebase persiste a identidade no navegador; localStorage guarda nome e última sala. Atualizar a rota da sala recupera a partida; abrir a página inicial mostra a escolha de jogos com um atalho para voltar à última sala. Sair explicitamente limpa essa referência. Limpar dados, trocar dispositivo ou usar outro perfil cria outra identidade. Várias abas do mesmo perfil compartilham UID e não são jogadores diferentes.
 - **Limpeza:** a próxima rodada apaga números, respostas e marcadores de prontidão anteriores no mesmo commit que cria a rodada vazia. Os metadados das rodadas ficam arquivados. As regras também bloqueiam a leitura de secrets fora da rodada atual. Nada consegue “desver” números já revelados. Salas abandonadas ou encerradas não têm expiração automática; exclua-as e suas subcoleções pelo Console quando necessário. Excluir só o documento pai não apaga subcoleções.
