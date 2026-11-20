@@ -1,3 +1,4 @@
+import { brazilNumberTopics, brazilRankingTopics } from "./partyGamesBrasil";
 export type PartyMode = "everyone" | "admin";
 export interface PartySource {
   label: string;
@@ -4419,3 +4420,7 @@ Tayo Bus Kecil - Tayo Bahasa Indonesia|27 milhões
 Rans Entertainment|26,8 milhões`,
   ),
 ];
+
+// Temas brasileiros ficam em partyGamesBrasil.ts.
+numberTopics.push(...brazilNumberTopics);
+rankingTopics.push(...brazilRankingTopics);
