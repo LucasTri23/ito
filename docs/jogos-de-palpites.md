@@ -1,6 +1,6 @@
 # Jogos de palpites: fontes e critérios
 
-Catálogo pesquisado em 13-14/09/2026: 230 perguntas de Nem a pato! e 122 rankings de Top 10. Conteúdo local, sem consultas externas durante o sorteio. A fonte só aparece junto à resposta para não antecipar pistas.
+Catálogo pesquisado em 13-14/09/2026: 230 perguntas de Eu duvido! (antigo Nem a pato!) e 122 rankings de Top 10. Conteúdo local, sem consultas externas durante o sorteio. A fonte só aparece junto à resposta para não antecipar pistas.
 
 ## Perguntas numéricas
 

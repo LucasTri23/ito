@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:rules": "firebase emulators:exec --only firestore --project demo-entrelinhas \"vitest run tests/rules.test.ts\"",
-    "test:alibi": "firebase emulators:exec --only auth,firestore,functions --project demo-entrelinhas \"node functions/emulator-test.cjs\"",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-entrelinhas \"vitest run tests/rules.test.ts tests/alibi.integration.test.ts\"",
     "validate:alibi": "node functions/validate-catalog.cjs"
   },
   "dependencies": {

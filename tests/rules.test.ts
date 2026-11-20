@@ -30,6 +30,90 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
   afterAll(async () => {
     await env?.cleanup();
   });
+  it.each([2, 3, 5, 8])("Álibi sem Functions: conclui rodada com %i jogadores", async (count) => {
+    const ids = ["a", "b", "c", "d", "e", "f", "g", "h"].slice(0, count);
+    await env.withSecurityRulesDisabled(async ctx => {
+      const db = ctx.firestore();
+      await setDoc(doc(db, "alibiRooms/ZZZZZ"), { code: "ZZZZZ", hostId: "a", phase: "lobby" });
+      await setDoc(doc(db, "alibiInvites/ZZZZZ"), { count, open: true });
+      for (const uid of ids) await setDoc(doc(db, `alibiRooms/ZZZZZ/players/${uid}`), { uid, name: uid });
+    });
+    const contexts = Object.fromEntries(ids.map(uid => [uid, env.authenticatedContext(uid).firestore()]));
+    const db = (uid: string) => contexts[uid];
+    const room = "alibiRooms/ZZZZZ", round = `${room}/rounds/one`;
+    const create = writeBatch(db("a"));
+    create.set(doc(db("a"), round), { id: "one", phase: "presentation", catalogId: "teste", situation: "Uma situação.", suspects: ["a", "b"], investigator: count > 2 ? "c" : null, jurors: ids.slice(3), submitted: [], voted: [], customQuestion: "", startedAt: null, surpriseAt: null, voteStartedAt: null, history: {}, used: ["teste"] });
+    create.update(doc(db("a"), room), { phase: "playing", currentRoundId: "one" });
+    await assertSucceeds(create.commit());
+    await assertFails(updateDoc(doc(db("b"), round), { phase: "timer", startedAt: serverTimestamp() }));
+    await assertSucceeds(updateDoc(doc(db("a"), round), { phase: "timer", startedAt: serverTimestamp() }));
+    await assertFails(updateDoc(doc(db("b"), round), count === 2 ? { phase: "answers" } : { phase: "surprise", surpriseAt: serverTimestamp() }));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), round), { startedAt: new Date(Date.now() - 31000) }));
+    await assertSucceeds(updateDoc(doc(db("b"), round), count === 2 ? { phase: "answers" } : { phase: "surprise", surpriseAt: serverTimestamp() }));
+    if (count > 2) await assertSucceeds(updateDoc(doc(db("c"), round), { phase: "answers", customQuestion: "Qual era a cor?" }));
+    for (const [index, uid] of ["a", "b"].entries()) {
+      const batch = writeBatch(db(uid));
+      batch.set(doc(db(uid), `${round}/answers/${uid}`), { uid, values: ["um", "dois", "três"] });
+      batch.update(doc(db(uid), round), { submitted: ["a", "b"].slice(0, index + 1) });
+      await assertSucceeds(batch.commit());
+      if (index === 0) await assertFails(getDoc(doc(db("b"), `${round}/answers/a`)));
+    }
+    await assertSucceeds(updateDoc(doc(db("b"), round), { phase: "reveal" }));
+    await assertSucceeds(getDocs(collection(db("b"), `${round}/answers`)));
+    await assertSucceeds(updateDoc(doc(db("a"), round), { phase: "vote", voteStartedAt: serverTimestamp() }));
+    const voters = count === 2 ? ["a"] : count === 3 ? ["c"] : ids.slice(3);
+    for (const [index, uid] of voters.entries()) {
+      const batch = writeBatch(db(uid));
+      batch.set(doc(db(uid), `${round}/votes/${uid}`), { uid, choice: "colou" });
+      batch.update(doc(db(uid), round), { voted: voters.slice(0, index + 1) });
+      await assertSucceeds(batch.commit());
+    }
+    if (count > 2) await assertFails(getDocs(collection(db("a"), `${round}/votes`)));
+    const finisher = count === 2 ? "a" : "b";
+    const finish = writeBatch(db(finisher));
+    finish.update(doc(db(finisher), round), { phase: "result" });
+    finish.update(doc(db(finisher), room), { phase: "lobby" });
+    await assertSucceeds(finish.commit());
+    expect((await assertSucceeds(getDocs(collection(db("a"), `${round}/votes`)))).size).toBe(voters.length);
+  });
+  it("Álibi sem Functions: respostas e votos são privados, imutáveis e vinculados à rodada", async () => {
+    await env.withSecurityRulesDisabled(async (ctx) => {
+      const db = ctx.firestore();
+      await setDoc(doc(db, "alibiRooms/KLMNP"), { hostId: "a", currentRoundId: "1" });
+      for (const uid of ["a", "b", "c", "d"]) await setDoc(doc(db, `alibiRooms/KLMNP/players/${uid}`), { uid, name: uid });
+      await setDoc(doc(db, "alibiRooms/KLMNP/rounds/1"), { phase: "answers", suspects: ["a", "b"], investigator: "c", jurors: ["d"], submitted: [], voted: [] });
+    });
+    const a = env.authenticatedContext("a").firestore();
+    const b = env.authenticatedContext("b").firestore();
+    const c = env.authenticatedContext("c").firestore();
+    const d = env.authenticatedContext("d").firestore();
+    const outsider = env.authenticatedContext("outsider").firestore();
+    const answer = "alibiRooms/KLMNP/rounds/1/answers/a";
+    const answerBatch = writeBatch(a);
+    answerBatch.set(doc(a, answer), { uid: "a", values: ["um", "dois", "três"] });
+    answerBatch.update(doc(a, "alibiRooms/KLMNP/rounds/1"), { submitted: ["a"] });
+    await assertSucceeds(answerBatch.commit());
+    await assertSucceeds(getDoc(doc(a, answer)));
+    await assertFails(getDoc(doc(b, answer)));
+    await assertFails(getDoc(doc(c, answer)));
+    await assertFails(getDoc(doc(outsider, answer)));
+    await assertFails(setDoc(doc(a, answer), { uid: "a", values: ["alterada", "dois", "três"] }));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), "alibiRooms/KLMNP/rounds/1"), { phase: "vote", voteStartedAt: new Date() }));
+    await assertSucceeds(getDoc(doc(b, answer)));
+    const vote = "alibiRooms/KLMNP/rounds/1/votes/d";
+    await assertFails(setDoc(doc(c, "alibiRooms/KLMNP/rounds/1/votes/c"), { uid: "c", choice: "colou" }));
+    const voteBatch = writeBatch(d);
+    voteBatch.set(doc(d, vote), { uid: "d", choice: "colou" });
+    voteBatch.update(doc(d, "alibiRooms/KLMNP/rounds/1"), { voted: ["d"] });
+    await assertSucceeds(voteBatch.commit());
+    await assertFails(getDoc(doc(a, vote)));
+    await assertFails(setDoc(doc(d, vote), { uid: "d", choice: "furado" }));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), "alibiRooms/KLMNP/rounds/1"), { phase: "result" }));
+    await assertSucceeds(getDoc(doc(a, vote)));
+    await assertFails(getDoc(doc(outsider, vote)));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), "alibiRooms/KLMNP"), { currentRoundId: "2" }));
+    await assertFails(getDoc(doc(a, answer)));
+  });
   it("Álibi: ingresso atômico respeita capacidade e restringe leitura", async () => {
     const a = env.authenticatedContext("a").firestore();
     const outside = env.authenticatedContext("z").firestore();

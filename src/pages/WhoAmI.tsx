@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { burst, prefersReducedMotion } from "../utils/fx";
 import { Shuffle, Sparkles, ExternalLink, Lightbulb } from "lucide-react";
 import {
   identities,
@@ -94,6 +95,40 @@ export function WhoAmI() {
   }, [session]);
   const current = identities.find((item) => item.id === session.current);
   const category = identityCategories.find((c) => c.id === session.category)!;
+  // Roleta de nomes antes do sorteio real, com confete quando o nome para.
+  const [rolling, setRolling] = useState<string | null>(null);
+  const rollTimer = useRef<number | undefined>(undefined);
+  const cardRef = useRef<HTMLElement>(null);
+  useEffect(() => () => window.clearInterval(rollTimer.current), []);
+  const pick = () =>
+    setSession((previous) => {
+      const next = drawIdentity(
+        previous.category,
+        previous.seen,
+        previous.current,
+      );
+      return {
+        category: previous.category,
+        current: next.entry.id,
+        seen: next.seen,
+      };
+    });
+  const draw = () => {
+    if (prefersReducedMotion()) return pick();
+    const pool = identities.filter((i) => i.category === session.category);
+    let ticks = 0;
+    window.clearInterval(rollTimer.current);
+    rollTimer.current = window.setInterval(() => {
+      ticks += 1;
+      setRolling(pool[Math.floor(Math.random() * pool.length)]?.name ?? "…");
+      if (ticks >= 10) {
+        window.clearInterval(rollTimer.current);
+        setRolling(null);
+        pick();
+        window.setTimeout(() => burst(cardRef.current, 18), 120);
+      }
+    }, 70);
+  };
   return (
     <section className="who-page">
       <span className="pill">PRESENCIAL · 1 JOGADOR · SEM SALA</span>
@@ -127,13 +162,16 @@ export function WhoAmI() {
         ))}
       </fieldset>
       <article
-        className={`identity-card identity-${session.category}`}
-        key={session.current ?? session.category}
-        aria-live="polite"
+        ref={cardRef}
+        className={`identity-card identity-${session.category}${rolling ? " party-rolling" : ""}`}
+        key={rolling ? "rolling" : (session.current ?? session.category)}
+        aria-live={rolling ? "off" : "polite"}
         aria-atomic="true"
       >
-        <span className="eyebrow">{category.label}</span>
-        {current ? (
+        <span className="eyebrow">{rolling ? "SORTEANDO…" : category.label}</span>
+        {rolling ? (
+          <h2>{rolling}</h2>
+        ) : current ? (
           <>
             <h2>{current.name}</h2>
             <details className="identity-about">
@@ -162,20 +200,8 @@ export function WhoAmI() {
       </article>
       <button
         className="button primary identity-draw"
-        onClick={() =>
-          setSession((previous) => {
-            const next = drawIdentity(
-              previous.category,
-              previous.seen,
-              previous.current,
-            );
-            return {
-              category: previous.category,
-              current: next.entry.id,
-              seen: next.seen,
-            };
-          })
-        }
+        onClick={draw}
+        disabled={rolling !== null}
       >
         <Shuffle size={19} />
         {current ? "Sortear outro nome" : "Sortear nome"}

@@ -2,21 +2,21 @@
 
 ## Álibi Furado — implementação em andamento
 
-O lobby e o fluxo principal de rodada usam autenticação anônima, Firestore e a função `alibiAction` em Cloud Functions. O documento `alibiRooms/{codigo}/private/state` é acessível apenas pelo serviço; o documento público da sala recebe respostas somente após os dois envios e nunca contém votos individuais. As fases e os prazos são validados na função. O código atual contém **12 situações**, portanto o catálogo solicitado de 300 ainda não está completo.
+O lobby e as rodadas usam autenticação anônima e Firestore. O anfitrião inicia o cronômetro; as regras validam as fases e os prazos usando o horário do servidor. Respostas e votos ficam em documentos separados, com acesso restrito até a revelação e o resultado, respectivamente. O catálogo atual contém **12 situações**, portanto ainda não atende ao mínimo solicitado de 300.
 
-Para executar localmente, instale Java 21 e execute `npm install` na raiz e `npm install --prefix functions`. Com `.env` configurado para projeto demo e `VITE_USE_EMULATORS=true`, rode `npx firebase emulators:start --only auth,firestore,functions --project demo-entrelinhas` e `npm run dev` em outro terminal. Os endereços dos emuladores no frontend usam `127.0.0.1` e não servem para outros aparelhos. `npm run test:alibi` executa partidas automatizadas com 2, 3, 5 e 8 identidades no Emulator; antecipa os prazos pelo Admin SDK, portanto não mede os 30 segundos reais.
+Para executar localmente, instale Java 21 e execute `npm install`. Com `.env` configurado para projeto demo e `VITE_USE_EMULATORS=true`, rode `npx firebase emulators:start --only auth,firestore --project demo-entrelinhas` e `npm run dev` em outro terminal. Os endereços dos emuladores no frontend usam `127.0.0.1` e não servem para outros aparelhos. `npm run test:rules` executa testes de regras e transações com 2, 3, 5 e 8 identidades no Emulator; antecipa os prazos por uma operação administrativa de teste, portanto não mede os 30 segundos reais.
 
-Para publicar essa versão, é necessário revisar e publicar `firestore.rules` e `functions` no projeto Firebase correto, habilitar Authentication anônima, configurar Cloud Functions e então publicar o frontend no GitHub Pages. O deploy de Functions exige o plano Firebase Blaze e pode gerar custos; não foi realizado por este repositório automaticamente. A função usa o banco Firestore **`(default)`**, mesmo que `VITE_FIREBASE_DATABASE_ID` aponte para outro banco; não use essa implementação com banco nomeado sem adaptá-la. O deploy do Pages não publica regras nem Functions.
+Para publicar essa versão, publique `firestore.rules` no banco Firestore usado pelo aplicativo e depois publique o frontend no GitHub Pages. Habilite autenticação anônima no projeto Firebase. Esta versão não usa Cloud Functions nem exige Blaze; o plano gratuito tem limites de uso. O deploy do Pages não publica as regras.
 
-Limitações atuais: o catálogo tem 12 situações; o avanço ao expirar depende de ao menos um cliente ativo chamar o serviço (ao retornar, a etapa é atualizada); presença, saída voluntária e transferência de anfitrião não estão implementadas. Não considere este jogo completo ou pronto para produção.
+Limitações atuais: o catálogo tem 12 situações e pode ser consultado no código público; o avanço ao expirar depende de ao menos um cliente ativo (ao retornar, ele verifica a fase); presença, saída voluntária e transferência de anfitrião não estão implementadas. O catálogo e esses recursos ainda precisam ser concluídos.
 
 ## Jogos e Quem sou eu
 
-### Nem a pato! e Top 10
+### Eu duvido! e Top 10
 
 Dois jogos presenciais em um aparelho, acessíveis pelo menu inicial e pelas abas:
 
-- **Nem a pato!** (`/#/nem-a-pato`): 230 perguntas numéricas sobre corpo, natureza, animais, geografia, história, tecnologia, música, cinema, ciência, esportes e curiosidades bizarras.
+- **Eu duvido!** (`/#/eu-duvido`, antigo Nem a pato): 230 perguntas numéricas sobre corpo, natureza, animais, geografia, história, tecnologia, música, cinema, ciência, esportes e curiosidades bizarras.
 - **Top 10** (`/#/top-10`): 122 temas com dez posições cada, sobre música, games, empresas, natureza, livros, redes sociais, YouTube, Netflix, bilheteria, Steam e nomes no Brasil/EUA.
 
 Em **Geral joga**, o tema aparece sozinho e o botão revela a resposta ou o ranking inteiro. Em **Temos ADM**, cada tema já vem com a resposta aberta para quem está conduzindo. Mudar de ADM para Geral joga esconde novamente a resposta; sortear outra carta mantém o modo e reinicia a revelação. Cada jogo começa em Geral joga ao ser aberto.

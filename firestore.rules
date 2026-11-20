@@ -13,6 +13,8 @@ service cloud.firestore {
   function ready(c,r,ids,i) { return ids.size() <= i || exists(/databases/$(database)/documents/rooms/$(c)/rounds/$(r)/ready/$(ids[i])); }
   function allReady(c,r,ids) { return ready(c,r,ids,0) && ready(c,r,ids,1) && ready(c,r,ids,2) && ready(c,r,ids,3) && ready(c,r,ids,4) && ready(c,r,ids,5) && ready(c,r,ids,6) && ready(c,r,ids,7); }
   function alibiMember(c) { return signed() && exists(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid)); }
+  function alibiRoom(c) { return get(/databases/$(database)/documents/alibiRooms/$(c)).data; }
+  function alibiHost(c) { return alibiMember(c) && alibiRoom(c).hostId == request.auth.uid; }
   match /alibiInvites/{c} {
    allow get: if signed();
    allow list: if false;
@@ -35,7 +37,124 @@ service cloud.firestore {
     && request.resource.data.phase == 'lobby'
     && getAfter(/databases/$(database)/documents/alibiInvites/$(c)).data.count == 1
     && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.auth.uid)).data.uid == request.auth.uid;
-   allow update, delete: if false;
+   allow update: if alibiHost(c) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','currentRoundId'])
+    && ((resource.data.phase == 'lobby' && request.resource.data.phase == 'playing'
+      && text(request.resource.data.currentRoundId,80)
+      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(request.resource.data.currentRoundId)).data.phase == 'presentation')
+     || (resource.data.phase == 'playing' && request.resource.data.phase == 'lobby'
+      && request.resource.data.currentRoundId == resource.data.currentRoundId
+      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(resource.data.currentRoundId)).data.phase in ['result','cancelled']));
+   allow update: if alibiMember(c) && resource.data.phase == 'playing'
+    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
+    && request.resource.data.phase == 'lobby'
+    && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(resource.data.currentRoundId)).data.phase == 'result';
+   allow delete: if false;
+   match /clock/{uid} {
+    allow get: if alibiMember(c) && request.auth.uid == uid;
+    allow list: if false;
+    allow create, update: if alibiMember(c) && request.auth.uid == uid
+     && request.resource.data.keys().hasOnly(['at']) && request.resource.data.at == request.time;
+    allow delete: if false;
+   }
+   // Reserved for the Firestore-only round implementation. A response or vote
+   // is immutable and only its owner can read it until the relevant reveal.
+   match /rounds/{r} {
+    function currentRound() { return get(/databases/$(database)/documents/alibiRooms/$(c)).data.currentRoundId == r; }
+    function game() { return get(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(r)).data; }
+    allow read: if alibiMember(c);
+    allow create: if alibiHost(c) && alibiRoom(c).phase == 'lobby'
+     && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.currentRoundId == r
+     && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'playing'
+     && request.resource.data.keys().hasOnly(['id','phase','catalogId','situation','suspects','investigator','jurors','submitted','voted','customQuestion','startedAt','surpriseAt','voteStartedAt','history','used'])
+     && request.resource.data.id == r && request.resource.data.phase == 'presentation'
+     && text(request.resource.data.catalogId,80) && text(request.resource.data.situation,500)
+     && request.resource.data.suspects is list && request.resource.data.suspects.size() == 2
+     && request.resource.data.suspects.toSet().size() == 2
+     && exists(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.resource.data.suspects[0]))
+     && exists(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.resource.data.suspects[1]))
+     && request.resource.data.jurors is list && request.resource.data.jurors.size() <= 5
+     && request.resource.data.jurors.toSet().size() == request.resource.data.jurors.size()
+     && request.resource.data.suspects.toSet().intersection(request.resource.data.jurors.toSet()).size() == 0
+     && ((request.resource.data.investigator == null && request.resource.data.jurors.size() == 0
+       && get(/databases/$(database)/documents/alibiInvites/$(c)).data.count == 2)
+      || (request.resource.data.investigator is string && !(request.resource.data.investigator in request.resource.data.suspects)
+       && !(request.resource.data.investigator in request.resource.data.jurors)
+       && exists(/databases/$(database)/documents/alibiRooms/$(c)/players/$(request.resource.data.investigator))
+       && get(/databases/$(database)/documents/alibiInvites/$(c)).data.count == request.resource.data.jurors.size() + 3))
+     && request.resource.data.submitted == [] && request.resource.data.voted == []
+     && request.resource.data.customQuestion == '' && request.resource.data.startedAt == null
+     && request.resource.data.surpriseAt == null && request.resource.data.voteStartedAt == null
+     && request.resource.data.history is map && request.resource.data.used is list;
+    allow update: if alibiMember(c) && currentRound() && (
+     (alibiHost(c) && resource.data.phase == 'presentation' && request.resource.data.phase == 'timer'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','startedAt']) && request.resource.data.startedAt == request.time)
+     || (resource.data.phase == 'timer' && request.time >= resource.data.startedAt + duration.value(30,'s')
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','surpriseAt'])
+      && ((resource.data.investigator == null && request.resource.data.phase == 'answers' && request.resource.data.surpriseAt == null)
+       || (resource.data.investigator != null && request.resource.data.phase == 'surprise' && request.resource.data.surpriseAt == request.time)))
+     || (resource.data.phase == 'surprise' && request.resource.data.phase == 'answers'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','customQuestion'])
+      && request.resource.data.customQuestion is string && request.resource.data.customQuestion.size() <= 200
+      && ((request.auth.uid == resource.data.investigator && request.time < resource.data.surpriseAt + duration.value(15,'s'))
+       || (request.time >= resource.data.surpriseAt + duration.value(15,'s') && request.resource.data.customQuestion == '')))
+     || (resource.data.phase == 'answers' && request.resource.data.phase == 'answers'
+      && request.auth.uid in resource.data.suspects && !(request.auth.uid in resource.data.submitted)
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['submitted'])
+      && request.resource.data.submitted.size() == resource.data.submitted.size() + 1
+      && request.resource.data.submitted.toSet() == resource.data.submitted.toSet().union([request.auth.uid].toSet())
+      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(r)/answers/$(request.auth.uid)).data.uid == request.auth.uid)
+     || (resource.data.phase == 'answers' && request.resource.data.phase == 'reveal'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
+      && resource.data.submitted.toSet() == resource.data.suspects.toSet())
+     || (alibiHost(c) && resource.data.phase == 'reveal' && request.resource.data.phase == 'vote'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase','voteStartedAt']) && request.resource.data.voteStartedAt == request.time)
+     || (resource.data.phase == 'vote' && request.resource.data.phase == 'vote' && !(request.auth.uid in resource.data.voted)
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['voted'])
+      && request.resource.data.voted.size() == resource.data.voted.size() + 1
+      && request.resource.data.voted.toSet() == resource.data.voted.toSet().union([request.auth.uid].toSet())
+      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(r)/votes/$(request.auth.uid)).data.uid == request.auth.uid)
+     || (resource.data.phase == 'vote' && request.resource.data.phase == 'result'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
+      && ((resource.data.investigator == null && alibiHost(c))
+       || (resource.data.investigator != null && (request.time >= resource.data.voteStartedAt + duration.value(30,'s')
+        || (resource.data.jurors.size() == 0 && resource.data.investigator in resource.data.voted)
+        || (resource.data.jurors.size() > 0 && resource.data.voted.toSet() == resource.data.jurors.toSet()))))
+      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'lobby')
+     || (alibiHost(c) && !(resource.data.phase in ['result','cancelled']) && request.resource.data.phase == 'cancelled'
+      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phase'])
+      && getAfter(/databases/$(database)/documents/alibiRooms/$(c)).data.phase == 'lobby'));
+    allow delete: if false;
+    match /answers/{uid} {
+     allow get: if alibiMember(c) && currentRound()
+      && (request.auth.uid == uid || game().phase in ['reveal','vote','result']);
+     allow list: if alibiMember(c) && currentRound() && game().phase in ['reveal','vote','result'];
+     allow create: if alibiMember(c) && currentRound() && request.auth.uid == uid
+      && game().phase == 'answers' && uid in game().suspects
+      && request.resource.data.keys().hasOnly(['uid','values'])
+      && request.resource.data.uid == uid && request.resource.data.values is list
+      && request.resource.data.values.size() == 3
+      && text(request.resource.data.values[0],500)
+      && text(request.resource.data.values[1],500)
+      && text(request.resource.data.values[2],500)
+      && request.auth.uid in getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(r)).data.submitted;
+     allow update, delete: if false;
+    }
+    match /votes/{uid} {
+     allow get: if alibiMember(c) && currentRound()
+      && (request.auth.uid == uid || game().phase == 'result');
+     allow list: if alibiMember(c) && currentRound() && game().phase == 'result';
+     allow create: if alibiMember(c) && currentRound() && request.auth.uid == uid
+      && game().phase == 'vote'
+      && (uid in game().jurors || (game().jurors.size() == 0
+        && ((game().investigator != null && uid == game().investigator)
+         || (game().investigator == null && uid == get(/databases/$(database)/documents/alibiRooms/$(c)).data.hostId))))
+      && (game().investigator == null || request.time < game().voteStartedAt + duration.value(30, 's'))
+      && request.resource.data.keys().hasOnly(['uid','choice']) && request.resource.data.uid == uid
+      && request.resource.data.choice in ['colou','furado']
+      && request.auth.uid in getAfter(/databases/$(database)/documents/alibiRooms/$(c)/rounds/$(r)).data.voted;
+     allow update, delete: if false;
+    }
+   }
    match /players/{uid} {
     allow get: if signed() && (uid == request.auth.uid || alibiMember(c));
     allow list: if alibiMember(c);

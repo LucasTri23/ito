@@ -1,4 +1,4 @@
-const catalog = require("./catalog.cjs");
+const catalog = require("../src/data/alibi.json");
 const errors = [];
 if (catalog.length < 300) errors.push(`São necessárias 300 situações; existem ${catalog.length}.`);
 const ids = new Set(), situations = new Set();

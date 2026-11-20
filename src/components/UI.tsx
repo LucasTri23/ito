@@ -1,17 +1,13 @@
 import { useState, type ReactNode } from "react";
-import { ArrowUpRight, Dices, Eye, EyeOff } from "lucide-react";
+import { ArrowUpRight, Eye, EyeOff } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { NavLink } from "react-router-dom";
+import { Logo } from "./Logo";
 export function Brand() {
   return (
     <a href="#/" className="brand">
-      <span className="brand-icon">
-        <Dices size={25} />
-      </span>
-      Jogatina
-      <span className="brand-dot" aria-hidden="true">
-        ✳
-      </span>
+      <Logo size={44} />
+      <span className="brand-name">Jogatina</span>
     </a>
   );
 }
@@ -34,7 +30,7 @@ export function Shell({ children }: { children: ReactNode }) {
         <NavLink to="/entrelinhas">Entrelinhas</NavLink>
         <NavLink to="/alibi-furado">Álibi Furado</NavLink>
         <NavLink to="/quem-sou-eu">Quem sou eu</NavLink>
-        <NavLink to="/nem-a-pato">Nem a pato</NavLink>
+        <NavLink to="/eu-duvido">Eu duvido</NavLink>
         <NavLink to="/top-10">Top 10</NavLink>
       </nav>
       <main>{children}</main>

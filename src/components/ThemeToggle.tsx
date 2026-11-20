@@ -10,7 +10,7 @@ export function ThemeToggle() {
     document.documentElement.dataset.theme = dark ? "dark" : "light";
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", dark ? "#141321" : "#f8f5ff");
+      ?.setAttribute("content", dark ? "#0e1530" : "#fff8ec");
     try {
       localStorage.setItem("entrelinhas.theme", dark ? "dark" : "light");
     } catch {

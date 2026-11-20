@@ -60,7 +60,7 @@
   perspective: 1200px;
   border-radius: 26px;
   margin: 12px auto 20px;
-  color: #271d45;
+  color: #14193a;
 }
 .big-card:disabled {
   opacity: 1;
@@ -106,9 +106,9 @@
       transparent 2px,
       transparent 16px
     ),
-    linear-gradient(145deg, #6540b7, #382963);
-  color: #e9dcff;
-  border: 2px solid #a782e2;
+    linear-gradient(145deg, #1f2a58, #0e1530);
+  color: #ffe6a8;
+  border: 2px solid #ffc23d;
 }
 .big-card-back > span {
   letter-spacing: 3px;
@@ -117,8 +117,8 @@
 .big-card-front {
   transform: rotateY(180deg);
   background:
-    radial-gradient(circle at 95% 100%, #91e0d0, transparent 58%),
-    linear-gradient(140deg, #efe4ff, #c5b1f6);
+    radial-gradient(circle at 95% 100%, #2ee6d6, transparent 58%),
+    linear-gradient(140deg, #fff6dc, #ffd970);
   border: 2px solid #ffffff80;
   display: grid;
   place-items: center;

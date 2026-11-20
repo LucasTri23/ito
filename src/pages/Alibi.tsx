@@ -5,10 +5,11 @@ import { db, configured } from "../lib/firebase";
 import { useAuth } from "../hooks/useAuth";
 import { errorText, roomCode } from "../utils/game";
 import { Notice } from "../components/UI";
-import { AlibiRound, type AlibiPublicRound } from "../components/AlibiRound";
+import { AlibiRound } from "../components/AlibiRound";
+import type { AlibiRoundData } from "../services/alibi";
 
 type Player = { uid: string; name: string };
-type Room = { code: string; hostId: string; phase: string; round?: AlibiPublicRound };
+type Room = { code: string; hostId: string; phase: string; currentRoundId?: string };
 
 export function Alibi() {
   const { code: routeCode } = useParams();
@@ -20,6 +21,7 @@ export function Alibi() {
   const [member, setMember] = useState(false);
   const [room, setRoom] = useState<Room | null>(null);
   const [players, setPlayers] = useState<Player[]>([]);
+  const [round, setRound] = useState<AlibiRoundData | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -33,6 +35,12 @@ export function Alibi() {
     const stopPlayers = onSnapshot(collection(db, `alibiRooms/${code}/players`), s => setPlayers(s.docs.map(d => d.data() as Player)), e => setError(errorText(e)));
     return () => { stopRoom(); stopPlayers(); };
   }, [code, member]);
+  useEffect(() => {
+    if (!code || !member || !room?.currentRoundId) return;
+    return onSnapshot(doc(db, `alibiRooms/${code}/rounds/${room.currentRoundId}`), { includeMetadataChanges: true }, s => {
+      if (!s.metadata.hasPendingWrites) setRound(s.exists() ? s.data() as AlibiRoundData : null);
+    }, e => setError(errorText(e)));
+  }, [code, member, room?.currentRoundId]);
   const link = `${window.location.href.split("#")[0]}#/alibi-furado/${code}`;
   async function enter(create: boolean) {
     if (!user) { setError("Aguardando conexão com o Firebase."); return; }
@@ -71,24 +79,61 @@ export function Alibi() {
       nav(`/alibi-furado/${joined}`);
     } catch (e) { setError(errorText(e)); } finally { setBusy(false); }
   }
-  return <section className="entry-card alibi-page">
-    <span className="eyebrow">ONLINE · 2 A 8 JOGADORES</span>
-    <h1>Álibi Furado</h1>
-    <p>Dois suspeitos têm 30 segundos para combinar uma história. Depois, respondem separadamente às mesmas perguntas. Será que as versões vão bater?</p>
-    <p>A conversa acontece ao vivo ou em uma chamada externa.</p>
-    {member && room ? <>
-      <h2>Sala {code}</h2><p>{players.length} de 8 jogadores</p>
-      <ul>{players.map(p => <li key={p.uid}>{p.name}{p.uid === room.hostId ? " · anfitrião" : ""}{p.uid === user?.uid ? " · você" : ""}</li>)}</ul>
-      <label htmlFor="alibi-link">Link de convite</label><input id="alibi-link" value={link} readOnly onFocus={e => e.currentTarget.select()} />
-      <button className="button secondary" onClick={() => { if (!navigator.clipboard) { setError("Não foi possível copiar. Selecione o link acima e copie manualmente."); return; } void navigator.clipboard.writeText(link).then(() => setCopied(true)).catch(() => setError("Não foi possível copiar. Selecione o link acima e copie manualmente.")); }}>{copied ? "Link copiado!" : "Copiar convite"}</button>
-      {user && <AlibiRound code={code} uid={user.uid} hostId={room.hostId} round={room.round} players={players} />}
-    </> : <>
-      <label htmlFor="alibi-name">Seu apelido</label><input id="alibi-name" value={name} maxLength={24} onChange={e => setName(e.target.value)} />
-      {!code && <button className="button primary" disabled={busy || !configured || !user} onClick={() => void enter(true)}>Criar sala</button>}
-      <label htmlFor="alibi-code">Código da sala</label><input id="alibi-code" maxLength={5} value={code || inputCode} readOnly={!!code} onChange={e => setInputCode(e.target.value.toUpperCase())} />
-      <button className="button secondary" disabled={busy || !configured || !user} onClick={() => void enter(false)}>Entrar na sala</button>
-      {!code && localStorage.getItem("alibi.room") && <button className="text-button" onClick={() => nav(`/alibi-furado/${localStorage.getItem("alibi.room")}`)}>Voltar à última sala →</button>}
+  const copy = () => {
+    if (!navigator.clipboard) { setError("Não foi possível copiar. Selecione o link acima e copie manualmente."); return; }
+    void navigator.clipboard.writeText(link).then(() => { setCopied(true); window.setTimeout(() => setCopied(false), 2500); }).catch(() => setError("Não foi possível copiar. Selecione o link acima e copie manualmente."));
+  };
+  const inRoom = member && room;
+  return <section className={`entry-card alibi-page${inRoom ? " in-room" : ""}`}>
+    <div className="alibi-head">
+      <span className="alibi-badge" aria-hidden="true">🕵️</span>
+      <div>
+        <span className="eyebrow">ONLINE · 2 A 8 JOGADORES</span>
+        <h1>Álibi Furado</h1>
+      </div>
+    </div>
+    {!inRoom && <>
+      <p className="alibi-pitch">Dois suspeitos têm 30 segundos para combinar uma história. Depois, respondem separadamente às mesmas perguntas. Será que as versões vão bater?</p>
+      <ol className="alibi-how">
+        <li><span aria-hidden="true">⏱️</span>30 segundos para combinar</li>
+        <li><span aria-hidden="true">🤫</span>Cada um responde sozinho</li>
+        <li><span aria-hidden="true">⚖️</span>A turma decide se colou</li>
+      </ol>
+      <p className="muted-line">A conversa acontece ao vivo ou em uma chamada externa.</p>
     </>}
+    {inRoom ? <>
+      <div className="alibi-ticket">
+        <div>
+          <span className="eyebrow">CÓDIGO DA SALA</span>
+          <strong className="alibi-code">{code}</strong>
+        </div>
+        <div className="alibi-capacity">
+          <span>{players.length} de 8 jogadores</span>
+          <span className="capacity-bar" aria-hidden="true"><i style={{ width: `${(players.length / 8) * 100}%` }} /></span>
+        </div>
+      </div>
+      <ul className="alibi-players">{players.map((p, i) => <li key={p.uid} className={`alibi-player${p.uid === user?.uid ? " is-me" : ""}`}>
+        <span className={`avatar avatar-${i % 4}`} aria-hidden="true">{p.name.trim().charAt(0).toUpperCase()}</span>
+        <strong>{p.name}</strong>
+        {p.uid === room.hostId && <span className="player-tag host-tag">👑 anfitrião</span>}
+        {p.uid === user?.uid && <span className="player-tag me-tag">você</span>}
+      </li>)}</ul>
+      <div className="alibi-invite">
+        <label htmlFor="alibi-link">Link de convite</label>
+        <div className="invite-row">
+          <input id="alibi-link" value={link} readOnly onFocus={e => e.currentTarget.select()} />
+          <button className={`button secondary${copied ? " copied" : ""}`} onClick={copy}>{copied ? "✅ Link copiado!" : "Copiar convite"}</button>
+        </div>
+      </div>
+      {user && <AlibiRound code={code} uid={user.uid} hostId={room.hostId} round={round} players={players} />}
+    </> : <div className="alibi-entry">
+      <label htmlFor="alibi-name">Seu apelido</label><input id="alibi-name" value={name} maxLength={24} placeholder="Como a turma te chama?" onChange={e => setName(e.target.value)} />
+      {!code && <button className="button primary" disabled={busy || !configured || !user} onClick={() => void enter(true)}>Criar sala</button>}
+      {!code && <div className="divider">ou entre com um código</div>}
+      <label htmlFor="alibi-code">Código da sala</label><input id="alibi-code" className="code-field" maxLength={5} value={code || inputCode} placeholder="EX.: XK72A" readOnly={!!code} onChange={e => setInputCode(e.target.value.toUpperCase())} />
+      <button className={`button ${code ? "primary" : "secondary"}`} disabled={busy || !configured || !user} onClick={() => void enter(false)}>Entrar na sala</button>
+      {!code && localStorage.getItem("alibi.room") && <button className="text-button" onClick={() => nav(`/alibi-furado/${localStorage.getItem("alibi.room")}`)}>Voltar à última sala →</button>}
+    </div>}
     {(error || authError) && <Notice>{error || authError}</Notice>}
     {!configured && <Notice>Configure o Firebase no arquivo .env para abrir salas.</Notice>}
   </section>;

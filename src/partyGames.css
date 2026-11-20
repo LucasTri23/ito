@@ -98,10 +98,10 @@
   color: var(--muted);
 }
 .party-card {
-  border-top: 4px solid #ffbd90;
+  border-top: 4px solid var(--orange);
 }
 .party-ranking .party-card {
-  border-top-color: #92c5ff;
+  border-top-color: var(--violet);
 }
 .party-card h2 {
   font-size: clamp(25px, 4.5vw, 38px);
@@ -165,8 +165,8 @@ ol.party-ranking li {
   font-weight: 700;
 }
 .party-ranking li:first-child .ranking-position {
-  background: #ffd395;
-  color: #533613;
+  background: #ffc23d;
+  color: #14193a;
   border-color: transparent;
 }
 .party-ranking li strong {

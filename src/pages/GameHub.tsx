@@ -57,11 +57,11 @@ const choices: Choice[] = [
     cta: "Sortear um nome",
   },
   {
-    to: "/nem-a-pato",
+    to: "/eu-duvido",
     tone: "peach",
     icon: <Hash size={36} />,
     eyebrow: "PRESENCIAL · COM OU SEM ADM",
-    title: "Nem a pato!",
+    title: "Eu duvido!",
     text: "Quanto mede? Quantos tem? Aposte no seu palpite e descubra números que surpreendem.",
     cta: "Arriscar um palpite",
   },

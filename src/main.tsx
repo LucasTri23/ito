@@ -40,9 +40,11 @@ function App() {
           <Route path="/alibi-furado" element={<Alibi />} />
           <Route path="/alibi-furado/:code" element={<Alibi />} />
           <Route
-            path="/nem-a-pato"
+            path="/eu-duvido"
             element={<PartyGame key="number" game="number" />}
           />
+          {/* Nome antigo do jogo: links salvos continuam funcionando. */}
+          <Route path="/nem-a-pato" element={<Navigate to="/eu-duvido" replace />} />
           <Route
             path="/top-10"
             element={<PartyGame key="ranking" game="ranking" />}

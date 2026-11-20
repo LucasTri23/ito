@@ -1,28 +1,41 @@
-/* Shared palette keeps all game stages consistent in both themes. */
+/*
+ * Paleta "Arcade neon": azul-noite, amarelo-ouro, rosa-choque e ciano.
+ * --accent é a cor de texto de destaque (links, palavras coloridas);
+ * --primary-bg/--primary-ink são os botões principais (sempre amarelos).
+ */
 :root {
-  --page: #f8f5ff;
+  --page: #fff8ec;
   --surface: #ffffff;
-  --surface-soft: #f1ecfa;
-  --ink: #29213e;
-  --muted: #675d7c;
-  --line: #ded6ee;
-  --accent: #7040d6;
+  --surface-soft: #fff0d6;
+  --ink: #14193a;
+  --muted: #565d7e;
+  --line: #ecdcbc;
+  --accent: #c8155f;
   --accent-ink: #ffffff;
-  --mint: #207668;
-  --shadow: 0 18px 55px #5b389b0c;
+  --mint: #0b7f78;
+  --sun: #ffc23d;
+  --pink: #ff4f8b;
+  --cyan: #2ee6d6;
+  --orange: #ff8a3d;
+  --violet: #7c8cff;
+  --primary-bg: #ffc23d;
+  --primary-ink: #14193a;
+  --primary-shadow: #e0951a;
+  --shadow: 0 18px 50px #c4862a14;
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --page: #141321;
-  --surface: #201e32;
-  --surface-soft: #29253e;
-  --ink: #f4efff;
-  --muted: #b7aecb;
-  --line: #403754;
-  --accent: #bf9aff;
-  --accent-ink: #211231;
-  --mint: #7bdcc0;
-  --shadow: 0 18px 55px #00000025;
+  --page: #0e1530;
+  --surface: #172045;
+  --surface-soft: #1f2a58;
+  --ink: #f5f3ff;
+  --muted: #a9b1d6;
+  --line: #2e3a70;
+  --accent: #ffc23d;
+  --accent-ink: #14193a;
+  --mint: #2ee6d6;
+  --primary-shadow: #b8740c;
+  --shadow: 0 18px 50px #00000040;
   color-scheme: dark;
 }
 html,
@@ -34,32 +47,32 @@ body {
   font-family: "DM Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   background-image:
-    radial-gradient(ellipse at 12% 8%, #9670ee16, transparent 42%),
-    radial-gradient(ellipse at 95% 40%, #4bcfb013, transparent 38%);
+    radial-gradient(ellipse at 12% 8%, #ff4f8b14, transparent 42%),
+    radial-gradient(ellipse at 95% 40%, #2ee6d612, transparent 38%);
 }
 h1,
 h2,
 h3,
 .brand {
-  font-family: "Outfit", "DM Sans", system-ui, sans-serif;
+  font-family: "Fredoka", "Outfit", "DM Sans", system-ui, sans-serif;
 }
 .hero h1 {
   font-weight: 650;
-  letter-spacing: -2.5px;
+  letter-spacing: -1px;
 }
 .hero .serif {
-  font-family: "Outfit", system-ui, sans-serif;
+  font-family: "Fredoka", "Outfit", system-ui, sans-serif;
   font-weight: 600;
   color: var(--accent);
   font-style: normal;
 }
 .asterisk,
 .art-spark {
-  color: #ef9577;
+  color: var(--pink);
 }
 .brand-icon {
-  background: linear-gradient(135deg, #8957dd, #6345b9);
-  color: #ffffff;
+  background: var(--sun);
+  color: var(--primary-ink);
 }
 .brand-dot {
   color: var(--accent);
@@ -123,7 +136,7 @@ footer,
 }
 .green-dot {
   background: var(--mint);
-  box-shadow: 0 0 0 3px #69cdb714;
+  box-shadow: 0 0 0 3px #2ee6d620;
 }
 input {
   background: var(--page);
@@ -143,14 +156,17 @@ input::placeholder {
 .divider::after {
   background: var(--line);
 }
+/* Botão principal estilo fliperama: amarelo com "degrau" embaixo. */
 .primary {
-  background: linear-gradient(115deg, #8652df, #6350c8);
-  color: #ffffff;
-  box-shadow: 0 5px 18px #8053d425;
+  background: var(--primary-bg);
+  color: var(--primary-ink);
+  box-shadow: 0 4px 0 var(--primary-shadow), 0 10px 24px #ffc23d33;
 }
-[data-theme="dark"] .primary {
-  background: linear-gradient(115deg, #c19aff, #a8a1ff);
-  color: #211231;
+.primary:disabled {
+  background: var(--surface-soft);
+  color: var(--muted);
+  box-shadow: none;
+  opacity: 1;
 }
 .secondary {
   background: var(--surface-soft);
@@ -170,16 +186,16 @@ input::placeholder {
   color: #ffaaa0;
 }
 .card-one {
-  background: #ffc49e;
-  color: #542d26;
+  background: #ffb3cb;
+  color: #5a0f2c;
 }
 .card-two {
-  background: #d2bcff;
-  color: #3c2669;
+  background: #ffd970;
+  color: #4a3200;
 }
 .card-three {
-  background: #a6ead5;
-  color: #214e43;
+  background: #8ff0e6;
+  color: #08423e;
 }
 .playing-card {
   border-color: #ffffff40;
@@ -201,22 +217,22 @@ input::placeholder {
 }
 .step-icon.peach,
 .avatar-1 {
-  background: #ffd0b8;
-  color: #61362a;
+  background: #ffb3cb;
+  color: #5a0f2c;
 }
 .step-icon.lilac,
 .avatar-2 {
-  background: #d8c6ff;
-  color: #48267b;
+  background: #ffd970;
+  color: #4a3200;
 }
 .step-icon.mint,
 .avatar-0 {
-  background: #ace7d5;
-  color: #254d42;
+  background: #8ff0e6;
+  color: #08423e;
 }
 .avatar-3 {
-  background: #b9d9ff;
-  color: #294467;
+  background: #c3c9ff;
+  color: #1f2766;
 }
 .room-code {
   background: var(--surface-soft);
@@ -227,14 +243,14 @@ input::placeholder {
   color: var(--accent);
 }
 .secret-card {
-  background: linear-gradient(120deg, #eee3ff, #dfefef);
-  border-color: #b29bd1;
-  color: #483366;
+  background: linear-gradient(120deg, #fff0c2, #d9fbf7);
+  border-color: #e9c46a;
+  color: #14193a;
 }
 [data-theme="dark"] .secret-card {
-  background: linear-gradient(120deg, #35254f, #203e42);
-  border-color: #74608e;
-  color: #e0c9ff;
+  background: linear-gradient(120deg, #3a2f1a, #123c48);
+  border-color: #806222;
+  color: #ffe6a8;
 }
 .secret-card strong,
 .result-number {
@@ -245,7 +261,7 @@ input::placeholder {
   color: var(--muted);
 }
 .scale-line {
-  background: linear-gradient(90deg, #f9a97f, #b793f4, #70d8be);
+  background: linear-gradient(90deg, #ff4f8b, #ffc23d, #2ee6d6);
 }
 .presentation-order span,
 .waiting {
@@ -259,13 +275,13 @@ input::placeholder {
 .answer-list li {
   background: var(--surface-soft);
   border-color: var(--line);
-  border-left: 3px solid #af85e9;
+  border-left: 3px solid var(--sun);
 }
 .answer-list li:nth-child(3n + 2) {
-  border-left-color: #eea480;
+  border-left-color: var(--pink);
 }
 .answer-list li:nth-child(3n) {
-  border-left-color: #67c9b0;
+  border-left-color: var(--cyan);
 }
 .answer-list p {
   color: var(--ink);
@@ -297,7 +313,7 @@ input:focus-visible {
   outline-color: var(--accent);
 }
 ::selection {
-  background: #b38bed55;
+  background: #ffc23d66;
   color: var(--ink);
 }
 @media (max-width: 760px) {

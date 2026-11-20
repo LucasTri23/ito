@@ -120,7 +120,7 @@ export function PartyGame({ game }: { game: "number" | "ranking" }) {
           </>
         ) : (
           <>
-            Nem a <span>pato!</span>
+            Eu <span>duvido!</span>
           </>
         )}
       </h1>

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { burst } from "../utils/fx";
 import { useSecrets } from "../hooks/useFirestore";
 import type { Answer, Round } from "../types/game";
 import { Notice } from "./UI";
@@ -30,6 +31,15 @@ export function Result({
   const correct = (id: string, i: number) =>
     complete &&
     secrets.find((s) => s.playerId === id)?.number === sorted[i]?.number;
+  // Confete quando a última carta é revelada; mais confete se a turma acertou tudo.
+  const headingRef = useRef<HTMLDivElement>(null);
+  const done = complete && secrets.length > 0 && shown >= secrets.length;
+  const hits = round.groupOrder.filter(correct).length;
+  useEffect(() => {
+    if (done) burst(headingRef.current, hits === round.playerIds.length ? 60 : 24);
+    // Dispara uma vez por revelação completa.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [done]);
   if (error || !complete)
     return (
       <>
@@ -62,7 +72,7 @@ export function Result({
     );
   return (
     <>
-      <div className="section-heading">
+      <div className="section-heading" ref={headingRef}>
         <span className="eyebrow">HORA DA VERDADE 👀</span>
         <h2>
           {shown < secrets.length
