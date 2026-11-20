@@ -3,19 +3,111 @@
  * linhas de TV de tubo e sombras duras. Carregada por último (main.tsx).
  * Seletores com "html body" para vencer motion.css sem !important.
  */
+/*
+ * Neon de verdade: magenta, ciano elétrico, amarelo-limão, laranja e roxo.
+ * No escuro tudo brilha; no claro as cores de texto continuam escuras para ler.
+ */
 :root {
   --pixel: "Pixelify Sans", ui-monospace, monospace;
   --marquee: "Bungee", "Fredoka", system-ui, sans-serif;
   --hard: #14193a;
-  --grid-line: #ff4f8b38;
-  --scan: 0.07;
-  --neon-a: #ff4f8b;
-  --neon-b: #ffc23d;
+  --scan: 0.025;
+  --neon-a: #ff2bd6;
+  --neon-b: #ffe14d;
+  --sun: #ffd800;
+  --pink: #ff2bd6;
+  --cyan: #00e5ff;
+  --orange: #ff8a00;
+  --violet: #8f6bff;
+  --accent: #c4009f;
+  --mint: #00849a;
+  --primary-bg: #ffe14d;
+  --primary-shadow: #d9a400;
+  --grid-line: #ff2bd640;
+  --tone-grape: #ffd800;
+  --tone-coral: #ff2bd6;
+  --tone-mint: #00e5ff;
+  --tone-peach: #ff8a00;
+  --tone-sky: #8f6bff;
+  --glow: 0;
 }
 :root[data-theme="dark"] {
   --hard: #04071a;
-  --grid-line: #ff4f8b55;
-  --scan: 0.22;
+  --scan: 0.07;
+  --page: #0a0f2a;
+  --surface: #121a40;
+  --surface-soft: #1a2456;
+  --line: #2c3a86;
+  --accent: #ffe14d;
+  --mint: #00f0ff;
+  --pink: #ff2bd6;
+  --cyan: #00f0ff;
+  --grid-line: #ff2bd680;
+  --glow: 1;
+}
+/* Cor do texto de cada jogo, mais forte no escuro */
+html[data-theme="dark"] body .tone-grape { --tone-text: #ffe14d; }
+html[data-theme="dark"] body .tone-coral { --tone-text: #ff5ce1; }
+html[data-theme="dark"] body .tone-mint { --tone-text: #00f0ff; }
+html[data-theme="dark"] body .tone-peach { --tone-text: #ffa33d; }
+html[data-theme="dark"] body .tone-sky { --tone-text: #b39dff; }
+html body .tone-grape { --tone-icon: #ffe14d; }
+html body .tone-coral { --tone-icon: #ff8ae8; }
+html body .tone-mint { --tone-icon: #6ff5ff; }
+html body .tone-peach { --tone-icon: #ffb766; }
+html body .tone-sky { --tone-icon: #b9a6ff; }
+
+/* ---------- Brilho neon (só no escuro) ---------- */
+html[data-theme="dark"] body .game-choice {
+  box-shadow:
+    6px 6px 0 var(--hard),
+    0 0 18px color-mix(in srgb, var(--tone) 35%, transparent),
+    inset 0 0 22px color-mix(in srgb, var(--tone) 10%, transparent);
+  border-color: var(--tone);
+}
+html[data-theme="dark"] body .game-choice:hover {
+  box-shadow:
+    10px 10px 0 var(--hard),
+    0 0 36px color-mix(in srgb, var(--tone) 60%, transparent),
+    inset 0 0 26px color-mix(in srgb, var(--tone) 18%, transparent);
+}
+html[data-theme="dark"] body .game-choice strong,
+html[data-theme="dark"] body .game-choice h2 {
+  text-shadow: 0 0 10px color-mix(in srgb, var(--tone-text) 55%, transparent);
+}
+html[data-theme="dark"] body .game-choice h2 {
+  text-shadow: 0 0 14px color-mix(in srgb, var(--tone) 45%, transparent);
+}
+html[data-theme="dark"] body .identity-card,
+html[data-theme="dark"] body .entry-card,
+html[data-theme="dark"] body .panel {
+  box-shadow: 6px 6px 0 var(--hard), 0 0 26px #ff2bd626;
+}
+html[data-theme="dark"] body .button.primary {
+  box-shadow: 4px 4px 0 var(--hard), 0 0 18px #ffe14d66;
+}
+html[data-theme="dark"] body .game-tabs a.active {
+  box-shadow: 3px 3px 0 var(--hard), 0 0 16px #ffe14d88;
+}
+html[data-theme="dark"] body .brand-name {
+  filter: drop-shadow(2px 2px 0 var(--hard)) drop-shadow(0 0 10px #ff2bd699);
+}
+html[data-theme="dark"] body .insert-coin,
+html[data-theme="dark"] body .press-start,
+html[data-theme="dark"] body .credits {
+  text-shadow: 0 0 8px #ffe14dbb;
+}
+html[data-theme="dark"] body .eyebrow {
+  color: #8fa0e8;
+}
+html[data-theme="dark"] body .floater {
+  box-shadow: 3px 3px 0 var(--hard), 0 0 14px currentColor;
+}
+html[data-theme="dark"] body .alibi-ring:not(.urgent) .ring-fill {
+  filter: drop-shadow(0 0 6px #ffe14d);
+}
+html[data-theme="dark"] body .alibi-ring.urgent .ring-fill {
+  filter: drop-shadow(0 0 8px #ff2bd6);
 }
 
 /* ---------- Fundo: grade em perspectiva + linhas de TV ---------- */
@@ -57,8 +149,8 @@ html body::after {
   pointer-events: none;
   opacity: var(--scan);
   background:
-    repeating-linear-gradient(0deg, #000 0 1px, transparent 1px 3px),
-    radial-gradient(ellipse at center, transparent 55%, #000 140%);
+    repeating-linear-gradient(0deg, #000 0 1px, transparent 1px 4px),
+    radial-gradient(ellipse at center, transparent 60%, #00000066 150%);
   animation: none;
 }
 /* Estrelas paradas no céu (só no escuro) */
