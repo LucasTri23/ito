@@ -39,3 +39,16 @@ export function tallyAlibiVotes(votes: Array<"colou" | "furado">) {
   const furado = votes.length - colou;
   return { colou, furado, result: votes.length === 0 ? "sem-veredito" : colou === furado ? "empate" : colou > furado ? "colou" : "furado" } as const;
 }
+
+/** Compares written text only; it does not infer the meaning of a story. */
+export function compareAlibiAnswers(first?: string, second?: string): "igual" | "diferente" | "aguardando" {
+  if (first === undefined || second === undefined) return "aguardando";
+  const normalize = (value: string) => value
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .toLocaleLowerCase("pt-BR")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
+  const a = normalize(first), b = normalize(second);
+  return a && b && a === b ? "igual" : "diferente";
+}

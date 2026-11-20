@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { chooseAlibiRoles, emptyAlibiHistory, recordAlibiRoles, tallyAlibiVotes } from "../src/utils/alibi";
+import { chooseAlibiRoles, compareAlibiAnswers, emptyAlibiHistory, recordAlibiRoles, tallyAlibiVotes } from "../src/utils/alibi";
 
 describe("Álibi Furado: regras puras", () => {
   it.each([2, 3, 4, 5, 6, 7, 8])("distribui papéis para %i pessoas", (n) => {
@@ -26,5 +26,12 @@ describe("Álibi Furado: regras puras", () => {
     expect(tallyAlibiVotes(["colou", "colou", "furado"]).result).toBe("colou");
     expect(tallyAlibiVotes(["colou", "furado"]).result).toBe("empate");
     expect(tallyAlibiVotes([]).result).toBe("sem-veredito");
+  });
+  it("compara textos ignorando caixa, acentos e pontuação sem fingir entender sinônimos", () => {
+    expect(compareAlibiAnswers("LUCAS", "Lucas")).toBe("igual");
+    expect(compareAlibiAnswers("  São Paulo!", "sao   paulo")).toBe("igual");
+    expect(compareAlibiAnswers("pegamos enganado", "porque era meu")).toBe("diferente");
+    expect(compareAlibiAnswers("!!!", "... ")).toBe("diferente");
+    expect(compareAlibiAnswers(undefined, "Lucas")).toBe("aguardando");
   });
 });

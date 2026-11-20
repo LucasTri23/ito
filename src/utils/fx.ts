@@ -39,24 +39,24 @@ export function burst(origin: Element | null, amount = 28) {
     piece.className = "confetti-piece";
     piece.setAttribute("aria-hidden", "true");
     const size = 6 + Math.random() * 7;
-    piece.style.cssText = `left:${x}px;top:${y}px;width:${size}px;height:${size * (Math.random() > 0.5 ? 1 : 0.45)}px;background:${confettiColors[i % confettiColors.length]};border-radius:${Math.random() > 0.6 ? "50%" : "2px"}`;
+    // Quadradinhos de pixel, no clima de fliperama.
+    piece.style.cssText = `left:${x}px;top:${y}px;width:${size}px;height:${size}px;background:${confettiColors[i % confettiColors.length]};border-radius:0;image-rendering:pixelated`;
     document.body.appendChild(piece);
     const angle = (Math.PI * 2 * i) / amount + Math.random() * 0.5;
     const distance = 90 + Math.random() * 140;
     const dx = Math.cos(angle) * distance;
     const dy = Math.sin(angle) * distance - 60;
-    const spin = (Math.random() - 0.5) * 720;
     piece
       .animate(
         [
           { transform: "translate(-50%, -50%) scale(0.4)", opacity: 1 },
           {
-            transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${spin / 2}deg) scale(1)`,
+            transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(1)`,
             opacity: 1,
             offset: 0.45,
           },
           {
-            transform: `translate(calc(-50% + ${dx * 1.15}px), calc(-50% + ${dy + 160}px)) rotate(${spin}deg) scale(0.9)`,
+            transform: `translate(calc(-50% + ${dx * 1.15}px), calc(-50% + ${dy + 160}px)) scale(0.9)`,
             opacity: 0,
           },
         ],

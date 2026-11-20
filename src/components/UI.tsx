@@ -18,7 +18,8 @@ export function Shell({ children }: { children: ReactNode }) {
         <Brand />
         <div className="header-actions">
           <span className="header-note">
-            Jogos pra jogar com a turma <span className="green-dot" />
+            <span className="insert-coin">Insira uma ficha</span>{" "}
+            <span className="green-dot" />
           </span>
           <ThemeToggle />
         </div>
@@ -36,8 +37,8 @@ export function Shell({ children }: { children: ReactNode }) {
       <main>{children}</main>
       <footer>
         <span>Entre amigos, tudo ganha outro sentido.</span>
-        <span>
-          FEITO PARA JOGAR JUNTO <ArrowUpRight size={14} />
+        <span className="credits">
+          Créditos <b>99</b> · feito para jogar junto <ArrowUpRight size={14} />
         </span>
       </footer>
     </>

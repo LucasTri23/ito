@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { collection, doc, getDocFromServer, onSnapshot, serverTimestamp, setDoc, type Timestamp } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { alibiAction, situations, type AlibiRoundData } from "../services/alibi";
-import { tallyAlibiVotes } from "../utils/alibi";
+import { compareAlibiAnswers, tallyAlibiVotes } from "../utils/alibi";
 import { Notice } from "./UI";
 import { burst } from "../utils/fx";
 
@@ -94,6 +94,9 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
   const remaining = deadline ? Math.max(0, Math.ceil((deadline - now - offset) / 1000)) : 0;
   const item = situations.find(x => x.id === round.catalogId);
   const questions = item ? [item.questions[0], item.questions[1], round.customQuestion || item.questions[2]] : [];
+  const comparisons = questions.map((_, i) => compareAlibiAnswers(revealedAnswers[round.suspects[0]]?.[i], revealedAnswers[round.suspects[1]]?.[i]));
+  const compared = questions.length === 3 && comparisons.every(value => value !== "aguardando");
+  const matching = comparisons.filter(value => value === "igual").length;
   const result = tally;
   const steps = ["presentation", "timer", ...(round.investigator ? ["surprise"] : []), "answers", "reveal", "vote", "result"];
   const stepNames: Record<string, string> = { presentation: "Situação", timer: "30 segundos", surprise: "Surpresa", answers: "Respostas", reveal: "Revelação", vote: "Veredito", result: "Resultado" };
@@ -177,12 +180,20 @@ export function AlibiRound({ code, uid, hostId, round, players }: Props) {
 
     {["reveal", "vote", "result"].includes(round.phase) && <div className="alibi-reveals">
       <h2>As versões 👀</h2>
+      {!round.investigator && compared && <div className="alibi-comparison-summary" role="status">
+        <strong>{matching === questions.length ? "Sugestão: as versões parecem bater" : "Sugestão: confiram as diferenças"}</strong>
+        <p>{matching} de {questions.length} respostas têm textos iguais.</p>
+        <p>Comparamos as palavras, ignorando maiúsculas, acentos e pontuação. Textos diferentes podem dizer a mesma coisa: a decisão é da turma.</p>
+      </div>}
       {questions.map((q, i) => <article className="alibi-reveal" key={q}>
         <h3><span className="q-num" aria-hidden="true">{i + 1}</span>{q}</h3>
         <div className="alibi-answers">{round.suspects.map((id, n) => <div key={id} className={`bubble bubble-${n}`}>
           {who(id)}
           <p>{revealedAnswers[id]?.[i] ?? "…"}</p>
         </div>)}</div>
+        {!round.investigator && comparisons[i] !== "aguardando" && <p className={`alibi-comparison alibi-comparison-${comparisons[i]}`}>
+          {comparisons[i] === "igual" ? "✓ Textos iguais" : "≠ Textos diferentes — confiram o sentido"}
+        </p>}
       </article>)}
     </div>}
 

@@ -15,6 +15,7 @@ import "./theme.css";
 import "./inPerson.css";
 import "./games.css";
 import "./partyGames.css";
+import "./arcade.css";
 function ConnectedGame({ room = false }: { room?: boolean }) {
   const { user, error } = useAuth();
   if (!room) return <Home uid={user?.uid} authError={error} />;

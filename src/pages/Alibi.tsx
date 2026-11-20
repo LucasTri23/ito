@@ -125,7 +125,9 @@ export function Alibi() {
           <button className={`button secondary${copied ? " copied" : ""}`} onClick={copy}>{copied ? "✅ Link copiado!" : "Copiar convite"}</button>
         </div>
       </div>
-      {user && <AlibiRound code={code} uid={user.uid} hostId={room.hostId} round={round} players={players} />}
+      {user && (!room.currentRoundId || round?.id === room.currentRoundId
+        ? <AlibiRound key={room.currentRoundId || "lobby"} code={code} uid={user.uid} hostId={room.hostId} round={round} players={players} />
+        : <p className="alibi-wait">Carregando rodada…</p>)}
     </> : <div className="alibi-entry">
       <label htmlFor="alibi-name">Seu apelido</label><input id="alibi-name" value={name} maxLength={24} placeholder="Como a turma te chama?" onChange={e => setName(e.target.value)} />
       {!code && <button className="button primary" disabled={busy || !configured || !user} onClick={() => void enter(true)}>Criar sala</button>}

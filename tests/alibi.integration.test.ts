@@ -43,6 +43,11 @@ describe.skipIf(!process.env.FIRESTORE_EMULATOR_HOST)("Álibi: serviço Firestor
     for (const uid of voters) await act(uid, "vote", id, "colou");
     await act(count === 2 ? "a" : "b", "tick", id);
     expect((await getDoc(doc(clients.a, path))).data()!.phase).toBe("result");
+    await act("a", "newRound", id);
+    const nextId = (await getDoc(doc(clients.a, "alibiRooms/ABCDE"))).data()!.currentRoundId as string;
+    expect(nextId).not.toBe(id);
+    await act("a", "start", nextId);
+    expect((await getDoc(doc(clients.a, `alibiRooms/ABCDE/rounds/${nextId}`))).data()!.phase).toBe("timer");
   }, 30000);
   it("aplica perguntas e veredito padrão após os prazos", async () => {
     await env.clearFirestore();

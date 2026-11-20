@@ -87,7 +87,6 @@ const floaters = [
 ];
 
 export function GameHub() {
-  const previous = localStorage.getItem("entrelinhas.room");
   return (
     <section className="game-hub">
       <div className="hub-floaters" aria-hidden="true">
@@ -104,6 +103,7 @@ export function GameHub() {
         Hoje a gente joga <span className="shine">o quê?</span>
       </h1>
       <p>Escolha a brincadeira. As boas histórias vêm depois.</p>
+      <p className="press-start" aria-hidden="true">▶ Escolha um jogo para começar</p>
       <div className="game-choices">
         {choices.map((choice, index) => (
           <Link
@@ -125,11 +125,6 @@ export function GameHub() {
           </Link>
         ))}
       </div>
-      {previous && /^[A-HJ-NP-Z2-9]{5}$/.test(previous) && (
-        <Link className="text-button" to={`/room/${previous}`}>
-          Voltar à sala {previous} →
-        </Link>
-      )}
     </section>
   );
 }
