@@ -1,5 +1,15 @@
 # Entrelinhas
 
+## Álibi Furado — implementação em andamento
+
+O lobby e o fluxo principal de rodada usam autenticação anônima, Firestore e a função `alibiAction` em Cloud Functions. O documento `alibiRooms/{codigo}/private/state` é acessível apenas pelo serviço; o documento público da sala recebe respostas somente após os dois envios e nunca contém votos individuais. As fases e os prazos são validados na função. O código atual contém **12 situações**, portanto o catálogo solicitado de 300 ainda não está completo.
+
+Para executar localmente, instale Java 21 e execute `npm install` na raiz e `npm install --prefix functions`. Com `.env` configurado para projeto demo e `VITE_USE_EMULATORS=true`, rode `npx firebase emulators:start --only auth,firestore,functions --project demo-entrelinhas` e `npm run dev` em outro terminal. Os endereços dos emuladores no frontend usam `127.0.0.1` e não servem para outros aparelhos. `npm run test:alibi` executa partidas automatizadas com 2, 3, 5 e 8 identidades no Emulator; antecipa os prazos pelo Admin SDK, portanto não mede os 30 segundos reais.
+
+Para publicar essa versão, é necessário revisar e publicar `firestore.rules` e `functions` no projeto Firebase correto, habilitar Authentication anônima, configurar Cloud Functions e então publicar o frontend no GitHub Pages. O deploy de Functions exige o plano Firebase Blaze e pode gerar custos; não foi realizado por este repositório automaticamente. A função usa o banco Firestore **`(default)`**, mesmo que `VITE_FIREBASE_DATABASE_ID` aponte para outro banco; não use essa implementação com banco nomeado sem adaptá-la. O deploy do Pages não publica regras nem Functions.
+
+Limitações atuais: o catálogo tem 12 situações; o avanço ao expirar depende de ao menos um cliente ativo chamar o serviço (ao retornar, a etapa é atualizada); presença, saída voluntária e transferência de anfitrião não estão implementadas. Não considere este jogo completo ou pronto para produção.
+
 ## Jogos e Quem sou eu
 
 ### Nem a pato! e Top 10

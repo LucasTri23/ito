@@ -1,87 +1,129 @@
 import { Link } from "react-router-dom";
+import type { CSSProperties, ReactNode } from "react";
 import {
   ArrowUpRight,
   AudioLines,
+  Dices,
   Drama,
+  Fingerprint,
   Hash,
   ListOrdered,
+  Sparkles,
+  Spade,
+  Heart,
+  CircleHelp,
 } from "lucide-react";
+import { resetPointer, trackPointer } from "../utils/fx";
+import "../motion.css";
+
+interface Choice {
+  to: string;
+  tone: string;
+  icon: ReactNode;
+  eyebrow: string;
+  title: string;
+  text: string;
+  cta: string;
+  badge?: string;
+}
+
+const choices: Choice[] = [
+  {
+    to: "/entrelinhas",
+    tone: "grape",
+    icon: <AudioLines size={36} />,
+    eyebrow: "ONLINE OU PRESENCIAL",
+    title: "Entrelinhas",
+    text: "Números secretos, pistas e muita sintonia. Crie uma sala e reúna os amigos.",
+    cta: "Entrar no jogo",
+  },
+  {
+    to: "/alibi-furado",
+    tone: "coral",
+    icon: <Fingerprint size={36} />,
+    eyebrow: "ONLINE · 2 A 8 JOGADORES",
+    title: "Álibi Furado",
+    text: "Dois suspeitos, uma história e perguntas que colocam a memória à prova.",
+    cta: "Abrir o jogo",
+    badge: "Novo",
+  },
+  {
+    to: "/quem-sou-eu",
+    tone: "mint",
+    icon: <Drama size={36} />,
+    eyebrow: "PRESENCIAL · 1 JOGADOR",
+    title: "Quem sou eu?",
+    text: "Um nome, uma breve explicação e a diversão na mesa. É só escolher a categoria e sortear.",
+    cta: "Sortear um nome",
+  },
+  {
+    to: "/nem-a-pato",
+    tone: "peach",
+    icon: <Hash size={36} />,
+    eyebrow: "PRESENCIAL · COM OU SEM ADM",
+    title: "Nem a pato!",
+    text: "Quanto mede? Quantos tem? Aposte no seu palpite e descubra números que surpreendem.",
+    cta: "Arriscar um palpite",
+  },
+  {
+    to: "/top-10",
+    tone: "sky",
+    icon: <ListOrdered size={36} />,
+    eyebrow: "PRESENCIAL · COM OU SEM ADM",
+    title: "Top 10",
+    text: "Séries, bilheterias, games e nomes. Um tema para tentar lembrar os dez primeiros.",
+    cta: "Descobrir o ranking",
+  },
+];
+
+// Peças decorativas que flutuam atrás do título, cada uma num ritmo.
+const floaters = [
+  { icon: <Dices size={30} />, className: "f1" },
+  { icon: <Spade size={24} />, className: "f2" },
+  { icon: <CircleHelp size={26} />, className: "f3" },
+  { icon: <Sparkles size={22} />, className: "f4" },
+  { icon: <Heart size={22} />, className: "f5" },
+  { icon: <Hash size={24} />, className: "f6" },
+];
 
 export function GameHub() {
   const previous = localStorage.getItem("entrelinhas.room");
   return (
     <section className="game-hub">
-      <span className="pill">A TURMA JÁ CHEGOU?</span>
+      <div className="hub-floaters" aria-hidden="true">
+        {floaters.map((f) => (
+          <span key={f.className} className={`floater ${f.className}`}>
+            {f.icon}
+          </span>
+        ))}
+      </div>
+      <span className="pill hub-pill">
+        <span className="live-dot" aria-hidden="true" /> A TURMA JÁ CHEGOU?
+      </span>
       <h1>
-        Hoje a gente joga <span>o quê?</span>
+        Hoje a gente joga <span className="shine">o quê?</span>
       </h1>
       <p>Escolha a brincadeira. As boas histórias vêm depois.</p>
       <div className="game-choices">
-        <Link to="/entrelinhas" className="game-choice">
-          <span className="choice-icon">
-            <AudioLines size={36} />
-          </span>
-          <span className="eyebrow">ONLINE OU PRESENCIAL</span>
-          <h2>Entrelinhas</h2>
-          <p>
-            Números secretos, pistas e muita sintonia. Crie uma sala e reúna os
-            amigos.
-          </p>
-          <strong>
-            Entrar no jogo <ArrowUpRight size={20} />
-          </strong>
-        </Link>
-        <Link to="/quem-sou-eu" className="game-choice who-choice">
-          <span className="choice-icon">
-            <Drama size={36} />
-          </span>
-          <span className="eyebrow">PRESENCIAL · 1 JOGADOR</span>
-          <h2>Quem sou eu?</h2>
-          <p>
-            Um nome, uma breve explicação e a diversão na mesa. É só escolher a
-            categoria e sortear.
-          </p>
-          <strong>
-            Sortear um nome <ArrowUpRight size={20} />
-          </strong>
-        </Link>
-      </div>
-      <div className="game-choices party-choices">
-        <Link to="/alibi-furado" className="game-choice who-choice">
-          <span className="choice-icon"><Drama size={36} /></span>
-          <span className="eyebrow">ONLINE · 2 A 8 JOGADORES</span>
-          <h2>Álibi Furado</h2>
-          <p>Dois suspeitos, uma história e perguntas que colocam a memória à prova.</p>
-          <strong>Abrir o jogo <ArrowUpRight size={20} /></strong>
-        </Link>
-        <Link to="/nem-a-pato" className="game-choice number-choice">
-          <span className="choice-icon">
-            <Hash size={36} />
-          </span>
-          <span className="eyebrow">PRESENCIAL · COM OU SEM ADM</span>
-          <h2>Nem a pato!</h2>
-          <p>
-            Quanto mede? Quantos tem? Aposte no seu palpite e descubra números
-            que surpreendem.
-          </p>
-          <strong>
-            Arriscar um palpite <ArrowUpRight size={20} />
-          </strong>
-        </Link>
-        <Link to="/top-10" className="game-choice ranking-choice">
-          <span className="choice-icon">
-            <ListOrdered size={36} />
-          </span>
-          <span className="eyebrow">PRESENCIAL · COM OU SEM ADM</span>
-          <h2>Top 10</h2>
-          <p>
-            Séries, bilheterias, games e nomes. Um tema para tentar lembrar os
-            dez primeiros.
-          </p>
-          <strong>
-            Descobrir o ranking <ArrowUpRight size={20} />
-          </strong>
-        </Link>
+        {choices.map((choice, index) => (
+          <Link
+            key={choice.to}
+            to={choice.to}
+            className={`game-choice tone-${choice.tone}`}
+            style={{ "--i": index } as CSSProperties}
+            onPointerMove={trackPointer}
+            onPointerLeave={resetPointer}
+          >
+            {choice.badge && <span className="choice-badge">{choice.badge}</span>}
+            <span className="choice-icon">{choice.icon}</span>
+            <span className="eyebrow">{choice.eyebrow}</span>
+            <h2>{choice.title}</h2>
+            <p>{choice.text}</p>
+            <strong>
+              {choice.cta} <ArrowUpRight size={20} />
+            </strong>
+          </Link>
+        ))}
       </div>
       {previous && /^[A-HJ-NP-Z2-9]{5}$/.test(previous) && (
         <Link className="text-button" to={`/room/${previous}`}>

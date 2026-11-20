@@ -383,3 +383,8 @@
 }
 .alibi-page { max-width: 680px; margin: 3rem auto; }
 .alibi-page ul { padding-left: 1.3rem; line-height: 2; }
+.alibi-round { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid currentColor; }
+.alibi-timer { text-align: center; padding: 1.5rem; }
+.alibi-timer strong { font-size: clamp(3.5rem, 15vw, 6rem); font-variant-numeric: tabular-nums; }
+.alibi-reveal { padding: 1rem; margin: 1rem 0; border: 1px solid currentColor; border-radius: 1rem; }
+.alibi-answers { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }

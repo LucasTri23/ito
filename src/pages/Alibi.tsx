@@ -5,9 +5,10 @@ import { db, configured } from "../lib/firebase";
 import { useAuth } from "../hooks/useAuth";
 import { errorText, roomCode } from "../utils/game";
 import { Notice } from "../components/UI";
+import { AlibiRound, type AlibiPublicRound } from "../components/AlibiRound";
 
 type Player = { uid: string; name: string };
-type Room = { code: string; hostId: string; phase: string };
+type Room = { code: string; hostId: string; phase: string; round?: AlibiPublicRound };
 
 export function Alibi() {
   const { code: routeCode } = useParams();
@@ -80,7 +81,7 @@ export function Alibi() {
       <ul>{players.map(p => <li key={p.uid}>{p.name}{p.uid === room.hostId ? " · anfitrião" : ""}{p.uid === user?.uid ? " · você" : ""}</li>)}</ul>
       <label htmlFor="alibi-link">Link de convite</label><input id="alibi-link" value={link} readOnly onFocus={e => e.currentTarget.select()} />
       <button className="button secondary" onClick={() => { if (!navigator.clipboard) { setError("Não foi possível copiar. Selecione o link acima e copie manualmente."); return; } void navigator.clipboard.writeText(link).then(() => setCopied(true)).catch(() => setError("Não foi possível copiar. Selecione o link acima e copie manualmente.")); }}>{copied ? "Link copiado!" : "Copiar convite"}</button>
-      <Notice>A sala está disponível, mas a rodada ainda está em implementação e não pode ser iniciada.</Notice>
+      {user && <AlibiRound code={code} uid={user.uid} hostId={room.hostId} round={room.round} players={players} />}
     </> : <>
       <label htmlFor="alibi-name">Seu apelido</label><input id="alibi-name" value={name} maxLength={24} onChange={e => setName(e.target.value)} />
       {!code && <button className="button primary" disabled={busy || !configured || !user} onClick={() => void enter(true)}>Criar sala</button>}

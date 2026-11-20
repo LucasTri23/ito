@@ -1,0 +1,15 @@
+// The catalog stays on the server so questions are not delivered before the timer.
+module.exports = [
+  { id: "festa-001", category: "festa", situation: "Vocês foram vistos saindo de uma padaria às 3h da manhã com um bolo de casamento.", questions: ["Quem carregava o bolo na saída?", "Como vocês foram embora da padaria?", "O que estava escrito em cima do bolo?"] },
+  { id: "viagem-001", category: "viagem", situation: "Vocês chegaram ao hotel com uma mala que tocava música sempre que era aberta.", questions: ["Qual música tocou primeiro?", "Quem descobriu o barulho?", "O que havia dentro da mala?"] },
+  { id: "trabalho-001", category: "trabalho", situation: "Vocês apareceram em uma reunião importante usando crachás com nomes de animais.", questions: ["Qual animal estava no crachá de cada um?", "O que vocês disseram quando perceberam?", "Quem entregou os crachás?"] },
+  { id: "escola-001", category: "escola", situation: "Vocês tiveram que apresentar uma maquete que começou a soltar bolhas de sabão.", questions: ["O que a maquete representava?", "Quem foi buscar ajuda?", "Como vocês explicaram as bolhas?"] },
+  { id: "familia-001", category: "família", situation: "Vocês serviram o almoço de família com todas as colheres amarradas umas às outras.", questions: ["Quem notou as colheres primeiro?", "Por que elas estavam amarradas?", "Qual prato foi servido primeiro?"] },
+  { id: "vizinhanca-001", category: "vizinhança", situation: "Vocês foram encontrados na portaria tentando devolver um guarda-chuva gigante.", questions: ["De quem era o guarda-chuva?", "Como ele chegou até vocês?", "O que o porteiro disse?"] },
+  { id: "restaurante-001", category: "restaurante", situation: "Vocês pediram uma sobremesa e receberam uma travessa coberta por uma tampa misteriosa.", questions: ["Quem levantou a tampa?", "O que havia na travessa?", "O que vocês pediram ao garçom depois?"] },
+  { id: "compras-001", category: "compras", situation: "Vocês saíram do mercado empurrando um carrinho cheio de caixas vazias.", questions: ["Para que vocês queriam as caixas?", "Quem escolheu o carrinho?", "O que o caixa perguntou?"] },
+  { id: "esporte-001", category: "esporte", situation: "Vocês foram chamados para entregar um troféu no campeonato e levaram um regador.", questions: ["Como o regador foi parar com vocês?", "Quem fez o discurso?", "Onde estava o troféu verdadeiro?"] },
+  { id: "tecnologia-001", category: "tecnologia", situation: "Vocês ligaram um projetor e uma foto inesperada apareceu na parede.", questions: ["O que aparecia na foto?", "Quem tentou desligar o projetor?", "O que vocês contaram para a plateia?"] },
+  { id: "evento-001", category: "evento", situation: "Vocês chegaram a uma inauguração carregando uma fita comprida demais para a porta.", questions: ["Qual era a cor da fita?", "Quem ficou com a tesoura?", "Como vocês resolveram o problema?"] },
+  { id: "absurdo-001", category: "imprevistos", situation: "Vocês encontraram um pato usando chapéu na fila do ônibus e decidiram acompanhá-lo.", questions: ["Onde o pato desceu?", "Quem segurou o chapéu?", "O que vocês falaram ao motorista?"] }
+];

@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import {
   Eye,
   Shuffle,
@@ -18,6 +18,8 @@ import {
   initialPartyState,
   partyReducer,
 } from "../utils/partyGames";
+import { burst, prefersReducedMotion } from "../utils/fx";
+import "../motion.css";
 
 export function PartyAnswer({
   topic,
@@ -81,6 +83,33 @@ export function PartyGame({ game }: { game: "number" | "ranking" }) {
     (topic) => state.category === "Todas" || topic.category === state.category,
   ).length;
   const isRanking = game === "ranking";
+  // Roleta: perguntas passam rápido no card antes do sorteio de verdade.
+  const [rolling, setRolling] = useState<string | null>(null);
+  const rollTimer = useRef<number | undefined>(undefined);
+  const cardRef = useRef<HTMLElement>(null);
+  useEffect(() => () => window.clearInterval(rollTimer.current), []);
+  const draw = () => {
+    const pick = () => dispatch({ type: "draw", ...drawPartyTopic(topics, state) });
+    if (prefersReducedMotion()) return pick();
+    const pool = topics.filter(
+      (topic) => state.category === "Todas" || topic.category === state.category,
+    );
+    let ticks = 0;
+    window.clearInterval(rollTimer.current);
+    rollTimer.current = window.setInterval(() => {
+      ticks += 1;
+      setRolling(pool[Math.floor(Math.random() * pool.length)]?.question ?? "…");
+      if (ticks >= 9) {
+        window.clearInterval(rollTimer.current);
+        setRolling(null);
+        pick();
+      }
+    }, 75);
+  };
+  const reveal = () => {
+    dispatch({ type: "reveal" });
+    burst(cardRef.current, isRanking ? 36 : 28);
+  };
   return (
     <section className={`who-page party-page party-${game}`}>
       <span className="pill">PRESENCIAL · A TURMA TODA NA MESA</span>
@@ -147,10 +176,18 @@ export function PartyGame({ game }: { game: "number" | "ranking" }) {
         </p>
       )}
       <article
-        className="identity-card party-card"
-        key={current?.id ?? state.category}
+        ref={cardRef}
+        className={`identity-card party-card${rolling ? " party-rolling" : ""}`}
+        key={rolling ? "rolling" : (current?.id ?? state.category)}
       >
-        {current ? (
+        {rolling ? (
+          <>
+            <span className="eyebrow party-roll-label">
+              <Shuffle size={14} /> SORTEANDO…
+            </span>
+            <h2>{rolling}</h2>
+          </>
+        ) : current ? (
           <>
             <span className="eyebrow">{current.category}</span>
             <h2>{current.question}</h2>
@@ -159,7 +196,7 @@ export function PartyGame({ game }: { game: "number" | "ranking" }) {
             {!state.revealed && (
               <button
                 className="button secondary party-reveal"
-                onClick={() => dispatch({ type: "reveal" })}
+                onClick={reveal}
               >
                 <Eye size={18} />
                 {isRanking ? "Revelar top 10" : "Revelar resposta"}
@@ -181,9 +218,8 @@ export function PartyGame({ game }: { game: "number" | "ranking" }) {
       </article>
       <button
         className="button primary identity-draw"
-        onClick={() =>
-          dispatch({ type: "draw", ...drawPartyTopic(topics, state) })
-        }
+        onClick={draw}
+        disabled={rolling !== null}
       >
         <Shuffle size={19} />
         {current ? "Sortear outro tema" : "Sortear tema"}
