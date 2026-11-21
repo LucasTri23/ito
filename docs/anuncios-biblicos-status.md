@@ -1,9 +1,21 @@
-# Anúncios dos Tempos Bíblicos — implementação em andamento
+# Anúncios dos Tempos Bíblicos — concluído
 
-O card, as rotas por hash e o lobby foram adicionados. A sala usa autenticação anônima e Cloud Firestore, com coleções próprias `adsInvites` e `adsRooms`. O ingresso é transacional, limitado a oito pessoas, e membros podem recuperar a vaga com a mesma identidade. No presencial, o anfitrião pode selecionar dois ou três vendedores quando há cinco ou mais pessoas. O início de partida está intencionalmente indisponível.
+O jogo está jogável de ponta a ponta, nos modos online (anúncios escritos e votação anônima) e presencial (apresentações ao vivo e votação “Compro” / “Não compro”), para 2 a 8 pessoas, cada uma no próprio aparelho.
 
-O catálogo `src/data/biblicalAds.json` contém 15 itens com fonte oficial aberta e conferida. Os resumos são próprios. `npm run validate:anuncios` verifica quantidade, campos, IDs, nomes e domínio; atualmente falha de propósito porque ainda faltam 45 itens para o mínimo de 60. A validação automatizada não substitui a conferência de cada referência.
+## Como foi implementado
 
-As regras incluem estruturas iniciais para estilos privados, anúncios anônimos e votos separados por apresentação. Os testes do Emulator verificam leituras e escritas isoladas, mas usam estados de rodada preparados com regras desabilitadas. A criação e a transição de rodadas continuam proibidas: ainda não existe partida jogável. Também há funções puras para distribuição de papéis e apuração, que não substituem autorização no Firestore.
+- Usa a mesma infraestrutura de salas de Plano B, Manual Desmontado e Feira de Invenções (coleções `mesaInvites` e `mesas`, jogo `ads`): convite por código e link, limite de 8 vagas, presença, saída e troca de anfitrião.
+- A partida roda no motor compartilhado da Feira (`src/pages/PitchGame.tsx` e `src/services/feira.ts`): um objeto bíblico para todos, um estilo secreto diferente para cada vendedor, 40 segundos de criação, votação e placar de 5 rodadas.
+- Online: com 2 pessoas, os anúncios aparecem lado a lado sem votação; com 3, uma pessoa compra e duas vendem (alternando); com 4 a 8, todos vendem e votam (nunca no próprio anúncio — garantido pelas regras).
+- Presencial: 2 vendedores (até 4 pessoas) ou 2/3 à escolha do anfitrião (5 a 8); plateia vota “Compro” ou “Não compro” por apresentação, 20 s cada.
+- Catálogo: `src/data/biblicalAds.json` com 87 objetos, cada um com resumo próprio, referência e link oficial do capítulo no jw.org (validação: `npm run validate:anuncios`). Os 8 estilos estão em `src/utils/biblicalAds.ts`.
+- Regras: o mesmo bloco das mesas, com `game in ['feira','ads']` e o tempo da rodada (`secs`) fixado na criação (40 s para os Anúncios). Testes em `tests/mesa.rules.test.ts`.
 
-Faltam implementar as rodadas escritas e presenciais, os estilos e anúncios na interface, o relógio de 40 segundos, a revelação anônima, as transições e a apuração confiáveis, reconexão durante a rodada, saída e transferência de anfitrião, e testes de partidas completas. A privacidade precisa ser verificada também no fluxo integrado, inclusive contra correlação de publicações. Não publicar como jogo concluído.
+## Verificado
+
+- Partidas completas com sessões independentes no Emulator: online com 2, 3 e 8 pessoas e presencial com 5 (3 vendedores).
+- Regras: estilo secreto legível só pelo dono até o resultado; anúncio anônimo durante a votação; voto único e nunca no próprio anúncio; tempo de 40 s.
+
+## Observação
+
+As coleções antigas `adsRooms`/`adsInvites` (primeira versão do lobby) não são mais usadas pelo site. As regras e testes delas continuam no repositório e podem ser removidos numa limpeza futura.

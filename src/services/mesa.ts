@@ -11,7 +11,7 @@ import {
 import { db } from "../lib/firebase";
 import { hostAway, pickSuccessor, roomCode } from "../utils/game";
 
-export type MesaGame = "planb" | "manual" | "feira";
+export type MesaGame = "planb" | "manual" | "feira" | "ads";
 export const MESA_MAX = 8;
 export const MESA_MIN = 2;
 

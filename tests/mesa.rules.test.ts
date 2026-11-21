@@ -181,7 +181,7 @@ describe.skipIf(!enabled)("Mesas (Plano B, Manual, Feira): regras", () => {
     const base = `mesas/${code}/rounds/1-1`;
     const start = writeBatch(a);
     start.update(doc(a, `mesas/${code}`), { phase: "playing", roundNo: 1, currentRoundId: "1-1", used: ["fi-01"] });
-    start.set(doc(a, base), { id: "1-1", game: "feira", no: 1, mode: "online", problemId: "fi-01", phase: "create", inventors: ["a", "b", "c", "d"], voters: ["a", "b", "c", "d"], submitted: [], voted: [], startedAt: serverTimestamp(), voteAt: null });
+    start.set(doc(a, base), { id: "1-1", game: "feira", no: 1, mode: "online", problemId: "fi-01", phase: "create", inventors: ["a", "b", "c", "d"], voters: ["a", "b", "c", "d"], submitted: [], voted: [], startedAt: serverTimestamp(), voteAt: null, secs: 45 });
     for (const uid of ["a", "b", "c", "d"]) start.set(doc(a, `${base}/materials/${uid}`), { uid, materialId: `m-${uid}` });
     await assertSucceeds(start.commit());
     const dbs = Object.fromEntries(["a", "b", "c", "d"].map((u) => [u, env.authenticatedContext(u).firestore()]));
@@ -237,7 +237,7 @@ describe.skipIf(!enabled)("Mesas (Plano B, Manual, Feira): regras", () => {
     const base = `mesas/${code}/rounds/1-1`;
     const start = writeBatch(a);
     start.update(doc(a, `mesas/${code}`), { phase: "playing", roundNo: 1, currentRoundId: "1-1", used: ["fi-02"] });
-    start.set(doc(a, base), { id: "1-1", game: "feira", no: 1, mode: "presencial", problemId: "fi-02", phase: "prep", inventors: ["a", "b"], audience: ["c", "d", "e"], current: 0, pvoted: [], startedAt: serverTimestamp(), voteAt: null });
+    start.set(doc(a, base), { id: "1-1", game: "feira", no: 1, mode: "presencial", problemId: "fi-02", phase: "prep", inventors: ["a", "b"], audience: ["c", "d", "e"], current: 0, pvoted: [], startedAt: serverTimestamp(), voteAt: null, secs: 45 });
     start.set(doc(a, `${base}/materials/a`), { uid: "a", materialId: "m1" });
     start.set(doc(a, `${base}/materials/b`), { uid: "b", materialId: "m2" });
     await assertSucceeds(start.commit());
@@ -265,6 +265,28 @@ describe.skipIf(!enabled)("Mesas (Plano B, Manual, Feira): regras", () => {
     await assertSucceeds(pvote("d", ["c"], false));
     await assertSucceeds(pvote("e", ["c", "d"]));
     await assertSucceeds(updateDoc(doc(c, base), { phase: "present", current: 1, pvoted: [] })); // todos votaram
+  });
+
+  it("Anúncios bíblicos: usa o motor da Feira com 40 s; estilo secreto e voto protegidos", async () => {
+    const code = nextCode();
+    const a = await createMesa(env, code, "ads");
+    for (const uid of ["b", "c"]) await joinMesa(env, code, uid);
+    const base = `mesas/${code}/rounds/1-1`;
+    const round = (secs: number) => {
+      const bt = writeBatch(a);
+      bt.update(doc(a, `mesas/${code}`), { phase: "playing", roundNo: 1, currentRoundId: "1-1", used: ["atos-09-cesto"] });
+      bt.set(doc(a, base), { id: "1-1", game: "ads", no: 1, mode: "online", problemId: "atos-09-cesto", phase: "create", inventors: ["a", "b"], voters: ["c"], submitted: [], voted: [], startedAt: serverTimestamp(), voteAt: null, secs });
+      bt.set(doc(a, `${base}/materials/a`), { uid: "a", materialId: "s0" });
+      bt.set(doc(a, `${base}/materials/b`), { uid: "b", materialId: "s3" });
+      return bt.commit();
+    };
+    await assertFails(round(45)); // o tempo dos Anúncios é 40 s
+    await assertSucceeds(round(40));
+    const b = env.authenticatedContext("b").firestore();
+    const c = env.authenticatedContext("c").firestore();
+    await assertFails(getDoc(doc(b, `${base}/materials/a`))); // estilo alheio
+    await assertSucceeds(getDoc(doc(b, `${base}/materials/b`)));
+    await assertFails(getDoc(doc(c, `${base}/materials/a`)));
   });
 
   it("catálogos: qualquer pessoa lê (até sem login); ninguém escreve pelo site", async () => {

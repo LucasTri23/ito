@@ -90,7 +90,7 @@ const choices: Choice[] = [
     to: "/anuncios-biblicos", tone: "sky", icon: <Sparkles size={36} />,
     eyebrow: "ONLINE OU PRESENCIAL · 2 A 8 PESSOAS", title: "Anúncios dos Tempos Bíblicos",
     text: "Um objeto bíblico, um estilo secreto e 40 segundos pra inventar o anúncio mais criativo.",
-    cta: "Conhecer o jogo", badge: "Em construção", setup: "Um aparelho por pessoa · partida em desenvolvimento",
+    cta: "Criar um anúncio", badge: "Novo", setup: "2 a 8 pessoas · escrito ou apresentado ao vivo",
   },
   {
     to: "/quem-sou-eu",

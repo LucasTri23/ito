@@ -1,21 +1,29 @@
 import { collection, doc, runTransaction, serverTimestamp, writeBatch, type Timestamp } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import catalog from "../data/feira.json";
+import adsCatalog from "../data/biblicalAds.json";
+import { biblicalAdStyles } from "../utils/biblicalAds";
 import { randomInt, shuffle } from "../utils/game";
 import { FEIRA_ROUNDS, type FeiraCatalog } from "../utils/feira";
 import { roundIdOf, type MesaRoom } from "./mesa";
 
 export const feira = catalog as FeiraCatalog;
+/** Anúncios dos Tempos Bíblicos: objeto bíblico no lugar do problema, estilo secreto no lugar do material. */
+export const adsObjects = adsCatalog as { id: string; name: string; category: string; context: string; summary: string; reference: string; url: string }[];
+export const adsStyleId = (i: number) => `s${i}`;
+export const adsStyleName = (id?: string) => (id ? biblicalAdStyles[Number(id.slice(1))] : undefined);
+export const roundSeconds = (game: string) => (game === "ads" ? 40 : 45);
 export { FEIRA_ROUNDS };
 
 interface Common {
   id: string;
-  game: "feira";
+  game: "feira" | "ads";
   no: number;
   problemId: string;
   inventors: string[];
   startedAt: Timestamp | null;
   voteAt: Timestamp | null;
+  secs: number;
 }
 export interface FeiraOnlineRound extends Common {
   mode: "online";
@@ -63,8 +71,12 @@ export async function startFeiraRound(code: string, uid: string, players: string
     if (room.phase !== "lobby") throw new Error("A rodada já começou.");
     if (room.roundNo >= FEIRA_ROUNDS) throw new Error("A partida acabou. Comece uma nova partida.");
     if (players.length < 2 || players.length > 8) throw new Error("A sala precisa de 2 a 8 jogadores.");
-    const available = feira.problems.filter((p) => !room.used.includes(p.id));
-    if (!available.length) throw new Error("Todos os problemas foram usados. Comece uma nova partida.");
+    const ads = room.game === "ads";
+    const pool = ads
+      ? adsObjects.map((o) => ({ id: o.id, materials: biblicalAdStyles.map((_, i) => adsStyleId(i)) }))
+      : feira.problems;
+    const available = pool.filter((p) => !room.used.includes(p.id));
+    if (!available.length) throw new Error(ads ? "Todos os objetos foram usados. Comece uma nova partida." : "Todos os problemas foram usados. Comece uma nova partida.");
     const problem = available[randomInt(available.length)];
     const mode = room.mode ?? "online";
     const no = room.roundNo + 1;
@@ -73,7 +85,7 @@ export async function startFeiraRound(code: string, uid: string, players: string
     if ((await tx.get(doc(db, base))).exists()) throw new Error("Essa rodada já foi criada.");
     const { inventors, others } = rotate(players, no, inventorCount(mode, players.length, room.inventors));
     const order = mode === "presencial" ? shuffle(inventors) : inventors;
-    const common = { id, game: "feira", no, mode, problemId: problem.id, inventors: order, startedAt: serverTimestamp(), voteAt: null };
+    const common = { id, game: room.game, no, mode, problemId: problem.id, inventors: order, startedAt: serverTimestamp(), voteAt: null, secs: roundSeconds(room.game) };
     if (mode === "online")
       tx.set(doc(db, base), { ...common, phase: "create", voters: players.length >= 4 ? players : others, submitted: [], voted: [] });
     else tx.set(doc(db, base), { ...common, phase: "prep", audience: others, current: 0, pvoted: [] });

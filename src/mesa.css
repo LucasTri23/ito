@@ -509,3 +509,26 @@
 .mesa-page {
   overflow-x: clip;
 }
+
+/* ---------- Anúncios dos Tempos Bíblicos ---------- */
+.ads-context {
+  margin: -6px 0 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 2px dashed color-mix(in srgb, var(--tone-main) 60%, var(--line));
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.ads-context p {
+  margin: 0 0 6px;
+}
+.ads-context a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

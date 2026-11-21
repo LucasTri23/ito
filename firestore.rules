@@ -506,7 +506,7 @@ service cloud.firestore {
    allow list: if false;
    allow create: if signed() && c.matches('^[A-HJ-NP-Z2-9]{5}$')
     && request.resource.data.keys().hasOnly(['count','game'])
-    && request.resource.data.count == 1 && request.resource.data.game in ['planb','manual','feira']
+    && request.resource.data.count == 1 && request.resource.data.game in ['planb','manual','feira','ads']
     && mesaRoomAfter(c).hostId == request.auth.uid && mesaRoomAfter(c).game == request.resource.data.game
     && getAfter(/databases/$(database)/documents/mesas/$(c)/players/$(request.auth.uid)).data.uid == request.auth.uid;
    // Entrada: +1 vaga, no máximo 8, só no lobby.
@@ -529,7 +529,7 @@ service cloud.firestore {
    allow create: if signed() && c.matches('^[A-HJ-NP-Z2-9]{5}$')
     && request.resource.data.keys().hasOnly(['code','game','hostId','phase','gameNo','roundNo','currentRoundId','used','mode','inventors'])
     && request.resource.data.code == c && request.resource.data.hostId == request.auth.uid
-    && request.resource.data.game in ['planb','manual','feira'] && request.resource.data.phase == 'lobby'
+    && request.resource.data.game in ['planb','manual','feira','ads'] && request.resource.data.phase == 'lobby'
     && request.resource.data.gameNo == 1 && request.resource.data.roundNo == 0
     && request.resource.data.currentRoundId == '' && request.resource.data.used == []
     && request.resource.data.get('mode','online') in ['online','presencial']
@@ -605,12 +605,12 @@ service cloud.firestore {
      && nd().id == r && nd().no == mesaRoomAfter(c).roundNo && nd().game == mesaRoom(c).game
      && ((nd().game == 'planb' && planbCreate(c, r, nd()))
       || (nd().game == 'manual' && manualCreate(c, r, nd()))
-      || (nd().game == 'feira' && feiraCreate(c, r, nd())));
+      || (nd().game in ['feira','ads'] && feiraCreate(c, r, nd())));
     allow update: if mesaMember(c) && isCurrent()
      && ((rd().game == 'planb' && planbUpdate(rd(), nd()))
       || (rd().game == 'manual' && manualUpdate(c, r, rd(), nd()))
-      || (rd().game == 'feira' && rd().mode == 'online' && feiraOnlineUpdate(c, r, rd(), nd()))
-      || (rd().game == 'feira' && rd().mode == 'presencial' && feiraLiveUpdate(c, r, rd(), nd())));
+      || (rd().game in ['feira','ads'] && rd().mode == 'online' && feiraOnlineUpdate(c, r, rd(), nd()))
+      || (rd().game in ['feira','ads'] && rd().mode == 'presencial' && feiraLiveUpdate(c, r, rd(), nd())));
     allow delete: if false;
 
     // Segredos lacrados (imprevisto, gabarito, autores): ninguém lê antes do fim da rodada.
@@ -696,7 +696,7 @@ service cloud.firestore {
      allow get: if mesaMember(c) && (uid == request.auth.uid || rd().phase == 'result');
      allow list: if mesaMember(c) && rd().phase == 'result';
      allow create: if mesaHost(c) && !exists(/databases/$(database)/documents/mesas/$(c)/rounds/$(r))
-      && mesaRoundAfter(c, r).game == 'feira' && uid in mesaRoundAfter(c, r).inventors
+      && mesaRoundAfter(c, r).game in ['feira','ads'] && uid in mesaRoundAfter(c, r).inventors
       && request.resource.data.keys().hasOnly(['uid','materialId']) && request.resource.data.uid == uid
       && text(request.resource.data.materialId, 40);
      allow update, delete: if false;
@@ -706,8 +706,8 @@ service cloud.firestore {
      allow get: if mesaMember(c) && (rd().phase in ['vote','result']
       || get(/databases/$(database)/documents/mesas/$(c)/rounds/$(r)/authorOf/$(request.auth.uid)).data.anon == anon);
      allow list: if mesaMember(c) && rd().phase in ['vote','result'];
-     allow create: if mesaMember(c) && rd().game == 'feira' && rd().mode == 'online' && rd().phase == 'create'
-      && request.auth.uid in rd().inventors && request.time < rd().startedAt + duration.value(47, 's')
+     allow create: if mesaMember(c) && rd().game in ['feira','ads'] && rd().mode == 'online' && rd().phase == 'create'
+      && request.auth.uid in rd().inventors && request.time < rd().startedAt + duration.value(rd().secs + 2, 's')
       && request.resource.data.keys().hasOnly(['anon','name','how','slogan']) && request.resource.data.anon == anon
       && text(request.resource.data.name, 40) && text(request.resource.data.how, 200) && text(request.resource.data.slogan, 80)
       && getAfter(/databases/$(database)/documents/mesas/$(c)/rounds/$(r)/authors/$(anon)).data.uid == request.auth.uid;
@@ -716,7 +716,7 @@ service cloud.firestore {
     match /authors/{anon} {
      allow get: if mesaMember(c) && rd().phase == 'result';
      allow list: if mesaMember(c) && rd().phase == 'result';
-     allow create: if mesaMember(c) && rd().game == 'feira' && rd().phase == 'create'
+     allow create: if mesaMember(c) && rd().game in ['feira','ads'] && rd().phase == 'create'
       && request.resource.data.keys().hasOnly(['anon','uid']) && request.resource.data.anon == anon
       && request.resource.data.uid == request.auth.uid
       && !exists(/databases/$(database)/documents/mesas/$(c)/rounds/$(r)/authorOf/$(request.auth.uid))
@@ -727,7 +727,7 @@ service cloud.firestore {
     match /authorOf/{uid} {
      allow get: if mesaMember(c) && (uid == request.auth.uid || rd().phase == 'result');
      allow list: if mesaMember(c) && rd().phase == 'result';
-     allow create: if mesaMember(c) && uid == request.auth.uid && rd().game == 'feira' && rd().phase == 'create'
+     allow create: if mesaMember(c) && uid == request.auth.uid && rd().game in ['feira','ads'] && rd().phase == 'create'
       && request.resource.data.keys().hasOnly(['uid','anon']) && request.resource.data.uid == uid
       && getAfter(/databases/$(database)/documents/mesas/$(c)/rounds/$(r)/authors/$(request.resource.data.anon)).data.uid == uid
       && uid in mesaRoundAfter(c, r).submitted;
@@ -737,7 +737,7 @@ service cloud.firestore {
     match /votes/{uid} {
      allow get: if mesaMember(c) && (uid == request.auth.uid || rd().phase == 'result');
      allow list: if mesaMember(c) && rd().phase == 'result';
-     allow create: if mesaMember(c) && uid == request.auth.uid && rd().game == 'feira' && rd().phase == 'vote'
+     allow create: if mesaMember(c) && uid == request.auth.uid && rd().game in ['feira','ads'] && rd().phase == 'vote'
       && uid in rd().voters && request.time < rd().voteAt + duration.value(32, 's')
       && request.resource.data.keys().hasOnly(['uid','target']) && request.resource.data.uid == uid
       && exists(/databases/$(database)/documents/mesas/$(c)/rounds/$(r)/entries/$(request.resource.data.target))
@@ -748,7 +748,7 @@ service cloud.firestore {
     // Voto presencial (Compro / Não compro): um por produto, só da plateia, no prazo.
     match /pvotes/{key} {
      allow get, list: if mesaMember(c) && rd().phase == 'result';
-     allow create: if mesaMember(c) && rd().game == 'feira' && rd().mode == 'presencial' && rd().phase == 'vote'
+     allow create: if mesaMember(c) && rd().game in ['feira','ads'] && rd().mode == 'presencial' && rd().phase == 'vote'
       && request.auth.uid in rd().audience && request.time < rd().voteAt + duration.value(22, 's')
       && request.resource.data.keys().hasOnly(['inventor','voter','buy'])
       && request.resource.data.voter == request.auth.uid && request.resource.data.buy is bool
@@ -804,19 +804,20 @@ service cloud.firestore {
   function feiraCreate(c, r, d) {
    return d.mode == mesaRoom(c).get('mode', 'online') && text(d.problemId, 40) && d.problemId in mesaRoomAfter(c).used
     && d.startedAt == request.time && d.voteAt == null && uniqueList(d.inventors, 2, 8)
-    && ((d.mode == 'online' && d.keys().hasOnly(['id','game','no','mode','problemId','phase','inventors','voters','submitted','voted','startedAt','voteAt'])
+    && d.secs == (d.game == 'ads' ? 40 : 45)
+    && ((d.mode == 'online' && d.keys().hasOnly(['id','game','no','mode','problemId','phase','inventors','voters','submitted','voted','startedAt','voteAt','secs'])
       && d.phase == 'create' && d.submitted == [] && d.voted == [] && d.voters is list && d.voters.size() <= 8
       && d.voters.toSet().size() == d.voters.size())
-     || (d.mode == 'presencial' && d.keys().hasOnly(['id','game','no','mode','problemId','phase','inventors','audience','current','pvoted','startedAt','voteAt'])
+     || (d.mode == 'presencial' && d.keys().hasOnly(['id','game','no','mode','problemId','phase','inventors','audience','current','pvoted','startedAt','voteAt','secs'])
       && d.phase == 'prep' && d.current == 0 && d.pvoted == [] && d.inventors.size() <= 3
       && d.audience is list && d.audience.toSet().intersection(d.inventors.toSet()).size() == 0));
   }
   function feiraOnlineUpdate(c, r, o, d) {
    return (o.phase == 'create' && d.phase == 'create' && d.diff(o).affectedKeys().hasOnly(['submitted'])
      && request.auth.uid in o.inventors && addsSelf(o.submitted, d.submitted)
-     && request.time < o.startedAt + duration.value(47, 's')
+     && request.time < o.startedAt + duration.value(o.secs + 2, 's')
      && existsAfter(/databases/$(database)/documents/mesas/$(c)/rounds/$(r)/authorOf/$(request.auth.uid)))
-    || (o.phase == 'create' && (o.submitted.toSet().hasAll(o.inventors) || request.time >= o.startedAt + duration.value(45, 's'))
+    || (o.phase == 'create' && (o.submitted.toSet().hasAll(o.inventors) || request.time >= o.startedAt + duration.value(o.secs, 's'))
      && ((o.voters.size() > 0 && o.submitted.size() >= 2 && d.phase == 'vote' && d.voteAt == request.time
        && d.diff(o).affectedKeys().hasOnly(['phase','voteAt']))
       || ((o.voters.size() == 0 || o.submitted.size() < 2) && d.phase == 'result' && d.diff(o).affectedKeys().hasOnly(['phase']))))
@@ -832,7 +833,7 @@ service cloud.firestore {
   }
   function feiraLiveUpdate(c, r, o, d) {
    return (o.phase == 'prep' && d.phase == 'present' && d.current == 0
-     && d.diff(o).affectedKeys().hasOnly(['phase','current']) && request.time >= o.startedAt + duration.value(45, 's'))
+     && d.diff(o).affectedKeys().hasOnly(['phase','current']) && request.time >= o.startedAt + duration.value(o.secs, 's'))
     || (mesaHost(c) && o.phase == 'present' && d.phase == 'vote' && o.audience.size() > 0
      && d.diff(o).affectedKeys().hasOnly(['phase','voteAt','pvoted']) && d.voteAt == request.time && d.pvoted == [])
     || (mesaHost(c) && o.phase == 'present' && d.diff(o).affectedKeys().hasOnly(['phase','current']) && feiraNext(o, d))

@@ -265,11 +265,11 @@ README.md
 VALIDATION.md
 ```
 
-## Plano B, Manual Desmontado e Feira de Invenções
+## Plano B, Manual Desmontado, Feira de Invenções e Anúncios dos Tempos Bíblicos
 
 Três jogos de sala (2 a 8 pessoas, um aparelho por pessoa, juntos ou à distância) que compartilham a mesma infraestrutura:
 
-- **Rotas:** `/#/plano-b`, `/#/manual-desmontado`, `/#/feira-de-invencoes` (convite: `/#/<rota>/<CÓDIGO>`).
+- **Rotas:** `/#/plano-b`, `/#/manual-desmontado`, `/#/feira-de-invencoes`, `/#/anuncios-biblicos` (convite: `/#/<rota>/<CÓDIGO>`).
 - **Dados:** `mesaInvites/{código}` (vagas, limite de 8 aplicado nas regras) e `mesas/{código}` com `players` e `rounds`. Rodadas têm id determinístico `partida-rodada` (repetir um clique não duplica). Prazos usam `startedAt`/`voteAt` do servidor; o cronômetro não reinicia ao recarregar.
 - **Sigilo (Firestore Rules):** imprevisto do Plano B e gabarito do Manual ficam em `rounds/{r}/sealed`, ilegíveis para todos (inclusive o anfitrião) até o fim da rodada; escolhas, pistas, materiais, invenções, autores e votos só abrem quando a regra permite. O teste da montagem é conferido pela regra contra o gabarito lacrado. Voto na própria invenção é recusado pela regra.
 - **Saída e anfitrião:** saída voluntária libera a vaga e passa o posto ao próximo jogador; anfitrião desconectado há mais de 3 minutos pode ser substituído por um membro conectado; com menos de 2 pessoas a rodada volta ao lobby.
