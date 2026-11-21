@@ -14,6 +14,7 @@ import { ManualDesmontado } from "./pages/ManualDesmontado";
 import { FeiraInvencoes } from "./pages/FeiraInvencoes";
 import { useAuth } from "./hooks/useAuth";
 import { configured } from "./lib/firebase";
+import { applyCachedCatalogs, refreshCatalogs } from "./services/catalogSync";
 import "./styles.css";
 import "./theme.css";
 import "./inPerson.css";
@@ -69,6 +70,9 @@ function App() {
     </HashRouter>
   );
 }
+// Temas: aplica a cópia salva no aparelho e, em segundo plano, busca a versão publicada no Firebase.
+applyCachedCatalogs();
+void refreshCatalogs();
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />

@@ -471,6 +471,12 @@ service cloud.firestore {
     }
    }
   }
+  // Catálogos de temas: leitura pública (inclusive jogos de um aparelho, sem login).
+  // Só o script de administrador (npm run catalogs:publish) escreve; o cliente nunca.
+  match /catalogs/{doc} {
+   allow get, list: if true;
+   allow write: if false;
+  }
    // ===== Plano B, Manual Desmontado e Feira de Invenções (coleções mesas e mesaInvites) =====
   function mesaDoc(c) { return /databases/$(database)/documents/mesas/$(c); }
   function mesaRoom(c) { return get(/databases/$(database)/documents/mesas/$(c)).data; }

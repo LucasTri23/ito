@@ -297,4 +297,146 @@ Miraculous: As Aventuras de Ladybug|Adolescentes escondem identidades de combate
 Bluey|Brincadeiras exploram relações entre pais e filhos.|A família é formada por cães australianos.|Bluey brinca com Bingo, Bandit e Chilli.
 Peppa Pig|Uma criança aprende com pequenas experiências cotidianas.|A família gosta de passeios e brincadeiras.|Uma porquinha e seu irmão George pulam em poças de lama.
 Patrulha Canina|Uma equipe especializada atende emergências.|Cada integrante tem equipamento e função próprios.|Ryder coordena cães de resgate como Chase e Marshall.
+Avenida Brasil|Uma jovem volta para acertar contas com quem destruiu sua infância.|Nina se infiltra como cozinheira na casa da vilã Carminha.|A novela do "Oi, oi, oi" com Carminha, Tufão e o lixão.
+O Clone|Uma história que mistura ciência e culturas distantes.|Jade vive um amor proibido com Lucas entre o Brasil e Marrocos.|A novela de 2001 com experiência genética e dança do ventre.
+Terra Nostra|Um navio traz um casal apaixonado para o Brasil.|Giuliana e Matteo enfrentam a vida nas fazendas de café.|A novela dos imigrantes italianos no século 19.
+Senhora do Destino|Uma mãe passa décadas procurando a filha.|Maria do Carmo enfrenta a vilã Nazaré Tedesco.|A novela da Nazaré que roubou um bebê.
+A Favorita|Duas amigas de uma antiga dupla musical se tornam rivais.|Ninguém sabe ao certo quem é a vilã entre Flora e Donatela.|A novela de 2008 com a disputa de Patrícia Pillar e Claudia Raia.
+Caminho das Índias|Uma história de amor esbarra num sistema de castas.|Maya e Bahuan vivem um romance impossível.|A novela do "Are baba!" ambientada na Índia.
+O Rei do Gado|Duas famílias rivais disputam terras há gerações.|Bruno Mezenga é um grande fazendeiro de criação de bois.|A novela dos Mezenga e dos Berdinazi com sem-terra.
+Roque Santeiro|Uma cidade vive da fama de um herói supostamente morto.|A viúva Porcina e Sinhozinho Malta dominam Asa Branca.|A novela da "viúva que foi sem nunca ter sido".
+Vale Tudo|Uma história que pergunta se vale a pena ser honesto.|Raquel batalha enquanto a filha Maria de Fátima quer subir na vida.|A novela do mistério "Quem matou Odete Roitman?".
+Pantanal|A natureza selvagem tem um papel central na história.|Juma Marruá pode virar onça e José Leôncio cria gado.|A novela da Juma ambientada no Mato Grosso do Sul.
+Tieta|Uma mulher volta rica à cidade que a expulsou.|A trama se passa em Santana do Agreste e tem a beata Perpétua.|A novela de Jorge Amado com Betty Faria como protagonista.
+Laços de Família|Mãe e filha se apaixonam pelo mesmo homem.|A doença de Camila marca a trama.|A novela de Manoel Carlos com Helena e Camila.
+Chocolate com Pimenta|Uma moça simples volta rica para a cidade onde foi humilhada.|Ana Francisca se envolve com Danilo numa fábrica de doces.|A novela das seis ambientada numa cidade de chocolate.
+Alma Gêmea|Um amor continua além da vida.|Luna renasce e reencontra Rafael anos depois.|A novela espírita de Walcyr Carrasco com rosas brancas.
+Cheias de Charme|Três trabalhadoras viram estrelas da música.|Penha, Rosário e Cida formam um grupo com um clipe viral.|A novela das Empreguetes.
+Amor à Vida|Um vilão faz de tudo para assumir o hospital da família.|Félix e sua relação com o pai César são o destaque.|A novela que terminou com o famoso beijo de Félix.
+A Força do Querer|Personagens diferentes buscam aquilo que desejam muito.|Ritinha diz que é sereia e Bibi se envolve no crime.|A novela de Gloria Perez com Paolla Oliveira e Juliana Paes.
+Escrava Isaura|A protagonista luta pela liberdade no Brasil imperial.|Leôncio persegue uma moça escravizada de pele clara.|A novela baseada no livro de Bernardo Guimarães, sucesso no mundo.
+Mulheres de Areia|Duas irmãs idênticas têm personalidades opostas.|Ruth é boa e Raquel é a vilã.|A novela das gêmeas de Glória Pires.
+O Cravo e a Rosa|Um romance cheio de brigas entre duas pessoas teimosas.|Petruchio tenta conquistar a geniosa Catarina.|A comédia romântica inspirada em A Megera Domada.
+Renascer|Um fazendeiro planta sua força num pé de jequitibá.|José Inocêncio prospera no cacau baiano.|A novela do coronel do cacau que ganhou remake em 2024.
+Êta Mundo Bom!|Um rapaz otimista sai do interior para encontrar a mãe.|Candinho sempre diz que tudo acontece para melhor.|A novela das seis com o caipira Candinho e o burro Policarpo.
+Cordel Encantado|Uma princesa cresce no sertão sem saber da origem.|Açucena se apaixona por Jesuíno, filho de um cangaceiro.|A novela que misturou reinos europeus e cangaço.
+Fina Estampa|Uma mulher trabalhadora conserta de tudo um pouco.|Griselda vira milionária e Tereza Cristina é a vilã.|A novela da "Pereirão".
+Belíssima|Uma empresa de lingerie é disputada por uma família.|Bia Falcão é uma matriarca fria e calculista.|A novela de Silvio de Abreu com Fernanda Montenegro.
+Os Dez Mandamentos|Uma produção brasileira que levou uma narrativa antiga para a TV.|Moisés enfrenta o faraó e lidera a saída do Egito.|A novela bíblica da Record que virou filme.
+O Bem-Amado|Um político vaidoso faz de tudo para inaugurar uma obra.|Odorico Paraguaçu quer inaugurar o cemitério de Sucupira.|A obra de Dias Gomes com o prefeito dos discursos enrolados.
+Ti Ti Ti|Dois estilistas rivais disputam espaço no mundo da moda.|Jacques Leclair é o pseudônimo de Ariclenes.|A novela da rivalidade entre Victor Valentim e Jacques Leclair.
+Salve Jorge|Uma jovem é enganada com promessas de trabalho no exterior.|Morena vai parar na Turquia e Lívia é a vilã.|A novela de Gloria Perez com a Capadócia.
+Totalmente Demais|Uma moça humilde vira modelo de sucesso.|Eliza é descoberta por Arthur e Carolina.|A novela inspirada em Pigmaleão com Marina Ruy Barbosa.
+Mulheres Apaixonadas|Várias histórias de amor se cruzam no Leblon.|Helena, Dóris e Raquel vivem dramas diferentes.|A novela de Manoel Carlos de 2003.
+Da Cor do Pecado|Um romance nasce no Maranhão entre pessoas de mundos diferentes.|Preta e Paco vivem uma paixão contra a família rica.|A novela com Taís Araújo e Reynaldo Gianecchini.
+Carrossel|A rotina de uma sala de aula cheia de crianças.|A professora Helena cuida de alunos como Cirilo e Maria Joaquina.|A novela infantil do SBT sobre uma escola.
+Chiquititas|Meninas vivem juntas e cantam em um lugar especial.|A trama se passa num orfanato.|A novela infantil do SBT das órfãs cantoras.
+Cúmplices de um Resgate|Duas gêmeas separadas na infância se reencontram.|Manuela e Isabela trocam de lugar.|A novela infantil do SBT com Larissa Manoela.
+Carinha de Anjo|Uma menina muito falante mora num colégio de freiras.|Dulce Maria é órfã de mãe e adora a irmã Cecília.|A novela infantil do SBT com Lorena Queiroz.
+Rebelde|Alunos de um colégio de elite formam uma banda.|Mia, Roberta, Diego e Miguel surgem na versão mexicana.|A novela que deu origem ao RBD.
+Maria do Bairro|Uma jovem humilde enfrenta a vilã Soraya.|Thalía interpreta uma moça que vendia materiais recicláveis.|A novela mexicana famosa no SBT.
+A Usurpadora|Duas irmãs gêmeas trocam de vida.|Paola Bracho é a vilã e Paulina é a irmã boa.|A novela mexicana com Gabriela Spanic.
+Betty, a Feia|Uma secretária brilhante é subestimada pela aparência.|Trabalha numa empresa de moda e é apaixonada pelo chefe.|A novela colombiana de Beatriz Pinzón Solano.
+Malhação|Várias gerações de atores começaram aqui.|Mostra jovens na escola enfrentando os dramas da adolescência.|A novela teen da Globo que durou mais de 25 anos.
+Sítio do Picapau Amarelo|Uma obra literária que virou série infantil várias vezes.|Mostra Emília, Narizinho e Pedrinho em aventuras.|O programa baseado nos livros de Monteiro Lobato.
+Castelo Rá-Tim-Bum|Um menino aprende feitiços num castelo de São Paulo.|Tem a Morgana, o Dr. Victor e o Gato Pintado.|O programa infantil da TV Cultura com o Nino.
+A Grande Família|Uma família de subúrbio carioca no dia a dia.|Lineu e Nenê lidam com o Agostinho e a Bebel.|A série de comédia da Globo com o Tuco e o Lineu.
+Sai de Baixo|Uma família falida vive num apartamento no Largo do Arouche.|Caco Antibes reclama de tudo e de todos.|O humorístico gravado com plateia na Globo.
+Escolinha do Professor Raimundo|Uma sala de aula cheia de alunos engraçados.|Um professor pergunta e os alunos respondem com piadas.|O humorístico de Chico Anysio.
+Os Trapalhões|Quatro amigos fizeram o Brasil rir por décadas.|Didi, Dedé, Mussum e Zacarias eram os integrantes.|O grupo humorístico de Renato Aragão.
+Vai Que Cola|Um grupo de vizinhos convive numa pensão no Méier.|Valdomiro foge para a casa de Dona Jô.|A série de comédia do Multishow com Paulo Gustavo.
+Detetives do Prédio Azul|Crianças resolvem mistérios num condomínio.|Usam capas coloridas e enfrentam a bruxa Leocádia.|A série infantil do Gloob conhecida como D.P.A.
+Cidade Invisível|Seres das lendas vivem escondidos no Rio de Janeiro.|Um policial investiga mortes ligadas à Cuca e ao Saci.|A série da Netflix sobre o folclore brasileiro.
+Sob Pressão|Médicos trabalham em condições muito difíceis.|Evandro e Carolina atendem num hospital público.|A série médica da Globo ambientada no Rio.
+O Pagador de Promessas|Um homem simples carrega um objeto pesado por fé.|Zé do Burro tenta entrar numa igreja em Salvador.|O filme brasileiro que venceu a Palma de Ouro.
+Lisbela e o Prisioneiro|Uma moça apaixonada por cinema conhece um malandro.|Leléu é um conquistador perseguido por um matador.|A comédia romântica nordestina com Selton Mello.
+Dois Filhos de Francisco|Um pai acredita no talento musical dos filhos.|Dois irmãos saem de Goiás e viram estrelas sertanejas.|O filme sobre Zezé Di Camargo e Luciano.
+Que Horas Ela Volta?|Uma empregada mora há anos com a mesma família.|Val recebe a filha Jéssica em São Paulo.|O filme de Anna Muylaert com Regina Casé.
+Ainda Estou Aqui|Uma família perde o pai durante a ditadura.|Eunice Paiva busca respostas sobre o marido.|O filme brasileiro que ganhou o Oscar com Fernanda Torres.
+O Palhaço|Um artista de circo questiona sua vocação.|Benjamim viaja com a trupe do Circo Esperança.|O filme de Selton Mello sobre um palhaço.
+Tainá|Uma menina defende a floresta contra traficantes de animais.|É uma indiazinha da Amazônia.|O filme brasileiro sobre a pequena guerreira amazônica.
+Meu Pé de Laranja Lima|Um menino pobre conversa com uma árvore.|Zezé faz amizade com o Portuga.|A adaptação do livro de José Mauro de Vasconcelos.
+Cine Holliúdy|Um dono de cinema enfrenta a chegada da televisão.|Francisgleydisson leva filmes ao interior do Ceará.|A comédia cearense com falas em "cearensês".
+Nosso Lar|Um médico desperta em outro plano de existência.|André Luiz conhece uma cidade espiritual.|O filme baseado no livro psicografado por Chico Xavier.
+O Ano em Que Meus Pais Saíram de Férias|Um menino fica com o avô em meio à Copa de 1970.|Mauro espera os pais enquanto vive no Bom Retiro.|O filme de Cao Hamburger sobre os anos de chumbo.
+Turma da Mônica: Lições|As crianças precisam lidar com as consequências de uma fuga.|É a continuação do filme com atores de Laços.|O segundo filme live-action da Turma da Mônica.
+Os Farofeiros|Colegas de trabalho viajam juntos para a praia.|A casa alugada é bem pior do que parecia.|A comédia brasileira de férias no litoral.
+Tô Ryca!|Uma frentista precisa gastar uma fortuna rapidamente.|Selminha herda dinheiro com uma condição curiosa.|A comédia brasileira com Samantha Schmütz.
+Hoje Eu Quero Voltar Sozinho|Um adolescente busca independência e conhece um novo colega.|Leonardo é cego e faz amizade com Gabriel.|O filme brasileiro sobre o primeiro amor adolescente.
+Os Vingadores|Heróis de origens diferentes se unem pela primeira vez.|Enfrentam Loki e um exército alienígena em Nova York.|O filme da Marvel que reuniu Homem de Ferro, Thor e Hulk em 2012.
+Vingadores: Ultimato|Os heróis tentam desfazer um estalo.|Precisam viajar no tempo atrás das Joias do Infinito.|O filme que encerrou a saga de Thanos.
+Guardiões da Galáxia|Um grupo de desajustados salva o universo.|Tem um guaxinim, uma árvore e uma trilha dos anos 70.|O filme da Marvel com o Senhor das Estrelas.
+Batman: O Cavaleiro das Trevas|O herói enfrenta um vilão que só quer o caos.|Heath Ledger fez um papel inesquecível.|O filme de Christopher Nolan com o Coringa.
+Star Wars: O Despertar da Força|Uma catadora de sucata descobre um destino maior.|Rey, Finn e BB-8 enfrentam a Primeira Ordem.|O episódio VII da saga das estrelas.
+Jurassic World|Um parque temático reabre com uma atração perigosa.|Um dinossauro criado em laboratório escapa.|A continuação do parque dos dinossauros com Chris Pratt.
+Barbie|Uma boneca começa a ter pensamentos estranhos.|Ela sai de um mundo cor-de-rosa e vai ao mundo real.|O filme de 2023 com Margot Robbie e Ken.
+Oppenheimer|Um cientista lidera um projeto secreto.|Mostra a criação da bomba atômica.|O filme de Nolan com Cillian Murphy.
+Parasita|Uma família pobre se infiltra numa casa rica.|Cada membro consegue um emprego com os Park.|O filme sul-coreano vencedor do Oscar.
+Os Goonies|Um grupo de crianças segue um mapa antigo.|Procuram o tesouro do pirata Willy Caolho.|A aventura dos anos 80 com o Sloth.
+Gremlins|Um presente vem com três regras importantes.|Não pode molhar nem alimentar depois da meia-noite.|O filme do Gizmo e suas criaturas travessas.
+Curtindo a Vida Adoidado|Um estudante falta à aula para curtir o dia.|Ferris engana os pais e o diretor da escola.|A comédia de John Hughes com Matthew Broderick.
+Clube dos Cinco|Alunos diferentes passam o sábado juntos de castigo.|Um atleta, um rebelde, uma princesa, um nerd e uma esquisita.|O filme de detenção escolar dos anos 80.
+Mudança de Hábito|Uma cantora se esconde num lugar inesperado.|Ela transforma o coral de um convento.|A comédia com Whoopi Goldberg como freira.
+Ghost: Do Outro Lado da Vida|Um homem tenta proteger a namorada mesmo depois de partir.|Conta com a ajuda de uma médium vigarista.|O filme da cena do vaso de cerâmica.
+Uma Noite no Museu|Um vigia descobre que as peças ganham vida.|Um tiranossauro e um presidente andam pelos corredores.|A comédia de Ben Stiller no museu.
+O Diário da Princesa|Uma adolescente desajeitada recebe uma notícia real.|Descobre que é herdeira de Genovia.|O filme com Anne Hathaway e Julie Andrews.
+Free Willy|Um garoto faz amizade com um animal preso.|Ajuda uma orca a voltar ao mar.|O filme da baleia que salta sobre o menino.
+Beethoven|Um filhote bagunça a vida de uma família.|É um são-bernardo enorme e babão.|A comédia do cachorro com nome de compositor.
+Marley & Eu|Um casal adota um cachorro muito travesso.|O labrador acompanha a família por anos.|O filme com Owen Wilson e Jennifer Aniston.
+Sempre ao Seu Lado|Um cão espera o dono todos os dias.|É um akita na estação de trem.|O filme baseado na história do Hachiko.
+Hotel Transilvânia|Um pai protetor administra um hotel especial.|Monstros se hospedam lá com o Drácula.|A animação em que Mavis se apaixona por um humano.
+Rio|Uma ave rara e mimada viaja para o Brasil.|Blu conhece Jade e enfrenta contrabandistas de aves.|A animação das araras-azuis no Carnaval carioca.
+Sing: Quem Canta Seus Males Espanta|Um coala organiza um concurso para salvar seu teatro.|Animais cantores disputam o prêmio.|A animação musical com o Buster Moon.
+Pets: A Vida Secreta dos Bichos|O que os animais fazem quando os donos saem?|Max e Duke se perdem em Nova York.|A animação dos bichinhos de estimação.
+Os Croods|Uma família pré-histórica precisa enfrentar mudanças.|Saem da caverna e conhecem o inventivo Guy.|A animação da família das cavernas da DreamWorks.
+Tá Chovendo Hambúrguer|Um inventor cria uma máquina que muda o clima.|Comida começa a cair do céu.|A animação de Flint Lockwood.
+A Nova Onda do Imperador|Um governante mimado é transformado.|Kuzco vira uma lhama.|A animação da Disney com Pacha e Yzma.
+O Corcunda de Notre Dame|Um rapaz vive escondido num campanário.|Quasímodo se encanta pela cigana Esmeralda.|A animação da Disney na catedral de Paris.
+Branca de Neve e os Sete Anões|Foi o primeiro longa animado da Disney.|Uma rainha pergunta ao espelho quem é a mais bela.|O clássico da princesa e dos mineiros.
+A Dama e o Vagabundo|Uma cadela de família conhece um cachorro de rua.|Dividem uma macarronada à luz de velas.|O romance canino da Disney.
+101 Dálmatas|Filhotes são sequestrados por uma vilã.|Pongo e Prenda tentam salvá-los.|A animação dos cachorrinhos pintadinhos.
+Mogli: O Menino Lobo|Um menino cresce entre animais.|Baloo e Bagheera o protegem do tigre.|A adaptação de O Livro da Selva.
+Aristogatas|Uma família de felinos é abandonada no campo.|Duquesa e seus filhotes contam com O'Malley.|A animação dos gatos de Paris.
+Fantasia|Desenhos acompanham músicas clássicas.|Mickey é aprendiz de feiticeiro com vassouras.|A animação musical da Disney de 1940.
+A Bela Adormecida|Uma princesa é escondida na floresta pelas fadas.|Aurora espeta o dedo numa roca.|O clássico da Disney com Malévola.
+Matilda|Uma menina genial tem uma família desatenta.|Descobre que pode mover objetos com a mente.|O filme baseado no livro de Roald Dahl com a diretora Trunchbull.
+Mary Poppins|Uma babá mágica chega com o vento.|Voa com um guarda-chuva e canta "Supercalifragilisticexpialidoso".|O musical com Julie Andrews.
+A Noviça Rebelde|Uma jovem vira governanta de sete crianças.|Ensina a família Von Trapp a cantar.|O musical dos Alpes austríacos.
+Cantando na Chuva|Atores passam pela transição do cinema mudo.|Gene Kelly dança numa rua molhada.|O musical clássico do guarda-chuva.
+Paddington|Um viajante chega a Londres com uma etiqueta.|É um urso que adora sanduíche de geleia.|O urso de chapéu e casaco azul.
+Wonka|Mostra a juventude de um famoso chocolateiro.|Timothée Chalamet faz o papel principal.|O filme da origem do dono da fantástica fábrica.
+Wicked|Conta o outro lado de uma história clássica.|Elphaba e Glinda se conhecem na universidade.|O musical das bruxas de Oz.
+Náufrago|Um homem fica sozinho numa ilha.|Conversa com uma bola de vôlei.|O filme do Wilson com Tom Hanks.
+Independence Day|O mundo enfrenta uma invasão alienígena.|Naves gigantes aparecem sobre as cidades.|O filme de Will Smith no 4 de julho.
+Armageddon|Um asteroide vai atingir a Terra.|Perfuradores de petróleo são enviados ao espaço.|O filme com Bruce Willis e uma música do Aerosmith.
+Space Jam|Desenhos animados precisam de ajuda para um jogo.|Pernalonga chama Michael Jordan.|O filme do basquete com os Looney Tunes.
+Uma Cilada para Roger Rabbit|Um detetive investiga um caso em Desenholândia.|Atores reais contracenam com desenhos.|O filme do coelho acusado de crime.
+O Grinch|Um ser solitário odeia uma época festiva.|Ele tenta roubar o Natal de Quem-Vila.|A história verde de Dr. Seuss.
+Querida, Encolhi as Crianças|Um inventor erra a experiência.|Os filhos ficam minúsculos no quintal.|A comédia da máquina de encolher.
+Doze É Demais|Uma família enorme passa por uma mudança.|Um casal cria muitos filhos.|A comédia com Steve Martin.
+Operação Cupido|Duas meninas idênticas se encontram num acampamento.|Trocam de lugar para reunir os pais.|O filme das gêmeas com Lindsay Lohan.
+Alvin e os Esquilos|Animais pequenos viram estrelas da música.|Um compositor adota três esquilos cantores.|O filme do trio de esquilos com voz fina.
+As Tartarugas Ninja|Vivem nos esgotos e treinam artes marciais.|Têm nomes de artistas do Renascimento.|O quarteto de répteis que ama pizza.
+Power Rangers|Jovens recebem poderes para proteger a Terra.|Cada um usa um uniforme de uma cor.|A série de heróis que montam um Megazord.
+Jaspion|Um herói viaja pelo espaço atrás de profecias.|Enfrenta Satan Goss e pilota o robô Daileon.|A série japonesa de sucesso na TV brasileira.
+Os Cavaleiros do Zodíaco|Jovens guerreiros protegem uma deusa.|Usam armaduras ligadas às constelações.|O anime de Seiya e Saori.
+Yu-Gi-Oh!|Um garoto resolve um quebra-cabeça milenar.|Duelos de cartas decidem tudo.|O anime do Yugi e do Mago Negro.
+Digimon Adventure|Crianças são levadas a um mundo digital.|Cada uma tem um parceiro que evolui.|O anime de Tai e Agumon.
+Hannah Montana|Uma adolescente tem uma vida dupla.|É estudante comum e popstar secreta de peruca loira.|A série da Disney com Miley Cyrus.
+iCarly|Amigos fazem um programa na internet.|Carly, Sam e Freddie gravam em um loft.|A série da Nickelodeon com Miranda Cosgrove.
+Zack & Cody: Gêmeos em Ação|Dois irmãos aprontam num lugar luxuoso.|Moram num hotel de Boston.|A série da Disney dos gêmeos Sprouse.
+Os Feiticeiros de Waverly Place|Irmãos aprendem magia escondidos.|Alex Russo disputa poderes com os irmãos.|A série da Disney com Selena Gomez.
+Glee|Alunos excluídos se unem pela música.|Rachel e Finn participam do coral do colégio.|A série musical do McKinley High.
+Três é Demais|Um viúvo cria as filhas com ajuda dos amigos.|Danny, Jesse e Joey cuidam das meninas.|A série com Michelle e as gêmeas Olsen.
+Anos Incríveis|Um adulto relembra a adolescência.|Kevin Arnold cresce no subúrbio nos anos 60.|A série com a narração de Kevin e o amor por Winnie.
+Família Dinossauros|Uma família pré-histórica vive como gente moderna.|O bebê bate na cabeça do pai com uma frigideira.|A série do "Não é a mamãe!".
+Arquivo X|Agentes do FBI investigam casos inexplicáveis.|Mulder acredita e Scully duvida.|A série de "A verdade está lá fora".
+Lupin|Um homem se inspira num ladrão famoso dos livros.|Assane busca justiça pelo pai em Paris.|A série francesa da Netflix com Omar Sy.
+Ted Lasso|Um técnico sem experiência no esporte vai para a Inglaterra.|Treina o AFC Richmond com otimismo.|A série do treinador de bigode de Kansas.
+This Is Us|Uma família é mostrada em várias épocas.|Os trigêmeos Kevin, Kate e Randall crescem.|A série dos Pearson que faz todo mundo chorar.
+The Umbrella Academy|Irmãos adotivos com poderes se reencontram.|Precisam impedir o fim do mundo.|A série da Netflix com Cinco e Klaus.
+Futurama|Um entregador acorda mil anos no futuro.|Fry trabalha com um robô e uma ciclope.|A série animada com Bender e Leela.
+Plantão Médico|Um pronto-socorro de Chicago é palco de emergências.|George Clooney fez sucesso como médico.|A série médica conhecida como ER.
+24 Horas|Cada temporada acontece em um único dia.|Jack Bauer corre contra o relógio.|A série de ação em tempo real.
+Emily em Paris|Uma americana se muda para trabalhar na França.|Trabalha com marketing e posta tudo nas redes.|A série da Netflix com Lily Collins.
 `;

@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:rules": "firebase emulators:exec --only firestore --project demo-entrelinhas \"vitest run tests/rules.test.ts tests/alibi.integration.test.ts tests/mesa.rules.test.ts\"",
     "validate:alibi": "node functions/validate-catalog.cjs",
-    "validate:anuncios": "node scripts/validate-biblical-ads.cjs"
+    "validate:anuncios": "node scripts/validate-biblical-ads.cjs",
+    "catalogs:publish": "vite-node scripts/publish-catalogs.ts --"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.0",
@@ -31,6 +32,7 @@
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.0.0",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "firebase-admin": "^13.10.0",
     "firebase-tools": "^15.0.0",
     "globals": "^16.0.0",
     "prettier": "^3.9.6",

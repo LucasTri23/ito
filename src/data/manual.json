@@ -1063,5 +1063,1442 @@
       "cano"
     ],
     "explanation": "O Cano de mira só pode encostar nas Rodas, que vêm logo antes dele, então os dois ficam no fim. O Cesto não fica na 2ª, então abre a fila, e a Rampa fica no meio."
+  },
+  {
+    "id": "md-19",
+    "theme": "Máquina de churros",
+    "intro": "Massa entra, churro recheado sai. Se a ordem errar, sai doce de leite pelo teto.",
+    "pieces": [
+      {
+        "id": "acucar",
+        "name": "Banho de açúcar e canela"
+      },
+      {
+        "id": "bico",
+        "name": "Bico de estrela"
+      },
+      {
+        "id": "fritadeira",
+        "name": "Fritadeira"
+      },
+      {
+        "id": "masseira",
+        "name": "Masseira"
+      },
+      {
+        "id": "seringa",
+        "name": "Seringa de doce de leite"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "masseira",
+        "b": "seringa"
+      },
+      {
+        "type": "adjacent",
+        "a": "bico",
+        "b": "fritadeira"
+      },
+      {
+        "type": "right",
+        "a": "fritadeira",
+        "b": "acucar"
+      },
+      {
+        "type": "adjacent",
+        "a": "masseira",
+        "b": "bico"
+      }
+    ],
+    "solution": [
+      "masseira",
+      "bico",
+      "fritadeira",
+      "acucar",
+      "seringa"
+    ],
+    "explanation": "A Fritadeira vem logo antes do Banho de açúcar, então o Bico, que fica ao lado dela, só pode estar à esquerda; a Masseira, ao lado do Bico, vem antes dele. Isso forma o bloco Masseira, Bico, Fritadeira, Banho. A Seringa não pode ficar ao lado da Masseira, então vai para o fim."
+  },
+  {
+    "id": "md-20",
+    "theme": "Fábrica de pastel de feira",
+    "intro": "Domingo de feira, fila dobrando o quarteirão e a linha de pastel desmontada. Corre!",
+    "pieces": [
+      {
+        "id": "cilindro",
+        "name": "Cilindro de massa"
+      },
+      {
+        "id": "cortador",
+        "name": "Cortador"
+      },
+      {
+        "id": "escorredor",
+        "name": "Escorredor"
+      },
+      {
+        "id": "garfo",
+        "name": "Garfo de fechar"
+      },
+      {
+        "id": "recheio",
+        "name": "Bico de recheio"
+      },
+      {
+        "id": "tacho",
+        "name": "Tacho de óleo"
+      }
+    ],
+    "clues": [
+      {
+        "type": "adjacent",
+        "a": "recheio",
+        "b": "cortador"
+      },
+      {
+        "type": "adjacent",
+        "a": "garfo",
+        "b": "tacho"
+      },
+      {
+        "type": "right",
+        "a": "recheio",
+        "b": "garfo"
+      },
+      {
+        "type": "last",
+        "a": "escorredor"
+      },
+      {
+        "type": "notAt",
+        "a": "recheio",
+        "pos": 2
+      }
+    ],
+    "solution": [
+      "cilindro",
+      "cortador",
+      "recheio",
+      "garfo",
+      "tacho",
+      "escorredor"
+    ],
+    "explanation": "O Bico de recheio vem logo antes do Garfo e fica ao lado do Cortador, que então fica à esquerda dele; o Tacho fica ao lado do Garfo, à direita. Isso forma o bloco Cortador, Recheio, Garfo, Tacho. O Escorredor é o último; se o bloco começasse na 1ª, o Recheio cairia na 2ª, o que é proibido. Então o Cilindro abre a fila."
+  },
+  {
+    "id": "md-21",
+    "theme": "Foguete de festa junina",
+    "intro": "O quentão está pronto e a quadrilha já começou. Falta o foguete de bambu subir bonito.",
+    "pieces": [
+      {
+        "id": "base",
+        "name": "Base de bambu"
+      },
+      {
+        "id": "estopim",
+        "name": "Estopim"
+      },
+      {
+        "id": "ponteira",
+        "name": "Ponteira de bandeirinha"
+      },
+      {
+        "id": "tubo",
+        "name": "Tubo de propulsão"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "tubo",
+        "b": "base"
+      },
+      {
+        "type": "notAt",
+        "a": "ponteira",
+        "pos": 2
+      },
+      {
+        "type": "before",
+        "a": "base",
+        "b": "ponteira"
+      },
+      {
+        "type": "right",
+        "a": "estopim",
+        "b": "tubo"
+      }
+    ],
+    "solution": [
+      "base",
+      "estopim",
+      "tubo",
+      "ponteira"
+    ],
+    "explanation": "Estopim e Tubo formam um par colado. Se o par ficasse no começo, a Base teria de vir depois do Tubo ou ao lado dele; se ficasse no fim, Base e Ponteira ocupariam 1ª e 2ª, e a Ponteira não pode ficar na 2ª. Então o par fica no meio, com a Base na 1ª e a Ponteira na 4ª."
+  },
+  {
+    "id": "md-22",
+    "theme": "Robô garçom",
+    "intro": "Ele anota, carrega e entrega, mas hoje chegou em peças dentro de uma caixa de pizza.",
+    "pieces": [
+      {
+        "id": "bandeja",
+        "name": "Bandeja equilibrista"
+      },
+      {
+        "id": "bloco",
+        "name": "Bloco de notas digital"
+      },
+      {
+        "id": "braco",
+        "name": "Braço pegador"
+      },
+      {
+        "id": "microfone",
+        "name": "Ouvido de pedidos"
+      },
+      {
+        "id": "rodas",
+        "name": "Rodas silenciosas"
+      }
+    ],
+    "clues": [
+      {
+        "type": "at",
+        "a": "microfone",
+        "pos": 1
+      },
+      {
+        "type": "right",
+        "a": "bandeja",
+        "b": "rodas"
+      },
+      {
+        "type": "before",
+        "a": "braco",
+        "b": "rodas"
+      },
+      {
+        "type": "adjacent",
+        "a": "bloco",
+        "b": "microfone"
+      }
+    ],
+    "solution": [
+      "microfone",
+      "bloco",
+      "braco",
+      "bandeja",
+      "rodas"
+    ],
+    "explanation": "O Ouvido de pedidos está na 1ª e o Bloco de notas, ao lado dele, na 2ª. Sobram o Braço e o par Bandeja e Rodas; como o Braço vem antes das Rodas, ele fica na 3ª e o par fecha a fila."
+  },
+  {
+    "id": "md-23",
+    "theme": "Máquina de lavar cachorro",
+    "intro": "O Bolinha rolou na lama de novo. A máquina precisa funcionar antes que ele suba no sofá.",
+    "pieces": [
+      {
+        "id": "chuveiro",
+        "name": "Chuveirinho morno"
+      },
+      {
+        "id": "enxague",
+        "name": "Enxágue"
+      },
+      {
+        "id": "escova",
+        "name": "Escova massageadora"
+      },
+      {
+        "id": "porta",
+        "name": "Porta de entrada"
+      },
+      {
+        "id": "secador",
+        "name": "Secador de pelos"
+      },
+      {
+        "id": "shampoo",
+        "name": "Esguicho de shampoo"
+      }
+    ],
+    "clues": [
+      {
+        "type": "first",
+        "a": "porta"
+      },
+      {
+        "type": "right",
+        "a": "shampoo",
+        "b": "escova"
+      },
+      {
+        "type": "before",
+        "a": "shampoo",
+        "b": "enxague"
+      },
+      {
+        "type": "before",
+        "a": "shampoo",
+        "b": "secador"
+      },
+      {
+        "type": "before",
+        "a": "chuveiro",
+        "b": "escova"
+      },
+      {
+        "type": "notAt",
+        "a": "secador",
+        "pos": 5
+      }
+    ],
+    "solution": [
+      "porta",
+      "chuveiro",
+      "shampoo",
+      "escova",
+      "enxague",
+      "secador"
+    ],
+    "explanation": "A Porta é a primeira. O Shampoo vem logo antes da Escova e antes do Enxágue e do Secador; o Chuveirinho também vem antes da Escova, e não pode se meter entre Shampoo e Escova. Então a ordem começa com Porta, Chuveirinho, Shampoo, Escova. O Secador não fica na 5ª, então o Enxágue fica com ela e o Secador fecha."
+  },
+  {
+    "id": "md-24",
+    "theme": "Karaokê automático",
+    "intro": "O tio vai cantar a mesma música de sempre. Pelo menos que o som saia afinado.",
+    "pieces": [
+      {
+        "id": "afinador",
+        "name": "Corretor de afinação"
+      },
+      {
+        "id": "caixa",
+        "name": "Caixa de som"
+      },
+      {
+        "id": "eco",
+        "name": "Pedal de eco"
+      },
+      {
+        "id": "microfone",
+        "name": "Microfone"
+      }
+    ],
+    "clues": [
+      {
+        "type": "before",
+        "a": "microfone",
+        "b": "eco"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "afinador",
+        "b": "caixa"
+      },
+      {
+        "type": "right",
+        "a": "afinador",
+        "b": "eco"
+      },
+      {
+        "type": "notAt",
+        "a": "microfone",
+        "pos": 2
+      }
+    ],
+    "solution": [
+      "microfone",
+      "afinador",
+      "eco",
+      "caixa"
+    ],
+    "explanation": "O Corretor vem logo antes do Pedal de eco. O Microfone vem antes do Eco e não fica na 2ª, então o par não pode abrir a fila. Se o par ficasse no fim, a Caixa cairia na 2ª, ao lado do Corretor, o que é proibido. Então: Microfone, Corretor, Eco e Caixa."
+  },
+  {
+    "id": "md-25",
+    "theme": "Máquina de pipoca gourmet",
+    "intro": "Pipoca caramelizada para o cinema em casa. A sessão começa em três minutos.",
+    "pieces": [
+      {
+        "id": "caramelo",
+        "name": "Tacho de caramelo"
+      },
+      {
+        "id": "embaladora",
+        "name": "Embaladora de saquinhos"
+      },
+      {
+        "id": "panela",
+        "name": "Panela estouradora"
+      },
+      {
+        "id": "silo",
+        "name": "Silo de milho"
+      },
+      {
+        "id": "ventilador",
+        "name": "Ventilador de esfriar"
+      }
+    ],
+    "clues": [
+      {
+        "type": "adjacent",
+        "a": "caramelo",
+        "b": "ventilador"
+      },
+      {
+        "type": "last",
+        "a": "embaladora"
+      },
+      {
+        "type": "right",
+        "a": "ventilador",
+        "b": "embaladora"
+      },
+      {
+        "type": "at",
+        "a": "silo",
+        "pos": 1
+      }
+    ],
+    "solution": [
+      "silo",
+      "panela",
+      "caramelo",
+      "ventilador",
+      "embaladora"
+    ],
+    "explanation": "O Silo está na 1ª e a Embaladora é a última, com o Ventilador logo antes dela, na 4ª. O Tacho de caramelo fica ao lado do Ventilador, então ocupa a 3ª, e a Panela fica com a 2ª."
+  },
+  {
+    "id": "md-26",
+    "theme": "Esteira de sushi",
+    "intro": "O restaurante abre ao meio-dia e a esteira está numa caixa de peças soltas.",
+    "pieces": [
+      {
+        "id": "alga",
+        "name": "Esticador de alga"
+      },
+      {
+        "id": "arrozeira",
+        "name": "Arrozeira"
+      },
+      {
+        "id": "enrolador",
+        "name": "Esteirinha de bambu"
+      },
+      {
+        "id": "esteira",
+        "name": "Esteira giratória"
+      },
+      {
+        "id": "faca",
+        "name": "Faca de corte"
+      },
+      {
+        "id": "recheio",
+        "name": "Estação de recheio"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "alga",
+        "b": "recheio"
+      },
+      {
+        "type": "right",
+        "a": "arrozeira",
+        "b": "alga"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "enrolador",
+        "b": "esteira"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "arrozeira",
+        "b": "esteira"
+      },
+      {
+        "type": "right",
+        "a": "recheio",
+        "b": "enrolador"
+      },
+      {
+        "type": "before",
+        "a": "arrozeira",
+        "b": "faca"
+      }
+    ],
+    "solution": [
+      "arrozeira",
+      "alga",
+      "recheio",
+      "enrolador",
+      "faca",
+      "esteira"
+    ],
+    "explanation": "Arrozeira, Esticador de alga, Estação de recheio e Esteirinha formam um bloco em sequência. A Faca vem depois da Arrozeira, então o bloco não pode terminar no fim; se começasse na 2ª, a Esteira giratória cairia na 1ª, ao lado da Arrozeira. Então o bloco abre a fila, e a Esteira giratória, que não encosta na Esteirinha, fica na 6ª, com a Faca na 5ª."
+  },
+  {
+    "id": "md-27",
+    "theme": "Montanha-russa",
+    "intro": "Os gritos estão garantidos. Agora falta garantir que o carrinho volte inteiro.",
+    "pieces": [
+      {
+        "id": "corrente",
+        "name": "Corrente de subida"
+      },
+      {
+        "id": "freio",
+        "name": "Freio final"
+      },
+      {
+        "id": "looping",
+        "name": "Looping"
+      },
+      {
+        "id": "plataforma",
+        "name": "Plataforma de embarque"
+      },
+      {
+        "id": "trava",
+        "name": "Trava de segurança"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "plataforma",
+        "b": "trava"
+      },
+      {
+        "type": "right",
+        "a": "corrente",
+        "b": "looping"
+      },
+      {
+        "type": "last",
+        "a": "freio"
+      },
+      {
+        "type": "before",
+        "a": "plataforma",
+        "b": "looping"
+      }
+    ],
+    "solution": [
+      "plataforma",
+      "trava",
+      "corrente",
+      "looping",
+      "freio"
+    ],
+    "explanation": "O Freio é o último. Sobram dois pares colados: Plataforma e Trava, Corrente e Looping. Como a Plataforma vem antes do Looping, o par dela vem primeiro."
+  },
+  {
+    "id": "md-28",
+    "theme": "Máquina de sorvete",
+    "intro": "Quarenta graus na sombra e a sorveteria lotada. Ninguém merece casquinha vazia.",
+    "pieces": [
+      {
+        "id": "batedor",
+        "name": "Batedor congelante"
+      },
+      {
+        "id": "bico",
+        "name": "Bico de casquinha"
+      },
+      {
+        "id": "calda",
+        "name": "Calda de chocolate"
+      },
+      {
+        "id": "tanque",
+        "name": "Tanque de leite"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "tanque",
+        "b": "calda"
+      },
+      {
+        "type": "notAt",
+        "a": "calda",
+        "pos": 3
+      },
+      {
+        "type": "notAt",
+        "a": "bico",
+        "pos": 2
+      },
+      {
+        "type": "notAt",
+        "a": "batedor",
+        "pos": 3
+      },
+      {
+        "type": "right",
+        "a": "tanque",
+        "b": "batedor"
+      }
+    ],
+    "solution": [
+      "tanque",
+      "batedor",
+      "bico",
+      "calda"
+    ],
+    "explanation": "Tanque e Batedor formam um par colado. O Batedor não pode ficar na 3ª, então o par não fica no meio. Se ficasse no fim, o Bico (que não fica na 2ª) iria para a 1ª e a Calda para a 2ª, ao lado do Tanque, o que é proibido. Então o par abre a fila e, como a Calda não fica na 3ª, a ordem termina com Bico e Calda."
+  },
+  {
+    "id": "md-29",
+    "theme": "Carrinho de cachorro-quente",
+    "intro": "Saída do estádio, todo mundo com fome. O cachorro-quente completo precisa sair em série.",
+    "pieces": [
+      {
+        "id": "batata",
+        "name": "Chuva de batata-palha"
+      },
+      {
+        "id": "molho",
+        "name": "Bisnaga de molho"
+      },
+      {
+        "id": "pao",
+        "name": "Aquecedor de pão"
+      },
+      {
+        "id": "pure",
+        "name": "Bisnaga de purê"
+      },
+      {
+        "id": "salsicha",
+        "name": "Panela de salsicha"
+      }
+    ],
+    "clues": [
+      {
+        "type": "at",
+        "a": "salsicha",
+        "pos": 2
+      },
+      {
+        "type": "adjacent",
+        "a": "salsicha",
+        "b": "pao"
+      },
+      {
+        "type": "right",
+        "a": "salsicha",
+        "b": "molho"
+      },
+      {
+        "type": "adjacent",
+        "a": "pure",
+        "b": "molho"
+      }
+    ],
+    "solution": [
+      "pao",
+      "salsicha",
+      "molho",
+      "pure",
+      "batata"
+    ],
+    "explanation": "A Panela de salsicha está na 2ª e a Bisnaga de molho vem logo depois, na 3ª. O Aquecedor de pão fica ao lado da Panela, então ocupa a 1ª; o Purê fica ao lado do Molho, na 4ª, e a Batata-palha fecha a fila."
+  },
+  {
+    "id": "md-30",
+    "theme": "Foguete de papelão",
+    "intro": "A missão espacial do quarto das crianças decola depois do almoço. Astronauta de pelúcia a bordo.",
+    "pieces": [
+      {
+        "id": "antena",
+        "name": "Antena de canudo"
+      },
+      {
+        "id": "bico",
+        "name": "Bico de chapéu de festa"
+      },
+      {
+        "id": "cabine",
+        "name": "Cabine do astronauta"
+      },
+      {
+        "id": "motor",
+        "name": "Motor de rolo de papel"
+      },
+      {
+        "id": "plataforma",
+        "name": "Plataforma de caixa de sapato"
+      },
+      {
+        "id": "tanque",
+        "name": "Tanque de garrafinha"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "tanque",
+        "b": "bico"
+      },
+      {
+        "type": "adjacent",
+        "a": "motor",
+        "b": "plataforma"
+      },
+      {
+        "type": "notAt",
+        "a": "cabine",
+        "pos": 5
+      },
+      {
+        "type": "notAt",
+        "a": "bico",
+        "pos": 5
+      },
+      {
+        "type": "right",
+        "a": "motor",
+        "b": "tanque"
+      },
+      {
+        "type": "first",
+        "a": "plataforma"
+      }
+    ],
+    "solution": [
+      "plataforma",
+      "motor",
+      "tanque",
+      "cabine",
+      "antena",
+      "bico"
+    ],
+    "explanation": "A Plataforma é a primeira, com o Motor ao lado na 2ª e o Tanque logo depois, na 3ª. O Bico não fica na 5ª nem pode encostar no Tanque (4ª), então vai para a 6ª. A Cabine não fica na 5ª, então fica na 4ª e a Antena na 5ª."
+  },
+  {
+    "id": "md-31",
+    "theme": "Fábrica de pão francês",
+    "intro": "Cinco da manhã e a padaria precisa de pãozinho crocante antes da fila do café.",
+    "pieces": [
+      {
+        "id": "amassadeira",
+        "name": "Amassadeira"
+      },
+      {
+        "id": "divisora",
+        "name": "Divisora"
+      },
+      {
+        "id": "estufa",
+        "name": "Estufa de fermentação"
+      },
+      {
+        "id": "forno",
+        "name": "Forno de lastro"
+      },
+      {
+        "id": "modeladora",
+        "name": "Modeladora"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "modeladora",
+        "b": "estufa"
+      },
+      {
+        "type": "adjacent",
+        "a": "estufa",
+        "b": "forno"
+      },
+      {
+        "type": "right",
+        "a": "divisora",
+        "b": "modeladora"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "forno",
+        "b": "amassadeira"
+      }
+    ],
+    "solution": [
+      "amassadeira",
+      "divisora",
+      "modeladora",
+      "estufa",
+      "forno"
+    ],
+    "explanation": "Divisora, Modeladora e Estufa vêm em sequência, e o Forno fica ao lado da Estufa, só podendo estar à direita dela. Isso forma o bloco Divisora, Modeladora, Estufa, Forno. A Amassadeira não pode ficar ao lado do Forno, então abre a fila."
+  },
+  {
+    "id": "md-32",
+    "theme": "Parque aquático",
+    "intro": "O tobogã novo inaugura hoje. Só falta montar o caminho até o splash final.",
+    "pieces": [
+      {
+        "id": "boias",
+        "name": "Balcão de boias"
+      },
+      {
+        "id": "escada",
+        "name": "Escadaria"
+      },
+      {
+        "id": "piscina",
+        "name": "Piscina de ondas"
+      },
+      {
+        "id": "toboga",
+        "name": "Tobogã"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "escada",
+        "b": "piscina"
+      },
+      {
+        "type": "right",
+        "a": "toboga",
+        "b": "piscina"
+      },
+      {
+        "type": "notAt",
+        "a": "escada",
+        "pos": 2
+      },
+      {
+        "type": "notAdjacent",
+        "a": "boias",
+        "b": "piscina"
+      }
+    ],
+    "solution": [
+      "escada",
+      "boias",
+      "toboga",
+      "piscina"
+    ],
+    "explanation": "A Piscina não fica ao lado da Escadaria nem do Balcão de boias, então só tem o Tobogã como vizinho: ela fica numa ponta. Como o Tobogã vem logo antes dela, a Piscina é a 4ª e o Tobogã a 3ª. A Escadaria não fica na 2ª, então é a 1ª."
+  },
+  {
+    "id": "md-33",
+    "theme": "Mini-usina solar",
+    "intro": "O sol está de graça lá fora. Falta ligar ele até a tomada da geladeira.",
+    "pieces": [
+      {
+        "id": "bateria",
+        "name": "Bateria"
+      },
+      {
+        "id": "controlador",
+        "name": "Controlador de carga"
+      },
+      {
+        "id": "inversor",
+        "name": "Inversor"
+      },
+      {
+        "id": "painel",
+        "name": "Painel solar"
+      },
+      {
+        "id": "tomada",
+        "name": "Tomada"
+      }
+    ],
+    "clues": [
+      {
+        "type": "last",
+        "a": "tomada"
+      },
+      {
+        "type": "right",
+        "a": "painel",
+        "b": "controlador"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "tomada",
+        "b": "bateria"
+      },
+      {
+        "type": "notAt",
+        "a": "painel",
+        "pos": 2
+      },
+      {
+        "type": "notAdjacent",
+        "a": "tomada",
+        "b": "controlador"
+      }
+    ],
+    "solution": [
+      "painel",
+      "controlador",
+      "bateria",
+      "inversor",
+      "tomada"
+    ],
+    "explanation": "A Tomada é a última. Ao lado dela não podem ficar a Bateria nem o Controlador, e o Painel precisa do Controlador logo depois, então a 4ª é do Inversor. Nas três primeiras, o Painel não fica na 2ª: Painel, Controlador e Bateria."
+  },
+  {
+    "id": "md-34",
+    "theme": "Impressora 3D de bolo",
+    "intro": "Ela imprime bolo em qualquer formato. Hoje o pedido é um dinossauro de três andares.",
+    "pieces": [
+      {
+        "id": "extrusor",
+        "name": "Bico extrusor"
+      },
+      {
+        "id": "forninho",
+        "name": "Mini-forno"
+      },
+      {
+        "id": "glace",
+        "name": "Pincel de glacê"
+      },
+      {
+        "id": "granulado",
+        "name": "Chuva de granulado"
+      },
+      {
+        "id": "mesa",
+        "name": "Mesa giratória"
+      },
+      {
+        "id": "pote",
+        "name": "Pote de massa"
+      }
+    ],
+    "clues": [
+      {
+        "type": "first",
+        "a": "pote"
+      },
+      {
+        "type": "right",
+        "a": "pote",
+        "b": "extrusor"
+      },
+      {
+        "type": "notAt",
+        "a": "forninho",
+        "pos": 3
+      },
+      {
+        "type": "last",
+        "a": "granulado"
+      },
+      {
+        "type": "adjacent",
+        "a": "granulado",
+        "b": "glace"
+      }
+    ],
+    "solution": [
+      "pote",
+      "extrusor",
+      "mesa",
+      "forninho",
+      "glace",
+      "granulado"
+    ],
+    "explanation": "O Pote é o primeiro, com o Bico extrusor logo depois. O Granulado é o último e o Glacê fica ao lado dele, na 5ª. Sobram Mesa e Mini-forno para 3ª e 4ª; o forno não fica na 3ª, então a Mesa vem antes."
+  },
+  {
+    "id": "md-35",
+    "theme": "Cabine de fotos de festa",
+    "intro": "Óculos gigantes, bigode de papel e a cabine ainda sem funcionar. A festa não espera.",
+    "pieces": [
+      {
+        "id": "camera",
+        "name": "Câmera"
+      },
+      {
+        "id": "cortina",
+        "name": "Cortina de paetê"
+      },
+      {
+        "id": "impressora",
+        "name": "Impressora de fotos"
+      },
+      {
+        "id": "varal",
+        "name": "Varal de fotos"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAt",
+        "a": "cortina",
+        "pos": 2
+      },
+      {
+        "type": "right",
+        "a": "impressora",
+        "b": "varal"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "varal",
+        "b": "cortina"
+      },
+      {
+        "type": "notAt",
+        "a": "camera",
+        "pos": 4
+      },
+      {
+        "type": "notAt",
+        "a": "varal",
+        "pos": 2
+      }
+    ],
+    "solution": [
+      "cortina",
+      "camera",
+      "impressora",
+      "varal"
+    ],
+    "explanation": "A Impressora vem logo antes do Varal, que não fica na 2ª, então o par não abre a fila. Se o par ficasse no meio, a Câmera (que não fica na 4ª) iria para a 1ª e a Cortina para a 4ª, ao lado do Varal. Então o par fica no fim, e como a Cortina não fica na 2ª, ela abre a fila com a Câmera em seguida."
+  },
+  {
+    "id": "md-36",
+    "theme": "Máquina de picolé",
+    "intro": "Picolé de fruta de verdade, feito na hora. Se a ordem errar, vira suco quente.",
+    "pieces": [
+      {
+        "id": "embaladora",
+        "name": "Embaladora"
+      },
+      {
+        "id": "forminhas",
+        "name": "Forminhas"
+      },
+      {
+        "id": "liquidificador",
+        "name": "Liquidificador de frutas"
+      },
+      {
+        "id": "palito",
+        "name": "Espetador de palitos"
+      },
+      {
+        "id": "tunel",
+        "name": "Túnel congelante"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "palito",
+        "b": "embaladora"
+      },
+      {
+        "type": "notAt",
+        "a": "forminhas",
+        "pos": 3
+      },
+      {
+        "type": "before",
+        "a": "liquidificador",
+        "b": "tunel"
+      },
+      {
+        "type": "notAt",
+        "a": "palito",
+        "pos": 5
+      },
+      {
+        "type": "right",
+        "a": "liquidificador",
+        "b": "forminhas"
+      }
+    ],
+    "solution": [
+      "liquidificador",
+      "forminhas",
+      "palito",
+      "tunel",
+      "embaladora"
+    ],
+    "explanation": "O Liquidificador vem logo antes das Forminhas, que não ficam na 3ª. O Túnel vem depois do Liquidificador, então o par não pode estar no fim; se estivesse na 3ª e 4ª, Espetador e Embaladora ficariam juntos nas duas primeiras, o que é proibido. Então o par abre a fila. O Espetador não fica na 5ª nem ao lado da Embaladora: ele fica na 3ª, o Túnel na 4ª e a Embaladora na 5ª."
+  },
+  {
+    "id": "md-37",
+    "theme": "Lança-confete de formatura",
+    "intro": "Os formandos vão jogar o capelo para cima. O confete precisa cair no mesmo segundo.",
+    "pieces": [
+      {
+        "id": "botao",
+        "name": "Botão do reitor"
+      },
+      {
+        "id": "canhao",
+        "name": "Canhão de papel picado"
+      },
+      {
+        "id": "compressor",
+        "name": "Compressor de ar"
+      },
+      {
+        "id": "reservatorio",
+        "name": "Reservatório de confete"
+      },
+      {
+        "id": "ventilador",
+        "name": "Ventilador espalhador"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "canhao",
+        "b": "ventilador"
+      },
+      {
+        "type": "adjacent",
+        "a": "canhao",
+        "b": "reservatorio"
+      },
+      {
+        "type": "at",
+        "a": "ventilador",
+        "pos": 5
+      },
+      {
+        "type": "notAt",
+        "a": "botao",
+        "pos": 2
+      }
+    ],
+    "solution": [
+      "botao",
+      "compressor",
+      "reservatorio",
+      "canhao",
+      "ventilador"
+    ],
+    "explanation": "O Ventilador está na 5ª e o Canhão vem logo antes dele, na 4ª. O Reservatório fica ao lado do Canhão, na 3ª. O Botão não fica na 2ª, então abre a fila e o Compressor fica com a 2ª."
+  },
+  {
+    "id": "md-38",
+    "theme": "Robô aspirador de praia",
+    "intro": "Ele limpa a areia e devolve as conchinhas. Mas antes alguém precisa montá-lo sem areia nos parafusos.",
+    "pieces": [
+      {
+        "id": "esteira",
+        "name": "Esteira de areia"
+      },
+      {
+        "id": "lixeira",
+        "name": "Compartimento de lixo"
+      },
+      {
+        "id": "pa",
+        "name": "Pá coletora"
+      },
+      {
+        "id": "peneira",
+        "name": "Peneira vibratória"
+      },
+      {
+        "id": "rampa",
+        "name": "Rampa de areia limpa"
+      },
+      {
+        "id": "separador",
+        "name": "Separador de conchinhas"
+      }
+    ],
+    "clues": [
+      {
+        "type": "adjacent",
+        "a": "peneira",
+        "b": "esteira"
+      },
+      {
+        "type": "notAt",
+        "a": "esteira",
+        "pos": 4
+      },
+      {
+        "type": "last",
+        "a": "rampa"
+      },
+      {
+        "type": "first",
+        "a": "pa"
+      },
+      {
+        "type": "right",
+        "a": "lixeira",
+        "b": "rampa"
+      },
+      {
+        "type": "adjacent",
+        "a": "separador",
+        "b": "peneira"
+      }
+    ],
+    "solution": [
+      "pa",
+      "esteira",
+      "peneira",
+      "separador",
+      "lixeira",
+      "rampa"
+    ],
+    "explanation": "A Pá é a primeira e a Rampa a última, com o Compartimento de lixo logo antes dela, na 5ª. No meio sobram Esteira, Peneira e Separador; a Peneira fica ao lado dos outros dois, então é a 3ª. A Esteira não fica na 4ª, então é a 2ª e o Separador a 4ª."
+  },
+  {
+    "id": "md-39",
+    "theme": "Máquina de tapioca",
+    "intro": "Café da manhã de domingo e a fila de tapioca já tem dez primos.",
+    "pieces": [
+      {
+        "id": "dobrador",
+        "name": "Dobrador"
+      },
+      {
+        "id": "frigideira",
+        "name": "Frigideira"
+      },
+      {
+        "id": "peneira",
+        "name": "Peneira de goma"
+      },
+      {
+        "id": "recheador",
+        "name": "Recheador"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAt",
+        "a": "dobrador",
+        "pos": 3
+      },
+      {
+        "type": "before",
+        "a": "frigideira",
+        "b": "dobrador"
+      },
+      {
+        "type": "notAt",
+        "a": "peneira",
+        "pos": 2
+      },
+      {
+        "type": "right",
+        "a": "recheador",
+        "b": "dobrador"
+      }
+    ],
+    "solution": [
+      "peneira",
+      "frigideira",
+      "recheador",
+      "dobrador"
+    ],
+    "explanation": "O Recheador vem logo antes do Dobrador, que não fica na 3ª. A Frigideira vem antes do Dobrador, então o par não pode abrir a fila; logo ele fica no fim. A Peneira não fica na 2ª, então é a 1ª e a Frigideira a 2ª."
+  },
+  {
+    "id": "md-40",
+    "theme": "Máquina de encher balões",
+    "intro": "Festa de aniversário em uma hora e cem balões murchos esperando na mesa.",
+    "pieces": [
+      {
+        "id": "amarrador",
+        "name": "Amarrador de nó"
+      },
+      {
+        "id": "bico",
+        "name": "Bico de encher"
+      },
+      {
+        "id": "cilindro",
+        "name": "Cilindro de hélio"
+      },
+      {
+        "id": "fita",
+        "name": "Enrolador de fitinha"
+      },
+      {
+        "id": "regulador",
+        "name": "Regulador"
+      }
+    ],
+    "clues": [
+      {
+        "type": "before",
+        "a": "cilindro",
+        "b": "regulador"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "cilindro",
+        "b": "fita"
+      },
+      {
+        "type": "right",
+        "a": "amarrador",
+        "b": "fita"
+      },
+      {
+        "type": "adjacent",
+        "a": "bico",
+        "b": "amarrador"
+      },
+      {
+        "type": "notAt",
+        "a": "amarrador",
+        "pos": 3
+      }
+    ],
+    "solution": [
+      "cilindro",
+      "regulador",
+      "bico",
+      "amarrador",
+      "fita"
+    ],
+    "explanation": "O Amarrador vem logo antes da Fitinha e o Bico fica ao lado dele, à esquerda: bloco Bico, Amarrador, Fitinha. O Amarrador não fica na 3ª, então o bloco não fica no meio. Se abrisse a fila, o Cilindro (antes do Regulador) cairia na 4ª, ao lado da Fitinha. Então o bloco fecha a fila, com Cilindro e Regulador na frente."
+  },
+  {
+    "id": "md-41",
+    "theme": "Linha de pizza",
+    "intro": "Sexta à noite, quarenta pedidos na fila e o pizzaiolo-robô desmontado.",
+    "pieces": [
+      {
+        "id": "abridor",
+        "name": "Abridor de massa"
+      },
+      {
+        "id": "carretilha",
+        "name": "Carretilha"
+      },
+      {
+        "id": "cobertura",
+        "name": "Braço de cobertura"
+      },
+      {
+        "id": "forno",
+        "name": "Forno a lenha"
+      },
+      {
+        "id": "molho",
+        "name": "Espalhador de molho"
+      },
+      {
+        "id": "queijo",
+        "name": "Chuva de queijo"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAt",
+        "a": "carretilha",
+        "pos": 2
+      },
+      {
+        "type": "first",
+        "a": "abridor"
+      },
+      {
+        "type": "right",
+        "a": "queijo",
+        "b": "cobertura"
+      },
+      {
+        "type": "adjacent",
+        "a": "molho",
+        "b": "queijo"
+      },
+      {
+        "type": "adjacent",
+        "a": "cobertura",
+        "b": "forno"
+      }
+    ],
+    "solution": [
+      "abridor",
+      "molho",
+      "queijo",
+      "cobertura",
+      "forno",
+      "carretilha"
+    ],
+    "explanation": "O Abridor é o primeiro. O Queijo vem logo antes do Braço de cobertura; o Molho fica ao lado do Queijo (à esquerda) e o Forno ao lado do Braço (à direita): bloco Molho, Queijo, Braço, Forno. A Carretilha não fica na 2ª, então o bloco vem logo depois do Abridor e ela fecha a fila."
+  },
+  {
+    "id": "md-42",
+    "theme": "Máquina de caldo de cana",
+    "intro": "Pastel sem caldo de cana não é feira. A moenda precisa girar já.",
+    "pieces": [
+      {
+        "id": "copo",
+        "name": "Enchedor de copo"
+      },
+      {
+        "id": "gelo",
+        "name": "Balde de gelo"
+      },
+      {
+        "id": "moenda",
+        "name": "Moenda"
+      },
+      {
+        "id": "peneira",
+        "name": "Peneira"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "copo",
+        "b": "peneira"
+      },
+      {
+        "type": "before",
+        "a": "moenda",
+        "b": "peneira"
+      },
+      {
+        "type": "right",
+        "a": "peneira",
+        "b": "gelo"
+      },
+      {
+        "type": "notAt",
+        "a": "moenda",
+        "pos": 2
+      }
+    ],
+    "solution": [
+      "moenda",
+      "peneira",
+      "gelo",
+      "copo"
+    ],
+    "explanation": "A Peneira vem logo antes do Balde de gelo. A Moenda vem antes da Peneira, então o par não abre a fila. Se o par ficasse no fim, Moenda (que não fica na 2ª) iria para a 1ª e o Copo para a 2ª, ao lado da Peneira. Então: Moenda, Peneira, Gelo e Copo."
   }
 ]

@@ -251,4 +251,174 @@ Mulher-Elástica|Precisa conciliar maternidade e heroísmo.|Seu corpo pode se es
 Violeta Parr|Sua timidez combina com uma de suas habilidades.|Cria campos de força e fica invisível.|É a filha mais velha de Os Incríveis.
 Flecha Parr|Tem dificuldade para ficar parado.|É um garoto com supervelocidade.|É o filho velocista de Os Incríveis.
 Zezé Parr|Sua família demora a descobrir suas capacidades.|É um bebê com muitos poderes.|É o caçula de Os Incríveis.
+Mônica|Lidera a turma do bairro com bastante personalidade.|Resolve qualquer provocação com o coelho de pelúcia azul.|A dona da rua de vestido vermelho e dentes grandes, criada por Mauricio de Sousa.
+Cebolinha|Vive bolando planos infalíveis que sempre dão errado.|Troca o som do R pelo L quando fala.|O menino de cinco fios de cabelo que quer ser dono da rua da Mônica.
+Cascão|Foge de qualquer coisa que tenha a ver com chuva.|Tem pavor de tomar banho e anda sempre sujinho.|O melhor amigo do Cebolinha que nunca chega perto de água.
+Magali|Tem um apetite que parece não ter fim.|Adora melancia e tem um gato chamado Mingau.|A amiga comilona da Mônica de vestido amarelo.
+Chico Bento|Mora longe da cidade e fala de um jeito bem caipira.|Rouba goiabas do pé do Nhô Lau e vai de chapéu de palha à escola.|O caipira da Vila Abobrinha da Turma da Mônica.
+Franjinha|É o cientista mirim da turma.|Vive inventando coisas no laboratório e tem um cachorro azul.|O menino da franja que é dono do Bidu.
+Bidu|Este cachorro já apareceu até conversando com o próprio desenhista.|É azul e foi o primeiro personagem criado por Mauricio de Sousa.|O cãozinho azul do Franjinha.
+Penadinho|Mora num cemitério, mas é muito simpático.|É um fantasminha que convive com a Dona Morte e o Zé Vampir.|O fantasma camarada da Turma da Mônica, coberto por um lençol.
+Horácio|Vive num mundo pré-histórico refletindo sobre a vida.|É um pequeno dinossauro vegetariano e filosófico.|O tiranossauro bonzinho criado por Mauricio de Sousa.
+Piteco|Vive na Idade da Pedra numa aldeia chamada Lem.|Usa roupa de pele de bicho e carrega um tacape.|O homem das cavernas da Turma da Mônica.
+Astronauta|Passa a vida viajando sozinho pelo espaço.|Pilota uma nave redonda e sente saudades da Terra.|O viajante espacial de capacete da Turma da Mônica.
+Papa-Capim|Vive na floresta e defende a natureza.|É um menino indígena da Turma da Mônica.|O curumim que mora na aldeia com Cafuné e Jurema.
+Anjinho|Cuida das crianças lá do céu.|Tem auréola, asinhas e uma túnica branca.|O anjo da guarda da Turma da Mônica.
+Jotalhão|É enorme, mas muito gentil.|Este elefante verde ficou famoso em embalagens de molho de tomate.|O elefante verde da turma da mata de Mauricio de Sousa.
+Louco|Faz qualquer conversa virar um absurdo completo.|Aparece de surpresa e confunde a cabeça do Cebolinha.|O personagem maluquinho de cabelo espetado da Turma da Mônica.
+Capitão Feio|Seu maior sonho é sujar o mundo inteiro.|Vem dos esgotos e comanda um exército de sujeira.|O vilão da poluição que é ídolo do Cascão.
+Do Contra|Faz sempre o oposto do que todo mundo faz.|Até a roupa e o cabelo dele são do avesso.|O menino da Turma da Mônica que discorda de tudo.
+Xaveco|Reclama que nunca é o protagonista das histórias.|É o amigo comum, sem nada especial, do quarteto principal.|O coadjuvante de cabelo cor de laranja da Turma da Mônica.
+Sansão (coelho da Mônica)|Já foi lançado pelos ares muitas e muitas vezes.|É um bichinho de pelúcia azul de orelhas compridas.|O coelho que a Mônica usa para dar coelhadas.
+Emília|Era um objeto de pano até ganhar a fala graças a uma pílula.|É espevitada, mandona e muito inventiva.|A boneca falante do Sítio do Picapau Amarelo.
+Narizinho|Mora com a avó e é muito curiosa.|Tem um nariz arrebitado e foi visitar o Reino das Águas Claras.|A neta de Dona Benta e dona da boneca Emília.
+Pedrinho|Vem da cidade passar as férias no campo.|Adora aventuras e anda de bodoque no bolso.|O neto aventureiro de Dona Benta no Sítio do Picapau Amarelo.
+Visconde de Sabugosa|É muito sábio, apesar de ter sido feito de um alimento.|Usa cartola e adora ler livros científicos.|O sabugo de milho falante do Sítio do Picapau Amarelo.
+Dona Benta|É a dona de um sítio cheio de aventuras.|Conta histórias para os netos e é muito sábia.|A avó de Narizinho e Pedrinho criada por Monteiro Lobato.
+Tia Nastácia|É famosa por seus quitutes e quer bem a todos.|Fez a boneca Emília com retalhos de pano.|A cozinheira dos bolinhos do Sítio do Picapau Amarelo.
+Cuca|Vive tramando feitiços contra os moradores de um sítio.|É uma bruxa com corpo de jacaré.|A vilã do Sítio do Picapau Amarelo que pega quem não dorme.
+Rabicó|Pensa mais em comida do que em qualquer outra coisa.|É um porquinho que acabou virando marquês.|O leitão guloso do Sítio do Picapau Amarelo.
+Saci-Pererê|Adora pregar peças, como esconder objetos e azedar o leite.|Anda num redemoinho e usa um gorro vermelho.|O menino de uma perna só do folclore brasileiro, sempre com seu cachimbo.
+Curupira|Protege as matas e confunde os caçadores.|Tem cabelos vermelhos e pés virados para trás.|O guardião da floresta do folclore brasileiro.
+Iara|Atrai pescadores com seu canto nos rios.|É metade mulher e metade peixe.|A sereia do folclore brasileiro, também chamada Mãe-d'Água.
+Boitatá|Aparece à noite nos campos para proteger a natureza.|É uma serpente feita de fogo.|A cobra de fogo do folclore brasileiro.
+Mula sem Cabeça|Galopa pelos campos soltando faíscas.|No lugar da cabeça tem uma chama.|O animal assombrado do folclore brasileiro que não tem cabeça.
+Boto-cor-de-rosa|Vive nos rios da Amazônia e surge nas festas.|Segundo a lenda, vira um rapaz elegante de chapéu branco.|O golfinho da lenda amazônica do folclore brasileiro.
+Caipora|Assobia na mata e defende os animais.|Costuma aparecer montada num porco-do-mato.|A protetora da floresta do folclore brasileiro, parente do Curupira.
+Negrinho do Pastoreio|Sua lenda vem dos pampas do Sul.|Ajuda quem perdeu algum objeto a encontrá-lo.|O menino da lenda gaúcha que cuidava dos cavalos.
+Lobisomem|Tudo muda nas noites de lua cheia.|É um homem que se transforma em fera.|O homem-lobo das lendas.
+Menino Maluquinho|Tem uma infância cheia de travessuras e alegria.|Usa uma panela na cabeça como chapéu.|O personagem mais famoso de Ziraldo.
+Zé Carioca|É malandro, simpático e adora samba.|É um papagaio verde criado pela Disney.|O papagaio brasileiro amigo do Pato Donald.
+Peixonauta|Usa um traje especial para explorar a terra firme.|Resolve mistérios da natureza com a amiga Marina.|O peixe agente de desenho brasileiro que abre a POP.
+Luna (O Show da Luna)|Faz perguntas sobre tudo e quer descobrir as respostas.|Canta e investiga ciências com o irmão Júpiter e o furão Cláudio.|A menina cientista de desenho brasileiro que adora a Lua.
+Galinha Pintadinha|Ficou famosa cantando para crianças pequenas na internet.|É uma ave azul cheia de bolinhas.|A galinha das cantigas infantis brasileiras.
+Senninha|Foi inspirado num grande campeão brasileiro.|É um menino piloto de corridas de capacete amarelo.|O personagem infantil criado em homenagem a Ayrton Senna.
+Zé Gotinha|Aparece nas campanhas de saúde no Brasil.|Tem o formato de uma gota branca e sorridente.|O mascote da vacinação brasileira.
+Fuleco|Foi mascote de um grande evento esportivo no Brasil.|É um tatu-bola que se enrola como uma bola.|O mascote da Copa do Mundo de 2014.
+Chapeuzinho Vermelho|Leva uma cesta de doces pela floresta.|Uma fera se disfarça de vovó para enganá-la.|A menina de capa vermelha que encontra o Lobo Mau.
+Lobo Mau|Aparece em mais de um conto infantil como vilão.|Sopra casas e se veste de vovó.|O lobo dos Três Porquinhos e da Chapeuzinho.
+Branca de Neve|Fugiu de casa por causa da inveja de uma rainha.|Mora com sete pequenos mineiros.|A princesa que mordeu a maçã envenenada.
+Cinderela|Trabalha sem parar para a madrasta e as irmãs.|Uma fada madrinha a leva a um baile.|A moça que perdeu o sapatinho de cristal à meia-noite.
+Pinóquio|Seu maior desejo é virar um menino de verdade.|Foi esculpido em madeira por Gepeto.|O boneco cujo nariz cresce quando mente.
+Peter Pan|Não quer crescer de jeito nenhum.|Vive na Terra do Nunca com os Meninos Perdidos.|O menino voador amigo da Sininho.
+Capitão Gancho|Vive fugindo de um crocodilo que faz tique-taque.|É um pirata que perdeu uma das mãos.|O inimigo de Peter Pan.
+Sininho|É pequenina, brilha e tem muito ciúme.|Espalha um pó mágico que faz as pessoas voarem.|A fada companheira de Peter Pan.
+Patinho Feio|Sofreu por ser diferente dos irmãos.|No fim descobre que era um lindo cisne.|O filhote rejeitado do conto de Andersen.
+Pequeno Polegar|Seu tamanho é sua maior marca.|Espalha migalhas para achar o caminho de volta.|O menino do tamanho de um dedo dos contos de fadas.
+Robin Hood|Vive escondido na floresta de Sherwood.|Tira dos ricos para dar aos pobres.|O arqueiro fora da lei das lendas inglesas.
+Alice|Seguiu um animal apressado e caiu num buraco.|Toma chá com um chapeleiro maluco.|A menina que foi ao País das Maravilhas.
+Chapeleiro Maluco|Vive numa festa de chá que nunca termina.|Usa uma cartola enorme e fala coisas sem sentido.|O amigo excêntrico de Alice no País das Maravilhas.
+Rainha de Copas|Tem um gênio terrível e um baralho como exército.|Grita para cortarem cabeças a toda hora.|A vilã de Alice no País das Maravilhas.
+Pequeno Príncipe|Veio de um planeta muito pequeno.|Cuida de uma rosa e faz amizade com uma raposa.|O menino de cabelos dourados de Saint-Exupéry.
+Dorothy|Um tornado a tirou de casa no Kansas.|Segue a estrada de tijolos amarelos com seu cãozinho Totó.|A menina que foi parar na terra de Oz.
+Homem de Lata|Sonha em ter um coração.|Precisa de óleo para não enferrujar.|O companheiro metálico de Dorothy em Oz.
+Malévola|Ficou furiosa por não ser convidada para uma festa.|Lançou uma maldição sobre uma princesa recém-nascida.|A fada dos chifres que enfeitiçou a Bela Adormecida.
+Cruella de Vil|Tem obsessão por casacos de pele.|Quer sequestrar filhotes de cachorro.|A vilã dos 101 Dálmatas.
+Úrsula|Vive no fundo do mar fazendo acordos perigosos.|Troca a voz de uma jovem por um par de pernas.|A bruxa do mar de A Pequena Sereia.
+Jafar|É conselheiro do sultão, mas quer o trono.|Tem um papagaio chamado Iago.|O vilão que deseja a lâmpada de Aladdin.
+Gênio da Lâmpada|Passou muito tempo preso num objeto pequeno.|Concede três desejos a quem o liberta.|O amigo azul de Aladdin que mora numa lâmpada.
+Mogli|Foi criado por animais na floresta.|Seus melhores amigos são um urso e uma pantera.|O menino-lobo de O Livro da Selva.
+Baloo|Ensina que a vida pode ser simples.|É um urso preguiçoso e cantor.|O urso amigo de Mogli.
+Dumbo|Todos riam dele no circo.|Descobre que pode voar com as próprias orelhas.|O elefantinho orelhudo da Disney.
+Bambi|Cresce na floresta com amigos como um coelho e um gambá.|É um filhote de cervo da Disney.|O veadinho amigo do Tambor.
+Ursinho Pooh|Ama mel mais do que tudo.|Vive no Bosque dos Cem Acres com Christopher Robin.|O urso amarelo de camiseta vermelha.
+Tigrão|Não para quieto e vive dando saltos.|Pula usando o rabo como mola.|O tigre saltitante amigo do Ursinho Pooh.
+Bisonho|Está sempre desanimado.|É um burrinho cinza que vive perdendo o rabo.|O amigo tristonho do Ursinho Pooh.
+Leitão|É pequeno e medroso, mas muito leal.|É um porquinho cor-de-rosa.|O amigo mais próximo do Ursinho Pooh.
+Hades|Governa o mundo dos mortos com muito mau humor.|Tem cabelo de fogo azul e quer derrotar Hércules.|O vilão do Hércules da Disney.
+Maui|É um semideus que adora se gabar.|Tem tatuagens que se mexem e um anzol mágico.|O parceiro de aventura da Moana.
+Mirabel|É a única da família sem um dom mágico.|Usa óculos e uma saia bordada colorida.|A protagonista de Encanto.
+Judy Hopps|Sonhava ser policial numa cidade de animais.|É uma coelha muito determinada.|A policial de Zootopia.
+Nick Wilde|É um vigarista esperto que vira aliado da polícia.|É uma raposa de gravata.|O parceiro de Judy Hopps em Zootopia.
+Ralph (Detona Ralph)|Cansou de ser o vilão do próprio jogo.|Tem mãos enormes e quer ser herói.|O grandalhão do fliperama que destrói prédios.
+Vanellope|Era considerada um erro no seu jogo.|É uma pilota de corrida que dá pequenos saltos digitais.|A amiga de Ralph de Corrida Doce.
+Baymax|Foi criado para cuidar da saúde das pessoas.|É um robô branco e fofo como um balão.|O robô inflável de Operação Big Hero.
+Tiana|Sonhava em abrir o próprio restaurante.|Vira sapo depois de beijar um príncipe.|A princesa de A Princesa e o Sapo.
+Carl Fredricksen|É um senhor rabugento que quer realizar um sonho antigo.|Fez sua casa voar com milhares de balões.|O idoso de Up: Altas Aventuras.
+Dug|Diz tudo o que pensa graças a uma coleira especial.|Se distrai com qualquer esquilo.|O cachorro falante de Up: Altas Aventuras.
+Miguel Rivera|Sua família proíbe a música em casa.|Vai parar na Terra dos Mortos no Dia de Finados mexicano.|O menino violonista de Viva: A Vida É uma Festa.
+Raiva|Fica muito vermelho quando algo é injusto.|Solta fogo pela cabeça.|A emoção esquentada de Divertida Mente.
+Medo|Vive prevenindo acidentes.|É roxo, magrinho e se assusta com tudo.|A emoção medrosa de Divertida Mente.
+Nojinho|Tem padrões muito altos e torce o nariz para tudo.|É verde e evita brócolis.|A emoção enjoada de Divertida Mente.
+Blu|É uma ave que cresceu longe da natureza e não sabe voar.|Viaja de Minnesota para o Rio de Janeiro.|A arara-azul do filme Rio.
+Skipper|Comanda um pequeno esquadrão muito organizado.|É um pinguim líder de uma equipe de espiões.|O chefe dos pinguins de Madagascar.
+Mavis|Mora num hotel para monstros com o pai superprotetor.|É uma jovem vampira.|A filha do Drácula em Hotel Transilvânia.
+Mario|Começou a carreira pulando sobre barris.|É um encanador de boné vermelho e bigode.|O herói da Nintendo que salva a Princesa Peach.
+Luigi|Vive à sombra do irmão famoso.|É mais alto e usa boné verde.|O irmão do Mario.
+Princesa Peach|Governa o Reino dos Cogumelos.|Vive sendo sequestrada por uma tartaruga gigante.|A princesa de vestido rosa dos jogos do Mario.
+Bowser|Comanda um exército de tartarugas.|É um rei com casco de espinhos que cospe fogo.|O grande vilão dos jogos do Mario.
+Yoshi|Engole inimigos com a língua comprida.|É um dinossauro verde que choca ovos.|O dinossauro que serve de montaria para o Mario.
+Donkey Kong|Foi um dos primeiros vilões de fliperama.|É um gorila de gravata vermelha que adora bananas.|O macacão da Nintendo que jogava barris.
+Link|Usa uma túnica verde e quase não fala.|Empunha a Espada Mestra no reino de Hyrule.|O herói dos jogos de The Legend of Zelda.
+Sonic|Odeia ficar parado e esperar.|É azul e coleciona anéis dourados.|O ouriço supersônico da Sega.
+Tails|É um gênio da mecânica e pilota aviões.|Voa girando suas duas caudas como hélice.|A raposa amarela melhor amiga do Sonic.
+Knuckles|Protege uma esmeralda gigante numa ilha.|É vermelho e luta com os punhos.|O equidna rival e amigo do Sonic.
+Dr. Eggman|Quer transformar animais em robôs.|É um cientista de bigode enorme e formato de ovo.|O vilão dos jogos do Sonic.
+Pac-Man|Só pensa em comer enquanto foge de fantasmas.|É amarelo, redondo e tem uma boca enorme.|O comilão do labirinto dos fliperamas.
+Kirby|Parece frágil, mas é um herói poderoso.|É uma bolinha rosa que copia poderes de quem engole.|O herói cor-de-rosa da Nintendo.
+Lara Croft|Explora ruínas atrás de relíquias antigas.|É uma arqueóloga aventureira britânica.|A heroína de Tomb Raider.
+Steve (Minecraft)|Vive num mundo feito de cubos.|Mineira, constrói e enfrenta zumbis à noite.|O personagem padrão do Minecraft.
+Creeper|Chega em silêncio e faz um chiado antes de agir.|É verde e explode perto dos jogadores.|O monstro explosivo do Minecraft.
+Crash Bandicoot|Gira como um tornado para derrotar inimigos.|É um marsupial laranja que adora frutas wumpa.|O bandicoot dos jogos de PlayStation.
+Mega Man|É um robô que copia as armas dos chefes que derrota.|Usa uma armadura azul e um canhão no braço.|O herói robótico da Capcom.
+Mewtwo|Foi criado em laboratório a partir de outra criatura.|É um Pokémon psíquico muito poderoso.|O clone de Mew dos Pokémon.
+Eevee|Pode mudar para muitas formas diferentes.|É uma criatura marrom de pescoço felpudo.|O Pokémon que tem várias evoluções.
+Snorlax|Passa a maior parte do tempo dormindo.|É enorme e costuma bloquear caminhos.|O Pokémon dorminhoco e comilão.
+Psyduck|Vive com dor de cabeça.|É um pato amarelo com as mãos na cabeça.|O Pokémon pato da Misty.
+Doraemon|Veio do futuro para ajudar um garoto atrapalhado.|Tira invenções de um bolso mágico.|O gato robô azul do anime japonês.
+Hello Kitty|É uma das figuras mais famosas do Japão.|Usa um laço vermelho e não tem boca.|A gatinha branca da Sanrio.
+Tanjiro Kamado|Sua família foi atacada, e ele quer salvar a irmã.|Tem um brinco florido e uma cicatriz na testa.|O caçador de onis de Demon Slayer.
+Nezuko|Passou por uma transformação, mas protege os humanos.|Carrega um bambu na boca e dorme numa caixa.|A irmã de Tanjiro em Demon Slayer.
+Izuku Midoriya|Nasceu sem poderes num mundo cheio de heróis.|Herdou o poder do maior herói, All Might.|O Deku de My Hero Academia.
+Seiya|Luta para proteger uma deusa.|Veste a armadura de bronze de Pégaso.|O protagonista de Os Cavaleiros do Zodíaco.
+Detetive Conan|Tomou um veneno que o fez encolher.|Vive com óculos e uma gravata-borboleta que muda a voz.|O jovem detetive Shinichi em corpo de criança.
+Inuyasha|Fica entre dois mundos, humano e demônio.|Tem orelhas de cachorro e um colar mágico.|O meio-youkai do anime de Rumiko Takahashi.
+Edward Elric|Perdeu partes do corpo numa tentativa de alquimia.|Tem um braço metálico e procura a Pedra Filosofal.|O alquimista de Fullmetal Alchemist.
+Hamtaro|É um bichinho que vive grandes aventuras quando a dona sai.|É um hamster laranja e branco.|O hamster do anime infantil.
+Speed Racer|Corre ao lado de um irmão misterioso.|Pilota o carro Mach 5.|O piloto de corridas do clássico anime.
+Oliver Tsubasa|Sonha em ganhar a Copa do Mundo.|É um craque de futebol de anime.|O capitão dos Super Campeões.
+Agumon|É parceiro de um garoto num mundo digital.|É um pequeno dinossauro laranja que vira Greymon.|O Digimon do Tai.
+Pantera Cor-de-Rosa|Nunca fala e resolve tudo com elegância.|Tem uma trilha sonora de saxofone famosa.|O felino rosa dos desenhos clássicos.
+Gasparzinho|Quer apenas fazer amigos, mas todos se assustam.|É um fantasminha branco e bondoso.|O fantasma camarada dos desenhos clássicos.
+Riquinho|Tem tudo que o dinheiro pode comprar.|Usa gravata-borboleta e short de marinheiro.|O menino mais rico do mundo dos quadrinhos.
+Luluzinha|Não deixa os meninos mandarem em tudo.|Tem cachinhos pretos e vestido vermelho.|A menina dos quadrinhos amiga do Bolinha.
+Mutley|Ri de um jeito muito particular.|É um cachorro que pede medalhas ao chefe.|O parceiro de Dick Vigarista.
+Dick Vigarista|Trapaceia em todas as corridas e nunca vence.|Tem um bigode fino e um cachorro risonho.|O vilão de Corrida Maluca.
+Penélope Charmosa|Participa de uma corrida dirigindo um carro cor-de-rosa.|Vive sendo salva pela Quadrilha de Morte.|A pilota vaidosa de Corrida Maluca.
+Manda-Chuva|Comanda um grupo de gatos no beco.|Vive enganando o guarda Belo.|O gato malandro de chapéu de palheta.
+He-Man|Ergue uma espada e grita pelos poderes de Grayskull.|É o Príncipe Adam de Etérnia.|O homem mais poderoso do universo dos anos 80.
+Esqueleto|Quer conquistar o Castelo de Grayskull.|Tem rosto de caveira e capuz roxo.|O arqui-inimigo do He-Man.
+She-Ra|Lidera a rebelião em Etheria.|É a irmã gêmea do Príncipe Adam.|A princesa do poder dos desenhos.
+Papai Smurf|É o mais velho e sábio de sua vila.|Usa gorro e calças vermelhas e tem barba branca.|O líder dos pequenos seres azuis.
+Smurfette|Foi criada por um bruxo, mas virou do bem.|É loira e usa vestido branco.|A smurf mais famosa.
+Gargamel|É um feiticeiro que vive com um gato chamado Cruel.|Quer capturar os pequenos seres azuis.|O vilão dos Smurfs.
+Lion-O|Lidera felinos que fugiram de um planeta destruído.|Usa a Espada Justiceira com o Olho de Thundera.|O líder dos ThunderCats.
+Cérebro|Todas as noites tenta conquistar o mundo.|É um ratinho de laboratório com cabeça enorme.|O parceiro de Pinky.
+Speedy Gonzales|É o mais rápido de todo o México.|É um ratinho de sombrero.|O ratinho velocista dos Looney Tunes.
+Gaguinho|Fecha os desenhos com uma frase famosa.|É um porquinho que gagueja.|O porco do Looney Tunes que diz "Isso é tudo, pessoal!".
+Hortelino|Vive caçando um coelho esperto.|É baixinho, careca e não pronuncia bem o R.|O caçador que persegue o Pernalonga.
+Marvin, o Marciano|Quer explodir a Terra porque ela atrapalha sua vista.|Usa um capacete com uma vassourinha.|O alienígena dos Looney Tunes.
+Huguinho, Zezinho e Luisinho|São três irmãos que vivem aprontando.|São escoteiros mirins de bonés coloridos.|Os sobrinhos do Pato Donald.
+Professor Pardal|Inventa de tudo em Patópolis.|Tem um ajudante que é uma lâmpada.|O inventor das histórias da Disney.
+Irmãos Metralha|Vivem tentando assaltar a caixa-forte mais famosa.|Usam máscaras e números de presos no peito.|Os bandidos que perseguem o Tio Patinhas.
+Maga Patalójika|Mora perto de um vulcão e faz feitiços.|Quer roubar a primeira moeda de um certo milionário.|A bruxa que persegue a Moedinha Número Um do Tio Patinhas.
+Gastão|Ganha tudo sem nenhum esforço.|Tem uma sorte inacreditável.|O primo sortudo do Pato Donald.
+Groot|Fala apenas uma frase.|É uma criatura em forma de árvore.|O guardião da galáxia que diz "Eu sou Groot".
+Rocket Raccoon|É especialista em armas e naves.|É um guaxinim modificado e mal-humorado.|O guaxinim dos Guardiões da Galáxia.
+Senhor das Estrelas|Foi levado da Terra quando era criança.|Ouve fitas antigas num walkman.|Peter Quill, líder dos Guardiões da Galáxia.
+Miles Morales|Ganhou poderes no Brooklyn depois de uma picada.|Pode ficar invisível e soltar choques.|O jovem Homem-Aranha do Aranhaverso.
+Pinguim|É dono de clubes e usa guarda-chuvas como armas.|Tem cartola, monóculo e anda gingando.|O vilão baixinho de Gotham.
+Charada|Deixa enigmas em cada crime.|Usa roupa verde cheia de pontos de interrogação.|O vilão dos enigmas do Batman.
+Hera Venenosa|Defende as plantas acima de tudo.|Controla vegetação e tem cabelo ruivo.|A vilã botânica de Gotham.
+Asterix|Vive numa aldeia que resiste a um império inteiro.|Fica forte ao beber uma poção mágica.|O pequeno gaulês dos quadrinhos franceses.
+Obelix|Carrega pedras enormes nas costas.|Caiu num caldeirão de poção quando era bebê.|O grandalhão amigo de Asterix.
+Tintim|É um repórter que vive aventuras pelo mundo.|Tem um topete e um cachorro branco chamado Milu.|O jovem jornalista dos quadrinhos belgas.
+Mafalda|Faz perguntas difíceis sobre o mundo.|Odeia sopa e se preocupa com a paz mundial.|A menina argentina criada por Quino.
+Calvin|Tem uma imaginação sem limites.|Seu melhor amigo é um tigre de pelúcia que ganha vida.|O menino das tirinhas com Haroldo.
+Dennis, o Pimentinha|Vive importunando o vizinho idoso.|É um garoto loiro de macacão e estilingue.|O menino travesso que irrita o Sr. Wilson.
+Recruta Zero|Faz de tudo para fugir do trabalho no quartel.|Usa um quepe que cobre os olhos.|O soldado preguiçoso que irrita o Sargento Tainha.
+Hagar, o Horrível|É um guerreiro do norte que adora comer.|Usa capacete com chifres.|O viking dos quadrinhos.
+Brutus|Briga sempre pelo amor da mesma moça.|É grandalhão e barbudo.|O rival do Popeye.
+Jorel|É o mais popular da família, mas quase não fala.|Seu irmão mais novo vive à sua sombra.|O irmão famoso do desenho brasileiro do Cartoon Network.
+Nino (Castelo Rá-Tim-Bum)|Tem centenas de anos, mas é uma criança.|É aprendiz de feiticeiro num castelo em São Paulo.|O menino do Castelo Rá-Tim-Bum.
 `;

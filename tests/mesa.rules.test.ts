@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { beforeAll, afterAll, describe, it, expect } from "vitest";
 import { initializeTestEnvironment, assertFails, assertSucceeds, type RulesTestEnvironment } from "@firebase/rules-unit-testing";
-import { doc, getDoc, getDocs, collection, updateDoc, writeBatch, serverTimestamp, runTransaction } from "firebase/firestore";
+import { doc, getDoc, getDocs, setDoc, collection, updateDoc, writeBatch, serverTimestamp, runTransaction } from "firebase/firestore";
 type Firestore = ReturnType<ReturnType<RulesTestEnvironment["authenticatedContext"]>["firestore"]>;
 
 /** Regras reais; enquanto o bloco das mesas não estiver no arquivo principal, injeta o arquivo separado. */
@@ -54,6 +54,7 @@ describe.skipIf(!enabled)("Mesas (Plano B, Manual, Feira): regras", () => {
   let env: RulesTestEnvironment;
   beforeAll(async () => {
     env = await initializeTestEnvironment({ projectId: "demo-mesas", firestore: { rules: mesaRules() } });
+    await env.clearFirestore(); // códigos de sala se repetem entre execuções
   }, 30000);
   afterAll(async () => {
     await env?.cleanup();
@@ -264,6 +265,17 @@ describe.skipIf(!enabled)("Mesas (Plano B, Manual, Feira): regras", () => {
     await assertSucceeds(pvote("d", ["c"], false));
     await assertSucceeds(pvote("e", ["c", "d"]));
     await assertSucceeds(updateDoc(doc(c, base), { phase: "present", current: 1, pvoted: [] })); // todos votaram
+  });
+
+  it("catálogos: qualquer pessoa lê (até sem login); ninguém escreve pelo site", async () => {
+    await env.withSecurityRulesDisabled(async (ctx) => {
+      await setDoc(doc(ctx.firestore(), "catalogs/meta"), { version: "v1", parts: { planB: 1 } });
+    });
+    const anon = env.unauthenticatedContext().firestore();
+    const user = env.authenticatedContext("a").firestore();
+    await assertSucceeds(getDoc(doc(anon, "catalogs/meta")));
+    await assertFails(setDoc(doc(user, "catalogs/meta"), { version: "hack", parts: {} }));
+    await assertFails(setDoc(doc(anon, "catalogs/planB-0"), { items: [] }));
   });
 
   it("anfitrião: ninguém assume enquanto o anfitrião está conectado", async () => {

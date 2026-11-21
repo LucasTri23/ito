@@ -1078,5 +1078,1805 @@
         ]
       }
     ]
+  },
+  {
+    "id": "pb-25",
+    "category": "festa",
+    "mission": "Curta o bloco de carnaval do começo ao fim.",
+    "hint": "O bloco anda quilômetros, a multidão é enorme e o tempo de fevereiro é traiçoeiro.",
+    "items": ["Pochete", "Garrafa de água", "Leque", "Capa de chuva descartável", "Tênis velho", "Apito"],
+    "twists": [
+      {
+        "text": "Sol de rachar e o bloco atrasou duas horas.",
+        "scores": [1, 3, 3, 0, 1, 0],
+        "reasons": [
+          "Guardou o dinheiro do picolé.",
+          "Hidratação garantida no calorão.",
+          "Vento fresco pra você e pros vizinhos.",
+          "Capa no sol? Virou estufa.",
+          "Pé confortável, mas suando.",
+          "Apito não refresca ninguém."
+        ]
+      },
+      {
+        "text": "Caiu um temporal no meio do desfile.",
+        "scores": [2, 0, 0, 3, 1, 1],
+        "reasons": [
+          "Celular sequinho dentro da pochete.",
+          "Água é o que não faltou.",
+          "Leque molhado vira papel mole.",
+          "Seca da cabeça aos joelhos.",
+          "Encharcou, mas não escorregou.",
+          "Apitou no ritmo da chuva."
+        ]
+      },
+      {
+        "text": "Você se perdeu dos amigos na multidão.",
+        "scores": [1, 1, 0, 0, 2, 3],
+        "reasons": [
+          "Pelo menos o celular estava seguro.",
+          "Ajudou a esperar.",
+          "Abanar não acha ninguém.",
+          "Todo mundo de capa igual. Pior ainda.",
+          "Rodou o bloco inteiro procurando.",
+          "Combinaram o sinal e o grupo se achou."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-26",
+    "category": "viagem",
+    "mission": "Viaje de carro até a casa da tia no interior de Minas.",
+    "hint": "O carro é velho, o fim da estrada é de terra e na serra o celular perde sinal.",
+    "items": ["Mapa rodoviário impresso", "Estepe calibrado", "Corda de reboque", "Pão de queijo pra viagem", "Carregador veicular", "Lanterna"],
+    "twists": [
+      {
+        "text": "O GPS morreu e não há sinal nenhum.",
+        "scores": [3, 0, 0, 1, 2, 1],
+        "reasons": [
+          "Papel não precisa de sinal.",
+          "Estepe não indica caminho.",
+          "Corda não sabe onde fica Minas.",
+          "Pelo menos a fome não apertou.",
+          "Celular vivo quando o sinal voltou.",
+          "Ajudou a ler as placas."
+        ]
+      },
+      {
+        "text": "O pneu furou na estrada de terra, de noite.",
+        "scores": [0, 3, 1, 1, 1, 3],
+        "reasons": [
+          "Mapa não troca pneu.",
+          "Pneu trocado e viagem seguindo.",
+          "Não serviu pra muita coisa.",
+          "Lanchinho durante o conserto.",
+          "O celular ficou carregado, só isso.",
+          "Sem luz, ninguém acha o macaco."
+        ]
+      },
+      {
+        "text": "O carro atolou num trecho de lama.",
+        "scores": [0, 0, 3, 2, 0, 1],
+        "reasons": [
+          "O mapa só mostra onde é a lama.",
+          "O pneu bom atolou junto.",
+          "O trator do vizinho puxou na hora.",
+          "Pagou o tratorista com pão de queijo.",
+          "Carregador não desatola nada.",
+          "Iluminou o buraco, só isso."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-27",
+    "category": "trabalho",
+    "mission": "Venda todo o pastel da barraca na feira de domingo.",
+    "hint": "A barraca é de lona velha, a maquininha depende de sinal e domingo pode ser fraco.",
+    "items": ["Lona extra", "Maquininha de cartão", "Troco em moedas", "Caderninho de fiado", "Ventilador a pilha", "Placa de promoção"],
+    "twists": [
+      {
+        "text": "A internet caiu e a maquininha não passa cartão.",
+        "scores": [0, 0, 3, 3, 0, 1],
+        "reasons": [
+          "Lona não recebe pagamento.",
+          "Maquininha virou peso de papel.",
+          "Troco certo, venda feita.",
+          "O freguês de sempre pagou semana que vem.",
+          "Vento não é dinheiro.",
+          "Promoção chamou quem tinha trocado."
+        ]
+      },
+      {
+        "text": "Um vento com chuva invadiu a barraca.",
+        "scores": [3, 2, 1, 0, 0, 0],
+        "reasons": [
+          "Barraca fechada e pastel sequinho.",
+          "Fregueses pagaram rápido e correram.",
+          "Moedas molhadas ainda valem.",
+          "O caderno virou papel machê.",
+          "Ventilador na chuva? Desligou.",
+          "A placa saiu voando."
+        ]
+      },
+      {
+        "text": "A feira está fraca e o calor espantou a freguesia.",
+        "scores": [1, 1, 0, 1, 3, 3],
+        "reasons": [
+          "Sombra ajuda, mas não chama ninguém.",
+          "Pagamento fácil pra quem apareceu.",
+          "Troco sem freguês não serve.",
+          "Fiado também precisa de cliente.",
+          "O freguês parou pra pegar um ventinho.",
+          "Dois por cinco lotou a barraca."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-28",
+    "category": "escola",
+    "mission": "Leve a turma do 5º ano na excursão ao zoológico.",
+    "hint": "São 30 crianças agitadas, a estrada tem curvas e o ônibus fretado é bem velho.",
+    "items": ["Crachás com telefone", "Apito", "Protetor solar", "Saquinhos de enjoo", "Lanches extras", "Capas de chuva"],
+    "twists": [
+      {
+        "text": "Uma criança sumiu perto do recinto dos macacos.",
+        "scores": [3, 3, 0, 0, 1, 1],
+        "reasons": [
+          "O segurança ligou na hora.",
+          "A turma inteira veio correndo ao sinal.",
+          "Protetor não acha ninguém.",
+          "Saquinho não ajuda na busca.",
+          "Ela voltou quando ouviu falar em lanche.",
+          "Capa colorida ajuda a ver de longe."
+        ]
+      },
+      {
+        "text": "Metade da turma passou mal na estrada de curvas.",
+        "scores": [0, 0, 0, 3, 1, 2],
+        "reasons": [
+          "Crachá não segura estômago.",
+          "Apitar só piorou a tontura.",
+          "Não é o problema do momento.",
+          "Ônibus limpo, professora aliviada.",
+          "Bolachinha ajudou a assentar.",
+          "Protegeu os bancos do estrago."
+        ]
+      },
+      {
+        "text": "O ônibus quebrou e todos esperaram três horas no sol.",
+        "scores": [1, 1, 3, 0, 3, 0],
+        "reasons": [
+          "Todo mundo identificado, pelo menos.",
+          "Organizou a fila da sombra.",
+          "Ninguém voltou vermelho pra casa.",
+          "Saquinho não faz sombra.",
+          "Criança alimentada é criança calma.",
+          "Capa no sol virou sauna."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-29",
+    "category": "casa",
+    "mission": "Faça o aniversário do caçula em casa no sábado à noite.",
+    "hint": "O bairro tem apagão toda semana, a pia vive entupindo e o calor está forte.",
+    "items": ["Lampião a pilha", "Caixa de som a bateria", "Desentupidor", "Sacos de gelo", "Balde", "Ventilador"],
+    "twists": [
+      {
+        "text": "Faltou luz bem na hora do parabéns.",
+        "scores": [3, 3, 0, 1, 0, 0],
+        "reasons": [
+          "Luz no bolo e foto garantida.",
+          "O parabéns teve até música.",
+          "Desentupidor não acende nada.",
+          "Pelo menos o refri ficou gelado.",
+          "Balde no escuro só faz tropeçar.",
+          "Sem luz, sem vento."
+        ]
+      },
+      {
+        "text": "A pia da cozinha entupiu cheia de louça.",
+        "scores": [0, 0, 3, 0, 2, 0],
+        "reasons": [
+          "Iluminar a louça não resolve.",
+          "Música alta não desentope cano.",
+          "Plof, plof e a água desceu.",
+          "Gelo na pia só piora.",
+          "Tirou a água parada da pia.",
+          "Ventilador não desentope nada."
+        ]
+      },
+      {
+        "text": "Calorão de 35 graus e a geladeira não dá conta.",
+        "scores": [0, 1, 0, 3, 2, 3],
+        "reasons": [
+          "Lampião só esquenta mais.",
+          "Animou, mas ninguém dançou no calor.",
+          "Desentupidor contra calor? Sem chance.",
+          "Refrigerante trincando de gelado.",
+          "Virou cooler improvisado.",
+          "A criançada se amontoou na frente."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-30",
+    "category": "esporte",
+    "mission": "Vença o torneio de vôlei de praia dos amigos.",
+    "hint": "A areia esquenta muito, a maré sobe à tarde e o sol vai baixando no fim do jogo.",
+    "items": ["Meias grossas", "Boné", "Bola reserva", "Bomba de encher", "Garrafão de água gelada", "Óculos escuros"],
+    "twists": [
+      {
+        "text": "A areia está pelando ao meio-dia.",
+        "scores": [3, 1, 0, 0, 3, 1],
+        "reasons": [
+          "Pé protegido, salto garantido.",
+          "Cabeça fresca, pé fritando.",
+          "Bola não protege pé.",
+          "Bomba não esfria areia.",
+          "Molhou o pé e a garganta.",
+          "Ajuda pouco, o problema é no chão."
+        ]
+      },
+      {
+        "text": "A bola oficial foi levada pela onda.",
+        "scores": [0, 0, 3, 2, 1, 0],
+        "reasons": [
+          "Meia não traz bola de volta.",
+          "Boné não joga vôlei.",
+          "O jogo nem parou.",
+          "A reserva estava murcha. Agora não está.",
+          "Deu tempo de beber água na pausa.",
+          "Viu a bola indo embora com nitidez."
+        ]
+      },
+      {
+        "text": "O sol da tarde bate bem de frente pro seu lado da quadra.",
+        "scores": [0, 3, 0, 0, 1, 3],
+        "reasons": [
+          "Meia não tapa o sol.",
+          "Aba baixa e bola à vista.",
+          "Bola reserva também ofusca.",
+          "Bomba não ajuda nisso.",
+          "Refrescou, mas continua cego.",
+          "Viu a bola em vez do sol."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-31",
+    "category": "evento",
+    "mission": "Leve a turma ao show do seu cantor favorito no estádio.",
+    "hint": "O estádio é enorme, os portões abrem cedo e a previsão é de garoa.",
+    "items": ["Ingresso impresso", "Power bank", "Capa de chuva", "Binóculo", "Lanche na mochila", "Protetor de ouvido"],
+    "twists": [
+      {
+        "text": "A internet travou na entrada e o QR Code não abre.",
+        "scores": [3, 2, 0, 0, 1, 0],
+        "reasons": [
+          "Papel na mão, catraca liberada.",
+          "Celular vivo para tentar de novo.",
+          "Capa não passa na catraca.",
+          "Binóculo não lê QR Code.",
+          "Comeu enquanto esperava a fila.",
+          "Silêncio não abre portão."
+        ]
+      },
+      {
+        "text": "Seu lugar é lá no fundo da arquibancada.",
+        "scores": [1, 2, 0, 3, 1, 0],
+        "reasons": [
+          "Entrou, mas de longe.",
+          "Filmou o telão a noite inteira.",
+          "Não ajuda a enxergar.",
+          "Viu até a cor da bota do cantor.",
+          "Comeu bem, viu mal.",
+          "Lá longe nem estava alto."
+        ]
+      },
+      {
+        "text": "Garoa a noite inteira e três horas de fila na porta.",
+        "scores": [1, 1, 3, 0, 3, 0],
+        "reasons": [
+          "Ingresso garantido e molhado.",
+          "Celular aguentou a espera.",
+          "Seco do começo ao fim.",
+          "Binóculo embaçou na garoa.",
+          "Ninguém desmaiou de fome.",
+          "Não protege da chuva."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-32",
+    "category": "cozinha",
+    "mission": "Faça a feijoada de aniversário da tia.",
+    "hint": "O botijão é velho, a geladeira faz um barulho estranho e a família adora chegar cedo.",
+    "items": ["Fogareiro de camping", "Panela de pressão grande", "Petiscos de entrada", "Laranja picada", "Caixa térmica", "Sacos de gelo"],
+    "twists": [
+      {
+        "text": "O gás acabou no meio do cozimento.",
+        "scores": [3, 2, 1, 0, 0, 0],
+        "reasons": [
+          "Fogo de volta em dois minutos.",
+          "Terminou rapidinho no fogareiro.",
+          "Distraiu a família na demora.",
+          "Laranja não cozinha feijão.",
+          "Caixa térmica não esquenta nada.",
+          "Gelo é o contrário do que precisava."
+        ]
+      },
+      {
+        "text": "Os convidados chegaram duas horas adiantados.",
+        "scores": [0, 1, 3, 2, 1, 0],
+        "reasons": [
+          "Não resolve a fome do povo.",
+          "Acelerou um pouquinho.",
+          "Torresmo e bolinho seguraram a turma.",
+          "Laranjinha de aperitivo agradou.",
+          "Cerveja gelada ajudou na espera.",
+          "Gelo sozinho não alimenta."
+        ]
+      },
+      {
+        "text": "A geladeira pifou na véspera com as carnes dentro.",
+        "scores": [0, 1, 0, 0, 3, 3],
+        "reasons": [
+          "Fogareiro não gela nada.",
+          "Cozinhou parte da carne antes.",
+          "Petisco não salva a carne.",
+          "Laranja não refrigera.",
+          "Carne guardada e fresquinha.",
+          "Gelo de sobra pra conservar tudo."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-33",
+    "category": "mudança",
+    "mission": "Leve a geladeira e o fogão na caçamba da caminhonete do vizinho.",
+    "hint": "A caminhonete é antiga, a estrada tem lombadas e o céu está fechado.",
+    "items": ["Cinta com catraca", "Lona plástica", "Cobertores velhos", "Carrinho de carga", "Corda", "Calço de madeira"],
+    "twists": [
+      {
+        "text": "Choveu forte no caminho.",
+        "scores": [1, 3, 0, 0, 2, 0],
+        "reasons": [
+          "Firme, mas molhado.",
+          "Eletrodoméstico sequinho.",
+          "Encharcaram e pesaram o dobro.",
+          "Carrinho não cobre nada.",
+          "Amarrou a lona contra o vento.",
+          "Calço não segura chuva."
+        ]
+      },
+      {
+        "text": "Uma lombada escondida sacudiu a caçamba inteira.",
+        "scores": [3, 0, 3, 0, 1, 1],
+        "reasons": [
+          "Nada saiu do lugar.",
+          "Lona não segura tranco.",
+          "Nenhum arranhão na geladeira.",
+          "Carrinho voou junto.",
+          "Segurou mais ou menos.",
+          "Travou um pouco o fogão."
+        ]
+      },
+      {
+        "text": "O endereço novo tem uma rampa íngreme até a porta.",
+        "scores": [1, 0, 0, 3, 1, 2],
+        "reasons": [
+          "Prendeu a geladeira no carrinho.",
+          "Lona não sobe rampa.",
+          "Cobertor não empurra peso.",
+          "Subiu a rampa sem costas doendo.",
+          "Ajudou a puxar, com esforço.",
+          "Travou o carrinho nas pausas."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-34",
+    "category": "natureza",
+    "mission": "Passe o dia pescando no rio com o tio.",
+    "hint": "O rio fica longe da estrada, tem muito mosquito no fim do dia e a margem é cheia de galhos.",
+    "items": ["Repelente", "Minhoca de isca", "Canivete", "Lanterna", "Chapéu de palha", "Bote inflável"],
+    "twists": [
+      {
+        "text": "Os mosquitos atacaram ao entardecer.",
+        "scores": [3, 0, 0, 0, 2, 1],
+        "reasons": [
+          "Nenhuma picada pra contar.",
+          "Minhoca não espanta mosquito.",
+          "Canivete contra mosquito? Boa sorte.",
+          "Lanterna só atraiu mais.",
+          "Abanou a nuvem de pernilongo.",
+          "Fugiu pro meio do rio."
+        ]
+      },
+      {
+        "text": "A linha enroscou num galho no meio do rio.",
+        "scores": [0, 1, 3, 0, 0, 3],
+        "reasons": [
+          "Repelente não solta linha.",
+          "Pelo menos sobrou isca.",
+          "Cortou o galho e salvou o anzol.",
+          "Era de dia, não precisou.",
+          "Chapéu não alcança o galho.",
+          "Remou até o enrosco."
+        ]
+      },
+      {
+        "text": "O peixe só começou a morder depois que escureceu.",
+        "scores": [1, 3, 1, 3, 0, 1],
+        "reasons": [
+          "Ficou mais tempo sem picada.",
+          "Isca boa na hora certa.",
+          "Limpou o peixe na hora.",
+          "Viu a boia afundar no escuro.",
+          "Chapéu à noite não serve.",
+          "Bote no escuro dá medo."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-35",
+    "category": "cidade",
+    "mission": "Busque um documento no cartório do outro lado da cidade.",
+    "hint": "O cartório fecha às 16h, você nunca pegou essa linha e o centro está em obras.",
+    "items": ["Bilhete de ônibus carregado", "Mapa offline no celular", "Tênis confortável", "Cópias dos documentos", "Livro", "Guarda-chuva"],
+    "twists": [
+      {
+        "text": "O ônibus mudou o itinerário por causa da obra.",
+        "scores": [1, 3, 3, 0, 0, 1],
+        "reasons": [
+          "Pegou outro ônibus sem pagar de novo.",
+          "Achou o novo caminho na hora.",
+          "Andou seis quarteirões sem sofrer.",
+          "Papel não indica caminho.",
+          "Ler não te leva até lá.",
+          "Virou bengala na calçada."
+        ]
+      },
+      {
+        "text": "A atendente pediu uma cópia que você não tinha.",
+        "scores": [0, 2, 0, 3, 0, 0],
+        "reasons": [
+          "Bilhete não serve de cópia.",
+          "Achou uma copiadora na esquina.",
+          "Tênis não tira xerox.",
+          "Tirou da pasta e pronto.",
+          "Livro não é documento.",
+          "Guarda-chuva não autentica nada."
+        ]
+      },
+      {
+        "text": "Fila de duas horas na calçada, sem cobertura.",
+        "scores": [0, 1, 1, 1, 3, 3],
+        "reasons": [
+          "Não ajuda na fila.",
+          "Bateria foi embora rápido.",
+          "Pé aguentou bem.",
+          "Pelo menos estava tudo certo.",
+          "Terminou três capítulos.",
+          "Sombra particular na fila."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-36",
+    "category": "pets",
+    "mission": "Leve o gato ao veterinário para tomar vacina.",
+    "hint": "O Frajola odeia sair de casa, o veterinário sempre atrasa e o carro esquenta rápido.",
+    "items": ["Caixa de transporte", "Toalha grossa", "Petisco de gato", "Tapete higiênico", "Ventilador portátil", "Lenço umedecido"],
+    "twists": [
+      {
+        "text": "O gato se escondeu debaixo da cama na hora de sair.",
+        "scores": [1, 3, 3, 0, 0, 0],
+        "reasons": [
+          "Caixa pronta, gato sumido.",
+          "Virou um burrito de gato.",
+          "Saiu sozinho atrás do petisco.",
+          "Tapete não tira gato de lugar nenhum.",
+          "Ele odiou o barulho.",
+          "Lenço não convence ninguém."
+        ]
+      },
+      {
+        "text": "Ele fez xixi de nervoso no meio do caminho.",
+        "scores": [1, 1, 0, 3, 0, 2],
+        "reasons": [
+          "Pelo menos ficou tudo lá dentro.",
+          "Molhou junto.",
+          "Ninguém quis petisco nessa hora.",
+          "Forrou a caixa e salvou o banco.",
+          "Só espalhou o cheiro.",
+          "Limpou a patinha do bichano."
+        ]
+      },
+      {
+        "text": "Sala de espera lotada e sem ar-condicionado por uma hora.",
+        "scores": [2, 0, 1, 0, 3, 1],
+        "reasons": [
+          "Cantinho seguro longe dos cachorros.",
+          "Toalha no calor? Nem pensar.",
+          "Distraiu por cinco minutos.",
+          "Não ajuda na espera.",
+          "Gato fresquinho e calmo.",
+          "Refrescou um pouco a testa."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-37",
+    "category": "criança",
+    "mission": "Leve o bebê de 8 meses ao casamento da prima.",
+    "hint": "A cerimônia é longa, a festa vai até tarde e o salão fica numa chácara.",
+    "items": ["Fraldas extras", "Muda de roupa", "Abafador de ouvido infantil", "Carrinho de bebê", "Mordedor", "Repelente infantil"],
+    "twists": [
+      {
+        "text": "O bebê sujou a única roupa antes da cerimônia.",
+        "scores": [2, 3, 0, 0, 1, 0],
+        "reasons": [
+          "Trocou a fralda vazada também.",
+          "Entrou na igreja cheiroso.",
+          "Abafador não limpa nada.",
+          "Carrinho não troca roupa.",
+          "Distraiu durante a troca.",
+          "Repelente não é sabão."
+        ]
+      },
+      {
+        "text": "A banda tocou alto bem na hora do soninho.",
+        "scores": [0, 0, 3, 3, 1, 0],
+        "reasons": [
+          "Fralda não abafa som.",
+          "Roupa limpa não faz dormir.",
+          "Dormiu tranquilo no meio do forró.",
+          "Virou bercinho no cantinho.",
+          "Mordeu um pouco e chorou.",
+          "Não ajuda no barulho."
+        ]
+      },
+      {
+        "text": "A festa foi ao ar livre e os mosquitos vieram junto.",
+        "scores": [0, 2, 0, 1, 0, 3],
+        "reasons": [
+          "Não ajuda com mosquito.",
+          "Calça e manga comprida pra noite.",
+          "Mosquito nem liga pra isso.",
+          "Cobriu com a capota, mas não deu.",
+          "Mordedor não espanta nada.",
+          "Nem uma picadinha."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-38",
+    "category": "tecnologia",
+    "mission": "Faça a videochamada de Natal com os parentes de Portugal.",
+    "hint": "O wi-fi da casa da vó é fraco, o celular é velho e a família inteira quer aparecer.",
+    "items": ["Repetidor de wi-fi", "Chip com internet 4G", "Carregador", "Tripé de celular", "Caixa de som bluetooth", "Fone de ouvido"],
+    "twists": [
+      {
+        "text": "O wi-fi não chega na sala onde está a família.",
+        "scores": [3, 2, 0, 0, 0, 1],
+        "reasons": [
+          "Sinal cheio no sofá.",
+          "Os dados móveis seguraram a chamada.",
+          "Carga não puxa sinal.",
+          "Tripé não melhora internet.",
+          "Som bom, imagem travada.",
+          "Ajudou pouco."
+        ]
+      },
+      {
+        "text": "Ninguém consegue ouvir os parentes de Portugal.",
+        "scores": [0, 0, 0, 1, 3, 2],
+        "reasons": [
+          "Sinal não é volume.",
+          "Internet não aumenta som.",
+          "Carga não é volume.",
+          "Celular parado, mas mudo.",
+          "A sala toda ouviu o sotaque.",
+          "A vó ouviu e repetiu em voz alta."
+        ]
+      },
+      {
+        "text": "A bateria do celular está em 5% e a chamada vai durar horas.",
+        "scores": [0, 0, 3, 2, 1, 0],
+        "reasons": [
+          "Não carrega bateria.",
+          "Gasta ainda mais bateria.",
+          "Ligado na tomada a noite toda.",
+          "Ficou parado perto da tomada.",
+          "Pelo menos a caixa tinha bateria.",
+          "Não resolve a bateria."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-39",
+    "category": "imprevistos absurdos",
+    "mission": "Capture o bode que fugiu e invadiu a quermesse.",
+    "hint": "O bode é teimoso e rápido, a quermesse está lotada e o terreno é cheio de barracas.",
+    "items": ["Corda", "Balde de milho", "Lençol", "Bicicleta", "Apito", "Megafone"],
+    "twists": [
+      {
+        "text": "O bode subiu no telhado da barraca de pastel.",
+        "scores": [3, 3, 1, 0, 0, 1],
+        "reasons": [
+          "Laçou e desceu com calma.",
+          "Desceu sozinho atrás do milho.",
+          "Esticaram para amortecer o pulo.",
+          "Bicicleta não sobe telhado.",
+          "Ele nem ligou pro apito.",
+          "Assustou mais o pasteleiro."
+        ]
+      },
+      {
+        "text": "Ele disparou pela estrada de terra rumo à vila.",
+        "scores": [1, 1, 0, 3, 1, 2],
+        "reasons": [
+          "Sem alcançar, não adianta.",
+          "Ele foi mais rápido que o milho.",
+          "Lençol não corre.",
+          "Pedalou até alcançar o fujão.",
+          "Apitou e ele correu mais.",
+          "Avisou a vila inteira."
+        ]
+      },
+      {
+        "text": "O bode se escondeu no meio de 200 pessoas dançando quadrilha.",
+        "scores": [0, 1, 1, 0, 2, 3],
+        "reasons": [
+          "Corda no meio da dança? Confusão.",
+          "Comeu, mas não apareceu.",
+          "Ninguém entendeu o lençol.",
+          "Bicicleta no salão? Não dá.",
+          "Parou a dança no susto.",
+          "Anarriê! Todo mundo abriu a roda."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-40",
+    "category": "festa",
+    "mission": "Faça a festa de réveillon na laje.",
+    "hint": "A laje não tem cobertura, o verão é imprevisível e os fogos do vizinho são exagerados.",
+    "items": ["Tenda dobrável", "Extensão elétrica", "Isopor gigante", "Abafador de ouvido para o cachorro", "Balde de areia", "Cadeiras de praia"],
+    "twists": [
+      {
+        "text": "Pancada de chuva às 23h30.",
+        "scores": [3, 1, 2, 0, 0, 1],
+        "reasons": [
+          "A virada foi debaixo da tenda.",
+          "Acendeu a luz embaixo da tenda.",
+          "Bebida sequinha e gelada.",
+          "Não ajuda na chuva.",
+          "Areia molhada é só lama.",
+          "Sentou molhado, mas sentou."
+        ]
+      },
+      {
+        "text": "Seu cachorro entrou em pânico com os fogos.",
+        "scores": [2, 0, 0, 3, 0, 1],
+        "reasons": [
+          "Virou uma toquinha escura e calma.",
+          "Não ajuda o bicho.",
+          "Ele não quis entrar no isopor.",
+          "Dormiu durante a queima de fogos.",
+          "Balde não acalma ninguém.",
+          "Ficou no colo na cadeira."
+        ]
+      },
+      {
+        "text": "Um rojão caiu aceso no meio da laje.",
+        "scores": [0, 0, 2, 1, 3, 0],
+        "reasons": [
+          "Melhor nem chegar perto.",
+          "Fio no chão só piora.",
+          "A água do gelo ajudou.",
+          "Pelo menos ninguém ficou surdo.",
+          "Areia em cima e acabou o perigo.",
+          "Cadeira não apaga fogo."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-41",
+    "category": "viagem",
+    "mission": "Leve a família de excursão a Aparecida no ônibus da paróquia.",
+    "hint": "O ônibus sai às 4h, o santuário lota e o tempo no Vale muda rápido.",
+    "items": ["Travesseiro de pescoço", "Garrafa térmica de café", "Banquinho dobrável", "Capa de chuva", "Marmita", "Terço"],
+    "twists": [
+      {
+        "text": "Fila de três horas para ver a imagem.",
+        "scores": [0, 1, 3, 0, 3, 1],
+        "reasons": [
+          "Não dá pra dormir na fila.",
+          "Esquentou a espera.",
+          "Esperou sentado como um rei.",
+          "Não chove dentro da basílica.",
+          "Almoçou na fila mesmo.",
+          "Rezou umas dez vezes."
+        ]
+      },
+      {
+        "text": "O motorista se perdeu e a viagem dobrou de tempo.",
+        "scores": [3, 3, 0, 0, 2, 1],
+        "reasons": [
+          "Dormiu a viagem inteira.",
+          "Café pra família e pro motorista.",
+          "Não há espaço no corredor.",
+          "Não chove dentro do ônibus.",
+          "Lanche antes da hora.",
+          "Rezou pra achar o caminho."
+        ]
+      },
+      {
+        "text": "Pancada de chuva bem na hora da missa campal.",
+        "scores": [0, 2, 1, 3, 0, 1],
+        "reasons": [
+          "Travesseiro molhado, cochilo cancelado.",
+          "Café quentinho depois do susto.",
+          "Pelo menos não sentou na lama.",
+          "Missa assistida sequinha.",
+          "Marmita encharcada, almoço triste.",
+          "Rezou pra chuva passar."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-42",
+    "category": "trabalho",
+    "mission": "Faça seu primeiro dia de entregas de moto por aplicativo.",
+    "hint": "Você não conhece o bairro, a bateria do celular é fraca e o tempo está instável.",
+    "items": ["Capa de chuva de moto", "Suporte de celular", "Bateria portátil", "Bag térmica", "Câmara de ar reserva", "Mapa impresso do bairro"],
+    "twists": [
+      {
+        "text": "Chuva forte durante todos os pedidos.",
+        "scores": [3, 0, 0, 2, 0, 0],
+        "reasons": [
+          "Entregou seco e dentro do prazo.",
+          "Celular molhado no guidão.",
+          "Não ajuda na chuva.",
+          "Comida chegou sequinha.",
+          "Câmara não segura chuva.",
+          "Mapa virou papel molhado."
+        ]
+      },
+      {
+        "text": "O celular está morrendo no meio do turno.",
+        "scores": [0, 1, 3, 0, 0, 2],
+        "reasons": [
+          "Capa não carrega nada.",
+          "Ajudou a ver, mas apagou.",
+          "Celular voltou à vida.",
+          "Bag não liga celular.",
+          "Não resolve a bateria.",
+          "Achou os endereços no papel."
+        ]
+      },
+      {
+        "text": "O pneu furou longe de qualquer borracharia.",
+        "scores": [0, 0, 1, 1, 3, 2],
+        "reasons": [
+          "Não conserta pneu.",
+          "Não ajuda no pneu.",
+          "Ligou pro cliente avisar.",
+          "A comida aguentou quente.",
+          "Trocou e seguiu viagem.",
+          "Achou a borracharia mais perto."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-43",
+    "category": "escola",
+    "mission": "Apresente a peça de teatro da turma no fim do ano.",
+    "hint": "O auditório é antigo e grande, os atores esquecem fala e o figurino foi feito às pressas.",
+    "items": ["Microfone de lapela", "Roteiro com as falas", "Kit de costura", "Lanterna", "Fita dupla-face", "Caixa de som"],
+    "twists": [
+      {
+        "text": "O protagonista travou e esqueceu a fala.",
+        "scores": [0, 3, 0, 2, 0, 1],
+        "reasons": [
+          "Microfone só amplificou o silêncio.",
+          "O ponto salvou a cena.",
+          "Costura não lembra fala.",
+          "Iluminou o roteiro na coxia.",
+          "Fita não ajuda a memória.",
+          "Música de fundo disfarçou a pausa."
+        ]
+      },
+      {
+        "text": "A capa do rei rasgou na primeira cena.",
+        "scores": [0, 0, 3, 1, 3, 0],
+        "reasons": [
+          "Não costura nada.",
+          "Papel não remenda pano.",
+          "Ponto rápido na coxia.",
+          "Ajudou a achar a agulha.",
+          "Colou e ninguém percebeu.",
+          "Não remenda roupa."
+        ]
+      },
+      {
+        "text": "O auditório é enorme e ninguém escuta lá do fundo.",
+        "scores": [3, 0, 0, 0, 1, 3],
+        "reasons": [
+          "A voz chegou até a última fila.",
+          "Texto certo, voz baixinha.",
+          "Não aumenta voz.",
+          "Lanterna não faz som.",
+          "Segurou o fio do microfone.",
+          "Trilha sonora para o fundão."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-44",
+    "category": "casa",
+    "mission": "Proteja a casa na noite do temporal de verão.",
+    "hint": "A rua alaga fácil, o telhado tem goteira antiga e o bairro perde energia com vento.",
+    "items": ["Sacos de areia", "Balde", "Lona", "Rodo", "Lanterna", "Tijolos para erguer os móveis"],
+    "twists": [
+      {
+        "text": "A água da rua começou a subir pela calçada.",
+        "scores": [3, 1, 1, 1, 0, 2],
+        "reasons": [
+          "A barreira segurou a enxurrada.",
+          "Tirou um pouco, mas não deu conta.",
+          "Ajudou a tapar a porta.",
+          "Empurrou água pra fora.",
+          "Lanterna não segura enchente.",
+          "Sofá no alto e salvo."
+        ]
+      },
+      {
+        "text": "Goteira bem em cima da cama.",
+        "scores": [0, 3, 3, 1, 0, 0],
+        "reasons": [
+          "Areia não pega goteira.",
+          "Pinga, pinga, mas no balde.",
+          "Cobriu a cama e o colchão.",
+          "Puxou a água do chão.",
+          "Lanterna só mostrou a goteira.",
+          "Tijolo no colchão? Melhor não."
+        ]
+      },
+      {
+        "text": "Faltou luz e a casa ficou com água no chão.",
+        "scores": [0, 1, 0, 3, 3, 1],
+        "reasons": [
+          "Não ajuda com água dentro.",
+          "Tirou algumas baldadas.",
+          "Não seca o chão.",
+          "Água pra fora em minutos.",
+          "Viu onde pisava.",
+          "Os móveis estavam salvos, pelo menos."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-45",
+    "category": "esporte",
+    "mission": "Complete o passeio ciclístico de 50 km.",
+    "hint": "O percurso tem serra, o asfalto é ruim e o dia promete muitas variações de tempo.",
+    "items": ["Câmara de ar reserva", "Bomba de mão", "Garrafa de água extra", "Corta-vento", "Rapadura", "Luvas"],
+    "twists": [
+      {
+        "text": "O pneu furou no km 30.",
+        "scores": [3, 3, 0, 0, 0, 1],
+        "reasons": [
+          "Troca rápida e seguiu.",
+          "Encheu e voltou ao pelotão.",
+          "Água não conserta pneu.",
+          "Corta-vento não remenda.",
+          "Lanchou na beira da estrada.",
+          "Mãos limpas na troca."
+        ]
+      },
+      {
+        "text": "O sol esquentou e a subida pareceu infinita.",
+        "scores": [0, 0, 3, 0, 3, 1],
+        "reasons": [
+          "Não ajuda na subida.",
+          "Bomba não empurra ninguém.",
+          "Hidratou na subida toda.",
+          "Corta-vento no sol? Sauna.",
+          "Energia de vó pra subir a serra.",
+          "Pelo menos não escorregou."
+        ]
+      },
+      {
+        "text": "Na descida da serra bateu um frio com garoa.",
+        "scores": [0, 0, 1, 3, 1, 3],
+        "reasons": [
+          "Câmara de ar não aquece ninguém.",
+          "Bomba não corta vento.",
+          "Um gole ajudou um pouco.",
+          "Peito quentinho na descida.",
+          "Pelo menos deu energia.",
+          "Mãos firmes no freio molhado."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-46",
+    "category": "evento",
+    "mission": "Assista ao desfile das escolas de samba no Sambódromo.",
+    "hint": "O desfile vai até de manhã, a arquibancada é de concreto e a noite costuma ter chuva.",
+    "items": ["Almofada", "Capa de chuva", "Lanche", "Power bank", "Agasalho", "Binóculo"],
+    "twists": [
+      {
+        "text": "Sua escola só entra às 4h da manhã.",
+        "scores": [3, 0, 3, 1, 1, 0],
+        "reasons": [
+          "Concreto não doeu nem um pouco.",
+          "Não chovia, não ajudou.",
+          "Aguentou a madrugada alimentado.",
+          "Celular vivo até a escola entrar.",
+          "Um friozinho foi embora.",
+          "Binóculo não ajuda o sono."
+        ]
+      },
+      {
+        "text": "Chuva forte durante o desfile inteiro.",
+        "scores": [0, 3, 1, 0, 2, 0],
+        "reasons": [
+          "Almofada molhada não ajuda.",
+          "Viu tudo sequinho.",
+          "Lanche encharcado.",
+          "Bateria não segura chuva.",
+          "Esquentou depois do toró.",
+          "Binóculo embaçado."
+        ]
+      },
+      {
+        "text": "Seu lugar é no setor mais alto, longe da pista.",
+        "scores": [1, 0, 0, 2, 1, 3],
+        "reasons": [
+          "Conforto lá no alto.",
+          "Capa não aproxima nada.",
+          "Lanche não melhora a vista.",
+          "Zoom do celular salvou um pouco.",
+          "Ventou lá em cima.",
+          "Viu cada pena da fantasia."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-47",
+    "category": "cozinha",
+    "mission": "Faça 200 salgadinhos para a festa da vizinha.",
+    "hint": "A cozinha é pequena e quente, o óleo costuma acabar e a vizinha muda o horário toda hora.",
+    "items": ["Panela funda extra", "Galão de óleo", "Formas de assar", "Caixas forradas com papel-toalha", "Ventilador", "Filme plástico"],
+    "twists": [
+      {
+        "text": "O óleo acabou com metade da massa pronta.",
+        "scores": [0, 3, 3, 0, 0, 1],
+        "reasons": [
+          "Panela sem óleo não frita.",
+          "Fritou até o último.",
+          "Salgado assado também é sucesso.",
+          "Caixa não frita nada.",
+          "Ventilador não é óleo.",
+          "Guardou a massa enquanto pensava."
+        ]
+      },
+      {
+        "text": "A vizinha adiantou a festa em duas horas.",
+        "scores": [3, 1, 1, 2, 0, 0],
+        "reasons": [
+          "Duas bocas fritando ao mesmo tempo.",
+          "Óleo não acelera nada.",
+          "Ajudou um pouquinho.",
+          "Já saiu embalado e pronto.",
+          "Ventilador não apressa.",
+          "Filme não acelera nada."
+        ]
+      },
+      {
+        "text": "A cozinha virou uma sauna e a massa ficou mole.",
+        "scores": [0, 0, 1, 1, 3, 2],
+        "reasons": [
+          "Mais fogo, mais calor.",
+          "Óleo quente piorou a sauna.",
+          "Forma não firma massa.",
+          "Caixa não refresca cozinha.",
+          "Massa firme e cozinheiro vivo.",
+          "Massa coberta firmou na geladeira."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-48",
+    "category": "mudança",
+    "mission": "Leve o aquário de 100 litros para a casa nova.",
+    "hint": "O aquário é pesado, os peixes são sensíveis e a casa nova é longe e fria.",
+    "items": ["Sacos de peixe com água", "Bomba de ar a pilha", "Cobertor", "Carrinho de carga", "Balde com tampa", "Termômetro"],
+    "twists": [
+      {
+        "text": "O trânsito transformou 30 minutos em três horas.",
+        "scores": [1, 3, 0, 0, 2, 1],
+        "reasons": [
+          "Água pouca para tanto tempo.",
+          "Oxigênio pro cardume a viagem toda.",
+          "Não ajuda os peixes.",
+          "Carrinho não diminui trânsito.",
+          "Muita água e pouca agitação.",
+          "Mediu, mas não resolveu."
+        ]
+      },
+      {
+        "text": "O vidro do aquário trincou ao subir a escada.",
+        "scores": [3, 0, 1, 0, 3, 0],
+        "reasons": [
+          "Peixes salvos no saquinho.",
+          "Ar sem água não adianta.",
+          "Segurou os cacos.",
+          "Carrinho na escada? Nem pensar.",
+          "Água e peixes a salvo.",
+          "Termômetro não cola vidro."
+        ]
+      },
+      {
+        "text": "O dia está gelado e a água esfriou demais.",
+        "scores": [0, 0, 3, 1, 1, 3],
+        "reasons": [
+          "Saco fino esfriou rápido.",
+          "Ar não esquenta água.",
+          "Embrulhou tudo e manteve o calor.",
+          "Não esquenta nada.",
+          "Tampa segurou um pouco.",
+          "Viu o problema a tempo."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-49",
+    "category": "natureza",
+    "mission": "Leve a turma para ver o nascer do sol no alto do morro.",
+    "hint": "A subida é no escuro e cheia de pedras, o topo venta e às vezes o tempo fecha.",
+    "items": ["Lanterna de cabeça", "Corta-vento", "Garrafa de café", "Bastão de caminhada", "Baralho", "Canga"],
+    "twists": [
+      {
+        "text": "A trilha estava escorregadia e escura.",
+        "scores": [3, 0, 0, 3, 0, 1],
+        "reasons": [
+          "Mãos livres e pedras à vista.",
+          "Não ajuda a enxergar.",
+          "Café não ilumina.",
+          "Apoio firme a cada passo.",
+          "Baralho não ilumina trilha.",
+          "Secou as mãos sujas de lama."
+        ]
+      },
+      {
+        "text": "Ventania gelada lá no topo.",
+        "scores": [0, 3, 3, 0, 0, 2],
+        "reasons": [
+          "Não esquenta.",
+          "Vento barrado na hora.",
+          "Café quentinho salvou.",
+          "Bastão não segura vento.",
+          "As cartas voaram.",
+          "Embrulhou um amigo."
+        ]
+      },
+      {
+        "text": "Neblina total: o sol só apareceu duas horas depois.",
+        "scores": [0, 1, 2, 0, 3, 1],
+        "reasons": [
+          "Não ajuda na espera.",
+          "Esperou protegido.",
+          "Café na espera.",
+          "Bastão não distrai ninguém.",
+          "Campeonato de truco na neblina.",
+          "Sentaram no chão sem sujar."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-50",
+    "category": "viagem",
+    "mission": "Atravesse de balsa com o carro para passar o feriado na ilha.",
+    "hint": "A fila de feriado é famosa, o mar anda agitado e o pátio de espera é só asfalto.",
+    "items": ["Remédio de enjoo", "Cooler com lanche", "Guarda-sol", "Livro", "Saquinho plástico", "Boné"],
+    "twists": [
+      {
+        "text": "Fila de cinco horas para embarcar.",
+        "scores": [0, 3, 1, 3, 0, 1],
+        "reasons": [
+          "Na fila ninguém enjoa.",
+          "Piquenique no carro.",
+          "Um pouco de sombra.",
+          "Terminou o livro inteiro.",
+          "Saquinho não distrai.",
+          "Ajudou um pouco."
+        ]
+      },
+      {
+        "text": "Mar agitado durante a travessia.",
+        "scores": [3, 0, 0, 0, 2, 1],
+        "reasons": [
+          "Atravessou rindo das ondas.",
+          "Comer agora? Péssima ideia.",
+          "Guarda-sol voou do deque.",
+          "Ler balançando piora.",
+          "Preveniu o pior.",
+          "Segurou o boné e só."
+        ]
+      },
+      {
+        "text": "Sol forte na fila sem uma sombra.",
+        "scores": [0, 2, 3, 0, 0, 3],
+        "reasons": [
+          "Não protege do sol.",
+          "Bebida gelada aliviou.",
+          "Sombra no asfalto.",
+          "Livro não faz sombra.",
+          "Saquinho não faz sombra.",
+          "Cabeça protegida."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-51",
+    "category": "pets",
+    "mission": "Cuide do papagaio do vizinho durante o feriado.",
+    "hint": "O Louro é barulhento, o apartamento tem janela sem tela e o síndico é bravo.",
+    "items": ["Lençol para cobrir a gaiola", "Sementes de girassol", "Rede de proteção", "Rádio", "Luvas grossas", "Bolo para os vizinhos"],
+    "twists": [
+      {
+        "text": "Ele gritou às 5h da manhã e o síndico reclamou.",
+        "scores": [3, 1, 0, 1, 0, 2],
+        "reasons": [
+          "Gaiola coberta e silêncio.",
+          "Calou por um minuto.",
+          "Rede não abafa grito.",
+          "Ele cantou junto com o rádio.",
+          "Luva não tapa bico de papagaio.",
+          "Síndico de boca cheia não reclama."
+        ]
+      },
+      {
+        "text": "A porta da gaiola abriu e ele voou pela sala.",
+        "scores": [2, 3, 3, 0, 2, 0],
+        "reasons": [
+          "Jogou por cima e pegou.",
+          "Voltou atrás da semente.",
+          "Janela protegida, Louro salvo.",
+          "Rádio não pega papagaio.",
+          "Segurou sem bicada.",
+          "Bolo não atrai papagaio."
+        ]
+      },
+      {
+        "text": "Ele ficou tristinho e parou de comer.",
+        "scores": [0, 2, 0, 3, 0, 1],
+        "reasons": [
+          "Escuro deixou mais triste.",
+          "Comeu umas sementes.",
+          "Rede não alegra ninguém.",
+          "Tocou pagode e ele voltou a cantar.",
+          "Luva não anima.",
+          "Ele bicou um pedacinho."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-52",
+    "category": "criança",
+    "mission": "Leve as crianças ao parque de diversões da cidade.",
+    "hint": "O parque lota no sábado, as filas são longas e os brinquedos rodam demais.",
+    "items": ["Pulseiras com telefone", "Lanche de casa", "Lenço umedecido", "Remédio de enjoo", "Jogo de cartas infantil", "Balão de gás"],
+    "twists": [
+      {
+        "text": "O caçula sumiu perto da roda-gigante.",
+        "scores": [3, 0, 0, 0, 0, 2],
+        "reasons": [
+          "O segurança ligou em cinco minutos.",
+          "Lanche não acha criança.",
+          "Lenço não chama ninguém.",
+          "Remédio não encontra criança.",
+          "Jogar cartas agora? Não.",
+          "Viu o balão de longe."
+        ]
+      },
+      {
+        "text": "O mais velho passou mal depois da montanha-russa.",
+        "scores": [0, 0, 3, 3, 0, 0],
+        "reasons": [
+          "Pulseira não segura enjoo.",
+          "Comer agora? Péssima ideia.",
+          "Limpou tudo rapidinho.",
+          "Estômago de volta ao lugar.",
+          "Ninguém quis jogar.",
+          "Balão não acalma estômago."
+        ]
+      },
+      {
+        "text": "Fila de uma hora e meia para o carrinho bate-bate.",
+        "scores": [0, 3, 1, 0, 3, 1],
+        "reasons": [
+          "Não ajuda na fila.",
+          "Ninguém chorou de fome.",
+          "Limpou as mãos do lanche.",
+          "Não ajuda na espera.",
+          "Jogaram até chegar a vez.",
+          "Brincaram com o balão."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-53",
+    "category": "tecnologia",
+    "mission": "Transmita ao vivo o casamento na roça para os parentes de longe.",
+    "hint": "A fazenda fica longe da cidade, a cerimônia é ao ar livre e o vento sopra forte por lá.",
+    "items": ["Roteador 4G com antena", "Bateria portátil grande", "Tripé", "Microfone de lapela", "Capa plástica para celular", "Guarda-chuva grande"],
+    "twists": [
+      {
+        "text": "O sinal de celular só aparece em cima do morro.",
+        "scores": [3, 2, 1, 0, 0, 0],
+        "reasons": [
+          "A antena puxou o sinal.",
+          "Lá no morro não tem tomada.",
+          "Câmera parada no alto.",
+          "Microfone não puxa sinal.",
+          "Capa não puxa sinal.",
+          "Guarda-chuva não puxa sinal."
+        ]
+      },
+      {
+        "text": "O padre fala baixinho e o vento atrapalha o som.",
+        "scores": [0, 0, 2, 3, 0, 0],
+        "reasons": [
+          "Sinal bom, mas mudo.",
+          "Não ajuda no som.",
+          "Celular pertinho do altar.",
+          "Ouviram até o sim da noiva.",
+          "Não ajuda no som.",
+          "Guarda-chuva não abafa vento."
+        ]
+      },
+      {
+        "text": "Garoa fina durante toda a cerimônia.",
+        "scores": [0, 1, 1, 1, 3, 3],
+        "reasons": [
+          "Não protege.",
+          "Bateria seca, mas celular molhado.",
+          "Tripé firme na lama.",
+          "Microfone molhado chiou.",
+          "Celular protegido.",
+          "Equipamento debaixo do guarda-chuva."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-54",
+    "category": "imprevistos absurdos",
+    "mission": "Devolva ao aquário da cidade o pinguim que apareceu na sua praia.",
+    "hint": "O pinguim é escorregadio e bicudo, o aquário fica a 50 km e o dia está quente.",
+    "items": ["Caixa térmica", "Saco de gelo", "Balde de sardinha", "Toalha molhada", "Rede de pesca", "Luvas de couro"],
+    "twists": [
+      {
+        "text": "O calor no carro passou dos 35 graus.",
+        "scores": [3, 3, 0, 2, 0, 0],
+        "reasons": [
+          "Pinguim na caixa, clima de Antártida.",
+          "Gelo pro passageiro especial.",
+          "Sardinha não refresca.",
+          "Refrescou um pouco.",
+          "Rede não resfria.",
+          "Luva só esquenta."
+        ]
+      },
+      {
+        "text": "Ele escapou e saiu correndo pela areia.",
+        "scores": [0, 0, 3, 1, 3, 1],
+        "reasons": [
+          "Caixa não corre.",
+          "Gelo não corre.",
+          "Voltou atrás da sardinha.",
+          "Tentou jogar por cima.",
+          "Pescou o fujão.",
+          "Ajudou a segurar."
+        ]
+      },
+      {
+        "text": "Ele começou a bicar todo mundo no carro.",
+        "scores": [1, 0, 3, 2, 0, 3],
+        "reasons": [
+          "Fechou a caixa, mas ele bicou antes.",
+          "Gelo não acalma.",
+          "Ele parou para comer.",
+          "Toalha na cabeça acalmou.",
+          "Rede no carro? Bagunça.",
+          "Bicadas sem dor."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-55",
+    "category": "festa",
+    "mission": "Faça o chá de bebê da sua irmã no salão do prédio.",
+    "hint": "O salão é pequeno e abafado, ninguém confirmou presença e a homenageada sempre atrasa.",
+    "items": ["Ventiladores", "Comida congelada extra", "Cadeiras emprestadas", "Brincadeiras impressas", "Sacos de gelo", "Caixa de som"],
+    "twists": [
+      {
+        "text": "Apareceu o dobro de convidados.",
+        "scores": [0, 3, 3, 1, 1, 0],
+        "reasons": [
+          "Não alimenta ninguém.",
+          "Comida pra todo mundo.",
+          "Ninguém ficou em pé.",
+          "Distraiu um pouco.",
+          "Bebida gelada pra mais gente.",
+          "Música não alimenta."
+        ]
+      },
+      {
+        "text": "A homenageada atrasou duas horas.",
+        "scores": [0, 1, 0, 3, 0, 3],
+        "reasons": [
+          "Vento não traz a irmã.",
+          "Petiscou enquanto esperava.",
+          "Sentados, mas entediados.",
+          "Gincana para os convidados.",
+          "Gelo derretendo na espera.",
+          "Playlist animou a espera."
+        ]
+      },
+      {
+        "text": "Calor de 38 graus no salão sem janela.",
+        "scores": [3, 0, 0, 0, 3, 1],
+        "reasons": [
+          "Vento no salão inteiro.",
+          "Comida quente no calor? Não.",
+          "Não refresca.",
+          "Não refresca.",
+          "Bebida gelada salvou.",
+          "Animou, mas ninguém dançou."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-56",
+    "category": "viagem",
+    "mission": "Faça um mochilão pela Chapada Diamantina.",
+    "hint": "As vilas são pequenas e isoladas, as trilhas são longas e a água potável é escassa no caminho.",
+    "items": ["Dinheiro em espécie", "Bota de trilha", "Lanterna", "Capa de chuva", "Pastilha para purificar água", "Mapa impresso"],
+    "twists": [
+      {
+        "text": "A vila não tem caixa eletrônico e a maquininha não pega.",
+        "scores": [3, 0, 0, 0, 0, 2],
+        "reasons": [
+          "Pagou a pousada em dinheiro.",
+          "Bota não paga conta.",
+          "Lanterna não paga nada.",
+          "Capa não paga nada.",
+          "Pastilha não é moeda.",
+          "Achou a vila vizinha com banco."
+        ]
+      },
+      {
+        "text": "Você se perdeu na trilha e a noite caiu.",
+        "scores": [0, 1, 3, 1, 1, 3],
+        "reasons": [
+          "Dinheiro não ilumina.",
+          "Pé firme no escuro.",
+          "Achou a trilha de volta.",
+          "Esquentou um pouco.",
+          "Água garantida na espera.",
+          "Achou o caminho certo."
+        ]
+      },
+      {
+        "text": "A água acabou no meio da trilha mais longa.",
+        "scores": [0, 2, 0, 0, 3, 1],
+        "reasons": [
+          "Nota de dez não mata a sede.",
+          "Desceu firme até o riacho.",
+          "Lanterna de dia, sem água.",
+          "Capa não guarda água.",
+          "Água do rio virou água potável.",
+          "Mostrou onde fica o riacho."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-57",
+    "category": "trabalho",
+    "mission": "Monte o estande da sua empresa numa feira de negócios.",
+    "hint": "O pavilhão é enorme, o estande é minúsculo e a montagem foi às pressas.",
+    "items": ["Extensão elétrica", "Cartões de visita", "Banner enrolado", "Chave de fenda", "Balas de brinde", "Fita crepe"],
+    "twists": [
+      {
+        "text": "O banner caiu e a estrutura está bamba.",
+        "scores": [0, 0, 1, 3, 0, 3],
+        "reasons": [
+          "Extensão não segura parede.",
+          "Cartão não é calço.",
+          "Banner reserva no chão.",
+          "Apertou parafuso por parafuso.",
+          "Bala não segura estrutura.",
+          "Colou tudo no lugar."
+        ]
+      },
+      {
+        "text": "Ninguém para no seu estande.",
+        "scores": [0, 1, 2, 0, 3, 0],
+        "reasons": [
+          "Extensão não chama cliente.",
+          "Entregou poucos.",
+          "Logo bem visível no corredor.",
+          "Chave de fenda não puxa papo.",
+          "Fila de gente atrás da bala.",
+          "Fita crepe não atrai ninguém."
+        ]
+      },
+      {
+        "text": "As tomadas do estande não funcionam e a TV está apagada.",
+        "scores": [3, 2, 1, 1, 0, 0],
+        "reasons": [
+          "Puxou energia do vizinho.",
+          "Contato à moda antiga.",
+          "Pelo menos o logo apareceu.",
+          "Abriu o painel elétrico.",
+          "Bala não liga TV.",
+          "Fita não conserta tomada."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-58",
+    "category": "escola",
+    "mission": "Ajude sua turma a vencer a gincana da escola.",
+    "hint": "As provas são surpresa, o pátio é de cimento e o sol bate o dia todo.",
+    "items": ["Corda", "Luvas de jardinagem", "Garrafa de água", "Boné", "Cartolina", "Canetões"],
+    "twists": [
+      {
+        "text": "Prova do cabo de guerra contra o time dos professores.",
+        "scores": [3, 3, 1, 0, 0, 0],
+        "reasons": [
+          "Corda própria e treinada.",
+          "Puxou sem queimar a mão.",
+          "Pausa pra água.",
+          "Boné não puxa nada.",
+          "Cartolina não ganha cabo de guerra.",
+          "Canetão não dá força."
+        ]
+      },
+      {
+        "text": "Fazer um cartaz com o grito de guerra em dez minutos.",
+        "scores": [0, 0, 0, 0, 3, 3],
+        "reasons": [
+          "Corda não escreve.",
+          "Luvas atrapalharam a letra.",
+          "Água perto do cartaz? Perigo.",
+          "Boné não desenha.",
+          "Papel pronto pro cartaz.",
+          "Letras gigantes e coloridas."
+        ]
+      },
+      {
+        "text": "A gincana inteira será ao meio-dia sob sol forte.",
+        "scores": [0, 1, 3, 3, 1, 0],
+        "reasons": [
+          "Corda no sol queimou a mão.",
+          "Mãos protegidas no cimento quente.",
+          "Hidratação no sol.",
+          "Cabeça protegida.",
+          "Virou leque.",
+          "Canetão secou no calor."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-59",
+    "category": "casa",
+    "mission": "Receba a família inteira para o Natal na sua casa.",
+    "hint": "São 15 pessoas, a casa tem um só banheiro e o bairro perde energia em dia de calor.",
+    "items": ["Colchonetes", "Papel higiênico extra", "Lanterna", "Pratos descartáveis", "Ventilador", "Quadro com escala de tarefas"],
+    "twists": [
+      {
+        "text": "Dez parentes resolveram dormir aí.",
+        "scores": [3, 2, 0, 0, 1, 1],
+        "reasons": [
+          "Cama pra todo mundo.",
+          "Fila no banheiro abastecida.",
+          "Lanterna não é cama.",
+          "Prato não é travesseiro.",
+          "Refrescou a sala.",
+          "Organizou o banho."
+        ]
+      },
+      {
+        "text": "A pia entupiu com a louça da ceia.",
+        "scores": [0, 0, 0, 3, 0, 2],
+        "reasons": [
+          "Colchonete não desentope pia.",
+          "Papel na pia piorou tudo.",
+          "Lanterna só mostrou o estrago.",
+          "Sem louça pra lavar.",
+          "Vento não desentope nada.",
+          "Cada um lavou a sua parte."
+        ]
+      },
+      {
+        "text": "Faltou luz na noite de Natal.",
+        "scores": [0, 0, 3, 2, 0, 1],
+        "reasons": [
+          "Dormir cedo foi o jeito.",
+          "Papel não acende.",
+          "Ceia iluminada.",
+          "Ninguém lavou louça no escuro.",
+          "Sem luz, sem vento.",
+          "Organizou um pouco."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-60",
+    "category": "esporte",
+    "mission": "Atravesse a lagoa na prova de stand up paddle.",
+    "hint": "A lagoa venta à tarde, o sol reflete forte na água e a prova costuma atrasar.",
+    "items": ["Colete salva-vidas", "Óculos escuros", "Protetor solar", "Garrafa presa na prancha", "Cordinha de prender no pé", "Boné"],
+    "twists": [
+      {
+        "text": "A ventania virou a prancha três vezes.",
+        "scores": [3, 0, 0, 0, 3, 1],
+        "reasons": [
+          "Flutuou tranquilo.",
+          "Os óculos afundaram na lagoa.",
+          "Protetor não segura prancha.",
+          "A garrafa afundou.",
+          "A prancha não fugiu.",
+          "Pelo menos o boné ficou."
+        ]
+      },
+      {
+        "text": "O reflexo do sol na água cegava todo mundo.",
+        "scores": [0, 3, 1, 0, 0, 3],
+        "reasons": [
+          "Colete não protege os olhos.",
+          "Viu a boia de chegada.",
+          "Pele protegida, olho não.",
+          "Garrafa não faz sombra.",
+          "Cordinha não tapa o sol.",
+          "Aba contra o sol."
+        ]
+      },
+      {
+        "text": "A prova atrasou e você remou no pico do calor.",
+        "scores": [0, 1, 3, 3, 0, 2],
+        "reasons": [
+          "Colete no calor? Sauna.",
+          "Ajudou um pouco.",
+          "Ninguém virou camarão.",
+          "Água sem parar de remar.",
+          "Cordinha não refresca.",
+          "Cabeça fresca."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-61",
+    "category": "evento",
+    "mission": "Leve a família ao clássico do seu time no estádio.",
+    "hint": "O clássico vai lotar, o estádio é antigo e a noite promete chuva.",
+    "items": ["Ingresso impresso", "Capa de chuva", "Radinho de pilha", "Dinheiro trocado", "Binóculo", "Almofada"],
+    "twists": [
+      {
+        "text": "O telão quebrou e ninguém sabe o que o juiz marcou.",
+        "scores": [0, 0, 3, 1, 2, 0],
+        "reasons": [
+          "Ingresso não explica pênalti.",
+          "Capa não narra jogo.",
+          "O narrador contou tudo.",
+          "Dinheiro não tira dúvida.",
+          "Viu o juiz apontar a marca.",
+          "Sentou confortável e confuso."
+        ]
+      },
+      {
+        "text": "Chuva forte o segundo tempo inteiro.",
+        "scores": [0, 3, 1, 0, 0, 2],
+        "reasons": [
+          "Ingresso virou papa.",
+          "Seco até o apito final.",
+          "Ouviu o jogo molhado.",
+          "Nota molhada no bolso.",
+          "Lente molhada.",
+          "Não sentou na poça."
+        ]
+      },
+      {
+        "text": "A internet do estádio caiu: nada de aplicativo nem de cartão.",
+        "scores": [3, 0, 1, 3, 0, 0],
+        "reasons": [
+          "Entrou sem precisar de app.",
+          "Capa não paga nada.",
+          "Pelo menos ouviu o jogo.",
+          "Comprou o pão com linguiça.",
+          "Binóculo não passa cartão.",
+          "Almofada não é dinheiro."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-62",
+    "category": "cozinha",
+    "mission": "Faça o bolo de casamento da sua melhor amiga.",
+    "hint": "O bolo tem três andares, a festa é numa chácara e o forno da sua casa é imprevisível.",
+    "items": ["Termômetro de forno", "Forma reserva", "Caixa térmica grande", "Espátula", "Tapete antiderrapante", "Pote de chantili extra"],
+    "twists": [
+      {
+        "text": "O forno esquentou demais e queimou uma camada.",
+        "scores": [2, 3, 0, 1, 0, 1],
+        "reasons": [
+          "Acertou a temperatura da próxima.",
+          "Assou outra camada na hora.",
+          "Caixa não desqueima bolo.",
+          "Raspou o queimadinho.",
+          "Tapete não ajuda no forno.",
+          "Disfarçou um pouco."
+        ]
+      },
+      {
+        "text": "A estrada até a chácara é de terra e cheia de buracos.",
+        "scores": [0, 0, 2, 0, 3, 1],
+        "reasons": [
+          "Termômetro não segura bolo.",
+          "Forma vazia sacudindo.",
+          "Bolo protegido no caminho.",
+          "Espátula não faz milagre na estrada.",
+          "Nada escorregou.",
+          "Retocou uma lasquinha."
+        ]
+      },
+      {
+        "text": "O bolo chegou com a cobertura toda rachada.",
+        "scores": [0, 0, 1, 3, 0, 3],
+        "reasons": [
+          "Tarde demais pra medir.",
+          "Forma vazia não ajuda.",
+          "Pelo menos não derreteu.",
+          "Alisou tudo de novo.",
+          "Tapete não cobre racha.",
+          "Cobertura nova por cima."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-63",
+    "category": "cidade",
+    "mission": "Faça as compras do mês na feira livre e no mercado.",
+    "hint": "Você está sem carro, sua rua fica no alto da ladeira e o tempo está fechado.",
+    "items": ["Carrinho de feira", "Sacolas retornáveis", "Dinheiro trocado", "Lista de compras", "Guarda-chuva", "Garrafa de água"],
+    "twists": [
+      {
+        "text": "A ladeira até em casa é enorme e as compras pesam 20 kg.",
+        "scores": [3, 2, 0, 0, 0, 1],
+        "reasons": [
+          "Subiu puxando sem dor.",
+          "Sacolas fortes e bem distribuídas.",
+          "Dinheiro não carrega peso.",
+          "Lista não sobe ladeira.",
+          "Guarda-chuva não carrega sacola.",
+          "Hidratou na subida."
+        ]
+      },
+      {
+        "text": "Na feira só aceitam dinheiro e o Pix não está entrando.",
+        "scores": [0, 0, 3, 2, 0, 0],
+        "reasons": [
+          "Carrinho não paga a conta.",
+          "Sacola vazia não compra nada.",
+          "Pagou e ainda pechinchou.",
+          "Comprou só o essencial.",
+          "Feirante não aceita guarda-chuva.",
+          "Água não é moeda."
+        ]
+      },
+      {
+        "text": "Chuva repentina na volta pra casa.",
+        "scores": [1, 2, 0, 0, 3, 0],
+        "reasons": [
+          "Puxou rápido, mas molhou.",
+          "Compras fechadas e secas.",
+          "Dinheiro não para chuva.",
+          "A lista virou papel molhado.",
+          "Seco até a porta.",
+          "Mais água era o que faltava."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pb-64",
+    "category": "imprevistos absurdos",
+    "mission": "Leve a noiva de charrete até a igreja do vilarejo.",
+    "hint": "O cavalo é emprestado e teimoso, a estrada é de terra e o vestido tem cauda de cinco metros.",
+    "items": ["Cenouras", "Prendedores de roupa", "Guarda-chuva branco", "Corda", "Tênis para a noiva", "Lenço umedecido"],
+    "twists": [
+      {
+        "text": "O cavalo empacou no meio da ponte.",
+        "scores": [3, 0, 0, 2, 1, 0],
+        "reasons": [
+          "Uma cenoura e ele seguiu.",
+          "Prendedor não convence cavalo.",
+          "Abrir guarda-chuva assustou mais.",
+          "Puxou o cavalo com jeito.",
+          "Ela atravessou a pé.",
+          "Lenço não empurra cavalo."
+        ]
+      },
+      {
+        "text": "Choveu e a estrada virou um lamaçal.",
+        "scores": [0, 2, 3, 0, 3, 1],
+        "reasons": [
+          "Cavalo feliz, noiva enlameada.",
+          "Cauda presa longe da lama.",
+          "Noiva seca até o altar.",
+          "Corda não seca nada.",
+          "Atravessou a lama sem estragar o salto.",
+          "Limpou um pouco do barro."
+        ]
+      },
+      {
+        "text": "A cauda do vestido enroscou na roda da charrete.",
+        "scores": [0, 3, 0, 1, 0, 3],
+        "reasons": [
+          "Cenoura não solta vestido.",
+          "Cauda presa e longe da roda.",
+          "Guarda-chuva não desenrosca nada.",
+          "Ajudou a soltar.",
+          "Tênis não salva a cauda.",
+          "Tirou a graxa antes das fotos."
+        ]
+      }
+    ]
   }
 ]

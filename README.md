@@ -278,6 +278,16 @@ Três jogos de sala (2 a 8 pessoas, um aparelho por pessoa, juntos ou à distân
 - **Testes:** regras no emulador em `tests/mesa.rules.test.ts` (incluído em `npm run test:rules`).
 - **Publicação:** publique o `firestore.rules` atualizado (`npx firebase deploy --only firestore:rules --project <ID>`) junto com o frontend. Sem isso, as salas dos três jogos não abrem.
 
+## Temas dos jogos no Firebase
+
+Os catálogos (Álibi, Plano B, Manual, Feira, Eu duvido!, Top 10 e Quem sou eu) continuam versionados no repositório, onde os testes garantem qualidade. Para atualizar os temas **sem publicar o site de novo**:
+
+1. Edite os arquivos em `src/data/` e rode `npm test`.
+2. Confira o envio: `npm run catalogs:publish -- --dry-run`.
+3. Publique: `npm run catalogs:publish` (precisa de credencial de administrador: `GOOGLE_APPLICATION_CREDENTIALS=caminho/da/chave.json`, gerada em Configurações do projeto → Contas de serviço, ou `gcloud auth application-default login`).
+
+Como funciona: o script grava `catalogs/{nome}-{n}` e, por último, `catalogs/meta` com uma versão (hash). Ao abrir, o site aplica a cópia salva no aparelho e lê só `catalogs/meta` (1 leitura); se a versão mudou, baixa as partes (cerca de 9 leituras) e junta pelo `id` — atualiza e acrescenta, nunca remove. Sem internet ou sem regras publicadas, o site usa o catálogo empacotado. As regras permitem leitura pública de `catalogs` e proíbem qualquer escrita pelo site.
+
 ## Referências oficiais
 
 - [Condições e operações atômicas nas Rules](https://firebase.google.com/docs/firestore/security/rules-conditions)
