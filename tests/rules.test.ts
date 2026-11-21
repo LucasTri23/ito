@@ -33,6 +33,120 @@ describe.skipIf(!enabled)("Firestore: fronteira de segurança", () => {
   afterAll(async () => {
     await env?.cleanup();
   });
+  it("Anúncios bíblicos: sala privada limita vagas e seleção de vendedores", async () => {
+    const host = env.authenticatedContext("a").firestore();
+    const outsider = env.authenticatedContext("z").firestore();
+    const batch = writeBatch(host);
+    batch.set(doc(host, "adsRooms/BCDFG"), { code: "BCDFG", hostId: "a", phase: "lobby", mode: "presencial", sellerCount: 2 });
+    batch.set(doc(host, "adsInvites/BCDFG"), { count: 1, open: true });
+    batch.set(doc(host, "adsRooms/BCDFG/players/a"), { uid: "a", name: "Ana", joinedAt: serverTimestamp() });
+    await assertSucceeds(batch.commit());
+    await assertFails(getDoc(doc(outsider, "adsRooms/BCDFG")));
+    await assertFails(getDocs(collection(outsider, "adsRooms/BCDFG/players")));
+    await assertFails(updateDoc(doc(host, "adsRooms/BCDFG"), { sellerCount: 3 }));
+    for (const [index, uid] of ["b", "c", "d", "e", "f", "g"].entries()) {
+      const db = env.authenticatedContext(uid).firestore();
+      const join = writeBatch(db);
+      join.update(doc(db, "adsInvites/BCDFG"), { count: index + 2 });
+      join.set(doc(db, `adsRooms/BCDFG/players/${uid}`), { uid, name: uid, joinedAt: serverTimestamp() });
+      await assertSucceeds(join.commit());
+    }
+    await assertSucceeds(updateDoc(doc(host, "adsRooms/BCDFG"), { sellerCount: 3 }));
+    const guest = env.authenticatedContext("b").firestore();
+    await assertFails(updateDoc(doc(guest, "adsRooms/BCDFG"), { sellerCount: 2 }));
+    const compete = async (uid: string) => {
+      const db = env.authenticatedContext(uid).firestore();
+      return runTransaction(db, async tx => {
+        const invite = doc(db, "adsInvites/BCDFG"), snapshot = await tx.get(invite);
+        tx.update(invite, { count: snapshot.data()!.count + 1 });
+        tx.set(doc(db, `adsRooms/BCDFG/players/${uid}`), { uid, name: uid, joinedAt: serverTimestamp() });
+      });
+    };
+    const result = await Promise.allSettled([compete("h"), compete("i")]);
+    expect(result.filter(entry => entry.status === "fulfilled")).toHaveLength(1);
+    const ninth = writeBatch(outsider);
+    ninth.update(doc(outsider, "adsInvites/BCDFG"), { count: 9 });
+    ninth.set(doc(outsider, "adsRooms/BCDFG/players/z"), { uid: "z", name: "Z", joinedAt: serverTimestamp() });
+    await assertFails(ninth.commit());
+  }, 30000);
+  it("Anúncios bíblicos: estilo é privado e não pode ser repetido", async () => {
+    await env.withSecurityRulesDisabled(async ctx => {
+      const db = ctx.firestore();
+      await setDoc(doc(db, "adsRooms/BCDFG"), { hostId: "a", phase: "playing", currentRoundId: "1" });
+      for (const uid of ["a", "b", "c"]) await setDoc(doc(db, `adsRooms/BCDFG/players/${uid}`), { uid });
+      await setDoc(doc(db, "adsRooms/BCDFG/rounds/1"), { phase: "preparation", authors: ["a", "b"] });
+    });
+    const a = env.authenticatedContext("a").firestore(), b = env.authenticatedContext("b").firestore(), c = env.authenticatedContext("c").firestore();
+    const path = "adsRooms/BCDFG/rounds/1";
+    const first = writeBatch(b);
+    first.set(doc(b, `${path}/styles/b`), { uid: "b", style: 0 });
+    first.set(doc(b, `${path}/styleSlots/0`), { uid: "b", style: 0 });
+    await assertSucceeds(first.commit());
+    await assertSucceeds(getDoc(doc(b, `${path}/styles/b`)));
+    await assertFails(getDoc(doc(a, `${path}/styles/b`)));
+    await assertFails(getDoc(doc(c, `${path}/styles/b`)));
+    await assertFails(getDocs(collection(a, `${path}/styles`)));
+    await assertFails(getDoc(doc(a, `${path}/styleSlots/0`)));
+    const duplicate = writeBatch(a);
+    duplicate.set(doc(a, `${path}/styles/a`), { uid: "a", style: 0 });
+    duplicate.set(doc(a, `${path}/styleSlots/0`), { uid: "a", style: 0 });
+    await assertFails(duplicate.commit());
+    const second = writeBatch(a);
+    second.set(doc(a, `${path}/styles/a`), { uid: "a", style: 1 });
+    second.set(doc(a, `${path}/styleSlots/1`), { uid: "a", style: 1 });
+    await assertSucceeds(second.commit());
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), path), { phase: "result" }));
+    expect((await assertSucceeds(getDocs(collection(c, `${path}/styles`)))).size).toBe(2);
+  }, 30000);
+  it("Anúncios bíblicos: textos e autores ficam privados e não há voto próprio", async () => {
+    const path = "adsRooms/BCDFG/rounds/1", adA = "AAAAAAAAAAAAAAAAAAAA", adB = "BBBBBBBBBBBBBBBBBBBB";
+    await env.withSecurityRulesDisabled(async ctx => {
+      const db = ctx.firestore();
+      await setDoc(doc(db, "adsRooms/BCDFG"), { hostId: "a", phase: "playing", currentRoundId: "1" });
+      for (const uid of ["a", "b", "c"]) await setDoc(doc(db, `adsRooms/BCDFG/players/${uid}`), { uid });
+      await setDoc(doc(db, path), { phase: "creation", mode: "online", authors: ["a", "b"], voters: ["a", "b", "c"], startedAt: new Date() });
+    });
+    const a = env.authenticatedContext("a").firestore(), b = env.authenticatedContext("b").firestore(), c = env.authenticatedContext("c").firestore();
+    for (const [db, uid, adId] of [[a, "a", adA], [b, "b", adB]] as const) {
+      const batch = writeBatch(db);
+      batch.set(doc(db, `${path}/authorIndex/${uid}`), { uid, adId });
+      batch.set(doc(db, `${path}/ads/${adId}`), { id: adId, title: "Um título", description: "Uma descrição" });
+      await assertSucceeds(batch.commit());
+    }
+    await assertFails(getDoc(doc(a, `${path}/ads/${adB}`)));
+    await assertFails(getDoc(doc(a, `${path}/authorIndex/b`)));
+    await assertFails(getDocs(collection(c, `${path}/ads`)));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), path), { phase: "vote", validAdIds: [adA, adB], voteStartedAt: new Date() }));
+    const anonymous = await assertSucceeds(getDocs(collection(c, `${path}/ads`)));
+    expect(anonymous.docs.every(entry => !Object.hasOwn(entry.data(), "uid"))).toBe(true);
+    await assertFails(getDocs(collection(c, `${path}/authorIndex`)));
+    await assertFails(setDoc(doc(a, `${path}/writtenVotes/a`), { uid: "a", adId: adA }));
+    await assertSucceeds(setDoc(doc(a, `${path}/writtenVotes/a`), { uid: "a", adId: adB }));
+    await assertFails(setDoc(doc(a, `${path}/writtenVotes/a`), { uid: "a", adId: adB }));
+    await assertFails(getDoc(doc(b, `${path}/writtenVotes/a`)));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), path), { phase: "result" }));
+    expect((await assertSucceeds(getDocs(collection(c, `${path}/authorIndex`)))).size).toBe(2);
+  }, 30000);
+  it("Anúncios bíblicos: plateia vota uma vez por apresentação, vendedores não votam", async () => {
+    const path = "adsRooms/BCDFG/rounds/1";
+    await env.withSecurityRulesDisabled(async ctx => {
+      const db = ctx.firestore();
+      await setDoc(doc(db, "adsRooms/BCDFG"), { hostId: "a", phase: "playing", currentRoundId: "1" });
+      for (const uid of ["a", "b", "c"]) await setDoc(doc(db, `adsRooms/BCDFG/players/${uid}`), { uid });
+      await setDoc(doc(db, path), { phase: "vote", mode: "presencial", authors: ["a", "b"], audience: ["c"], presentationIndex: 0, voteStartedAt: new Date() });
+    });
+    const a = env.authenticatedContext("a").firestore(), c = env.authenticatedContext("c").firestore();
+    await assertFails(setDoc(doc(a, `${path}/presentationVotes/0_a`), { uid: "a", presentation: 0, choice: "compro" }));
+    await assertSucceeds(setDoc(doc(c, `${path}/presentationVotes/0_c`), { uid: "c", presentation: 0, choice: "compro" }));
+    await assertFails(setDoc(doc(c, `${path}/presentationVotes/0_c`), { uid: "c", presentation: 0, choice: "nao-compro" }));
+    await assertFails(getDoc(doc(a, `${path}/presentationVotes/0_c`)));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), path), { presentationIndex: 1, voteStartedAt: new Date() }));
+    await assertSucceeds(setDoc(doc(c, `${path}/presentationVotes/1_c`), { uid: "c", presentation: 1, choice: "compro" }));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), path), { presentationIndex: 2, voteStartedAt: new Date(Date.now() - 21000) }));
+    await assertFails(setDoc(doc(c, `${path}/presentationVotes/2_c`), { uid: "c", presentation: 2, choice: "compro" }));
+    await env.withSecurityRulesDisabled(async ctx => updateDoc(doc(ctx.firestore(), path), { phase: "result" }));
+    expect((await assertSucceeds(getDocs(collection(a, `${path}/presentationVotes`)))).size).toBe(2);
+  }, 30000);
   it("cria sala presencial com modo fixo", async () => {
     const db = env.authenticatedContext("a").firestore();
     const batch = writeBatch(db);

@@ -13,7 +13,9 @@ export function Brand() {
 }
 export function Shell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
-  const help = pathname.startsWith("/alibi-furado")
+  const help = pathname.startsWith("/anuncios-biblicos")
+    ? ["Cada pessoa entra pelo próprio aparelho. Escolha anúncios escritos ou apresentações ao vivo ao criar a sala.", "Um objeto bíblico e um estilo orientam cada anúncio. A sala ainda está em desenvolvimento."]
+    : pathname.startsWith("/alibi-furado")
     ? ["Cada pessoa entra na sala pelo próprio aparelho. Escolha online ou presencial ao criar a sala.", "Dois suspeitos combinam uma história em 30 segundos. No presencial, um se afasta enquanto o outro responde em voz alta; depois trocam.", "No presencial com quatro ou mais pessoas, o investigador pode fazer uma pergunta extra aos dois. Em trio o investigador decide; com mais pessoas, o júri vota no site."]
     : pathname === "/entrelinhas" || pathname.startsWith("/room/")
       ? ["Entre na sala com a turma. No modo online, cada pessoa usa seu aparelho.", "Cada pessoa recebe um número secreto e dá uma pista para o tema.", "A turma organiza as pistas e revela os números. No modo presencial, a sala distribui cartas para usar na mesa."]
@@ -42,6 +44,10 @@ export function Shell({ children }: { children: ReactNode }) {
         </NavLink>
         <NavLink to="/entrelinhas">Entrelinhas</NavLink>
         <NavLink to="/alibi-furado">Álibi Furado</NavLink>
+        <NavLink to="/plano-b">Plano B</NavLink>
+        <NavLink to="/manual-desmontado">Manual Desmontado</NavLink>
+        <NavLink to="/feira-de-invencoes">Feira de Invenções</NavLink>
+        <NavLink to="/anuncios-biblicos">Anúncios bíblicos</NavLink>
         <NavLink to="/quem-sou-eu">Quem sou eu</NavLink>
         <NavLink to="/eu-duvido">Eu duvido</NavLink>
         <NavLink to="/top-10">Top 10</NavLink>

@@ -9,8 +9,9 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:rules": "firebase emulators:exec --only firestore --project demo-entrelinhas \"vitest run tests/rules.test.ts tests/alibi.integration.test.ts\"",
-    "validate:alibi": "node functions/validate-catalog.cjs"
+    "test:rules": "firebase emulators:exec --only firestore --project demo-entrelinhas \"vitest run tests/rules.test.ts tests/alibi.integration.test.ts tests/mesa.rules.test.ts\"",
+    "validate:alibi": "node functions/validate-catalog.cjs",
+    "validate:anuncios": "node scripts/validate-biblical-ads.cjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.0",

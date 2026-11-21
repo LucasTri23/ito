@@ -1,0 +1,511 @@
+/* Plano B, Manual Desmontado e Feira de Invenções. Usa os tokens do tema e o visual de fliperama. */
+.mesa-page {
+  --tone-main: var(--tone, var(--pink));
+  border-top-color: var(--tone-main) !important;
+}
+.mesa-badge {
+  background: var(--tone-icon, #ffb3cb);
+}
+.mesa-leave {
+  display: block;
+  margin: 22px auto 0;
+}
+.alibi-player.is-away {
+  opacity: 0.6;
+}
+.away-tag {
+  background: color-mix(in srgb, var(--muted) 25%, transparent);
+  color: var(--ink);
+}
+
+/* ---------- Plano B ---------- */
+.planb-hint {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 2px dashed color-mix(in srgb, var(--tone-main) 60%, var(--line));
+  color: var(--ink);
+  font-weight: 600;
+}
+.planb-timer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0;
+}
+.planb-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 10px 0 14px;
+}
+.planb-item {
+  position: relative;
+  min-height: 64px;
+  padding: 14px 14px 14px 46px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  transition: translate 0.15s var(--ease-out, ease), border-color 0.15s, box-shadow 0.15s;
+}
+.planb-item:hover:not(:disabled) {
+  translate: 0 -2px;
+  border-color: var(--tone-main);
+}
+.planb-item.picked {
+  border-color: var(--tone-main);
+  background: color-mix(in srgb, var(--tone-main) 18%, var(--surface));
+  box-shadow: 4px 4px 0 var(--hard, #14193a);
+  animation: symbol-pop 0.35s var(--ease-pop, ease);
+}
+.planb-item:disabled {
+  cursor: default;
+}
+.planb-item:disabled:not(.picked) {
+  opacity: 0.55;
+}
+.planb-check {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  border: 2px solid var(--line);
+  font-weight: 800;
+}
+.picked .planb-check {
+  background: var(--tone-main);
+  border-color: var(--hard, #14193a);
+  color: #14193a;
+}
+.planb-twist {
+  margin: 18px 0;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  background: linear-gradient(135deg, #ff2bd6, #ff8a00);
+  color: #fff;
+  box-shadow: 6px 6px 0 var(--hard, #14193a);
+  animation: stamp 0.55s cubic-bezier(0.2, 1.6, 0.4, 1) backwards;
+}
+.planb-twist .eyebrow {
+  color: #ffffffcc !important;
+}
+.planb-twist strong {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--marquee, "Fredoka", sans-serif);
+  font-weight: 400;
+  font-size: clamp(20px, 4.5vw, 28px);
+  line-height: 1.25;
+}
+.planb-results,
+.planb-ranking {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  display: grid;
+  gap: 10px;
+}
+.planb-results li {
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--surface-soft);
+  animation: reveal-pop 0.5s var(--ease-pop, ease) backwards;
+}
+.planb-results li:nth-child(2) { animation-delay: 0.1s; }
+.planb-results li:nth-child(3) { animation-delay: 0.2s; }
+.planb-results li:nth-child(4) { animation-delay: 0.3s; }
+.planb-results li:nth-child(n + 5) { animation-delay: 0.4s; }
+.planb-results li.is-me {
+  border-color: var(--accent);
+}
+.planb-result-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.planb-points {
+  font-family: var(--pixel, monospace);
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.planb-line {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+.planb-score {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  font-family: var(--pixel, monospace);
+  font-weight: 700;
+  color: #14193a;
+  background: #ffb3b3;
+}
+.score-1 .planb-score { background: #ffd59a; }
+.score-2 .planb-score { background: #c9f7a8; }
+.score-3 .planb-score { background: #6ff5c9; }
+.planb-board {
+  margin: 20px 0 6px;
+  text-align: center;
+}
+.planb-board h3 {
+  font-family: var(--marquee, "Fredoka", sans-serif);
+  font-weight: 400;
+}
+.planb-ranking li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--surface-soft);
+  color: var(--ink);
+  text-align: left;
+}
+.planb-ranking li b {
+  flex: 1;
+}
+
+@media (max-width: 520px) {
+  .planb-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Manual Desmontado ---------- */
+.manual-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 14px 0;
+}
+.manual-team {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 2px solid var(--hard, #14193a);
+  font-family: var(--pixel, monospace);
+  font-weight: 700;
+  color: #14193a;
+}
+.manual-team.team-A { background: var(--sun, #ffd800); }
+.manual-team.team-B { background: #ff8ae8; }
+.manual-clock {
+  margin-left: auto;
+  font-family: var(--pixel, monospace);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.manual-clock.urgent {
+  color: var(--pink);
+  animation: shake 0.5s ease-in-out infinite;
+}
+.manual-clues {
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px dashed color-mix(in srgb, var(--tone-main) 60%, var(--line));
+  background: color-mix(in srgb, var(--tone-main) 8%, transparent);
+  color: var(--ink);
+}
+.manual-clues ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+.manual-bench {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  display: grid;
+  gap: 8px;
+}
+.manual-slot {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 2px dashed var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: translate 0.15s, border-color 0.15s;
+}
+.manual-slot.filled {
+  border-style: solid;
+  border-color: var(--tone-main);
+  background: color-mix(in srgb, var(--tone-main) 14%, var(--surface));
+  color: var(--ink);
+  animation: symbol-pop 0.3s var(--ease-pop, ease);
+}
+.manual-slot.selected {
+  box-shadow: 0 0 0 3px var(--accent);
+}
+.manual-slot:hover:not(:disabled) {
+  translate: 0 -2px;
+}
+.slot-no {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--sun, #ffd800);
+  color: #14193a;
+  font-family: var(--pixel, monospace);
+}
+.manual-bench.locked .manual-slot {
+  cursor: default;
+}
+.manual-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+.manual-piece {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 2px solid var(--hard, #14193a);
+  background: var(--tone-icon, #c3c9ff);
+  color: #14193a;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--hard, #14193a);
+  transition: translate 0.12s;
+}
+.manual-piece.selected {
+  translate: -2px -2px;
+  box-shadow: 5px 5px 0 var(--hard, #14193a), 0 0 0 3px var(--accent);
+}
+.manual-feedback {
+  font-weight: 700;
+  color: var(--ink);
+}
+.manual-solution ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+  counter-reset: s;
+}
+.manual-solution li {
+  counter-increment: s;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--hard, #14193a);
+  background: var(--tone-icon, #c3c9ff);
+  color: #14193a;
+  font-weight: 700;
+}
+.manual-solution li::before {
+  content: counter(s) ". ";
+  font-family: var(--pixel, monospace);
+}
+.manual-verdict {
+  font-size: clamp(20px, 5vw, 30px) !important;
+  margin: 14px 0;
+}
+
+/* ---------- Feira de Invenções ---------- */
+.feira-modes {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+  text-align: left;
+}
+.feira-mode {
+  display: grid;
+  gap: 4px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.feira-mode small {
+  color: var(--muted);
+}
+.feira-mode.selected {
+  border-color: var(--tone-main);
+  box-shadow: 4px 4px 0 var(--hard, #14193a);
+  background: color-mix(in srgb, var(--tone-main) 14%, var(--surface));
+}
+.feira-mode:disabled {
+  cursor: default;
+}
+.feira-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.feira-material {
+  display: grid;
+  gap: 4px;
+  margin: 12px 0;
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid var(--hard, #14193a);
+  background: var(--tone-icon, #6ff5ff);
+  color: #14193a;
+  box-shadow: 5px 5px 0 var(--hard, #14193a);
+  animation: stamp 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) backwards;
+}
+.feira-material .eyebrow {
+  color: #14193acc !important;
+}
+.feira-material strong {
+  font-family: var(--marquee, "Fredoka", sans-serif);
+  font-weight: 400;
+  font-size: clamp(22px, 5vw, 30px);
+}
+.feira-field label {
+  display: block;
+  font-weight: 700;
+  margin: 10px 0 6px;
+}
+.feira-field input,
+.feira-field textarea {
+  width: 100%;
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--line);
+  background: var(--page);
+  color: var(--ink);
+  resize: vertical;
+}
+.feira-entries {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.feira-entry {
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--surface-soft);
+  color: var(--ink);
+  animation: bubble-in 0.5s var(--ease-pop, ease) backwards;
+}
+.feira-entry:nth-child(2) { animation-delay: 0.1s; }
+.feira-entry:nth-child(3) { animation-delay: 0.2s; }
+.feira-entry:nth-child(n + 4) { animation-delay: 0.3s; }
+.feira-entry h3 {
+  font-family: var(--marquee, "Fredoka", sans-serif);
+  font-weight: 400;
+  margin: 6px 0;
+}
+.feira-entry.own {
+  opacity: 0.75;
+  border-style: dashed;
+}
+.feira-entry.chosen {
+  border-color: var(--tone-main);
+  box-shadow: 4px 4px 0 var(--hard, #14193a);
+}
+.feira-slogan {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--accent);
+}
+.feira-stage {
+  margin: 18px 0 10px;
+  padding: 22px;
+  border-radius: 14px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #00b4d8, #8f6bff);
+  box-shadow: 6px 6px 0 var(--hard, #14193a);
+  animation: name-in 0.6s var(--ease-pop, ease) backwards;
+}
+.feira-stage h2 {
+  font-family: var(--marquee, "Fredoka", sans-serif);
+  font-weight: 400;
+  color: #fff;
+  margin: 4px 0;
+}
+.feira-mic {
+  display: inline-block;
+  font-size: 54px;
+  animation: shiu 1.6s ease-in-out infinite;
+}
+.feira-order {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+  justify-content: center;
+}
+.feira-order li {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 2px solid var(--line);
+  color: var(--muted);
+  font-weight: 700;
+}
+.feira-order li.now {
+  border-color: var(--tone-main);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--tone-main) 18%, transparent);
+}
+.feira-order li.done {
+  text-decoration: line-through;
+}
+
+/* Home: com 9 jogos, o último card ocupa a linha inteira (evita card órfão). */
+@media (min-width: 981px) {
+  html .game-hub .game-choice:last-child:nth-child(3n) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Animações de carimbo não criam rolagem lateral no celular. */
+.mesa-page {
+  overflow-x: clip;
+}

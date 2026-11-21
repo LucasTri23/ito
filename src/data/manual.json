@@ -1,0 +1,1067 @@
+[
+  {
+    "id": "md-01",
+    "theme": "Máquina de pão de queijo",
+    "intro": "Entra polvilho de um lado, sai pão de queijo quentinho do outro. Se montar errado, sai tijolo.",
+    "pieces": [
+      {
+        "id": "batedeira",
+        "name": "Batedeira"
+      },
+      {
+        "id": "boleador",
+        "name": "Boleador"
+      },
+      {
+        "id": "cesta",
+        "name": "Cesta de saída"
+      },
+      {
+        "id": "forno",
+        "name": "Forno"
+      },
+      {
+        "id": "funil",
+        "name": "Funil de polvilho"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "funil",
+        "b": "boleador"
+      },
+      {
+        "type": "notAt",
+        "a": "cesta",
+        "pos": 4
+      },
+      {
+        "type": "before",
+        "a": "boleador",
+        "b": "cesta"
+      },
+      {
+        "type": "right",
+        "a": "batedeira",
+        "b": "boleador"
+      },
+      {
+        "type": "at",
+        "a": "batedeira",
+        "pos": 2
+      }
+    ],
+    "solution": [
+      "funil",
+      "batedeira",
+      "boleador",
+      "forno",
+      "cesta"
+    ],
+    "explanation": "A Batedeira está na 2ª posição e o Boleador vem logo depois, na 3ª. Como o Funil não encosta no Boleador e a Cesta não pode ficar na 4ª, a Cesta vai para o fim, o Funil abre a fila e o Forno fica com a 4ª."
+  },
+  {
+    "id": "md-02",
+    "theme": "Cabine de DJ",
+    "intro": "A festa começa em cinco minutos e os cabos estão todos num bolo só.",
+    "pieces": [
+      {
+        "id": "amplificador",
+        "name": "Amplificador"
+      },
+      {
+        "id": "caixa",
+        "name": "Caixa de som"
+      },
+      {
+        "id": "mixer",
+        "name": "Mixer"
+      },
+      {
+        "id": "toca-discos",
+        "name": "Toca-discos"
+      }
+    ],
+    "clues": [
+      {
+        "type": "before",
+        "a": "toca-discos",
+        "b": "amplificador"
+      },
+      {
+        "type": "notAt",
+        "a": "caixa",
+        "pos": 3
+      },
+      {
+        "type": "adjacent",
+        "a": "amplificador",
+        "b": "caixa"
+      },
+      {
+        "type": "right",
+        "a": "toca-discos",
+        "b": "mixer"
+      }
+    ],
+    "solution": [
+      "toca-discos",
+      "mixer",
+      "amplificador",
+      "caixa"
+    ],
+    "explanation": "Toca-discos e Mixer formam um par, assim como Amplificador e Caixa de som. O Toca-discos vem antes do Amplificador, então o par do DJ abre a fila; e, como a Caixa não fica na 3ª, ela fecha a sequência."
+  },
+  {
+    "id": "md-03",
+    "theme": "Robô que rega plantas",
+    "intro": "Ele promete nunca mais deixar a samambaia morrer. Só precisa ser montado na ordem certa.",
+    "pieces": [
+      {
+        "id": "bico",
+        "name": "Bico regador"
+      },
+      {
+        "id": "bomba",
+        "name": "Bomba d'água"
+      },
+      {
+        "id": "cerebro",
+        "name": "Cérebro eletrônico"
+      },
+      {
+        "id": "mangueira",
+        "name": "Mangueira"
+      },
+      {
+        "id": "sensor-umidade",
+        "name": "Sensor de umidade"
+      }
+    ],
+    "clues": [
+      {
+        "type": "at",
+        "a": "bomba",
+        "pos": 3
+      },
+      {
+        "type": "right",
+        "a": "sensor-umidade",
+        "b": "cerebro"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "bomba",
+        "b": "sensor-umidade"
+      },
+      {
+        "type": "right",
+        "a": "mangueira",
+        "b": "bico"
+      }
+    ],
+    "solution": [
+      "sensor-umidade",
+      "cerebro",
+      "bomba",
+      "mangueira",
+      "bico"
+    ],
+    "explanation": "A Bomba d'água fica bem no meio, na 3ª. Sobram dois pares: Sensor e Cérebro, Mangueira e Bico. Como o Sensor não pode encostar na Bomba, o par dele fica no começo."
+  },
+  {
+    "id": "md-04",
+    "theme": "Máquina de algodão-doce",
+    "intro": "Açúcar entra, nuvem cor-de-rosa sai. No meio do caminho, muita física.",
+    "pieces": [
+      {
+        "id": "bacia",
+        "name": "Bacia giratória"
+      },
+      {
+        "id": "centrifuga",
+        "name": "Centrífuga"
+      },
+      {
+        "id": "palito",
+        "name": "Suporte do palito"
+      },
+      {
+        "id": "pote-acucar",
+        "name": "Pote de açúcar"
+      },
+      {
+        "id": "resistencia",
+        "name": "Resistência"
+      }
+    ],
+    "clues": [
+      {
+        "type": "before",
+        "a": "pote-acucar",
+        "b": "resistencia"
+      },
+      {
+        "type": "at",
+        "a": "bacia",
+        "pos": 4
+      },
+      {
+        "type": "right",
+        "a": "bacia",
+        "b": "palito"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "bacia",
+        "b": "resistencia"
+      }
+    ],
+    "solution": [
+      "pote-acucar",
+      "resistencia",
+      "centrifuga",
+      "bacia",
+      "palito"
+    ],
+    "explanation": "A Bacia está na 4ª e o Suporte do palito vem logo depois, na 5ª. A Resistência não pode encostar na Bacia, então fica nas primeiras casas; como o Pote vem antes dela, a ordem é Pote, Resistência e Centrífuga."
+  },
+  {
+    "id": "md-05",
+    "theme": "Lava-jato de bicicleta",
+    "intro": "A bike chegou cheia de lama da trilha. A esteira de lavagem precisa estar na sequência certa.",
+    "pieces": [
+      {
+        "id": "enxague",
+        "name": "Enxágue"
+      },
+      {
+        "id": "escovas",
+        "name": "Escovas giratórias"
+      },
+      {
+        "id": "jato",
+        "name": "Jato de água"
+      },
+      {
+        "id": "lubrificador",
+        "name": "Lubrificador de corrente"
+      },
+      {
+        "id": "rampa",
+        "name": "Rampa de entrada"
+      },
+      {
+        "id": "secador",
+        "name": "Secador"
+      }
+    ],
+    "clues": [
+      {
+        "type": "before",
+        "a": "secador",
+        "b": "lubrificador"
+      },
+      {
+        "type": "right",
+        "a": "jato",
+        "b": "escovas"
+      },
+      {
+        "type": "adjacent",
+        "a": "escovas",
+        "b": "enxague"
+      },
+      {
+        "type": "before",
+        "a": "escovas",
+        "b": "secador"
+      },
+      {
+        "type": "adjacent",
+        "a": "jato",
+        "b": "rampa"
+      }
+    ],
+    "solution": [
+      "rampa",
+      "jato",
+      "escovas",
+      "enxague",
+      "secador",
+      "lubrificador"
+    ],
+    "explanation": "A Rampa encosta no Jato, o Jato vem logo antes das Escovas e as Escovas encostam no Enxágue: isso forma o bloco Rampa, Jato, Escovas, Enxágue. Secador e Lubrificador vêm depois das Escovas, nessa ordem."
+  },
+  {
+    "id": "md-06",
+    "theme": "Foguete de garrafa PET",
+    "intro": "Feira de ciências amanhã. O foguete precisa decolar, não explodir na mão do professor.",
+    "pieces": [
+      {
+        "id": "aletas",
+        "name": "Aletas"
+      },
+      {
+        "id": "bomba-ar",
+        "name": "Bomba de ar"
+      },
+      {
+        "id": "garrafa",
+        "name": "Garrafa pressurizada"
+      },
+      {
+        "id": "paraquedas",
+        "name": "Paraquedas"
+      },
+      {
+        "id": "valvula",
+        "name": "Válvula"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "aletas",
+        "b": "paraquedas"
+      },
+      {
+        "type": "before",
+        "a": "valvula",
+        "b": "garrafa"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "bomba-ar",
+        "b": "aletas"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "aletas",
+        "b": "valvula"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "paraquedas",
+        "b": "bomba-ar"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "bomba-ar",
+        "b": "garrafa"
+      }
+    ],
+    "solution": [
+      "bomba-ar",
+      "valvula",
+      "garrafa",
+      "aletas",
+      "paraquedas"
+    ],
+    "explanation": "A Bomba de ar só pode encostar na Válvula, então fica numa ponta com a Válvula ao lado; como a Válvula vem antes da Garrafa, é Bomba na 1ª e Válvula na 2ª. As Aletas, seguidas do Paraquedas, não podem encostar na Válvula, então ficam no fim, e a Garrafa fica com a 3ª."
+  },
+  {
+    "id": "md-07",
+    "theme": "Carrinho de pipoca",
+    "intro": "O cheiro já está atraindo a vizinhança inteira. Falta só montar o carrinho.",
+    "pieces": [
+      {
+        "id": "botijao",
+        "name": "Botijão"
+      },
+      {
+        "id": "panela",
+        "name": "Panela de estourar"
+      },
+      {
+        "id": "peneira",
+        "name": "Peneira"
+      },
+      {
+        "id": "vitrine",
+        "name": "Vitrine aquecida"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "botijao",
+        "b": "panela"
+      },
+      {
+        "type": "notAt",
+        "a": "botijao",
+        "pos": 3
+      },
+      {
+        "type": "notAdjacent",
+        "a": "botijao",
+        "b": "vitrine"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "panela",
+        "b": "vitrine"
+      }
+    ],
+    "solution": [
+      "botijao",
+      "panela",
+      "peneira",
+      "vitrine"
+    ],
+    "explanation": "O Botijão vem logo antes da Panela e não fica na 3ª. A Vitrine não encosta em nenhum dos dois, o que só funciona com Botijão e Panela no começo e a Vitrine lá no fim."
+  },
+  {
+    "id": "md-08",
+    "theme": "Impressora de memes",
+    "intro": "Ela imprime qualquer meme em papel fotográfico. A internet nunca mais será a mesma.",
+    "pieces": [
+      {
+        "id": "antena",
+        "name": "Antena de wi-fi"
+      },
+      {
+        "id": "bandeja",
+        "name": "Bandeja de saída"
+      },
+      {
+        "id": "cartucho",
+        "name": "Cartucho de tinta"
+      },
+      {
+        "id": "filtro",
+        "name": "Filtro de piadas velhas"
+      },
+      {
+        "id": "guilhotina",
+        "name": "Guilhotina"
+      },
+      {
+        "id": "rolo",
+        "name": "Rolo de papel"
+      }
+    ],
+    "clues": [
+      {
+        "type": "adjacent",
+        "a": "cartucho",
+        "b": "filtro"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "filtro",
+        "b": "bandeja"
+      },
+      {
+        "type": "right",
+        "a": "cartucho",
+        "b": "rolo"
+      },
+      {
+        "type": "before",
+        "a": "filtro",
+        "b": "guilhotina"
+      },
+      {
+        "type": "notAt",
+        "a": "bandeja",
+        "pos": 5
+      },
+      {
+        "type": "first",
+        "a": "antena"
+      }
+    ],
+    "solution": [
+      "antena",
+      "filtro",
+      "cartucho",
+      "rolo",
+      "guilhotina",
+      "bandeja"
+    ],
+    "explanation": "A Antena abre a máquina. O Filtro encosta no Cartucho, que vem logo antes do Rolo, formando o trio Filtro, Cartucho, Rolo. A Guilhotina vem depois do Filtro e a Bandeja não pode encostar nele nem ficar na 5ª, então o trio vai logo depois da Antena e a Bandeja fecha a fila."
+  },
+  {
+    "id": "md-09",
+    "theme": "Máquina de café coado",
+    "intro": "Segunda-feira, sete da manhã. Ninguém fala com ninguém até esse café sair.",
+    "pieces": [
+      {
+        "id": "bule",
+        "name": "Bule"
+      },
+      {
+        "id": "chaleira",
+        "name": "Chaleira"
+      },
+      {
+        "id": "coador",
+        "name": "Coador de pano"
+      },
+      {
+        "id": "reservatorio",
+        "name": "Reservatório de água"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "coador",
+        "b": "bule"
+      },
+      {
+        "type": "notAt",
+        "a": "bule",
+        "pos": 2
+      },
+      {
+        "type": "before",
+        "a": "reservatorio",
+        "b": "chaleira"
+      },
+      {
+        "type": "adjacent",
+        "a": "reservatorio",
+        "b": "chaleira"
+      }
+    ],
+    "solution": [
+      "reservatorio",
+      "chaleira",
+      "coador",
+      "bule"
+    ],
+    "explanation": "O Reservatório vem antes da Chaleira e encosta nela, formando um par; Coador e Bule formam outro. Como o Bule não pode ficar na 2ª, o par do café fica no fim."
+  },
+  {
+    "id": "md-10",
+    "theme": "Trem fantasma",
+    "intro": "O carrinho precisa passar pelos sustos na ordem certa, senão o esqueleto aparece antes da hora.",
+    "pieces": [
+      {
+        "id": "bilheteria",
+        "name": "Bilheteria"
+      },
+      {
+        "id": "esqueleto",
+        "name": "Esqueleto pulador"
+      },
+      {
+        "id": "saida",
+        "name": "Saída com foto"
+      },
+      {
+        "id": "teia",
+        "name": "Cortina de teias"
+      },
+      {
+        "id": "tunel",
+        "name": "Túnel escuro"
+      },
+      {
+        "id": "vampiro",
+        "name": "Caixão do vampiro"
+      }
+    ],
+    "clues": [
+      {
+        "type": "last",
+        "a": "saida"
+      },
+      {
+        "type": "right",
+        "a": "tunel",
+        "b": "esqueleto"
+      },
+      {
+        "type": "first",
+        "a": "bilheteria"
+      },
+      {
+        "type": "adjacent",
+        "a": "teia",
+        "b": "esqueleto"
+      },
+      {
+        "type": "adjacent",
+        "a": "teia",
+        "b": "vampiro"
+      }
+    ],
+    "solution": [
+      "bilheteria",
+      "tunel",
+      "esqueleto",
+      "teia",
+      "vampiro",
+      "saida"
+    ],
+    "explanation": "A Bilheteria abre e a Saída com foto fecha. No meio, o Túnel vem logo antes do Esqueleto, e a Cortina de teias fica entre o Esqueleto e o Caixão do vampiro."
+  },
+  {
+    "id": "md-11",
+    "theme": "Cata-vento gerador",
+    "intro": "O vento sopra de graça. Transformar isso em luz para o quintal é com vocês.",
+    "pieces": [
+      {
+        "id": "bateria",
+        "name": "Bateria"
+      },
+      {
+        "id": "dinamo",
+        "name": "Dínamo"
+      },
+      {
+        "id": "eixo",
+        "name": "Eixo"
+      },
+      {
+        "id": "helice",
+        "name": "Hélice"
+      },
+      {
+        "id": "lampada",
+        "name": "Lâmpada"
+      }
+    ],
+    "clues": [
+      {
+        "type": "before",
+        "a": "helice",
+        "b": "eixo"
+      },
+      {
+        "type": "at",
+        "a": "eixo",
+        "pos": 2
+      },
+      {
+        "type": "right",
+        "a": "bateria",
+        "b": "lampada"
+      },
+      {
+        "type": "adjacent",
+        "a": "dinamo",
+        "b": "eixo"
+      }
+    ],
+    "solution": [
+      "helice",
+      "eixo",
+      "dinamo",
+      "bateria",
+      "lampada"
+    ],
+    "explanation": "O Eixo está na 2ª e a Hélice vem antes dele, então abre a fila. O Dínamo encosta no Eixo e só sobra a 3ª para ele; Bateria e Lâmpada, coladas, ficam no fim."
+  },
+  {
+    "id": "md-12",
+    "theme": "Aquário automático",
+    "intro": "Os peixinhos vão passar as férias sozinhos. A máquina precisa cuidar de tudo.",
+    "pieces": [
+      {
+        "id": "alimentador",
+        "name": "Alimentador de ração"
+      },
+      {
+        "id": "aquecedor",
+        "name": "Aquecedor"
+      },
+      {
+        "id": "filtro",
+        "name": "Filtro"
+      },
+      {
+        "id": "relogio",
+        "name": "Relógio programável"
+      },
+      {
+        "id": "termometro",
+        "name": "Termômetro"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "alimentador",
+        "b": "filtro"
+      },
+      {
+        "type": "adjacent",
+        "a": "filtro",
+        "b": "aquecedor"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "termometro",
+        "b": "alimentador"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "relogio",
+        "b": "termometro"
+      }
+    ],
+    "solution": [
+      "relogio",
+      "alimentador",
+      "filtro",
+      "aquecedor",
+      "termometro"
+    ],
+    "explanation": "Alimentador, Filtro e Aquecedor ficam colados, nessa ordem. Relógio e Termômetro não podem encostar um no outro, então ocupam as pontas; como o Termômetro também não encosta no Alimentador, ele vai para o fim."
+  },
+  {
+    "id": "md-13",
+    "theme": "Máquina de raspadinha de gelo",
+    "intro": "Calor de quarenta graus no verão. A fila da raspadinha dobra o quarteirão.",
+    "pieces": [
+      {
+        "id": "congelador",
+        "name": "Congelador"
+      },
+      {
+        "id": "copo",
+        "name": "Copo"
+      },
+      {
+        "id": "granulado",
+        "name": "Dosador de granulado"
+      },
+      {
+        "id": "lamina",
+        "name": "Lâmina raspadora"
+      },
+      {
+        "id": "xarope",
+        "name": "Bico de xarope"
+      }
+    ],
+    "clues": [
+      {
+        "type": "last",
+        "a": "granulado"
+      },
+      {
+        "type": "right",
+        "a": "xarope",
+        "b": "granulado"
+      },
+      {
+        "type": "notAt",
+        "a": "lamina",
+        "pos": 3
+      },
+      {
+        "type": "first",
+        "a": "congelador"
+      }
+    ],
+    "solution": [
+      "congelador",
+      "lamina",
+      "copo",
+      "xarope",
+      "granulado"
+    ],
+    "explanation": "O Congelador abre, o Dosador de granulado fecha e o Bico de xarope vem logo antes dele. A Lâmina não fica na 3ª, então pega a 2ª, e o Copo fica com a 3ª."
+  },
+  {
+    "id": "md-14",
+    "theme": "Esteira de mala do aeroporto",
+    "intro": "Duzentas malas pretas iguais e só uma esteira. O que pode dar errado?",
+    "pieces": [
+      {
+        "id": "balanca",
+        "name": "Balança"
+      },
+      {
+        "id": "balcao",
+        "name": "Balcão de check-in"
+      },
+      {
+        "id": "carrinho",
+        "name": "Carrinho do avião"
+      },
+      {
+        "id": "porao",
+        "name": "Porão"
+      },
+      {
+        "id": "raio-x",
+        "name": "Raio-X"
+      },
+      {
+        "id": "separador",
+        "name": "Separador de voos"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "balanca",
+        "b": "raio-x"
+      },
+      {
+        "type": "right",
+        "a": "balcao",
+        "b": "balanca"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "separador",
+        "b": "porao"
+      },
+      {
+        "type": "notAdjacent",
+        "a": "balcao",
+        "b": "porao"
+      },
+      {
+        "type": "right",
+        "a": "raio-x",
+        "b": "separador"
+      },
+      {
+        "type": "before",
+        "a": "balcao",
+        "b": "carrinho"
+      }
+    ],
+    "solution": [
+      "balcao",
+      "balanca",
+      "raio-x",
+      "separador",
+      "carrinho",
+      "porao"
+    ],
+    "explanation": "Balcão, Balança, Raio-X e Separador formam uma fila colada. O Porão não pode encostar no Balcão nem no Separador, e o Carrinho vem depois do Balcão: a única saída é o bloco no começo, o Carrinho na 5ª e o Porão no fim."
+  },
+  {
+    "id": "md-15",
+    "theme": "Fábrica de brigadeiro",
+    "intro": "Festa de aniversário em uma hora e trezentos brigadeiros para fazer.",
+    "pieces": [
+      {
+        "id": "bandeja-fria",
+        "name": "Bandeja de esfriar"
+      },
+      {
+        "id": "enrolador",
+        "name": "Enrolador"
+      },
+      {
+        "id": "forminha",
+        "name": "Forminha"
+      },
+      {
+        "id": "granulador",
+        "name": "Banho de granulado"
+      },
+      {
+        "id": "panela",
+        "name": "Panela de mexer"
+      }
+    ],
+    "clues": [
+      {
+        "type": "right",
+        "a": "panela",
+        "b": "bandeja-fria"
+      },
+      {
+        "type": "right",
+        "a": "enrolador",
+        "b": "granulador"
+      },
+      {
+        "type": "last",
+        "a": "forminha"
+      },
+      {
+        "type": "before",
+        "a": "panela",
+        "b": "granulador"
+      }
+    ],
+    "solution": [
+      "panela",
+      "bandeja-fria",
+      "enrolador",
+      "granulador",
+      "forminha"
+    ],
+    "explanation": "A Forminha fecha a fila. Sobram dois pares: Panela e Bandeja, Enrolador e Banho de granulado; como a Panela vem antes do Banho, o par dela começa."
+  },
+  {
+    "id": "md-16",
+    "theme": "Alarme anti-gato no sofá",
+    "intro": "O sofá novo tem dono, e não é o gato. Hora de montar a defesa.",
+    "pieces": [
+      {
+        "id": "bateria",
+        "name": "Bateria"
+      },
+      {
+        "id": "borrifador",
+        "name": "Borrifador"
+      },
+      {
+        "id": "buzina",
+        "name": "Buzina"
+      },
+      {
+        "id": "sensor-peso",
+        "name": "Sensor de peso"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "sensor-peso",
+        "b": "borrifador"
+      },
+      {
+        "type": "notAt",
+        "a": "borrifador",
+        "pos": 3
+      },
+      {
+        "type": "notAt",
+        "a": "buzina",
+        "pos": 2
+      },
+      {
+        "type": "notAt",
+        "a": "bateria",
+        "pos": 3
+      },
+      {
+        "type": "right",
+        "a": "sensor-peso",
+        "b": "bateria"
+      }
+    ],
+    "solution": [
+      "sensor-peso",
+      "bateria",
+      "buzina",
+      "borrifador"
+    ],
+    "explanation": "O Sensor vem logo antes da Bateria, que não fica na 3ª. Se o par ficasse no fim, o Borrifador (que não encosta no Sensor) iria para a 1ª e a Buzina cairia na 2ª, o que é proibido. Então o par abre a fila e o Borrifador, fora da 3ª, fecha."
+  },
+  {
+    "id": "md-17",
+    "theme": "Máquina de bolhas de sabão",
+    "intro": "Festa infantil, quinze crianças e uma missão: encher o salão de bolhas.",
+    "pieces": [
+      {
+        "id": "aro",
+        "name": "Aro de bolhas"
+      },
+      {
+        "id": "bombinha",
+        "name": "Bombinha"
+      },
+      {
+        "id": "luz",
+        "name": "Luz colorida"
+      },
+      {
+        "id": "tanque",
+        "name": "Tanque de sabão"
+      },
+      {
+        "id": "ventoinha",
+        "name": "Ventoinha"
+      }
+    ],
+    "clues": [
+      {
+        "type": "at",
+        "a": "bombinha",
+        "pos": 2
+      },
+      {
+        "type": "adjacent",
+        "a": "bombinha",
+        "b": "tanque"
+      },
+      {
+        "type": "right",
+        "a": "bombinha",
+        "b": "aro"
+      },
+      {
+        "type": "adjacent",
+        "a": "ventoinha",
+        "b": "aro"
+      }
+    ],
+    "solution": [
+      "tanque",
+      "bombinha",
+      "aro",
+      "ventoinha",
+      "luz"
+    ],
+    "explanation": "A Bombinha está na 2ª, com o Aro logo depois. O Tanque encosta na Bombinha, então só pode ser a 1ª; a Ventoinha encosta no Aro e fica na 4ª, sobrando a Luz para o fim."
+  },
+  {
+    "id": "md-18",
+    "theme": "Lançador de bolinhas para cachorro",
+    "intro": "O Totó quer brincar o dia inteiro. O seu braço, não.",
+    "pieces": [
+      {
+        "id": "cano",
+        "name": "Cano de mira"
+      },
+      {
+        "id": "cesto",
+        "name": "Cesto de bolinhas"
+      },
+      {
+        "id": "rampa",
+        "name": "Rampa"
+      },
+      {
+        "id": "rodas",
+        "name": "Rodas lançadoras"
+      }
+    ],
+    "clues": [
+      {
+        "type": "notAdjacent",
+        "a": "cesto",
+        "b": "cano"
+      },
+      {
+        "type": "right",
+        "a": "rodas",
+        "b": "cano"
+      },
+      {
+        "type": "notAt",
+        "a": "cesto",
+        "pos": 2
+      },
+      {
+        "type": "notAdjacent",
+        "a": "rampa",
+        "b": "cano"
+      }
+    ],
+    "solution": [
+      "cesto",
+      "rampa",
+      "rodas",
+      "cano"
+    ],
+    "explanation": "O Cano de mira só pode encostar nas Rodas, que vêm logo antes dele, então os dois ficam no fim. O Cesto não fica na 2ª, então abre a fila, e a Rampa fica no meio."
+  }
+]

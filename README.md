@@ -265,6 +265,19 @@ README.md
 VALIDATION.md
 ```
 
+## Plano B, Manual Desmontado e Feira de Invenções
+
+Três jogos de sala (2 a 8 pessoas, um aparelho por pessoa, juntos ou à distância) que compartilham a mesma infraestrutura:
+
+- **Rotas:** `/#/plano-b`, `/#/manual-desmontado`, `/#/feira-de-invencoes` (convite: `/#/<rota>/<CÓDIGO>`).
+- **Dados:** `mesaInvites/{código}` (vagas, limite de 8 aplicado nas regras) e `mesas/{código}` com `players` e `rounds`. Rodadas têm id determinístico `partida-rodada` (repetir um clique não duplica). Prazos usam `startedAt`/`voteAt` do servidor; o cronômetro não reinicia ao recarregar.
+- **Sigilo (Firestore Rules):** imprevisto do Plano B e gabarito do Manual ficam em `rounds/{r}/sealed`, ilegíveis para todos (inclusive o anfitrião) até o fim da rodada; escolhas, pistas, materiais, invenções, autores e votos só abrem quando a regra permite. O teste da montagem é conferido pela regra contra o gabarito lacrado. Voto na própria invenção é recusado pela regra.
+- **Saída e anfitrião:** saída voluntária libera a vaga e passa o posto ao próximo jogador; anfitrião desconectado há mais de 3 minutos pode ser substituído por um membro conectado; com menos de 2 pessoas a rodada volta ao lobby.
+- **Limitação:** sem Cloud Functions, o aparelho do anfitrião sorteia o imprevisto/gabarito/materiais ao abrir a rodada e grava direto no documento lacrado. A interface nunca mostra esses dados, mas alguém com ferramentas de desenvolvedor no aparelho do anfitrião poderia vê-los no momento da criação. Os catálogos também ficam no pacote do site. Para sigilo total seria preciso mover o sorteio para Cloud Functions (plano Blaze).
+- **Catálogos:** `src/data/planB.json` (24 missões × 3 imprevistos), `src/data/manual.json` (18 desafios, solução única verificada para equipes de 2, 3 e 4), `src/data/feira.json` (62 materiais, 42 problemas). Validação em `tests/mesaCatalogs.test.ts`.
+- **Testes:** regras no emulador em `tests/mesa.rules.test.ts` (incluído em `npm run test:rules`).
+- **Publicação:** publique o `firestore.rules` atualizado (`npx firebase deploy --only firestore:rules --project <ID>`) junto com o frontend. Sem isso, as salas dos três jogos não abrem.
+
 ## Referências oficiais
 
 - [Condições e operações atômicas nas Rules](https://firebase.google.com/docs/firestore/security/rules-conditions)

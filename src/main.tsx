@@ -8,6 +8,10 @@ import { GameHub } from "./pages/GameHub";
 import { WhoAmI } from "./pages/WhoAmI";
 import { PartyGame } from "./pages/PartyGame";
 import { Alibi } from "./pages/Alibi";
+import { BiblicalAds } from "./pages/BiblicalAds";
+import { PlanoB } from "./pages/PlanoB";
+import { ManualDesmontado } from "./pages/ManualDesmontado";
+import { FeiraInvencoes } from "./pages/FeiraInvencoes";
 import { useAuth } from "./hooks/useAuth";
 import { configured } from "./lib/firebase";
 import "./styles.css";
@@ -40,6 +44,14 @@ function App() {
           <Route path="/quem-sou-eu" element={<WhoAmI />} />
           <Route path="/alibi-furado" element={<Alibi />} />
           <Route path="/alibi-furado/:code" element={<Alibi />} />
+          <Route path="/plano-b" element={<PlanoB />} />
+          <Route path="/plano-b/:code" element={<PlanoB />} />
+          <Route path="/manual-desmontado" element={<ManualDesmontado />} />
+          <Route path="/manual-desmontado/:code" element={<ManualDesmontado />} />
+          <Route path="/feira-de-invencoes" element={<FeiraInvencoes />} />
+          <Route path="/feira-de-invencoes/:code" element={<FeiraInvencoes />} />
+          <Route path="/anuncios-biblicos" element={<BiblicalAds />} />
+          <Route path="/anuncios-biblicos/:code" element={<BiblicalAds />} />
           <Route
             path="/eu-duvido"
             element={<PartyGame key="number" game="number" />}
